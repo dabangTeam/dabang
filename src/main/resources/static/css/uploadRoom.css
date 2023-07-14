@@ -7,7 +7,7 @@ tbody {
     vertical-align: middle;
     border-color: inherit;
 }
-sectin, header {
+section, header {
 	display: block;
 }
 section, header {
@@ -16,6 +16,19 @@ section, header {
 	border: 0px;
 	font: inherit;
 	vertical-align: baseline;
+}
+select, input, textarea, a {
+    outline: none;
+}
+
+input, textarea {
+    user-select: text;
+}
+textarea, input {
+    appearance: none;
+}
+:root, *, body {
+    font-family: "Pretendard Variable", -apple-system, system-ui, sans-serif;
 }
 svg {
     width: 24;
@@ -320,7 +333,7 @@ button {
 }
 
 .house-type-box:checked {
-    background-image: url(/static/media/ic_24_radio_selected.8279d40b.svg);
+    background-image: url(/static/images/ic_24_radio_selected.8279d40b.svg);
 }
 
 .house-type-box{
@@ -330,7 +343,7 @@ button {
     margin: 0px;
     border: 0px;
     border-radius: 50%;
-    background: url(/static/media/ic_24_radio_enabled.337eea5a.svg) center center / cover no-repeat;
+    background: url(/static/images/ic_24_radio_enabled.337eea5a.svg) center center / cover no-repeat;
     appearance: none;
     cursor: pointer;
 }
@@ -342,4 +355,173 @@ button {
     line-height: 24px;
     user-select: none;
     cursor: pointer;
+}
+
+.small-checkbox-block {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.small-checkbox-text {
+    flex: 0 0 auto;
+    display: flex;
+    width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.small-checkbox-text > div {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin-top: -20px;
+    margin-left: -16px;
+}
+
+.small-checkbox-text > div > label {
+    margin-top: 20px;
+    margin-left: 16px;
+}
+
+.small-checkbox-textBlock {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    max-width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.small-checkbox-realcheck {
+    flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    margin: 0px;
+    border: 0px;
+    border-radius: 0px;
+    background: url(/static/images/ic_24_checkbox_enabled.6870b0c9.svg) center center / cover no-repeat;
+    appearance: none;
+    cursor: pointer;
+}
+
+.small-checkbox-realtext {
+    padding-left: 4px;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    user-select: none;
+    cursor: pointer;
+}
+
+.room-address-area {
+    display: flex;
+}
+
+.room-address-secArea {
+    flex: 0 0 auto;
+    width: 395px;
+}
+
+.room-address-searchBlock {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.address-header-titleArea {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin-bottom: 4px;
+
+}
+
+.address-header-titleText {
+    color: rgb(101, 101, 101);
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.address-search-mainArea {
+    flex: 0 0 auto;
+    display: flex;
+    width: 100%;
+}
+
+.address-search-mainArea > div {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+}
+
+.address-search-formBox {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.address-search-formBlock {
+    display: block;
+    width: calc(100% - 88px);
+    height: 44px;
+    position: relative;
+}
+
+.address-search-inputBox {
+    width: 100%;
+    height: 100%;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    padding: 0px 16px;
+    border: 1px solid rgb(237, 237, 237);
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    transition: all 150ms ease-out 0s;
+    user-select: none;
+}
+.address-search-formBox > button {
+    margin-left: 8px;
+}
+
+.address-search-submintBtn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 80px;
+    padding: 0px 16px;
+    color: rgb(255, 255, 255);
+    border: 0px;
+    border-radius: 2px;
+    transition: all 150ms ease-out 0s;
+    cursor: pointer;
+    height: 44px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+    background-color: rgb(34, 34, 34);
+}
+.address-search-submitText {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+button > span {
+    position: relative
 }

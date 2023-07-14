@@ -62,7 +62,7 @@
 										<header class="section-room-header">
 											<h1>대분류</h1>
 										</header>
-										<button class="">
+										<button class="section-room-house">
 										주택 / 빌라(원투쓰리룸)
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
 												<path d="M9.15405 6.13901C9.33127 5.96917 9.60104 5.95562 9.79299 6.09473L9.86099 6.15405L15.2073 11.7328L9.84561 
@@ -71,7 +71,7 @@
 												</path>
 											</svg>
 										</button>
-										<button class="">
+										<button class="section-room-officetel">
 										오피스텔(도시형)
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
 												<path d="M9.15405 6.13901C9.33127 5.96917 9.60104 5.95562 9.79299 6.09473L9.86099 6.15405L15.2073 11.7328L9.84561 
@@ -80,7 +80,7 @@
 												</path>
 											</svg>
 										</button>
-										<button class="">
+										<button class="section-room-apartment">
 										아파트
 											<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
 												<path d="M9.15405 6.13901C9.33127 5.96917 9.60104 5.95562 9.79299 6.09473L9.86099 6.15405L15.2073 11.7328L9.84561 
@@ -91,42 +91,42 @@
 										</button>
 									</td>
 									<td style="padding: 0px;">
-										<header class="">
+										<header class="section-room-small">
 											<h1>소분류</h1>
 										</header>
-										<div class="">
-											<div class="">
-												<div class="">
-													<div class="">
-														<label class="">
-															<input type="radio" name="" class="" checked>
-															<p class="">빌라/연립/다세대</p>
+										<div class="room-house-box">
+											<div class="room-house-option">
+												<div class="room-option-box">
+													<div>
+														<label class="room-option-choice">
+															<input type="radio" name="buildingType" class="house-type-box" checked>
+															<p class="house-type-text">빌라/연립/다세대</p>
 														</label>
-														<label>
-															<input type="radio" name="" class="">
-															<p class="">단독주택</p>
+														<label class="room-option-choice">
+															<input type="radio" name="buildingType" class="house-type-box">
+															<p class="house-type-text">단독주택</p>
 														</label>
-														<label>
-															<input type="radio" name="" class="">
-															<p class="">다가구주택</p>
+														<label class="room-option-choice">
+															<input type="radio" name="buildingType" class="house-type-box">
+															<p class="house-type-text">다가구주택</p>
 														</label>
-														<label>
-															<input type="radio" name="" class="">
-															<p class="">상가주택</p>
+														<label class="room-option-choice">
+															<input type="radio" name="buildingType" class="house-type-box">
+															<p class="house-type-text">상가주택</p>
 														</label>
-														<label>
-															<input type="radio" name="" class="">
-															<p class="">기타</p>
+														<label class="room-option-choice">
+															<input type="radio" name="buildingType" class="house-type-box">
+															<p class="house-type-text">기타</p>
 														</label>
 													</div>
 												</div>
 											</div>
-											<div class="" style="margin-top: auto;">
-												<div class="">
+											<div class="small-checkbox-block" style="margin-top: auto;">
+												<div class="small-checkbox-text">
 													<div>
-														<label class="">
-															<input type="checkbox" class="">
-															<p class="">
+														<label class="small-checkbox-textBlock">
+															<input type="checkbox" class="small-checkbox-realcheck">
+															<p class="small-checkbox-realtext">
 															미등기건물에 해당하는 경우 체크
 															</p>
 														</label>
@@ -144,28 +144,28 @@
 										</h1>
 									</th>
 									<td colspan="2">
-										<div class="">
-											<div class="">
-												<div class="">
-													<header class="">
-														<h1 class="">주소검색</h1>
+										<div class="room-address-area">
+											<div class="room-address-secArea">
+												<div class="room-address-searchBlock">
+													<header class="address-header-titleArea">
+														<h1 class="address-header-titleText">주소검색</h1>
 													</header>
-													<div class="">
+													<div class="address-search-mainArea">
 														<div>
-															<form class="">
-																<div class="">
-																	<input autocomplete="off" type="text" name="" placeholder="예) 번동10-1, 강북구 번동" class="" value>
+															<form class="address-search-formBox">
+																<div class="address-search-formBlock">
+																	<input autocomplete="off" type="text" name="" placeholder="예) 번동10-1, 강북구 번동" class="address-search-inputBox" value>
 																		<div pseudo="placeholder">예) 번동 10-1, 강북구 번동</div>
 																		<div contenteditable="plaintext-only"></div>
 																</div>
-																<button type="submit" class="">
-																	<span class="">검색</span>
+																<button type="submit" class="address-search-submintBtn">
+																	<span class="address-search-submitText">검색</span>
 																</button>
 															</form>
 														</div>
 													</div>
 												</div>
-												<div class="" style="margin-top: 16px;">
+												<div class="address-dong-" style="margin-top: 16px;">
 													<div class="">
 														<header class="">
 															<h1 class="">동 입력</h1>
@@ -278,8 +278,8 @@
 								<tr>
 									<th>
 										<h1>
-										 방 정보
-										 <span>*</span>
+										방 정보
+										<span>*</span>
 										</h1>
 									</th>
 									<td colspan="2">
