@@ -1,0 +1,345 @@
+@charset "UTF-8";
+colgroup {
+	display: table-column-group;
+}
+tbody {
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+sectin, header {
+	display: block;
+}
+section, header {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	font: inherit;
+	vertical-align: baseline;
+}
+svg {
+    width: 24;
+    height: 24;
+    fill: none;
+}
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
+}
+
+select, input, textarea, a {
+    outline: none;
+}
+
+input, textarea {
+    user-select: text;
+}
+
+.mainbody {
+	-webkit-box-flex: 1;
+	flex-grow: 1;
+	width: 100%;	
+}
+.mainbody > div {
+	width: 1200px;
+	height: 100%;
+	margin: 0px auto;
+}
+.header-title {
+	padding: 80px 0px 64px;
+}
+
+.header-title > h1 {
+	color: rgb(34, 34, 34);
+    font-size: 46px;
+    line-height: 70px;
+    letter-spacing: -1px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.header-text-box {
+	width: 100%;
+	margin-bottom: 56px;
+	padding: 0px 10px;
+}
+
+menu, ol, li {
+	list-style: none;
+}
+
+.header-text-box > li {
+	color: rgb(101, 101, 101);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    position: relative;
+}
+
+.header-text-button {
+	flex: 0 0 auto;
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: auto;
+    padding: 0px;
+    border: 0px;
+    background-color: transparent;
+    transition: all 150ms ease-out 0s;
+    cursor: pointer;
+    height: 36px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.header-text-box > li + li {
+	margin-top: 4px;
+}
+
+.header-text-box > li::before {
+	content: "";
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: rgb(34, 34, 34);
+    position: absolute;
+    top: 10px;
+    left: -10px;
+}
+
+.main-box {
+	display: flex;
+}
+
+.main-box-all {
+	-webkit-box-flex: 1;
+	flex-grow: 1;
+	width: 100%;
+}
+
+.section-room-header {
+	display: flex;
+    align-items: flex-end;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.section-room-title {
+    flex: 0 0 auto;
+    color: rgb(34, 34, 34);
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: -0.5px;
+    font-weight: 700;
+}
+
+.section-necessary {
+	flex: 0 0 auto;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 700;
+}
+
+.section-room-table {
+	width: 100%;
+    border-top: 2px solid rgb(34, 34, 34);
+    table-layout: fixed;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0px;
+}
+
+.section-room-table tr {
+	border-bottom: 1px solid rgb(245, 245, 245);
+}
+
+.section-room-table th {
+	padding-left: 20px;
+	text-align: left;
+	vertical-align: middle;
+	background-color: rgb(252, 252, 252);
+}
+
+.section-room-table th > h1 {
+	color: rgb(34, 34, 34);
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 700;
+}
+
+.section-room-table th > h1 > span {
+	margin-left: 4px;
+	color: rgb(50, 108, 249);
+}
+
+.section-room-table td, .section-room-table td + th {
+	border-left: 1px solid rgb(245, 245, 245);
+}
+
+.section-room-table td {
+	padding: 16px 20px;
+}
+
+.section-room-header {
+	padding: 8px 20px;
+	background-color: rgb(250, 250, 250);
+}
+
+.section-room-header > h1 {
+	color: rgb(151, 151, 151);
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: 700;
+}
+
+.section-room-house {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 56px;
+    border: 0px;
+    padding: 0px 8px 0px 20px;
+    color: rgb(50, 108, 249);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+button {
+	margin: 0px;
+    padding: 0px;
+    border-radius: 0px;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    outline: none;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.section-room-officetel {
+	display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 56px;
+    border: 0px;
+    padding: 0px 8px 0px 20px;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.section-room-apartment {
+	display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 56px;
+    border: 0px;
+    padding: 0px 8px 0px 20px;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.section-room-small {
+	padding: 8px 20px;
+    background-color: rgb(250, 250, 250);
+}
+
+.section-room-small > h1 {
+    color: rgb(151, 151, 151);
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;
+}
+
+.room-house-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 100%;
+    height: 168px;
+    padding: 16px 20px;
+}
+
+.room-house-option {
+    flex: 0 0 auto;
+    width: auto;
+}
+.room-option-box {
+    flex: 0 0 auto;
+    display: flex;
+    width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.room-option-box > div {
+
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin-top: -20px;
+    margin-left: -16px;
+
+}
+
+.room-option-box > div > label {
+	margin-top: 20px;
+    margin-left: 16px;
+}
+
+.room-option-choice {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    max-width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.house-type-box:checked {
+    background-image: url(/static/media/ic_24_radio_selected.8279d40b.svg);
+}
+
+.house-type-box{
+	flex: 0 0 auto;
+    width: 24px;
+    height: 24px;
+    margin: 0px;
+    border: 0px;
+    border-radius: 50%;
+    background: url(/static/media/ic_24_radio_enabled.337eea5a.svg) center center / cover no-repeat;
+    appearance: none;
+    cursor: pointer;
+}
+
+.house-type-text {
+	padding-left: 4px;
+    color: rgb(34, 34, 34);
+    font-size: 14px;
+    line-height: 24px;
+    user-select: none;
+    cursor: pointer;
+}
