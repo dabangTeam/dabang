@@ -15,6 +15,10 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     box-sizing: border-box;
 }
 
+:root, *, body {
+    font-family: "Pretendard Variable", -apple-system, system-ui, sans-serif;
+}
+
 div {
     display: block;
 }
@@ -30,8 +34,22 @@ body {
     line-height: 1;
 }
 
+h1, h2, h3, h4, h5, h6, strong, b {
+    font-weight: 700;
+}
+
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section {
     display: block;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
 }
 
 select, input, textarea, a {
@@ -42,32 +60,7 @@ textarea, input {
     appearance: none;
 }
 
-html::-webkit-scrollbar {
-    
-    width: 16px;
-    height: 10px;
-}
-
-html {
-	overflow-x: scroll; /* 가로 스크롤 사용 */
-    overflow-y: scroll; /* 세로 스크롤 사용 */
-}
-
-html::-webkit-scrollbar-thumb {
-    background:rgba(222, 219, 219, 0.953); /* 스크롤바 막대 색상 */
-    border: 4px solid rgb(255, 255, 255); /* 스크롤바 막대 테두리 설정  */
-    border-radius: 12px 12px 12px 12px;
-}
-
-html::-webkit-scrollbar-track{
-	background-color: rgb(255, 255, 255); /* 스크롤바 뒷 배경을 투명 처리한다 */
-}
-
-html::-webkit-scrollbar-thumb:hover {
-	background-color:#a0a0a5;
-}
-
-.content {
+#content {
     -webkit-box-flex: 1;
     flex-grow: 1;
     display: flex;
@@ -79,29 +72,29 @@ html::-webkit-scrollbar-thumb:hover {
     position: relative;
 }
 
-.Join-Container {
+.Email-LoginContainer {
     -webkit-box-flex: 1;
     flex-grow: 1;
     padding: 100px 0px 126px;
 }
 
-.Join-Container > div {
+.Email-LoginContainer > div {
     width: 476px;
     margin: 0px auto;
     border: 1px solid rgb(245, 245, 245);
 }
 
-.Join-viewBox {
+.Email-ViewBox {
     transition: padding 250ms ease-in-out 0s;
     padding: 68px;
 }
 
-.Join-header {
+.EL-Header {
     padding-bottom: 28px;
     border-bottom: 1px solid rgb(245, 245, 245);
 }
 
-.Join-header > h1 {
+.EL-Header > h1 {
     color: rgb(34, 34, 34);
     font-size: 30px;
     line-height: 48px;
@@ -109,27 +102,27 @@ html::-webkit-scrollbar-thumb:hover {
     font-weight: 700;
 }
 
-.InputText {
+.EL-VB-Text {
     padding-top: 28px;
 }
 
-.InputText > p {
+.EL-VB-Text > p {
     color: rgb(34, 34, 34);
     font-size: 14px;
     line-height: 24px;
     font-weight: 700;
 }
 
-.FormContainer {
-    padding-top: 48px;
+.EL-Form {
+    margin-top: 48px;
 }
 
-.FormContainer-id {
+.EL-container {
     flex: 0 0 auto;
     width: auto;
 }
 
-.FormContainer-Title {
+.EL-header-2 {
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -138,19 +131,19 @@ html::-webkit-scrollbar-thumb:hover {
     margin-bottom: 8px;
 }
 
-.FormContainer-Title-id {
+.EL-ID-text {
     color: rgb(34, 34, 34);
     font-size: 14px;
     line-height: 24px;
     font-weight: 700;
 }
 
-.Form-ID-Content {
+.EL-content {
     display: flex;
     width: 100%;
 }
 
-.Form-ID-Content > div {
+.EL-content > div {
     -webkit-box-flex: 1;
     flex-grow: 1;
     display: flex;
@@ -159,15 +152,14 @@ html::-webkit-scrollbar-thumb:hover {
     justify-content: flex-start;
 }
 
-.Input-Box-Email {
+.input-box {
     display: block;
     width: 100%;
     height: 44px;
     position: relative;
 }
 
-.Input-Email {
-    /* width: 338px; */
+.Email-input {
     width: 100%;
     height: 100%;
     color: rgb(34, 34, 34);
@@ -178,53 +170,24 @@ html::-webkit-scrollbar-thumb:hover {
     border: 1px solid rgb(237, 237, 237);
     border-radius: 2px;
     background-color: rgb(255, 255, 255);
-    transition: all 150ms ease-in-out 0s;
-    user-select: none;
+    transition: all 150ms ease-out 0s;
+    /* user-select: none; */
 }
 
-.Password-Content {
-    flex: 0 0 auto;
-    width: auto;
-}
-
-.Password-Header {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    margin-bottom: 8px;
-}
-
-.Password-Text {
+.EL-password {
     color: rgb(34, 34, 34);
     font-size: 14px;
     line-height: 24px;
     font-weight: 700;
+    margin-top: 20px;
 }
 
-.Password-check {
+.EL-content {
     display: flex;
     width: 100%;
 }
 
-.Password-check > div {
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    display: flex;
-    flex-flow: row wrap;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-}
-
-.Password-check-1 {
-    display: block;
-    width: 100%;
-    height: 44px;
-    position: relative;
-}
-
-.Password-Input {
+.password-input {
     width: 100%;
     height: 100%;
     color: rgb(34, 34, 34);
@@ -235,11 +198,11 @@ html::-webkit-scrollbar-thumb:hover {
     border: 1px solid rgb(237, 237, 237);
     border-radius: 2px;
     background-color: rgb(255, 255, 255);
-    transition: all 150ms ease-in-out 0s;
-    user-select: none;
+    transition: all 150ms ease-out 0s;
+    /* user-select: none; */
 }
 
-.Password-RightIcon {
+.RightIcon {
     width: 24px;
     height: 24px;
     position: absolute;
@@ -250,8 +213,7 @@ html::-webkit-scrollbar-thumb:hover {
     border: 0px;
     background-color: transparent;
     cursor: pointer;
-}   
-    
+}
 
 button {
     margin: 0px;
@@ -264,41 +226,11 @@ button {
     -webkit-tap-highlight-color: transparent;
 }
 
-.Join-Btn {
-    margin-top: 36px;
+svg:not(:root) {
+    overflow-clip-margin: content-box;
+    overflow: hidden;
 }
 
-.SolidButton:disabled {
-    background-color: rgb(223, 223, 223);
-    cursor: pointer;
-}
-
-.SolidButton {
-    flex: 0 0 auto;
-    display: inline-flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    width: 100%;
-    padding: 0px 16px;
-    color: rgb(255, 255, 255);
-    border: 0px;
-    border-radius: 2px;
-    transition: all 150ms ease-out 0s;
-    cursor: pointer;
-    height: 56px;
-    font-size: 14px;
-    line-height: 24px;
-    font-weight: 700;
-    background-color: rgb(50, 108, 249);
-}
-
-.SolidButton-Text {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-button > span {
-    position: relative;
+.RightIcon {
+    
 }
