@@ -5,6 +5,8 @@
     padding: 0px;
 
     font-size: 16px;
+
+    font-family: 'Pretendard Variable', -apple-system, system-ui, sans-serif;
 }
 
 html, body {
@@ -26,3 +28,10 @@ ul, li {
     padding: 0;
     list-style-type: none;
 }
+
+@font-face {
+    font-family: 'Pretendard Variable';
+    src: url('../fonts/PretendardVariable.ttf') format('truetype');
+}
+  
+  

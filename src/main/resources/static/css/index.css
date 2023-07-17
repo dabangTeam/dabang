@@ -5,9 +5,7 @@ header {
     width: 100%;
     height: 79px;
 
-    margin: 1px;
-
-    font-weight: 700;
+    font-weight: 400;
     background: linear-gradient(134deg, rgb(19, 183, 207) -5%, rgb(54, 91, 180) 56%, rgb(54, 91, 180) 56%);
 }
 
@@ -19,10 +17,9 @@ header {
     width: 100%;
     padding-left: 20px;
     padding-right: 20px;
-}
+    margin: 1px;
 
-.home-logo-link {
-    
+    white-space: nowrap;
 }
 
 .right-header-line a {
@@ -30,35 +27,36 @@ header {
     color: white;
 }
 
-.menu-item, .login-page-button {
+.right-header-line a:hover {
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+}
+
+.right-header-line .menu-item:nth-child(n+2) {
     margin-left: 40px;
 }
 
-.menu-item:nth-child(1) {
-    margin-left: 0px;
-}
-
-.login-page-button {
-    width: 155px;
-    height: 40px;
-
-    font-size: 14px;
-    font-weight: 700;
-    color: white;
-}
+.right-header-line .menu-item:last-child {
+    margin-left: 8px;
+  }
 
 .login-page-button, .last-button {
     width: 155px;
     height: 40px;
-
+    
     color: white;
     border: 1px solid rgb(223, 223, 223);
     border-radius: 2px;
-
+    
     background: rgb(54, 91, 180) 56%;
 }
 
-.login-page-button-span {
+.right-header-line .menu-item:nth-child(n+7):hover {
+    color: rgb(255, 255, 255);
+    background-color: #ffffff33;
+}
+
+.button-text {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,17 +66,13 @@ header {
     padding-right: 20px;
 
     font-size: 14px;
+    font-weight: 700;
     white-space: nowrap;
 }
 
-.login-page-button-span span {
+.button-text span {
     margin-left: 14px;
     margin-right: 14px;
 
-}
-
-.last-button{
-    height: 40px;
-
-    margin-left: 8px;
+    color: #dfdfdf;
 }
