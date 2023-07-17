@@ -25,6 +25,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+<<<<<<< HEAD
 	<!--	<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -33,6 +34,12 @@
 		</dependency>
 -->
 =======
+=======
+<!--		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>2.3.1</version>
+>>>>>>> PJH
 		</dependency>-->
 
 >>>>>>> 4234208b7908df82e3290e8dcd8b7f1a779a65d7
