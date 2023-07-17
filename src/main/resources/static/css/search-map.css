@@ -111,8 +111,11 @@ main {
 
 .option-box {
     margin-right: 8px;
-    border: 1px solid rgb(223, 223, 223);
     border-radius: 2px;
+}
+
+.black-button {
+    border: 1px solid rgb(223, 223, 223);
 }
 
 .option-button {
@@ -120,8 +123,6 @@ main {
     padding: 0px 26px 0px 10px;
     height: 34px;
     text-align: left;
-    border: 0px;
-    background-color: transparent;
 
     background: url(/static/images/angle_down.svg) right 9px center / 10px no-repeat rgb(255, 255, 255);
 }
@@ -137,8 +138,16 @@ main {
     position: relative;
 }
 
+.blue-button {
+    border: 1px solid rgb(70, 150, 255);
+    background: url(/static/images/angle_up.svg) right 9px center / 10px no-repeat rgb(255, 255, 255);
+
+}
+
+
 .option-box {
     position: relative;
+
 }
 
 .option-detail-container {
@@ -196,4 +205,8 @@ main {
 
 .option-detail-label:nth-child(n+2) {
     margin-top: 12px;
+}
+
+.visible-box{
+    display: none;
 }
