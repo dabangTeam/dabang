@@ -52,11 +52,11 @@ a {
     cursor: pointer;
 }
 
-/* button:disabled {
+button:disabled {
     background-color: -internal-light-dark(rgba(239, 239, 239, 0.3), rgba(19, 1, 1, 0.3));
     color: -internal-light-dark(rgba(16, 16, 16, 0.3), rgba(255, 255, 255, 0.3));
     border-color: -internal-light-dark(rgba(118, 118, 118, 0.3), rgba(195, 195, 195, 0.3));
-} */
+}
 
 button {
     appearance: auto;
@@ -184,17 +184,49 @@ html::-webkit-scrollbar-thumb:hover {
     padding-bottom: 0px;
 }
 
-.Check-Box {
-    flex: 0 0 auto;
-    width: 24px;
-    height: 24px;
-    margin: 0px;
-    border: 0px;
-    border-radius: 0px;
-    background: url(/static/images/ic_24_checkbox_enabled.6870b0c9.svg) center center / cover no-repeat;
-    appearance: none;
+input[type="checkbox"] {
+    -webkit-appearance: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    margin-top: 4px;
+    margin-right: 2px;
     cursor: pointer;
+    outline: none !important;
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+    background: #fbfbfb;
 }
+
+input[type="checkbox"]::before {
+    content: "\2713";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    transform: scale(0) translate(-50%, -50%);
+    line-height: 1;
+}
+
+input[type="checkbox"]:hover {
+    border-color: rgba(170, 170, 170, 0.5);
+}
+
+input[type="checkbox"]:checked {
+    background-color: #1d68f5;
+    /* border-color: rgba(255, 255, 255, 0.3); */
+    color: white;
+}
+
+input[type="checkbox"]:checked::before {
+    border-radius: 2px;
+    transform: scale(1) translate(-50%, -50%)
+}
+
+
+/* .Check-Box, .Check-ListBox:checked::after{
+    display: block;
+} */
 
 .TextContent {
     padding-left: 4px;
@@ -228,18 +260,6 @@ html::-webkit-scrollbar-thumb:hover {
     max-width: 100%;
     padding-top: 0px;
     padding-bottom: 0px;
-}
-
-.Check-ListBox {
-    flex: 0 0 auto;
-    width: 24px;
-    height: 24px;
-    margin: 0px;
-    border: 0px;
-    border-radius: 0px;
-    background: url(/static/images/ic_24_checkbox_enabled.6870b0c9.svg) center center / cover no-repeat;
-    appearance: none;
-    cursor: pointer;
 }
 
 .Check-TextContent {

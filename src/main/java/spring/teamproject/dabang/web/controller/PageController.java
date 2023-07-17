@@ -10,4 +10,25 @@ public class PageController {
 	public String getPage() {
 		return "index";
 	}
+	
+	@GetMapping("/welcome")
+	public String loadLoginStart() {
+		return "/loginpages/loginStart";
+	}
+	
+	@GetMapping("/welcome/join")
+	public String JoinAgree() {
+		return "/loginpages/join";
+	}
+	
+	@GetMapping("/welcome/agree/join")
+	public String Join() {
+		return "/loginpages/joinAgree";
+	}
+	
+	@GetMapping("/welcome/login")
+	public String EmailLogin() {
+		return "/loginpages/emailLogin";
+	}
+	
 }
