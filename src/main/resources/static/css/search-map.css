@@ -55,6 +55,7 @@ main {
     font-size: 15px;
 
     outline: none;
+    cursor: text;
 }
 
 .search-type {
@@ -77,7 +78,7 @@ main {
 
     font-size: 13px;
     font-weight: 400;
-    color: #ffffff;
+    
 
     width: 52px;
     height: 36px;
@@ -89,13 +90,10 @@ main {
     white-space: nowrap;
 }
 
-.search-type button:nth-child(2) {
-    color: #aeaeae;
-}
-
 .button-color {
     width: 100%;
     background-color: #326cf9;
+    color: #ffffff;
 }
 
 .search-option-container {
@@ -114,10 +112,6 @@ main {
     border-radius: 2px;
 }
 
-.black-button {
-    border: 1px solid rgb(223, 223, 223);
-}
-
 .option-button {
     width: 100%;
     padding: 0px 26px 0px 10px;
@@ -128,9 +122,7 @@ main {
 }
 
 .option-button p {
-    color: rgb(34, 34, 34);
     font-size: 13px;
-    font-weight: 700;
     width: 100%;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -138,16 +130,27 @@ main {
     position: relative;
 }
 
+.black-button {
+    border: 1px solid rgb(223, 223, 223);
+}
+
 .blue-button {
     border: 1px solid rgb(70, 150, 255);
     background: url(/static/images/angle_up.svg) right 9px center / 10px no-repeat rgb(255, 255, 255);
-
 }
 
+.black-font {
+    color: rgb(34, 34, 34);
+    font-weight: 700;
+}
+
+.blue-font {
+    color: rgb(70, 150, 255);
+    font-weight: 400;
+}
 
 .option-box {
     position: relative;
-
 }
 
 .option-detail-container {
@@ -190,7 +193,7 @@ main {
 }
 
 .option-detail-label input {
-    border: 1px solid #dbdbdb;
+    border: 1px solid rgb(231, 231, 231);
     border-radius: 2px;
 
     width: 22px;
@@ -207,6 +210,29 @@ main {
     margin-top: 12px;
 }
 
-.visible-box{
+.hidden {
     display: none;
+}
+
+.option-detail-box2 .option-detail-label {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    
+    border-top: 1px solid rgb(231, 231, 231);
+}
+
+.option-detail-box3 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    padding-top: 16px;
+    border-top: 1px solid rgb(238, 238, 238);
+    height: 36px;
+
+}
+
+.option-detail-box3 p {
+    font-size: 13px;
+    margin-left: 5px;
 }
