@@ -31,7 +31,6 @@
             </div>
         </div>
     </header>
-
     <main>
         <div class="main-box-flex">
             <div class="search-box-line">
@@ -47,6 +46,30 @@
             <div class="search-option-container">
                 <div class="option-box">
                     <button type="button" class="option-button"><p>원룸, 투·쓰리룸, 오피스텔·도시형</p></button>
+                    <div class="option-detail-container">
+                        <h1>방종류</h1>
+                        <p>중복선택이 가능합니다.</p>
+                        <div class="option-detail-box">
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input">
+                                <p>원룸</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input">
+                                <p>투·쓰리룸</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input">
+                                <p>오피스텔·도시형생활주택</p>
+                            </label>
+                        </div>
+                        <div>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input">
+                                <p>아파트</p>
+                            </label>
+                        </div>
+                    </div>
                 </div>
                 <div class="option-box">
                     <button type="button" class="option-button"><p>월세, 전세, 매매</p></button>
@@ -98,7 +121,6 @@
             map.setLevel(map.getLevel() + 1);
         }
 	</script>
-    <script src="/static/js/search-map.js"></script>
 </body>
 
 </html>

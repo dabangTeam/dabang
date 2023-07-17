@@ -19,7 +19,7 @@ a {
     cursor: pointer;
 }
 
-button {
+button, input {
     cursor: pointer;
 }
 
@@ -31,7 +31,7 @@ ul, li {
 
 @font-face {
     font-family: 'Pretendard Variable';
-    src: url('../fonts/PretendardVariable.ttf') format('truetype');
+    src: url('../font/pretendard/variable/PretendardVariable.ttf') format('truetype');
 }
   
   

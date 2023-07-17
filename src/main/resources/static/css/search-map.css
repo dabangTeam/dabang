@@ -126,25 +126,6 @@ main {
     background: url(/static/images/angle_down.svg) right 9px center / 10px no-repeat rgb(255, 255, 255);
 }
 
-.option-button:nth-child(1):active ~ .option-button:nth-child(1) {
-    color: #326cf9;
-}
-.option-button:nth-child(2):active ~ .option-button:nth-child(2) {
-    color: #326cf9;
-}
-.option-button:nth-child(3):active ~ .option-button:nth-child(3) {
-    color: #326cf9;
-}
-.option-button:nth-child(4):active ~ .option-button:nth-child(4) {
-    color: #326cf9;
-}
-.option-button:nth-child(5):active ~ .option-button:nth-child(5) {
-    color: #326cf9;
-}
-.option-button:nth-child(6):active ~ .option-button:nth-child(6) {
-    color: #326cf9;
-}
-
 .option-button p {
     color: rgb(34, 34, 34);
     font-size: 13px;
@@ -154,4 +135,65 @@ main {
     white-space: nowrap;
     overflow: hidden;
     position: relative;
+}
+
+.option-box {
+    position: relative;
+}
+
+.option-detail-container {
+    border: 1px solid #222222;
+
+    padding: 27px 30px 0px;
+    width: 318px;
+    height: 297px;
+
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0px;
+
+    z-index: 1;
+}
+
+.option-detail-container h1 {
+    color: rgb(34, 34, 34);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.option-detail-container > p {
+    color: rgb(134, 134, 134);
+    font-size: 13px;
+    font-weight: 400;
+
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.option-detail-box {
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.option-detail-label {
+    display: flex;
+    align-items: center;
+}
+
+.option-detail-label input {
+    border: 1px solid #dbdbdb;
+    border-radius: 2px;
+
+    width: 22px;
+    height: 22px;
+}
+
+.option-detail-label p {
+    padding-left: 8px;
+    color: rgb(76, 76, 76);
+    font-size: 14px;
+}
+
+.option-detail-label:nth-child(n+2) {
+    margin-top: 12px;
 }

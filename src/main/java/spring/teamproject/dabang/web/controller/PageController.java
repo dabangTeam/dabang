@@ -10,11 +10,7 @@ public class PageController {
 	public String getPage() {
 		return "index";
 	}
-	
-<<<<<<< HEAD
 
-=======
->>>>>>> 1b9df6c1d203f8a38b685c9a0e0a020ce35f1cae
 	@GetMapping("/search/map")
 	public String getSearchMap() {
 		return "/menu/search-map";
@@ -39,9 +35,5 @@ public class PageController {
 	public String EmailLogin() {
 		return "/loginpages/emailLogin";
 	}
-<<<<<<< HEAD
-	
-=======
->>>>>>> 1b9df6c1d203f8a38b685c9a0e0a020ce35f1cae
 
 }
