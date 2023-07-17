@@ -11,12 +11,11 @@ public class PageController {
 		return "index";
 	}
 	
-<<<<<<< HEAD
 	@GetMapping("/search/map")
 	public String getSearchMap() {
 		return "/menu/search-map";
 	}
-=======
+
 	@GetMapping("/welcome")
 	public String loadLoginStart() {
 		return "/loginpages/loginStart";
@@ -36,6 +35,5 @@ public class PageController {
 	public String EmailLogin() {
 		return "/loginpages/emailLogin";
 	}
-	
->>>>>>> b86b8bfbc9dee84f8dcce1ecfe263d337f40991c
+
 }
