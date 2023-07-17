@@ -26,7 +26,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<!--	<dependency>
+=======
+		 <dependency>
+>>>>>>> b86b8bfbc9dee84f8dcce1ecfe263d337f40991c
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.3.1</version>
@@ -49,11 +53,11 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		<!--<dependency>
+		<dependency>
 			<groupId>org.mariadb.jdbc</groupId>
 			<artifactId>mariadb-java-client</artifactId>
 			<scope>runtime</scope>
-		</dependency>-->
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -64,12 +68,17 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--<dependency>
+		<!--  <dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter-test</artifactId>
 			<version>2.3.1</version>
 			<scope>test</scope>
-		</dependency>-->
+		</dependency> -->
+		<dependency>
+         <groupId>org.springframework.security</groupId>
+         <artifactId>spring-security-test</artifactId>
+         <scope>test</scope>
+      </dependency>
 	</dependencies>
 
 	<build>
