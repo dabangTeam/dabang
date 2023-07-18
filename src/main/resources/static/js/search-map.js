@@ -28,23 +28,15 @@ optionBoxes.forEach((optionBox) => {
       textColor.classList.toggle("black-font");
       textColor.classList.toggle("blue-font");
       optionContainer.classList.toggle("hidden");
-
     };
+
+    // optionButton.onblur = () => {
+    //   if(!optionContainer.classList.contains("hidden")) {
+    //     optionButton.classList.toggle("black-button");
+    //     optionButton.classList.toggle("blue-button");
+    //     textColor.classList.toggle("black-font");
+    //     textColor.classList.toggle("blue-font");
+    //     optionContainer.classList.toggle("hidden");
+    //   }
+    // }
 });
-
-
-optionDetailLabels.forEach((optionLabel) => {
-    const optionInput = optionLabel.querySelector(".option-detail-input");
-    const checkText = optionLabel.querySelector(".check-text");
-    optionInput.onchange = () => {
-      if (optionInput.checked) {
-        checkText.innerHTML += optionInput.value + ", ";
-      } else {
-        checkText.innerHTML = checkText.innerHTML.replace(
-          optionInput.value + ", ",
-          ""
-        );
-      }
-    };
-  });
-

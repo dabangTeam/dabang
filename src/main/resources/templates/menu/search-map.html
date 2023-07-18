@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/search-map.css">
     <link rel="stylesheet" href="/static/css/kakao-map.css">
+    <link rel="stylesheet" href="/static/css/range-setting.css">
 </head>
+
 <body>
     <header>
         <div class="header-box-line">
@@ -45,7 +48,9 @@
             </div>
             <div class="search-option-container">
                 <div class="option-box">
-                    <button type="button" class="option-button black-button"><p class="check-text black-font">원룸, 투·쓰리룸, 오피스텔·도시형</p></button>
+                    <button type="button" class="option-button black-button">
+                        <p class="check-text black-font">원룸, 투·쓰리룸, 오피스텔·도시형</p>
+                    </button>
                     <div class="option-detail-container hidden">
                         <h1>방종류</h1>
                         <p>중복선택이 가능합니다.</p>
@@ -75,45 +80,164 @@
                         </div>
                     </div>
                 </div>
-                <div class="option-box">
-                    <button type="button" class="option-button black-button"><p class="black-font">월세, 전세, 매매</p></button>
-                </div>
-                <div class="option-box">
-                    <button type="button" class="option-button black-button"><p>관리비</p></button>
-                </div>
-                <div class="option-box">
-                    <button type="button" class="option-button black-button"><p>방크기</p></button>
-                </div>
-                <div class="option-box">
-                    <button type="button" class="option-button black-button"><p>사용승인일</p></button>
-                </div>
-                <div class="option-box">
-                    <button type="button" class="option-button black-button"><p>추가필터</p></button>
+                <div class="option-box simplebar-line">
+                    <button type="button" class="option-button black-button">
+                        <p class="black-font">월세, 전세, 매매</p>
+                    </button>
+                    <div class="option-detail-container container-size hidden">
+                        <h1>거래유형</h1>
+                        <p>중복선택이 가능합니다.</p>
+                        <div class="option-detail-box">
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>월세</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>전세</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>매매</p>
+                            </label>
+                        </div>
+                        <div class="option-detail-box2 buy-type">
+                            <h1 class="price-text">가격</h1>
+                            <div class="price-main-setting">
+                                <div class="h1-box">
+                                    <h1>
+                                        보증금/전세가
+                                        <span class="blue-font">무제한</span>
+                                    </h1>
+                                </div>
+                                <div class="middle">
+                                    <div class="multi-range-slider">
+                                        <!-- 진짜 슬라이더 -->
+                                        <input type="range" id="input-left" min="0" max="99999" value="0" />
+                                        <input type="range" id="input-right" min="0" max="99999" value="99999" />
+
+                                        <!-- 커스텀 슬라이더 -->
+                                        <div class="slider">
+                                            <div class="track"></div>
+                                            <div class="range"></div>
+                                            <div class="thumb left"></div>
+                                            <div class="thumb right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li>0</li>
+                                    <li>60만원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                            <div class="price-main-setting">
+                                <div class="h1-box">
+                                    <h1>
+                                        월세
+                                        <span class="blue-font">무제한</span>
+                                    </h1>
+                                </div>
+                                <div class="middle">
+                                    <div class="multi-range-slider">
+                                        <!-- 진짜 슬라이더 -->
+                                        <input type="range" id="input-left" min="0" max="99999" value="0" />
+                                        <input type="range" id="input-right" min="0" max="99999" value="99999" />
+
+                                        <!-- 커스텀 슬라이더 -->
+                                        <div class="slider">
+                                            <div class="track"></div>
+                                            <div class="range"></div>
+                                            <div class="thumb left"></div>
+                                            <div class="thumb right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li>0</li>
+                                    <li>60만원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                            <div class="price-main-setting">
+                                <div class="h1-box">
+                                    <h1>
+                                        매매가
+                                        <span class="blue-font">무제한</span>
+                                    </h1>
+                                </div>
+                                <div class="middle">
+                                    <div class="multi-range-slider">
+                                        <!-- 진짜 슬라이더 -->
+                                        <input type="range" id="input-left" min="0" max="99999" value="0" />
+                                        <input type="range" id="input-right" min="0" max="99999" value="99999" />
+
+                                        <!-- 커스텀 슬라이더 -->
+                                        <div class="slider">
+                                            <div class="track"></div>
+                                            <div class="range"></div>
+                                            <div class="thumb left"></div>
+                                            <div class="thumb right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li>0</li>
+                                    <li>60만원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="option-box">
+                <button type="button" class="option-button black-button">
+                    <p>관리비</p>
+                </button>
+            </div>
+            <div class="option-box">
+                <button type="button" class="option-button black-button">
+                    <p>방크기</p>
+                </button>
+            </div>
+            <div class="option-box">
+                <button type="button" class="option-button black-button">
+                    <p>사용승인일</p>
+                </button>
+            </div>
+            <div class="option-box">
+                <button type="button" class="option-button black-button">
+                    <p>추가필터</p>
+                </button>
+            </div>
+        </div>
         </div>
         <div class="map_wrap">
             <div id="map" style="width:100%;    height:100%;
                                         position:relative; 
-                                        overflow:hidden;"></div> 
+                                        overflow:hidden;"></div>
             <!-- 지도타입 컨트롤 div 입니다 -->
             <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
             <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
-            <div class="custom_zoomcontrol radius_border"> 
-                <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
-                <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
+            <div class="custom_zoomcontrol radius_border">
+                <span onclick="zoomIn()"><img
+                        src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>
+                <span onclick="zoomOut()"><img
+                        src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
             </div>
         </div>
     </main>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c54251e17dca18ead784f7d5a1ea4715"></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c54251e17dca18ead784f7d5a1ea4715"></script>
     <script>
-		let container = document.getElementById('map');
-		let options = {
-			center: new kakao.maps.LatLng(35.157323166525195, 129.05937752873834),
-			level: 3
-		};
+        let container = document.getElementById('map');
+        let options = {
+            center: new kakao.maps.LatLng(35.157323166525195, 129.05937752873834),
+            level: 3
+        };
 
-		let map = new kakao.maps.Map(container, options);
+        let map = new kakao.maps.Map(container, options);
 
         // 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
         function zoomIn() {
@@ -124,8 +248,9 @@
         function zoomOut() {
             map.setLevel(map.getLevel() + 1);
         }
-	</script>
+    </script>
     <script src="/static/js/search-map.js"></script>
+    <script src="/static/js/range-setting.js"></script>
 </body>
 
 </html>
