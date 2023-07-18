@@ -29,16 +29,22 @@ optionBoxes.forEach((optionBox) => {
       textColor.classList.toggle("blue-font");
       optionContainer.classList.toggle("hidden");
 
+    };
+});
+
+
 optionDetailLabels.forEach((optionLabel) => {
     const optionInput = optionLabel.querySelector(".option-detail-input");
-    const checkText = optionLabel.parentNode.querySelector(".option-button p");
-    optionLabel.onclick = () => {
-        if (optionInput.checked) {
-            checkText.textContent = optionInput.value;
-        } else {
-            checkText.textContent = ""; // 체크되지 않은 경우 텍스트를 비웁니다.
-        }
+    const checkText = optionLabel.querySelector(".check-text");
+    optionInput.onchange = () => {
+      if (optionInput.checked) {
+        checkText.innerHTML += optionInput.value + ", ";
+      } else {
+        checkText.innerHTML = checkText.innerHTML.replace(
+          optionInput.value + ", ",
+          ""
+        );
+      }
     };
-});
-    };
-});
+  });
+
