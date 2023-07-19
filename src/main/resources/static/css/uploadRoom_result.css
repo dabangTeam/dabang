@@ -90,6 +90,7 @@ button {
 .myroom-notice-ul {
     width: 100%;
     margin-bottom: 48px;
+    margin-left: 40px;
     padding: 0px 10px;
 }
 
@@ -207,6 +208,7 @@ button {
 }
 
 .myroom-Btn {
+    margin-right: 5px;
     flex: 0 0 auto;
     display: inline-flex;
     -webkit-box-align: center;
