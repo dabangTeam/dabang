@@ -34,6 +34,7 @@
             </div>
         </div>
     </header>
+
     <main>
         <div class="main-box-flex">
             <div class="search-box-line">
@@ -51,7 +52,7 @@
                     <button type="button" class="option-button black-button">
                         <p class="check-text black-font">원룸, 투·쓰리룸, 오피스텔·도시형</p>
                     </button>
-                    <div class="option-detail-container hidden">
+                    <div class="option-detail-container left-position size hidden">
                         <h1>방종류</h1>
                         <p>중복선택이 가능합니다.</p>
                         <div class="option-detail-box">
@@ -84,7 +85,7 @@
                     <button type="button" class="option-button black-button">
                         <p class="black-font">월세, 전세, 매매</p>
                     </button>
-                    <div class="option-detail-container container-size hidden">
+                    <div class="option-detail-container left-position container-size hidden">
                         <h1>거래유형</h1>
                         <p>중복선택이 가능합니다.</p>
                         <div class="option-detail-box">
@@ -113,8 +114,8 @@
                                 <div class="middle">
                                     <div class="multi-range-slider">
                                         <!-- 진짜 슬라이더 -->
-                                        <input type="range" id="input-left" min="0" max="99999" value="0" />
-                                        <input type="range" id="input-right" min="0" max="99999" value="99999" />
+                                        <input type="range" class="input-left" min="0" max="99999" value="0" />
+                                        <input type="range" class="input-right" min="0" max="99999" value="99999" />
 
                                         <!-- 커스텀 슬라이더 -->
                                         <div class="slider">
@@ -141,8 +142,8 @@
                                 <div class="middle">
                                     <div class="multi-range-slider">
                                         <!-- 진짜 슬라이더 -->
-                                        <input type="range" id="input-left" min="0" max="99999" value="0" />
-                                        <input type="range" id="input-right" min="0" max="99999" value="99999" />
+                                        <input type="range" class="input-left" min="0" max="99999" value="0" />
+                                        <input type="range" class="input-right" min="0" max="99999" value="99999" />
 
                                         <!-- 커스텀 슬라이더 -->
                                         <div class="slider">
@@ -169,8 +170,8 @@
                                 <div class="middle">
                                     <div class="multi-range-slider">
                                         <!-- 진짜 슬라이더 -->
-                                        <input type="range" id="input-left" min="0" max="99999" value="0" />
-                                        <input type="range" id="input-right" min="0" max="99999" value="99999" />
+                                        <input type="range" class="input-left" min="0" max="99999" value="0" />
+                                        <input type="range" class="input-right" min="0" max="99999" value="99999" />
 
                                         <!-- 커스텀 슬라이더 -->
                                         <div class="slider">
@@ -188,30 +189,173 @@
                                 </ul>
                             </div>
                         </div>
+                        <div class="filter-reset">
+                            <button>조건삭제</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-box simplebar-line">
+                    <button type="button" class="option-button black-button">
+                        <p>관리비</p>
+                    </button>
+                    <div class="option-detail-container left-position maintain-price container-size hidden">
+                        <div class="option-detail-box2 buy-type">
+                            <div class="price-main-setting">
+                                <div class="h1-box">
+                                    <h1>
+                                        관리비
+                                        <span class="blue-font">무제한</span>
+                                    </h1>
+                                </div>
+                                <div class="middle">
+                                    <div class="multi-range-slider">
+                                        <!-- 진짜 슬라이더 -->
+                                        <input type="range" class="input-left" min="0" max="99999" value="0" />
+                                        <input type="range" class="input-right" min="0" max="99999" value="99999" />
+    
+                                        <!-- 커스텀 슬라이더 -->
+                                        <div class="slider">
+                                            <div class="track"></div>
+                                            <div class="range"></div>
+                                            <div class="thumb left"></div>
+                                            <div class="thumb right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li>0</li>
+                                    <li>20만원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-box">
+                    <button type="button" class="option-button black-button">
+                        <p>방크기</p>
+                    </button>
+                    <div class="option-detail-container right-position maintain-price container-size hidden">
+                        <div class="option-detail-box2 buy-type">
+                            <div class="price-main-setting">
+                                <div class="h1-box">
+                                    <h1>
+                                        방크기(전용면적)
+                                        <span class="blue-font">무제한</span>
+                                    </h1>
+                                </div>
+                                <div class="middle">
+                                    <div class="multi-range-slider">
+                                        <!-- 진짜 슬라이더 -->
+                                        <input type="range" class="input-left" min="0" max="99999" value="0" />
+                                        <input type="range" class="input-right" min="0" max="99999" value="99999" />
+    
+                                        <!-- 커스텀 슬라이더 -->
+                                        <div class="slider">
+                                            <div class="track"></div>
+                                            <div class="range"></div>
+                                            <div class="thumb left"></div>
+                                            <div class="thumb right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li>0</li>
+                                    <li>20만원</li>
+                                    <li>무제한</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-box">
+                    <button type="button" class="option-button black-button">
+                        <p>사용승인일</p>
+                    </button>
+                    <div class="access-day-container option-detail-container right-position hidden">
+                        <h1>사용승인일</h1>
+                        <div class="option-detail-box">
+                            <label class="option-detail-label">
+                                <input type="radio" class="option-detail-input" checked>
+                                <p>전체</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="radio" class="option-detail-input">
+                                <p>1년 이내</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="radio" class="option-detail-input">
+                                <p>5년 이내</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="radio" class="option-detail-input">
+                                <p>10년 이내</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="radio" class="option-detail-input">
+                                <p>15년 이내</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="radio" class="option-detail-input">
+                                <p>15년 이상</p>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="option-box">
+                    <button type="button" class="option-button black-button">
+                        <p>추가필터</p>
+                    </button>
+                    <div class="option-detail-container left-position size hidden">
+                        <div class="option-detail-box add-filter">
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>전체</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>1층</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>2층</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>3층</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>4층</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>5층</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>6층</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>7층</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>7층 이상</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>반지층</p>
+                            </label>
+                            <label class="option-detail-label">
+                                <input type="checkbox" class="option-detail-input" checked>
+                                <p>옵탑방</p>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="option-box">
-                <button type="button" class="option-button black-button">
-                    <p>관리비</p>
-                </button>
-            </div>
-            <div class="option-box">
-                <button type="button" class="option-button black-button">
-                    <p>방크기</p>
-                </button>
-            </div>
-            <div class="option-box">
-                <button type="button" class="option-button black-button">
-                    <p>사용승인일</p>
-                </button>
-            </div>
-            <div class="option-box">
-                <button type="button" class="option-button black-button">
-                    <p>추가필터</p>
-                </button>
-            </div>
-        </div>
         </div>
         <div class="map_wrap">
             <div id="map" style="width:100%;    height:100%;

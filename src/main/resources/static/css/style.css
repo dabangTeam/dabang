@@ -1,12 +1,17 @@
 * {
     box-sizing: border-box;
-
+    
     margin: 0px;
     padding: 0px;
-
+    
     font-size: 16px;
-
+    
     font-family: 'Pretendard Variable', -apple-system, system-ui, sans-serif;
+}
+
+@font-face {
+    font-family: 'Pretendard Variable';
+    src: url('../font/pretendard/variable/PretendardVariable.ttf') format('truetype');
 }
 
 html, body {
@@ -29,9 +34,6 @@ ul, li {
     list-style-type: none;
 }
 
-@font-face {
-    font-family: 'Pretendard Variable';
-    src: url('../font/pretendard/variable/PretendardVariable.ttf') format('truetype');
+.hidden {
+    display: none;
 }
-  
-  

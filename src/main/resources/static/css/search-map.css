@@ -160,12 +160,19 @@ main {
 
     position: absolute;
     top: calc(100% + 5px);
-    left: 0px;
 
-    overflow: auto;
     z-index: 1;
+    overflow: hidden;
 
     background-color: #ffffff;
+}
+
+.size {
+    width: 318px;
+}
+
+.left-position {
+    left: 0px;
 }
 
 .option-detail-container h1 {
@@ -211,10 +218,6 @@ main {
     margin-top: 12px;
 }
 
-.hidden {
-    display: none;
-}
-
 .option-detail-box2 .option-detail-label {
     padding-top: 16px;
     padding-bottom: 16px;
@@ -242,8 +245,11 @@ main {
 }
 
 .container-size {
-    width: 408px;
-    height: auto;
+    width: 410px;
+    max-height: 560px;
+    min-height: 0px;
+    overflow: auto;
+    min-height: 0vh;
 }
 
 .price-main-setting {
@@ -251,6 +257,8 @@ main {
 
     padding-top: 30px;
     padding-bottom: 30px;
+
+    height: 150px;
 }
 
 .h1-box {
@@ -290,6 +298,8 @@ main {
     font-size: 12px;
 
     position: relative;
+
+    left: 4px;
 }
 
 .price-main-setting ul li::before {
@@ -301,4 +311,59 @@ main {
     top: -7px;
     left: 50%;
     transform: translateX(-50%);
+}
+
+.filter-reset {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    height: 71px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+    border-top: 1px solid rgb(238, 238, 238);
+}
+
+.filter-reset button {
+    border: 1px solid rgb(224, 224, 224);
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+
+    width: 96px;
+    height: 40px;
+
+    font-size: 13px;
+    color: #222222;
+}
+
+.maintain-price .option-detail-box2{
+    border-top: none;
+}
+
+.maintain-price .price-main-setting {
+    padding: 0px;
+}
+
+.maintain-price h1 {
+    font-size: 18px;
+    font-weight: 400;
+
+    width: 348px;
+    height: 27px;
+
+    margin-bottom: 23px;
+
+    color: #222222;
+}
+
+
+
+.access-day-container {
+    width: 298px;
+    height: 296px;
+}
+
+.right-position {
+    right: 0px;
 }
