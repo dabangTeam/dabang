@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="spring.teamproject.dabang.domain.user.UserRepository">
+<mapper namespace="spring.teamproject.dabang.domain.user.UserRepository">
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.user.User">
   		insert into
   			user_mst
@@ -18,5 +18,19 @@
   			now()
   		)
   	</insert>
+  	
+  	<select id="findUserByUserEmail" parameterType="String" resultType="spring.teamproject.dabang.domain.user.User">
+  		SELECT
+			user_email,
+			user_password,
+			user_checkpassword,
+			user_roles,
+			user_provider
+		FROM
+			user_mst
+		WHERE
+			user_email = #{email}
+
+  	</select>
   
-  </mapper>
+</mapper>

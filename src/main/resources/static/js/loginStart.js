@@ -6,11 +6,11 @@ const EmailLogin = document.querySelector(".Email-Login");
 // ! 카카오 로그인 기능 추가 해야함
 
 GoJoin.onclick = () => {
-    location.href = "joinAgree.html";
+    location.href = "/welcome/agree/join";
 }
 
 EmailLogin.onclick = () => {
-    location.href = "emailLogin.html"
+    location.href = "/welcome/login";
 }
 
 // function KakaoLogin() {
