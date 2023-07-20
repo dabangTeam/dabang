@@ -28,7 +28,7 @@ optionBoxes.forEach((optionBox) => {
       textColor.classList.toggle("black-font");
       textColor.classList.toggle("blue-font");
       optionContainer.classList.toggle("hidden");
-    };
+    }
 
     // optionButton.onblur = () => {
     //   if(!optionContainer.classList.contains("hidden")) {

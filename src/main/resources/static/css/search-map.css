@@ -124,7 +124,6 @@ main {
 .option-button p {
     font-size: 13px;
     width: 100%;
-    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     position: relative;
@@ -162,7 +161,7 @@ main {
     top: calc(100% + 5px);
 
     z-index: 1;
-    overflow: hidden;
+    overflow: auto;
 
     background-color: #ffffff;
 }
@@ -228,11 +227,11 @@ main {
 .option-detail-box3 {
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: flex-start;
 
     padding-top: 16px;
     border-top: 1px solid rgb(238, 238, 238);
-    height: 36px;
+    height: 72px;
 }
 
 .option-detail-box3 p {
@@ -248,7 +247,6 @@ main {
     width: 410px;
     max-height: 560px;
     min-height: 0px;
-    overflow: auto;
     min-height: 0vh;
 }
 
@@ -373,13 +371,24 @@ main {
     justify-content: flex-start;
     flex-wrap: wrap;
 
-    width: calc(960px);
-    height: 283px;
+    width: calc(968px);
+    height: 376px;
+
+    position: absolute;
+    top: calc(100% + 5px);
+    right: -150px;
 
     padding: 0px;
 }
 
+.filter-top-line {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
 
+    width: 960px;
+    height: 283px;
+}
 
 .add-filter-top {
     padding: 30px 0px 45px 30px;
@@ -387,17 +396,11 @@ main {
     border-bottom: 1px solid rgb(231, 231, 231);
 
     width: 240px;
+    height: 284px;
 }
 
-.layer-filter {
-    width: 210px;
-    height: 283px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
+.add-filter-top:last-child {
+    border-right: none;
 }
 
 .label-setting {
@@ -447,4 +450,73 @@ main {
     flex-wrap: wrap;
     justify-content: flex-start;
     margin-top: 10px;
+}
+
+.off-color {
+    color: #4c4c4c;
+    opacity: 0.3;
+}
+
+.option-detail-container::-webkit-scrollbar {
+    width: 6px;  /* 스크롤바의 너비 */
+}
+
+.option-detail-container::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: transparent #000;
+    border-radius: 7px;
+    opacity: 0.5;
+}
+
+.option-detail-container::-webkit-scrollbar-track {
+    background: #ffffff; /*스크롤바 뒷 배경 색상*/
+}
+
+.add-filter-bottom {
+    display: flex;
+    justify-content: flex-start;
+
+    width: 960px;
+    height: 234px;
+
+}
+
+.filter-bottom-left {
+    padding: 30px 0px 45px 30px;
+    border-right: 1px solid rgb(231, 231, 231);
+
+    width: 240px;
+}
+
+.filter-bottom-right {
+    width: 720px;
+}
+
+.label-box-line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    
+    margin-top: 2px;
+    margin-left: -8px;
+
+    width: 696px;
+    height: 92px;
+}
+
+.filter-label {
+    width: 116px;
+    height: 38px;
+    margin-top: 8px;
+    margin-left: 8px;
+    position: relative;
+}
+
+.filter-label > input[type=checkbox] {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 0px
 }
