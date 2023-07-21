@@ -9,10 +9,6 @@
     font-family: 'Pretendard Variable', -apple-system, system-ui, sans-serif;
 }
 
-@font-face {
-    font-family: 'Pretendard Variable';
-    src: url('../font/pretendard/variable/PretendardVariable.ttf') format('truetype');
-}
 
 html, body {
     height: 100%;
@@ -20,7 +16,7 @@ html, body {
 
 a {
     text-decoration: none;
-
+    
     cursor: pointer;
 }
 
@@ -36,4 +32,9 @@ ul, li {
 
 .hidden {
     display: none;
+}
+
+@font-face {
+    font-family: 'Pretendard Variable';
+    src: url('../font/pretendard/variable/PretendardVariable.ttf') format('truetype');
 }

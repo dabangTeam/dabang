@@ -1,5 +1,4 @@
 main {
-    height: 100%;
     width: 100%;
 }
 
@@ -20,7 +19,7 @@ main {
     align-items: center;
 
     width: 400px;
-    height: 64px;
+    height: 63px;
 
     margin-right: 1px;
     padding-left: 20px;
@@ -371,14 +370,15 @@ main {
     justify-content: flex-start;
     flex-wrap: wrap;
 
-    width: calc(968px);
-    height: 376px;
+    width: calc(963px);
+    height: 522px;
+    padding: 0px;
 
     position: absolute;
     top: calc(100% + 5px);
     right: -150px;
 
-    padding: 0px;
+    overflow: auto;
 }
 
 .filter-top-line {
@@ -455,22 +455,24 @@ main {
 .off-color {
     color: #4c4c4c;
     opacity: 0.3;
+
+    cursor: default;
 }
 
-.option-detail-container::-webkit-scrollbar {
-    width: 6px;  /* 스크롤바의 너비 */
+/* .option-detail-container::-webkit-scrollbar {
+    width: 6px;
 }
 
 .option-detail-container::-webkit-scrollbar-thumb {
-    height: 30%; /* 스크롤바의 길이 */
+    height: 30%;
     background: transparent #000;
     border-radius: 7px;
     opacity: 0.5;
 }
 
 .option-detail-container::-webkit-scrollbar-track {
-    background: #ffffff; /*스크롤바 뒷 배경 색상*/
-}
+    background: #ffffff;
+} */
 
 .add-filter-bottom {
     display: flex;
@@ -489,7 +491,12 @@ main {
 }
 
 .filter-bottom-right {
+    padding: 30px 0px 45px 30px;
     width: 720px;
+}
+
+.filter-bottom-right .filter-text {
+    height: 29px;
 }
 
 .label-box-line {
@@ -504,7 +511,7 @@ main {
     height: 92px;
 }
 
-.filter-label {
+.label-box-line .filter-label {
     width: 116px;
     height: 38px;
     margin-top: 8px;
@@ -520,3 +527,81 @@ main {
     top: 0px;
     left: 0px
 }
+
+.label-box-line .filter-label p {
+    width: 100%;
+    height: 100%;
+
+    padding: 0px;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 3px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #656565;
+    font-weight: 400;
+
+    background-color: #ffffff;
+}
+
+.filter-explain {
+    width: 100%;
+    height: 20px;
+
+    margin-top: 17px;
+}
+
+.filter-explain p {
+    line-height: 20px;
+    height: 20px;
+    padding-left: 26px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #868686;
+    background-repeat: no-repeat;
+    background-image: url(/static/images/notice_icon.svg);
+}
+
+.filters-setting-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 80px;
+    height: 63px;
+
+    margin-right: 15px;
+}
+
+.filters-setting-box button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    outline: none;
+
+    width: 36px;
+    height: 36px;
+}
+
+.filters-setting-box button:nth-child(1) {
+    -ms-transform: rotate(90deg); /* IE 9 */
+    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+    transform: rotate(90deg);
+}
+
+.filters-setting-box button:nth-child(2) {
+    margin-left: 8px;
+}
+
+.filters-setting-box svg {
+    width: 22px;
+    height: 22px;
+}
+
+
