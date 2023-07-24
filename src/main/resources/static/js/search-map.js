@@ -30,13 +30,22 @@ optionBoxes.forEach((optionBox) => {
       optionContainer.classList.toggle("hidden");
     }
 
-    // optionButton.onblur = () => {
-    //   if(!optionContainer.classList.contains("hidden")) {
-    //     optionButton.classList.toggle("black-button");
-    //     optionButton.classList.toggle("blue-button");
-    //     textColor.classList.toggle("black-font");
-    //     textColor.classList.toggle("blue-font");
-    //     optionContainer.classList.toggle("hidden");
-    //   }
-    // }
+    optionButton.onblur = () => {
+      if(!optionContainer.classList.contains("hidden")) {
+        optionButton.classList.toggle("black-button");
+        optionButton.classList.toggle("blue-button");
+        textColor.classList.toggle("black-font");
+        textColor.classList.toggle("blue-font");
+        optionContainer.classList.toggle("hidden");
+      }
+    }
 });
+
+/**
+ * 해야 할 것
+ * 
+ * 지도 마커 표시하기
+ * 범위 찾기
+ * 방 가져오기
+ * 
+ */
