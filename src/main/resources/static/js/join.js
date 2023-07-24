@@ -2,16 +2,24 @@ const inputs = document.querySelectorAll("input");
 const longinBtn = document.querySelector(".SolidButton");
 const email = document.querySelector(".input-Email");
 const password = document.querySelector(".Password-Input");
-/*const checkpassword = document.querySelector("Password-Input");*/
+const passwordCheck = document.getElementById("passwordCheck");
+const LookBtn = document.querySelector(".seeBtn");
+const LookBtn2 = document.querySelector(".seeBtn2");
+const PError = document.querySelector(".Perror");
+const PError2 = document.querySelector(".Perror2");
+
+const inputEmail = document.getElementById("email")
+const emailformat = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,}$/;
+
+const inputPassword = document.getElementById("password");
+const passwordformat = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[-~!@#$%^&*_+=])[a-zA-Z\d-~!@#$%^&*_+=]{8,20}$/;
 
 let checkUseremailFlag = false;
 let checkUserpasswordFlag = false;
 
 function check_password(){
-	const input = document.getElementById("password");
 	
-	const password_format = /^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[-~!@#$%^&*_+=])[a-zA-Z\\d-~!@#$%^&*_+=]{8,20}$/;
-	if(password_format.test(input)){
+	if(passwordformat.test(input)){
 		console.log("비밀번호 형식 ok")
 	}else{
 		console.log("비밀번호 형식 no")
@@ -20,11 +28,8 @@ function check_password(){
 
 
 function check_email() {
-	const input = document.getElementById("email")
-	
-	const email_format = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-	if(email_format.test(input)) {
-		console.log("이메일 형식 ok")		
+	if(emailformat.test(inputEmail)) {
+		console.log("이메일 형식 ok")
 	}else{
 		console.log("잘못된 형식")
 		
@@ -32,8 +37,49 @@ function check_email() {
 }
 
 
+
+
+inputPassword.addEventListener("input", () => {
+  if (passwordformat.test(inputPassword.value)) {
+    PError2.style.display = "none";
+  } else {
+    PError2.style.display = "block";
+  }
+});
+
+inputEmail.addEventListener("input", () => {
+  if (emailformat.test(inputEmail.value)) {
+    PError.style.display = "none";
+  } else {
+    PError.style.display = "block";
+  }
+});
+
+function togglePasswordVisibility() {
+    if (password.type === 'password') {
+        password.type = 'text';
+       /* passwordCheck.type = 'text';*/
+    } else {
+        password.type = 'password';
+
+    }
+}
+
+function togglePasswordVisibility2() {
+	
+    if (passwordCheck.type === 'password') {
+        passwordCheck.type = 'text';
+    } else {
+        passwordCheck.type = 'password';
+    }
+}
+
+LookBtn.onclick = togglePasswordVisibility;
+LookBtn2.onclick = togglePasswordVisibility2;
+
+
 inputs[0].onblur = () => {
-	check_email()
+	/*check_email()*/
     //아이디 중복확인
     console.log(inputs[0].value)
     $.ajax({

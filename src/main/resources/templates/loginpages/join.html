@@ -33,8 +33,12 @@
                                 <div class="Form-ID-Content">
                                     <div>
                                         <div class="Input-Box-Email">
-                                            <input autocomplete="off" type="text" name="email" placeholder="이메일 주소 입력"
+                                            <input autocomplete="off" type="text" name="email" id="email" placeholder="이메일 주소 입력"
                                                 class="Input-Email" value>
+                                                
+                                        </div>
+                                        <div class="ErrorP">
+                                        	<p class="Perror" style="display: none;">이메일 형식을 확인해주세요.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -46,10 +50,13 @@
                                 <div class="Password-check">
                                     <div>
                                         <div class="Password-check-1">
-                                            <input autocomplete="off" type="password" name="password"
-                                                placeholder="8자리 이상 영문,숫자,특수문자 포함" class="Password-Input" value>
+                                            <input autocomplete="off" type="password" name="password" id="password"
+                                                placeholder="8자리 이상 영문,숫자,특수문자 포함" class="Password-Input"  value>
+                                       	<div class="ErrorP">
+                                       		<p class="Perror2" style="display: none;" >비밀번호는 문자,숫자,특수문자를 포함하여 8~20자 이내로 입력하세요.</p>
+                                       	</div>
                                             <button type="button" class="Password-RightIcon">
-                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="seeBtn"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <defs>
                                                         <mask id="icon">
@@ -73,10 +80,13 @@
                             <div class="Password-Content" style="margin-top: 8px;">
                                 <div>
                                     <div class="Password-check-1">
-                                        <input autocomplete="off" type="password" name="password" placeholder="비밀번호 확인"
-                                            class="Password-Input" value>
+                                        <input autocomplete="off" type="password" name="password" placeholder="비밀번호 확인" id="passwordCheck"
+                                            class="Password-Input"  value>
+                                    <div class="ErrorP">
+                                    	<p>입력한 비밀번호가 서로 일치하지 않습니다.</p>
+                                    </div>
                                         <button type="button" class="Password-RightIcon">
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="seeBtn2" 
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <defs>
                                                     <mask id="icon">
