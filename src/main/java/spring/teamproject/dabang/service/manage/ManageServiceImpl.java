@@ -8,6 +8,7 @@ import spring.teamproject.dabang.domain.manage.RoomInfoRepository;
 import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoReqDto;
 import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
+import spring.teamproject.dabang.web.dto.manage.UpdateRoomInfoReqDto;
 
 @RequiredArgsConstructor
 @Service
@@ -21,7 +22,7 @@ public class ManageServiceImpl implements ManageService{
 	}
 
 	@Override
-	public CreateRoomInfoRespDto createBoard(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception {
+	public CreateRoomInfoRespDto createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception {
 		
 		RoomInfo RoomInfoEntity = createRoomInfoReqDto.toEntity();
 				
@@ -29,5 +30,21 @@ public class ManageServiceImpl implements ManageService{
 		
 		return RoomInfoEntity.toCreateRoomInfoDto(insertStatus);
 	}
+
+	@Override
+	public boolean updateRoomInfo(UpdateRoomInfoReqDto updateRoomInfoReqDto) throws Exception {
+		
+		RoomInfo roomInfoEntity = updateRoomInfoReqDto.toEntity();
+		
+		return roomInfoRepository.updateRoomInfoByRoomcode(roomInfoEntity) > 0;
+	}
+
+	@Override
+	public boolean deleteRoomInfo(int roomcode) throws Exception{
+		
+		return roomInfoRepository.remove(roomcode) > 0;
+	}
+
+	
 	
 }
