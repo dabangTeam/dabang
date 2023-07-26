@@ -533,14 +533,14 @@
                 <span onclick="zoomOut()"><img
                         src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
             </div>
-            <div class="marker-content">
+            <!-- <div class="marker-content">
                 <h1>1</h1>
                 <p>부전동</p>
-            </div>
+            </div> -->
         </div>
     </div>
     <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c54251e17dca18ead784f7d5a1ea4715&libraries=clusterer"></script>
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c54251e17dca18ead784f7d5a1ea4715&libraries=clusterer,services"></script>
     <script>
         let container = document.getElementById('map');
         let options = {
@@ -560,38 +560,114 @@
         function zoomOut() {
             map.setLevel(map.getLevel() + 1);
         }
-        
-        // 마커 클러스터러를 생성합니다 
+
         let clusterer = new kakao.maps.MarkerClusterer({
-            map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
-            averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-            minLevel: 2 // 클러스터 할 최소 지도 레벨 
+            map: map,
+            averageCenter: true,
+            minLevel: 1,
+            styles: [{
+                minWidth: '30px',
+                height: '30px',
+                padding: '0px 6px',
+                color: 'rgb(255, 255, 255)',
+                fontSize: '12px',
+                lineHeight: '26px',
+                textAlign: 'center',
+                border: '2px solid rgb(50, 108, 249)',
+                borderRadius: '30px',
+                backgroundColor: 'rgb(50, 108, 249)',
+                whiteSpace: 'nowrap',
+                position: 'relative',
+                zIndex: '999'
+            }]
         });
+
+        // let customOverlay = new kakao.maps.CustomOverlay({
+        //     map: map,
+        //     clickable: true,
+        //     content: '<div class="marker-content"><h1>1</h1><p>부전동</p></div>',
+        //     position: new kakao.maps.LatLng(33.450701, 126.570667),
+        //     xAnchor: 0.5,
+        //     yAnchor: 1,
+        //     zIndex: 3
+        // });
+
         
-        // Function to add a custom overlay to the map
-        function addCustomOverlay(locationName) {
-            let geocoder = new kakao.maps.services.Geocoder();
 
-            // Convert location name to coordinates
-            geocoder.addressSearch(locationName, function (result, status) {
-                if (status === kakao.maps.services.Status.OK) {
-                    let { x, y } = result[0];
+        let geocoder = new kakao.maps.services.Geocoder();
 
-                    let customOverlay = new kakao.maps.CustomOverlay({
-                        content: `<div class="custom-marker"><h1>1</h1><p>${locationName}</p></div>`,
-                        position: new kakao.maps.LatLng(y, x),
-                        zIndex: 999
-                    });
+        // 주소로 좌표를 검색합니다
+        let address = '부산광역시 부산진구 부전동';
 
-                    customOverlay.setMap(map);
-                } else {
-                    console.error('Error:', status);
-                }
-            });
-        }
+        geocoder.addressSearch(address, function(result, status) {
 
-        // Usage example
-        addCustomOverlay('부전동');
+            // 정상적으로 검색이 완료됐으면 
+            if (status === kakao.maps.services.Status.OK) {
+
+                let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                // let marker = new kakao.maps.Marker({
+                //     map: map,
+                //     position: coords
+                // });
+
+                let customOverlay = new kakao.maps.CustomOverlay({
+                    map: map,
+                    clickable: true,
+                    content: '<div class="marker-content"><h1>1</h1><p>부전동</p></div>',
+                    position: coords,
+                    xAnchor: 0.5,
+                    yAnchor: 1,
+                    zIndex: 3
+                });
+
+                // // 인포윈도우로 장소에 대한 설명을 표시합니다
+                // let infowindow = new kakao.maps.InfoWindow({
+                //     content: '<div class="marker-content"><h1>1</h1><p>부전동</p></div>'
+                // });
+                // infowindow.open(map, marker);
+
+                // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+                customOverlay.setMap(map);
+                map.setCenter(coords);
+            }
+
+            
+        });    
+
+        // Define the coordinates for the polygon (Example coordinates for a polygon)
+const polygonCoords = [
+  new kakao.maps.LatLng(33.450701, 126.570667),
+  new kakao.maps.LatLng(33.450501, 126.571567),
+  new kakao.maps.LatLng(33.451701, 126.571667),
+];
+
+// Create a polygon object with the specified coordinates
+const polygon = new kakao.maps.Polygon({
+  map: map,
+  path: polygonCoords,
+  strokeWeight: 2,
+  strokeColor: '#FF0000',
+  strokeOpacity: 0.8,
+  fillColor: '#FF0000',
+  fillOpacity: 0.3,
+});
+
+// Create a marker representing the region
+const marker = new kakao.maps.Marker({
+  map: map,
+  position: new kakao.maps.LatLng(33.450701, 126.570667),
+});
+
+// Add a click event listener to the marker
+kakao.maps.event.addListener(marker, 'click', function () {
+  // Display the polygon on the map
+  polygon.setMap(map);
+
+  // Set the map's center to the marker's position
+  map.setCenter(marker.getPosition());
+});
     </script>
     <script src="/static/js/search-map.js"></script>
     <script src="/static/js/range-setting.js"></script>

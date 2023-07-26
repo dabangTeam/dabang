@@ -670,11 +670,13 @@ main {
 
 
 .marker-content {
-
-    z-index: 999;
-    overflow: visible;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
 }
-.marker-content h1 {
+.marker-content > h1 {
     min-width: 30px;
     height: 30px;
     padding: 0px 6px;
@@ -686,20 +688,22 @@ main {
     border-radius: 30px;
     background-color: rgb(50, 108, 249);
     white-space: nowrap;
+    position: relative;
     z-index: 2;
 }
 
-.marker-content p {
+.marker-content > p {
     height: 30px;
     padding-left: calc(100% + 4px);
     padding-right: 10px;
     font-size: 12px;
     white-space: nowrap;
     border-radius: 30px;
+    position: absolute;
     top: 50%;
     left: 0px;
     transform: translateY(-50%);
-    z-index: 999;
+    z-index: 1;
     line-height: 28px;
     color: rgb(50, 108, 249);
     border: 1px solid rgb(50, 108, 249);
