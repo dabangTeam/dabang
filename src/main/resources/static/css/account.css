@@ -53,38 +53,43 @@
     border: 1px solid rgb(237, 237, 237);
   }
 
-  .MenuBar a.active {
-    font-weight: 400;
-    font-size: 16px;
-  }
-
-
-  .profile{
-    margin-top: 50px;
-    margin-bottom: 50px;
-  }
-  /* 콘텐츠 스타일 */
-  .Content {
-    margin-top: 20px;
-  }
-
-  .socialAccount> h1 {
-    color: rgb(34, 34, 34);
-    font-size: 13px;
-    line-height: 24px;
-    font-weight: 700;
-    padding: 20px;
-    margin-left: 60px;
+.MenuBar a.active {
+  font-weight: 400;
+  font-size: 16px;
   }
   
+ .react-color, .react-color span {
+  background-color: #222222;
+  color: #ffffff;
+} 
 
-    .nickName > h1 {
-      color: rgb(34, 34, 34);
-      font-size: 13px;
-      line-height: 24px;
-      font-weight: 700;
-      padding: 20px;
-      margin-left: 60px;
+
+.profile{
+  margin-top: 50px;
+  margin-bottom: 50px;
+  }
+  /* 콘텐츠 스타일 */
+.Content {
+  margin-top: 20px;
+  }
+
+.socialAccount> h1 {
+  color: rgb(34, 34, 34);
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 20px;
+  margin-left: 60px;
+}
+  
+
+.nickName > h1 {
+  color: rgb(34, 34, 34);
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 700;
+  padding: 20px;
+  margin-left: 60px;
   }
   
   .nickNameAnswer > p {

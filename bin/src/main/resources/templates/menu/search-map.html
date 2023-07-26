@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부동산 필수 앱 다방</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/search-map.css">
+    <link rel="stylesheet" href="/static/css/kakao-map.css">
+</head>
+<body>
+    <header>
+        <div class="header-box-line">
+            <div class="home-logo-link">
+                <a href="/index.html"><img class="site-logo" src="/static/images/header_logo.PNG"></a>
+            </div>
+            <div class="right-header-line">
+                <a href="/search/map" class="menu-item text-color">지도</a>
+                <a href="/sales" class="menu-item">분양</a>
+                <a href="/favorite/recent-room" class="menu-item">관심목록</a>
+                <a href="/manage" class="menu-item">방내놓기</a>
+                <a href="/alarm" class="menu-item">알림</a>
+                <a href="" class="menu-item">다방싸인 비대면 계약</a>
+                <button type="button" class="login-page-button menu-item">
+                    <span class="button-text">로그인<span></span>회원가입</span>
+                </button>
+                <button class="last-button menu-item">
+                    <span class="button-text">중개사 가입/광고문의</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-box-flex">
+            <div class="search-box-line">
+                <div class="search-box-detail">
+                    <img src="/static/images/search_img.PNG">
+                    <input type="text" class="search-box" placeholder="부전동 원룸">
+                </div>
+                <div class="search-type">
+                    <button type="button" class="button-color">매물</button>
+                    <button type="button">분양</button>
+                </div>
+            </div>
+            <div class="search-option-container">
+                <div class="option-box">
+                    <button type="button" class="option-button"><p>원룸, 투·쓰리룸, 오피스텔·도시형</p></button>
+                </div>
+                <div class="option-box">
+                    <button type="button" class="option-button"><p>월세, 전세, 매매</p></button>
+                </div>
+                <div class="option-box">
+                    <button type="button" class="option-button"><p>관리비</p></button>
+                </div>
+                <div class="option-box">
+                    <button type="button" class="option-button"><p>방크기</p></button>
+                </div>
+                <div class="option-box">
+                    <button type="button" class="option-button"><p>사용승인일</p></button>
+                </div>
+                <div class="option-box">
+                    <button type="button" class="option-button"><p>추가필터</p></button>
+                </div>
+            </div>
+        </div>
+        <div class="map_wrap">
+            <div id="map" style="width:100%;    height:100%;
+                                        position:relative; 
+                                        overflow:hidden;"></div> 
+            <!-- 지도타입 컨트롤 div 입니다 -->
+            <span id="btnRoadmap" class="selected_btn" onclick="setMapType('roadmap')">지도</span>
+            <!-- 지도 확대, 축소 컨트롤 div 입니다 -->
+            <div class="custom_zoomcontrol radius_border"> 
+                <span onclick="zoomIn()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_plus.png" alt="확대"></span>  
+                <span onclick="zoomOut()"><img src="https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/ico_minus.png" alt="축소"></span>
+            </div>
+        </div>
+    </main>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c54251e17dca18ead784f7d5a1ea4715"></script>
+    <script>
+		let container = document.getElementById('map');
+		let options = {
+			center: new kakao.maps.LatLng(35.157323166525195, 129.05937752873834),
+			level: 3
+		};
+
+		let map = new kakao.maps.Map(container, options);
+
+        // 지도 확대, 축소 컨트롤에서 확대 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+        function zoomIn() {
+            map.setLevel(map.getLevel() - 1);
+        }
+
+        // 지도 확대, 축소 컨트롤에서 축소 버튼을 누르면 호출되어 지도를 확대하는 함수입니다
+        function zoomOut() {
+            map.setLevel(map.getLevel() + 1);
+        }
+	</script>
+    <script src="/static/js/search-map.js"></script>
+</body>
+
+</html>
