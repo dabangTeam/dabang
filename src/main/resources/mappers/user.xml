@@ -12,6 +12,7 @@
   			#{user_email},
   			#{user_password},
   			#{user_checkpassword},
+  			#{oauth2_id},
   			#{user_roles},
   			#{user_provider},
   			now(),
@@ -31,6 +32,21 @@
 		WHERE
 			user_email = #{email}
 
+  	</select>
+  	
+  	<select id="findOAuth2UserByUsername" parameterType="String" resultType="spring.teamproject.dabang.domain.user.User">
+  		SELECT
+			user_email,
+			user_password,
+			user_checkpassword,
+			oauth2_id,
+			user_roles,
+			user_provider
+		FROM
+			user_mst
+		WHERE
+			oauth2_id = #{oauth2_id}
+  	
   	</select>
   
 </mapper>

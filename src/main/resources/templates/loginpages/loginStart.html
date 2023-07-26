@@ -21,7 +21,8 @@
                     <h1>로그인하시고 <br> 다방과 함께 방 찾기 여행을 떠나보세요!</h1>
                 </div>
                 <div class="Logins">
-                    <button class="Kakao-Login">카카오 3초 만에 바로시작</button>
+                    <button class="Kakao-Login" onclick="location.href='/oauth2/authorization/kakao';">카카오 3초 만에
+                        바로시작</button>
                     <button class="Email-Login">이메일로 로그인하기</button>
                 </div>
                 <div class="OR">
@@ -37,7 +38,7 @@
             </div>
         </section>
     </div>
-    <!-- <footer class="Login-Footer">
+    <footer class="Login-Footer">
         <div>
             <div class="Footer-Top">
                 <nav class="Footer-nav">
@@ -69,10 +70,8 @@
                 </form>
             </div>
         </div>
-    </footer> -->
+    </footer>
     <script src="/static/js/loginStart.js"></script>
-    <!-- 카카오 스크립트 -->
-    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 </body>
 
 </html>

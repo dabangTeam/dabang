@@ -2,11 +2,11 @@ const inputs = document.querySelectorAll("input");
 const longinBtn = document.querySelector(".SolidButton");
 const email = document.querySelector(".input-Email");
 const password = document.querySelector(".Password-Input");
-const passwordCheck = document.getElementById("passwordCheck");
 const LookBtn = document.querySelector(".seeBtn");
 const LookBtn2 = document.querySelector(".seeBtn2");
 const PError = document.querySelector(".Perror");
 const PError2 = document.querySelector(".Perror2");
+
 
 const inputEmail = document.getElementById("email")
 const emailformat = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,}$/;
@@ -14,12 +14,15 @@ const emailformat = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA
 const inputPassword = document.getElementById("password");
 const passwordformat = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[-~!@#$%^&*_+=])[a-zA-Z\d-~!@#$%^&*_+=]{8,20}$/;
 
+const passwordCheck = document.getElementById("passwordCheck");
+const PError3 = document.querySelector(".Perror3");
+
 let checkUseremailFlag = false;
 let checkUserpasswordFlag = false;
 
 function check_password(){
 	
-	if(passwordformat.test(input)){
+	if(passwordformat.test(inputPassword)){
 		console.log("비밀번호 형식 ok")
 	}else{
 		console.log("비밀번호 형식 no")
@@ -54,6 +57,15 @@ inputEmail.addEventListener("input", () => {
     PError.style.display = "block";
   }
 });
+
+passwordCheck.addEventListener("input", () => {
+  if (passwordCheck.value !== inputPassword.value) {
+    PError3.style.display = "block";
+  } else {
+    PError3.style.display = "none";
+  }
+});
+
 
 function togglePasswordVisibility() {
     if (password.type === 'password') {
