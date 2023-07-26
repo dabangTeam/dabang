@@ -667,3 +667,41 @@ main {
     width: 400px;
     height: 100%;
 }
+
+
+.marker-content {
+
+    z-index: 999;
+    overflow: visible;
+}
+.marker-content h1 {
+    min-width: 30px;
+    height: 30px;
+    padding: 0px 6px;
+    color: rgb(255, 255, 255);
+    font-size: 12px;
+    line-height: 26px;
+    text-align: center;
+    border: 2px solid rgb(50, 108, 249);
+    border-radius: 30px;
+    background-color: rgb(50, 108, 249);
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.marker-content p {
+    height: 30px;
+    padding-left: calc(100% + 4px);
+    padding-right: 10px;
+    font-size: 12px;
+    white-space: nowrap;
+    border-radius: 30px;
+    top: 50%;
+    left: 0px;
+    transform: translateY(-50%);
+    z-index: 999;
+    line-height: 28px;
+    color: rgb(50, 108, 249);
+    border: 1px solid rgb(50, 108, 249);
+    background-color: rgb(255, 255, 255);
+}
