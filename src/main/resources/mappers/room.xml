@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="spring.teamproject.dabang.domain.manage.RoomInfoRepository">
+  	
+  	<select id="getRoomInfoByRoomcode" parameterType="Integer" resultType="spring.teamproject.dabang.domain.manage.RoomInfo">
+  	SELECT * 
+		FROM salesInfo
+			<!--LEFT JOIN trnscInfo ON salesInfo.room_code = trnscInfo.room_code
+			LEFT JOIN addi_info ON salesInfo.room_code = addi_info.room_code
+			LEFT JOIN detailDesc ON salesInfo.room_code = detailDesc.room_code
+			LEFT JOIN fac_info ON salesInfo.room_code = fac_info.room_code
+			LEFT JOIN photoRegistration ON salesInfo.room_code = photoRegistration.room_code-->
+		WHERE salesInfo.room_code = #{room_code};
+  	</select>
+  	
+  	<insert id="save" parameterType="spring.teamproject.dabang.domain.manage.RoomInfo"
+  	useGeneratedKeys="true" keyProperty="room_code">
+  	insert into
+		salesInfo
+	values (
+		0,
+		#{sales_type}, #{sales_address}, #{sales_size}, #{sales_info}, #{buildingUse}, #{buildingApproval},
+		#{trnsc_type}, #{price_info}, #{publicAdminFee}, #{moveDate},
+		#{numfloors}, #{totalfloors}, #{num_bathrooms}, #{elevator}, #{parkingAvailability},  #{totalParking},
+		#{desc_title}, #{desc_detail}, #{desc_code},
+		#{fac_heating}, #{fac_aircnd}, #{fac_comm}, #{fac_other}, #{fac_security},
+		#{photo_general}, #{photo_filename}, #{photo_filecode},
+		#{usercode},
+		now(),
+		now()
+	)
+  	
+  	</insert>
+  
+  </mapper>

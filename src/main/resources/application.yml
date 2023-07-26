@@ -19,6 +19,10 @@ spring:
     static-path-pattern: /static/**
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://web1.clm6lpdjfdik.ap-northeast-2.rds.amazonaws.com:3306/study?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mariadb://web1.clm6lpdjfdik.ap-northeast-2.rds.amazonaws.com:3306/dabang?useUnicode=true&characterEncoding=UTF-8
     username: admin
     password: 1q2w3e4r
+
+mybatis:
+  mapper-locations:
+  - /mappers/*.xml

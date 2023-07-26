@@ -36,5 +36,10 @@ public class PageController {
 	public String EmailLogin() {
 		return "/loginpages/emailLogin";
 	}
+	
+	@GetMapping("/manage")
+	public String manageRoom() {
+		return "/uploadRoom/uploadRoom_result";
+	}
 
 }
