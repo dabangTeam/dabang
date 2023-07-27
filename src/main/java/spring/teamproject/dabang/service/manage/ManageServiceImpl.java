@@ -1,5 +1,6 @@
 package spring.teamproject.dabang.service.manage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -50,7 +51,11 @@ public class ManageServiceImpl implements ManageService{
 	@Override
 	public List<String> readAddressList() throws Exception {
 		
-		return null;
+		List<String> list = new ArrayList<String>();
+		
+		list = roomInfoRepository.getAddressList();
+		
+		return list;
 	}
 
 	

@@ -541,8 +541,8 @@
     </div>
     <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c54251e17dca18ead784f7d5a1ea4715&libraries=clusterer,services"></script>
-    <script>
-        let container = document.getElementById('map');
+    <script src="/static/js/map-setting.js">
+        /* let container = document.getElementById('map');
         let options = {
             center: new kakao.maps.LatLng(35.157323, 129.059377), 
             level: 3,
@@ -592,7 +592,8 @@
         //     zIndex: 3
         // });
 
-        
+        let list = new Array();
+
 
         let geocoder = new kakao.maps.services.Geocoder();
 
@@ -622,22 +623,41 @@
                     zIndex: 3
                 });
 
-                // // 인포윈도우로 장소에 대한 설명을 표시합니다
-                // let infowindow = new kakao.maps.InfoWindow({
-                //     content: '<div class="marker-content"><h1>1</h1><p>부전동</p></div>'
-                // });
-                // infowindow.open(map, marker);
-
                 // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
                 customOverlay.setMap(map);
                 map.setCenter(coords);
             }
 
             
-        });    
+        });
+        
+        function getAddress(data) {
+        	for(let address of data) {
+        		console.log(data[0]);
+        		console.log(data[1]);
+        		console.log(data[2]);
+        		console.log(data[3]);
+        		console.log("테스트");
+        	}
+        }
+        
+        function load() {
+        	$.ajax({
+        		async: false,
+        		type: "get",
+        		url: "/api/v1/map/address",
+        		dataType: json,
+        		success: (response) => {
+        			getAddress(response.data);
+        		},
+        		error: (error) => {
+        			console.log(error);
+        		}
+        	});
+        }
 
         // Define the coordinates for the polygon (Example coordinates for a polygon)
-const polygonCoords = [
+/* const polygonCoords = [
   new kakao.maps.LatLng(33.450701, 126.570667),
   new kakao.maps.LatLng(33.450501, 126.571567),
   new kakao.maps.LatLng(33.451701, 126.571667),
@@ -664,10 +684,7 @@ const marker = new kakao.maps.Marker({
 kakao.maps.event.addListener(marker, 'click', function () {
   // Display the polygon on the map
   polygon.setMap(map);
-
-  // Set the map's center to the marker's position
-  map.setCenter(marker.getPosition());
-});
+}); */
     </script>
     <script src="/static/js/search-map.js"></script>
     <script src="/static/js/range-setting.js"></script>

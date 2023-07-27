@@ -16,7 +16,7 @@
 		WHERE salesInfo.room_code = #{room_code};
   	</select>
   	
-  	<select id="getAddressList" resultType="list">
+  	<select id="getAddressList" resultType="java.lang.String">
   		SELECT
 			sales_address
 		FROM
