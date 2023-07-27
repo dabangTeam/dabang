@@ -28,7 +28,10 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
 
 >>>>>>> PJH
 
@@ -38,10 +41,15 @@
 			<version>2.3.1</version>
 		</dependency>
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 =======
 
 >>>>>>> PJH
+=======
+		
+
+>>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

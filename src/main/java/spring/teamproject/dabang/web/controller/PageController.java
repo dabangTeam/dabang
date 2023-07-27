@@ -10,7 +10,10 @@ public class PageController {
 	public String getPage() {
 		return "index";
 	}
+<<<<<<< HEAD
 	
+=======
+>>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
 
 	@GetMapping("/search/map")
 	public String getSearchMap() {
@@ -36,6 +39,7 @@ public class PageController {
 	public String EmailLogin() {
 		return "/loginpages/emailLogin";
 	}
+<<<<<<< HEAD
 	
 <<<<<<< HEAD
 	@GetMapping("/board")
@@ -57,5 +61,7 @@ public class PageController {
 		return "/uploadRoom/uploadRoom_result";
 >>>>>>> PJH
 	}
+=======
+>>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
 
 }
