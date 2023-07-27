@@ -273,6 +273,10 @@ button > span {
     text-align: center;
 }
 
+.SolidBtn:hover{
+	background-color: rgb(6 58 184);
+}
+
 .Btn-wrap > button {
     padding: 0px;
     color: rgb(151, 151, 151);
@@ -287,4 +291,45 @@ button > span {
     width: 1px;
     height: 12px;
     background-color: rgb(237, 237, 237);
+}
+
+.error-checks {
+
+    max-height: 100%;
+    padding: 8px;
+    overflow: hidden;
+    position: fixed;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 9000;
+    top: 0px;
+    right: 0px;
+    display: flex; /* Add this line to make the elements inside display inline */
+}
+
+.error-logo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: flex-start;
+    min-height: 40px;
+    justify-content: center;
+    padding: 12px 8px;
+    text-align: center;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    background-color: rgba(208, 2, 27, 0.9);
+    position: relative;
+    overflow: hidden;
+}
+
+.emailerror {
+    -webkit-box-flex: 1;
+    flex: 1 0 0px; 
+    min-height: 40px;
+    padding: 8px 80px;
+    color: rgb(208, 2, 27);
+    font-size: 15px;
+    line-height: 24px;
+    white-space: pre-wrap;/*  */
+    background-color: rgba(208, 2, 27, 0.15);
 }

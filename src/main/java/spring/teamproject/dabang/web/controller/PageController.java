@@ -11,9 +11,13 @@ public class PageController {
 		return "index";
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 =======
 >>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
+=======
+	
+>>>>>>> a0112910fbf8af2cd79cd24093973798660f75f7
 
 	@GetMapping("/search/map")
 	public String getSearchMap() {
@@ -37,8 +41,9 @@ public class PageController {
 	
 	@GetMapping("/welcome/login")
 	public String EmailLogin() {
-		return "/loginpages/emailLogin";
+		return "/loginpages/Login";
 	}
+<<<<<<< HEAD
 <<<<<<< HEAD
 	
 <<<<<<< HEAD
@@ -63,5 +68,8 @@ public class PageController {
 	}
 =======
 >>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
+=======
+
+>>>>>>> a0112910fbf8af2cd79cd24093973798660f75f7
 
 }

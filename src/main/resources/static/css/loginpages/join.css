@@ -218,6 +218,7 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .Password-check-1 {
+	margin-bottom: 18px;
     display: block;
     width: 100%;
     height: 44px;
@@ -301,4 +302,13 @@ button {
 
 button > span {
     position: relative;
+}
+
+.ErrorP {
+	color: rgb(226, 7, 36);
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: 400;
+	margin-top: 3px;
+	letter-spacing: -1.5px;
 }

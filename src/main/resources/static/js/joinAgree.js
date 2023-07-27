@@ -2,7 +2,7 @@ const joinBtn = document.querySelector(".JoinBtn");
 
 joinBtn.onclick = () => {
     console.log("Join");
-    location.href = "join.html";
+    location.href = "/welcome/join";
 
 }
 

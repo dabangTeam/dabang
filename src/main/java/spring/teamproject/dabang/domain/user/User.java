@@ -18,13 +18,14 @@ public class User {
 	private String user_email;
 	private String user_password;
 	private String user_checkpassword;
-	private String uset_roles;
+	private String oauth2_id;
+	private String user_roles;
 	private String user_provider;
 	
 	public List<String> getUserRoles(){
-		if(uset_roles == null || uset_roles.isBlank()) {
+		if(user_roles == null || user_roles.isBlank()) {
 			return new ArrayList<String>();
 		}
-		return Arrays.asList(uset_roles.replaceAll(" ", "").split(","));
+		return Arrays.asList(user_roles.replaceAll(" ","").split(","));
 	}
 }
