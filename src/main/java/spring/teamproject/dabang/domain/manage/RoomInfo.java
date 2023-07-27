@@ -15,7 +15,7 @@ import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
 @AllArgsConstructor
 @Data
 public class RoomInfo {
-	// 매물정보
+		// 매물정보
 		private int room_code;
 		private int sales_type;
 		private String sales_address;
@@ -131,6 +131,12 @@ public class RoomInfo {
 					.createdate(createdate)
 					.updatedate(updatedate)
 					.build();
-			
 		}
+		
+		public ReadRoomInfoRespDto toReadAddressDto() {
+			return ReadRoomInfoRespDto.builder()
+					.sales_address(sales_address)
+					.build();
+		}
+		
 }

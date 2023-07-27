@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class CreateRoomInfoRespDto {
-	// 매물정보
+		// 매물정보
 			private int room_code;
 			private int sales_type;
 			private String sales_address;

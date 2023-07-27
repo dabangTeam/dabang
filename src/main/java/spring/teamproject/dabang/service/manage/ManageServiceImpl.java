@@ -1,5 +1,7 @@
 package spring.teamproject.dabang.service.manage;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
@@ -43,6 +45,12 @@ public class ManageServiceImpl implements ManageService{
 	public boolean deleteRoomInfo(int roomcode) throws Exception{
 		
 		return roomInfoRepository.remove(roomcode) > 0;
+	}
+
+	@Override
+	public List<String> readAddressList() throws Exception {
+		
+		return null;
 	}
 
 	

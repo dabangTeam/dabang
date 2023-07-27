@@ -1,11 +1,15 @@
 package spring.teamproject.dabang.domain.manage;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface RoomInfoRepository {
 	
 	public RoomInfo getRoomInfoByRoomcode(int roomcode);
+	
+	public List<RoomInfo> getAddressList();
 	
 	public int save(RoomInfo roomInfo);
 	

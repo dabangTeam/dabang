@@ -41,15 +41,7 @@ spring:
     url: jdbc:mariadb://web1.clm6lpdjfdik.ap-northeast-2.rds.amazonaws.com:3306/dabang?useUnicode=true&characterEncoding=UTF-8
     username: admin
     password: 1q2w3e4r
-<<<<<<< HEAD
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> PJH
-=======
-  
->>>>>>> a0112910fbf8af2cd79cd24093973798660f75f7
 mybatis:
   mapper-locations:
   - /mappers/*.xml
