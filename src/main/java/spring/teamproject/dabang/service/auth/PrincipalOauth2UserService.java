@@ -54,7 +54,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 	        response = attributes;
 	        System.out.println("attribues" + attributes);
 	        System.out.println("response" + response);
-
 	        Map<String, Object> kakaoAccount = (Map<String, Object>) response.get("kakao_account");
 	        email = (String) kakaoAccount.get("email");
 
