@@ -28,7 +28,7 @@ public class ManageRoomController {
 	private final ManageService manageService;
 	
 	@GetMapping("/list")
-	public ResponseEntity<?> getRoomList(@RequestParam int page) {
+	public ResponseEntity<?> getRoomList(@PathVariable int roomcode) {
 		
 		return null;
 	}
