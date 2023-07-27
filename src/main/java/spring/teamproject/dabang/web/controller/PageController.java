@@ -37,6 +37,7 @@ public class PageController {
 		return "/loginpages/emailLogin";
 	}
 	
+<<<<<<< HEAD
 	@GetMapping("/board")
 	public String board() {
 		return "/board";
@@ -50,6 +51,11 @@ public class PageController {
 	@GetMapping("/inquery")
 	public String inquery() {
 		return "/inquery";
+=======
+	@GetMapping("/manage")
+	public String manageRoom() {
+		return "/uploadRoom/uploadRoom_result";
+>>>>>>> PJH
 	}
 
 }
