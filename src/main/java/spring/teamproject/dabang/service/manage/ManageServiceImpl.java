@@ -20,6 +20,11 @@ public class ManageServiceImpl implements ManageService{
 	public ReadRoomInfoRespDto readRoomInfo(int roomcode) throws Exception {
 		return roomInfoRepository.getRoomInfoByRoomcode(roomcode).toReadRoomInfoDto();
 	}
+	
+	@Override
+	public ReadRoomInfoRespDto getRoomInfo(int roomcode) throws Exception {
+		return roomInfoRepository.getRoomListByRoomcode(roomcode).toGetRoomInfoDto();
+	}
 
 	@Override
 	public CreateRoomInfoRespDto createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception {
@@ -44,7 +49,6 @@ public class ManageServiceImpl implements ManageService{
 		
 		return roomInfoRepository.remove(roomcode) > 0;
 	}
-
 	
 	
 }

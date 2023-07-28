@@ -97,6 +97,18 @@ public class RoomInfo {
 					
 		}
 		
+		public ReadRoomInfoRespDto toGetRoomInfoDto() {
+			return ReadRoomInfoRespDto.builder()
+					.room_code(room_code)
+					.trnsc_type(trnsc_type)
+					.price_info(price_info)
+					.sales_type(sales_type)
+					.sales_address(sales_address)
+					.desc_title(desc_title)
+					.updatedate(updatedate)
+					.build();
+		}
+		
 		public CreateRoomInfoRespDto toCreateRoomInfoDto(boolean insertStatus) {
 			return CreateRoomInfoRespDto.builder()
 					.room_code(room_code)

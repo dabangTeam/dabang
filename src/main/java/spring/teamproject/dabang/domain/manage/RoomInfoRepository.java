@@ -7,6 +7,8 @@ public interface RoomInfoRepository {
 	
 	public RoomInfo getRoomInfoByRoomcode(int roomcode);
 	
+	public RoomInfo getRoomListByRoomcode(int roocdode);
+	
 	public int save(RoomInfo roomInfo);
 	
 	public int updateRoomInfoByRoomcode(RoomInfo roomInfo);

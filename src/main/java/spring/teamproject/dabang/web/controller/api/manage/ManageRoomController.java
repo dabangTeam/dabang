@@ -27,10 +27,17 @@ public class ManageRoomController {
 	
 	private final ManageService manageService;
 	
-	@GetMapping("/list")
-	public ResponseEntity<?> getRoomList(@RequestParam int page) {
+	@GetMapping("/list/{roomcode}")
+	public ResponseEntity<?> getRoomList(@PathVariable int roomcode) {
+		ReadRoomInfoRespDto readRoomInfoRespDto = null;
 		
-		return null;
+		try {
+			readRoomInfoRespDto = manageService.getRoomInfo(roomcode);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.ok().body(new CMRespDto<>(-1, "리스트 불러오기 실패", readRoomInfoRespDto));
+		}
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "리스트 불러오기 성공", readRoomInfoRespDto));
 	}
 	
 	@GetMapping("/content/{roomcode}")

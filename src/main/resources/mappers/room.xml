@@ -16,6 +16,22 @@
 		WHERE salesInfo.room_code = #{room_code};
   	</select>
   	
+  	<select id="getRoomListByRoomcode" parameterType="Integer" resultType="spring.teamproject.dabang.domain.manage.RoomInfo">
+  	SELECT 
+  		trnsc_type,
+  		price_info,
+  		sales_type,
+  		sales_address,
+  		desc_title,
+  		updatedate
+  		
+		FROM 
+			salesInfo
+			
+		WHERE 
+			salesInfo.room_code = #{room_code};
+  	</select>
+  	
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.manage.RoomInfo"
   	useGeneratedKeys="true" keyProperty="room_code">
   	insert into
