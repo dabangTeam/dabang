@@ -10,14 +10,6 @@ public class PageController {
 	public String getPage() {
 		return "index";
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-=======
->>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
-=======
-	
->>>>>>> a0112910fbf8af2cd79cd24093973798660f75f7
 
 	@GetMapping("/search/map")
 	public String getSearchMap() {
@@ -41,12 +33,9 @@ public class PageController {
 	
 	@GetMapping("/welcome/login")
 	public String EmailLogin() {
-		return "/loginpages/Login";
+		return "/loginpages/login";
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-<<<<<<< HEAD
+
 	@GetMapping("/board")
 	public String board() {
 		return "/board";
@@ -60,16 +49,13 @@ public class PageController {
 	@GetMapping("/inquery")
 	public String inquery() {
 		return "/inquery";
-=======
+	}
+
 	@GetMapping("/manage")
 	public String manageRoom() {
 		return "/uploadRoom/uploadRoom_result";
->>>>>>> PJH
 	}
-=======
->>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
-=======
+	
 
->>>>>>> a0112910fbf8af2cd79cd24093973798660f75f7
 
 }

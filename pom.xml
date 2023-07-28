@@ -35,36 +35,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
-
->>>>>>> PJH
-
-		 <dependency>
-=======
 		<dependency>
->>>>>>> a0112910fbf8af2cd79cd24093973798660f75f7
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>2.3.1</version>
 		</dependency>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-=======
-
->>>>>>> PJH
-=======
-		
-
->>>>>>> 6a628feb265ad13ff7da7284ac78200a7df996e0
-=======
->>>>>>> a0112910fbf8af2cd79cd24093973798660f75f7
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -89,12 +65,8 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<<<<<<< HEAD
-		  
-		  <dependency>
-=======
 		<dependency>
->>>>>>> a0112910fbf8af2cd79cd24093973798660f75f7
+
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter-test</artifactId>
 			<version>2.3.1</version>

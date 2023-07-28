@@ -39,19 +39,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/welcome/login")
                 .loginProcessingUrl("/welcome/login")
-                .defaultSuccessUrl("/index")
-                .failureHandler(authenticationFailureHandler())
+                .defaultSuccessUrl("/index/")
+
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(principalOauth2UserService)
                 .and()
-                .defaultSuccessUrl("/index");
+                .defaultSuccessUrl("/index/");
     }
     
-    @Bean
-    public AuthenticationFailureHandler authenticationFailureHandler() {
-        return new AuthFailureHandler();
-    }
+
 }
 
