@@ -250,11 +250,9 @@ main {
 
 .container-size {
     width: 410px;
-    height: auto;
     max-height: 560px;
-    min-height: 0vh;
 
-    overflow: auto;
+    overflow: hidden;
 }
 
 .price-main-setting {
