@@ -20,7 +20,7 @@ let container = document.getElementById('map');
         let clusterer = new kakao.maps.MarkerClusterer({
             map: map,
             averageCenter: true,
-            minLevel: 1,
+            minLevel: 10,
             styles: [{
                 minWidth: '30px',
                 height: '30px',
@@ -34,14 +34,19 @@ let container = document.getElementById('map');
                 backgroundColor: 'rgb(50, 108, 249)',
                 whiteSpace: 'nowrap',
                 position: 'relative',
-                zIndex: '999'
+                zIndex: '2'
             }]
         });
+        kakao.maps.event.addListener( clusterer, 'clustered', function( clusters ) {
+            clusters.forEach((cluster) => {
+                console.log(cluster.getClusterMarker().getContent()); // 클러스터 오버레이 출력
+            })
+        });
 
-        $.get("/download/web/data/chicken.json", function(data) {
+        $.get("/static/js/location-data.json", function(data) {
             // 데이터에서 좌표 값을 가지고 마커를 표시합니다
             // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-            var markers = $(data.positions).map(function(i, position) {
+            let markers = $(data.positions).map(function(i, position) {
                 return new kakao.maps.Marker({
                     position : new kakao.maps.LatLng(position.lat, position.lng)
                 });
@@ -76,6 +81,7 @@ let container = document.getElementById('map');
             url: "/api/v1/map/address",
             dataType: "json",
             success: (response) => {
+                console.log(response.data);
                 getAddress(response.data);
             },
             error: (error) => {
@@ -84,12 +90,15 @@ let container = document.getElementById('map');
         });
     }
 
+    let value = 0;
+
     function getAddress(data) {
         for (let address of data) {
             // Use the geocoder to get coordinates for each address
             geocoder.addressSearch(address, function(result, status) {
                 if (status === kakao.maps.services.Status.OK) {
                     let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                    console.log(address);
 
                     // Create a custom overlay for each address
                     let customOverlay = new kakao.maps.CustomOverlay({
