@@ -41,48 +41,48 @@ buttons[1].onclick = () => {
     }
 });*/
 
+let prevOptionBox = null;
+
 optionBoxes.forEach((optionBox) => {
     const optionButton = optionBox.querySelector(".option-button");
     const textColor = optionButton.querySelector("p");
     const optionContainer = optionBox.querySelector(".option-detail-container");
-    hiddenFlag = true;
-	
-    optionButton.onclick = () => {
-      optionButton.classList.toggle("black-button");
-      optionButton.classList.toggle("blue-button");
-      textColor.classList.toggle("black-font");
-      textColor.classList.toggle("blue-font");
-      optionContainer.classList.toggle("hidden");
-      optionButton.focus();
-      optionContainer.focus();
-      hiddenFlag = false;
-      console.log(document.activeElement === optionButton);
-      
-      
-      optionButton.onblur = () => {
-	      if(!optionContainer.classList.contains("hidden")) {
-	        optionButton.classList.toggle("black-button");
-	        optionButton.classList.toggle("blue-button");
-	        textColor.classList.toggle("black-font");
-	        textColor.classList.toggle("blue-font");
-	        optionContainer.classList.toggle("hidden");
-	        optionButton.blur();
-	        optionContainer.blur();
-	      }
-	   }
-    }
 
-    optionContainer.onblur = () => {
-      if (!optionContainer.classList.contains('hidden')) {
+    optionButton.onclick = () => {
+        // 이전에 클릭된 optionBox가 있고, 그것이 현재 클릭된 optionBox와 다른 경우에만,
+        // 이전 optionBox의 option-detail-container의 표시 상태를 토글합니다.
+        if (prevOptionBox && prevOptionBox !== optionBox) {
+            const prevOptionButton = prevOptionBox.querySelector(".option-button");
+            const prevTextColor = prevOptionButton.querySelector("p");
+            const prevOptionContainer = prevOptionBox.querySelector(".option-detail-container");
+
+            prevOptionButton.classList.toggle("black-button");
+            prevOptionButton.classList.toggle("blue-button");
+            prevTextColor.classList.toggle("black-font");
+            prevTextColor.classList.toggle("blue-font");
+            prevOptionContainer.classList.toggle("hidden");
+        }
+
+        // 클릭된 버튼에 대한 색상과 텍스트 색상을 변경하고,
+        // 클릭된 버튼에 해당하는 option-detail-container의 표시 상태를 토글합니다.
         optionButton.classList.toggle("black-button");
         optionButton.classList.toggle("blue-button");
         textColor.classList.toggle("black-font");
         textColor.classList.toggle("blue-font");
         optionContainer.classList.toggle("hidden");
-        optionButton.blur();
-	    optionContainer.blur();
-      }
-    }
+
+        
+        if(prevOptionBox === optionBox) {
+          prevOptionBox = null;
+          console.log("이전 optionBox: " + prevOptionBox);
+          console.log("클릭한 optionBox: " + optionBox);
+        }else {
+          // 클릭된 optionBox를 이전 optionBox로 저장합니다.
+          prevOptionBox = optionBox;
+          console.log("이전 optionBox: " + prevOptionBox);
+          console.log("클릭한 optionBox: " + optionBox);
+        }
+    };
 });
 
 /**
