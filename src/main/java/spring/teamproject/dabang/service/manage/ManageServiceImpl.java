@@ -22,7 +22,7 @@ public class ManageServiceImpl implements ManageService{
 	}
 	
 	@Override
-	public ReadRoomInfoRespDto getRoomInfo(int roomcode) throws Exception {
+	public ReadRoomInfoRespDto getRoomList(int roomcode) throws Exception {
 		return roomInfoRepository.getRoomListByRoomcode(roomcode).toGetRoomInfoDto();
 	}
 

@@ -1,6 +1,8 @@
 package spring.teamproject.dabang.web.controller.api.manage;
 
 import org.apache.ibatis.annotations.Delete;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import spring.teamproject.dabang.service.manage.ManageService;
 import spring.teamproject.dabang.web.dto.CMRespDto;
 import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoReqDto;
@@ -20,6 +23,7 @@ import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.UpdateRoomInfoReqDto;
 
+@Slf4j
 @RestController
 @RequestMapping("api/v1/manage")
 @RequiredArgsConstructor
@@ -30,9 +34,11 @@ public class ManageRoomController {
 	@GetMapping("/list/{roomcode}")
 	public ResponseEntity<?> getRoomList(@PathVariable int roomcode) {
 		ReadRoomInfoRespDto readRoomInfoRespDto = null;
+		log.info("룸리스트 정보 >>> ", readRoomInfoRespDto.getRoomCode());
+
 		
 		try {
-			readRoomInfoRespDto = manageService.getRoomInfo(roomcode);
+			readRoomInfoRespDto = manageService.getRoomList(roomcode);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.ok().body(new CMRespDto<>(-1, "리스트 불러오기 실패", readRoomInfoRespDto));
@@ -75,7 +81,7 @@ public class ManageRoomController {
 	@PutMapping("/content/{roomcode}")
 	public ResponseEntity<?> updateRoomInfo(@PathVariable int roomcode, @RequestBody UpdateRoomInfoReqDto updateRoomInfoReqDto) {
 		boolean status = false;
-		updateRoomInfoReqDto.setRoom_code(roomcode);
+		updateRoomInfoReqDto.setRoomCode(roomcode);
 
 		try {
 			status = manageService.updateRoomInfo(updateRoomInfoReqDto);
