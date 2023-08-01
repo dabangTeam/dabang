@@ -58,6 +58,15 @@ public class ManageServiceImpl implements ManageService{
 		return list;
 	}
 
+	@Override
+	public List<String> readAddressCityList() throws Exception {
+		List<String> list = new ArrayList<String>();
+		
+		list = roomInfoRepository.getAddressCityList();
+		
+		return list;
+	}
+
 	
 	
 }

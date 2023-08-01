@@ -10,6 +10,7 @@ public interface RoomInfoRepository {
 	public RoomInfo getRoomInfoByRoomcode(int roomcode);
 	
 	public List<String> getAddressList();
+	public List<String> getAddressCityList();
 	
 	public int save(RoomInfo roomInfo);
 	

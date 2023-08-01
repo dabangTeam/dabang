@@ -32,4 +32,17 @@ public class MapApiController {
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "주소 리스트 불러오기 성공", list));
 	}
+	
+	@GetMapping("/address/city")
+	public ResponseEntity<?> getAddressSiDo() {
+		
+		List<String> list = new ArrayList<String>();
+		try {
+			list = manageService.readAddressCityList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "주소 리스트 불러오기 성공", list));
+	}
 }

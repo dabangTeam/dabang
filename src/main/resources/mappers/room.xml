@@ -23,6 +23,16 @@
 			salesInfo
   	</select>
   	
+  	<select id="getAddressCityList" resultType="java.lang.String">
+  		select
+  			si_do,
+  			gun_gu
+  		from
+  			address_info
+  	</select>
+  	
+  	
+  	
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.manage.RoomInfo"
   	useGeneratedKeys="true" keyProperty="room_code">
   	insert into

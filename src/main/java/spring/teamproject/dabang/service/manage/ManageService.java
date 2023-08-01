@@ -15,6 +15,8 @@ public interface ManageService {
 	
 	public List<String> readAddressList() throws Exception; // kjh 작업중
 	
+	public List<String> readAddressCityList() throws Exception;
+	
 	public boolean updateRoomInfo (UpdateRoomInfoReqDto updateRoomInfoReqDto) throws Exception;
 	
 	public boolean deleteRoomInfo (int roomcode) throws Exception;

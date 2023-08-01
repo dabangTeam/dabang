@@ -1,4 +1,4 @@
-let addressMap = {
+/*let addressMap = {
   전체: [''],
   서울특별시: [
       '',
@@ -251,7 +251,7 @@ let addressMap = {
       '곡성군',
       '구례군',
   ],
-  제주특별자치도: ['', '제주시', '서귀포시'],
+  제주특별자치도: ['', '제주시', '서귀포시']
 }
 
 console.log(addressMap.부산광역시);
@@ -267,39 +267,39 @@ function getAddressList() {
     }
 }
 
-getAddress(addressMap);
-
-// addressMap.forEach(list => {
-//     getAddress(list);
-// });
-
 function getAddress(data) {
     for (let city in data) {
-        console.log(addressMap[i]);
-        // Use the geocoder to get coordinates for each address
-        geocoder.addressSearch(city, function(result, status) {
-            if (status === kakao.maps.services.Status.OK) {
-                let coords1 = new kakao.maps.LatLng(result[0].y, result[0].x);
-                console.log(city);
+        for (let town of data[city]) {
+            const address = city + ' ' + town;
 
-                // Create a custom overlay for each address
-                let customOverlay = new kakao.maps.CustomOverlay({
-                    map: map,
-                    clickable: true,
-                    content: '<div class="marker-content"><h1>1</h1><p>' + city + '</p></div>',
-                    position: coords1,
-                    xAnchor: 0.5,
-                    yAnchor: 1,
-                    zIndex: 3
-                });
+            // Use the geocoder to get coordinates for each address
+            geocoder.addressSearch(address, function(result, status) {
+                if (status === kakao.maps.services.Status.OK) {
+                    let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                    console.log(address);
 
-                // Set the map center to the first address's coordinates
-                map.setCenter(coords1);
-            }
-        });
+                    // Create a custom overlay for each address
+                    let customOverlay = new kakao.maps.CustomOverlay({
+                        map: map,
+                        clickable: true,
+                        content: '<div class="marker-content"><h1>1</h1><p>' + address + '</p></div>',
+                        position: coords,
+                        xAnchor: 0.5,
+                        yAnchor: 1,
+                        zIndex: 3
+                    });
+
+                    // Set the map center to the first address's coordinates
+                    map.setCenter(coords);
+                }
+            });
+        }
     }
 }
 
+// 호출
+getAddress(addressMap);
+
 function getLocation() {
     return addressMap;
-}
+}*/
