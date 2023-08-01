@@ -43,7 +43,7 @@ let container = document.getElementById('map');
             })
         });
 
-        $.get("/static/js/location-data.json", function(data) {
+        $.get("/static/js/location-data.js", function(data) {
             // 데이터에서 좌표 값을 가지고 마커를 표시합니다
             // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
             let markers = $(data.positions).map(function(i, position) {
@@ -66,13 +66,11 @@ let container = document.getElementById('map');
         //     zIndex: 3
         // });
 
-        let list = new Array();
-
 
         let geocoder = new kakao.maps.services.Geocoder();
 
         // 주소로 좌표를 검색합니다
-        let address = '부산광역시 부산진구 부전동';
+        let address = '부전동';
 
         function load() {
         $.ajax({
@@ -89,11 +87,11 @@ let container = document.getElementById('map');
             }
         });
     }
-
     let value = 0;
 
     function getAddress(data) {
         for (let address of data) {
+            
             // Use the geocoder to get coordinates for each address
             geocoder.addressSearch(address, function(result, status) {
                 if (status === kakao.maps.services.Status.OK) {
