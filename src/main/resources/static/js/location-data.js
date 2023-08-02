@@ -1,6 +1,5 @@
-/*let addressMap = {
-  전체: [''],
-  서울특별시: [
+let positions = {
+  "서울특별시": [
       '',
       '강남구',
       '강동구',
@@ -28,7 +27,7 @@
       '중구',
       '중랑구',
   ],
-  부산광역시: [
+  "부산광역시": [
       '',
       '강서구',
       '금정구',
@@ -47,7 +46,7 @@
       '중구',
       '해운대구',
   ],
-  인천광역시: [
+  "인천광역시": [
       '',
       '강화군',
       '계양구',
@@ -60,7 +59,7 @@
       '옹진군',
       '중구',
   ],
-  대구광역시: [
+  "대구광역시": [
       '',
       '중구',
       '동구',
@@ -71,11 +70,11 @@
       '달서구',
       '달성군',
   ],
-  광주광역시: ['', '동구', '서구', '남구', '북구', '광산구'],
-  대전광역시: ['', '동구', '중구', '서구', '유성구', '대덕구'],
-  울산광역시: ['', '중구', '남구', '동구', '북구', '울주군'],
-  세종특별자치시: [''],
-  경기도: [
+  "광주광역시": ['', '동구', '서구', '남구', '북구', '광산구'],
+  "대전광역시": ['', '동구', '중구', '서구', '유성구', '대덕구'],
+  "울산광역시": ['', '중구', '남구', '동구', '북구', '울주군'],
+  "세종특별자치시": [''],
+  "경기도": [
       '',
       '가평군',
       '고양시',
@@ -109,7 +108,7 @@
       '하남시',
       '화성시',
   ],
-  강원도: [
+  "강원도": [
       '',
       '원주시',
       '춘천시',
@@ -130,7 +129,7 @@
       '화천군',
       '양구군',
   ],
-  충청북도: [
+  "충청북도": [
       '',
       '청주시',
       '충주시',
@@ -144,7 +143,7 @@
       '음성군',
       '단양군',
   ],
-  충청남도: [
+  "충청남도": [
       '',
       '천안시',
       '공주시',
@@ -162,7 +161,7 @@
       '예산군',
       '태안군',
   ],
-  경상북도: [
+  "경상북도": [
       '',
       '포항시',
       '경주시',
@@ -188,7 +187,7 @@
       '울진군',
       '울릉군',
   ],
-  경상남도: [
+  "경상남도": [
       '',
       '창원시',
       '김해시',
@@ -209,7 +208,7 @@
       '산청군',
       '의령군',
   ],
-  전라북도: [
+  "전라북도": [
       '',
       '전주시',
       '익산시',
@@ -226,7 +225,7 @@
       '장수군',
       '무주군',
   ],
-  전라남도: [
+  "전라남도": [
       '',
       '여수시',
       '순천시',
@@ -251,11 +250,9 @@
       '곡성군',
       '구례군',
   ],
-  제주특별자치도: ['', '제주시', '서귀포시']
+  "제주특별자치도": ['', '제주시', '서귀포시']
 }
-
-console.log(addressMap.부산광역시);
-
+/*
 
 function getAddressList() {
     for (let city in addressMap) {
@@ -267,39 +264,83 @@ function getAddressList() {
     }
 }
 
+let customMarkers = [];
+let city = [];
+let dong = [];
+
+let geocoder = new kakao.maps.services.Geocoder();
 function getAddress(data) {
-    for (let city in data) {
-        for (let town of data[city]) {
-            const address = city + ' ' + town;
+  for (city in data) {
+    const address = city;
+    // Use the geocoder to get coordinates for each address
+    geocoder.addressSearch(address, function(result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+        console.log(address);
 
-            // Use the geocoder to get coordinates for each address
-            geocoder.addressSearch(address, function(result, status) {
-                if (status === kakao.maps.services.Status.OK) {
-                    let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                    console.log(address);
+        // Create a custom overlay for each address
+        let customOverlay = new kakao.maps.CustomOverlay({
+          map: map,
+          clickable: true,
+          content: '<div class="marker-content"><h1>1</h1><p>' + address + '</p></div>',
+          position: coords,
+          xAnchor: 0.5,
+          yAnchor: 1,
+          zIndex: 3,
+        });
 
-                    // Create a custom overlay for each address
-                    let customOverlay = new kakao.maps.CustomOverlay({
-                        map: map,
-                        clickable: true,
-                        content: '<div class="marker-content"><h1>1</h1><p>' + address + '</p></div>',
-                        position: coords,
-                        xAnchor: 0.5,
-                        yAnchor: 1,
-                        zIndex: 3
-                    });
+        // Set the map center to the first address's coordinates
+        map.setCenter(coords);
+      }
+    });
 
-                    // Set the map center to the first address's coordinates
-                    map.setCenter(coords);
-                }
-            });
+    for (dong of data[city]) {
+      const address1 = dong;
+
+      geocoder.addressSearch(address1, function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+          console.log(address1);
+
+          // Create a custom overlay for each address
+          let customOverlay = new kakao.maps.CustomOverlay({
+            map: map,
+            clickable: true,
+            content:
+              '<div class="marker-content"><h1>1</h1><p>' + address1 + '</p></div>',
+            position: coords,
+            xAnchor: 0.5,
+            yAnchor: 1,
+            zIndex: 3,
+          });
+
+          // Set the map center to the first address's coordinates
+          map.setCenter(coords);
         }
+      });
     }
+  }
 }
 
 // 호출
-getAddress(addressMap);
+getAddress(positions);
 
 function getLocation() {
     return addressMap;
 }*/
+
+/*
+$.get("/download/web/data/chicken.json", function(data) {
+    // 데이터에서 좌표 값을 가지고 마커를 표시합니다
+    // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
+    var markers = $(data.positions).map(function(i, position) {
+        console.log("test");
+        return new kakao.maps.Marker({
+            position : new kakao.maps.LatLng(position.lat, position.lng)
+        });
+    });
+
+    // 클러스터러에 마커들을 추가합니다
+    clusterer.over(markers);
+});
+*/

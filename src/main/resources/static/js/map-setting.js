@@ -21,61 +21,105 @@ function zoomOut() {
 
 let markers = [];
 
-let clusterer = new kakao.maps.MarkerClusterer({
-    map: map,
-    averageCenter: true,
-    minLevel: 10,
-    styles: [{
-        minWidth: '30px',
-        height: '30px',
-        padding: '0px 6px',
-        color: 'rgb(255, 255, 255)',
-        fontSize: '12px',
-        lineHeight: '26px',
-        textAlign: 'center',
-        border: '2px solid rgb(50, 108, 249)',
-        borderRadius: '30px',
-        backgroundColor: 'rgb(50, 108, 249)',
-        whiteSpace: 'nowrap',
-        position: 'relative',
-        zIndex: '2'
-    }]
+let city1 = [];
+let city2 = [];
+let dong = [];
+
+ var clusterer = new kakao.maps.MarkerClusterer({
+        map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체 
+        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+        minLevel: 10 // 클러스터 할 최소 지도 레벨 
+ });
+
+const citySet = new Set();
+
+$.get("/static/js/location-test.json", function(data) {
+// Iterate through the data and create custom overlays for each location
+
+	for (const location in data) {
+		const cityName = location.split('/')[0];
+	    citySet.add(cityName);
+		const lat = data[location].lat;
+	    const lng = data[location].long;
+	    const coords = new kakao.maps.LatLng(lat, lng);
+	    
+	    // Extract the text after the forward slash ("/")
+	    const gungu = location.split('/')[1];
+	    
+	    // Create a custom overlay for each address
+	    let customOverlay = new kakao.maps.CustomOverlay({
+			map: map,
+			clickable: true,
+			content: '<div class="marker-content"><h1>1</h1><p>' + gungu + '</p></div>',
+			position: coords,
+			xAnchor: 0.5,
+			yAnchor: 1,
+			zIndex: 10, // Set a higher z-index value to ensure it's displayed above cluster markers
+	    });
+	
+	    // Add the custom overlay to the map
+	    //customOverlay.setMap(map);
+	    
+	    city2.push(customOverlay);
+	    customOverlay.setMap(null);    
+    }
+	const cities = Array.from(citySet);
+	
+	getAddress(cities);
+	console.log(cities);
 });
 
-kakao.maps.event.addListener( clusterer, 'clustered', function( clusters ) {
-    clusters.forEach((cluster) => {
-        console.log(cluster.getClusterMarker().getContent()); // 클러스터 오버레이 출력
-    })
-});
+// Convert the Set to an array to get unique city names
 
-$.get("/static/js/location-data.js", function(data) {
-    // 데이터에서 좌표 값을 가지고 마커를 표시합니다
-    // 마커 클러스터러로 관리할 마커 객체는 생성할 때 지도 객체를 설정하지 않습니다
-    let markers = $(data.positions).map(function(i, position) {
-        return new kakao.maps.Marker({
-            position : new kakao.maps.LatLng(position.lat, position.lng)
-        });
-    });
 
-    // 클러스터러에 마커들을 추가합니다
-    clusterer.addMarkers(markers);
-});
+// Function to hide all custom overlays in the 'city' array
+function hideCityOverlays1() {
+  city1.forEach(function(overlay) {
+    overlay.setMap(null);
+  });
+}
 
-        // let customOverlay = new kakao.maps.CustomOverlay({
-        //     map: map,
-        //     clickable: true,
-        //     content: '<div class="marker-content"><h1>1</h1><p>부전동</p></div>',
-        //     position: new kakao.maps.LatLng(33.450701, 126.570667),
-        //     xAnchor: 0.5,
-        //     yAnchor: 1,
-        //     zIndex: 3
-        // });
+// Function to show all custom overlays in the 'city' array
+function showCityOverlays1() {
+  city1.forEach(function(overlay) {
+    overlay.setMap(map);
+  });
+}
+// Function to hide all custom overlays in the 'city' array
+function hideCityOverlays2() {
+  city2.forEach(function(overlay) {
+    overlay.setMap(null);
+  });
+}
 
+// Function to show all custom overlays in the 'city' array
+function showCityOverlays2() {
+  city2.forEach(function(overlay) {
+    overlay.setMap(map);
+  });
+}
+
+function toggleCityOverlays() {
+    const currentLevel = getMapLevel();
+    if (currentLevel > 7 && currentLevel < 10) {
+        showCityOverlays2();
+    } else {
+        hideCityOverlays2();
+    }
+    if(currentLevel >= 10) {
+		showCityOverlays1();
+	}else {
+		hideCityOverlays1();
+	}
+}
+
+// Add event listener for map zoom change
+kakao.maps.event.addListener(map, 'zoom_changed', toggleCityOverlays);
+
+// Call the function to show/hide city overlays initially
+toggleCityOverlays();
 
 let geocoder = new kakao.maps.services.Geocoder();
-
-// 주소로 좌표를 검색합니다
-let address = '부전동';
 
 function load() {
 	$.ajax({
@@ -94,10 +138,6 @@ function load() {
 }
 
 function loadCity() {
-	setMarkers(map);
-    
-    markers = []; // 배열을 비워줍니다.
-    
 	$.ajax({
 	    async: false,
 	    type: "get",
@@ -112,82 +152,89 @@ function loadCity() {
 	    }
 	});
 }
+/*
+function getAddress(data) {
+  for (let city in data) {
+    const address = city;
+    // Use the geocoder to get coordinates for each address
+    geocoder.addressSearch(address, function(result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-let value = 0;
+        // Create a custom overlay for each address
+        let customOverlay = new kakao.maps.CustomOverlay({
+          map: map,
+          clickable: true,
+          content: '<div class="marker-content"><h1>1</h1><p>' + address + '</p></div>',
+          position: coords,
+          xAnchor: 0.5,
+          yAnchor: 1,
+          zIndex: 10, // Set a higher z-index value to ensure it's displayed above cluster markers
+        });
+
+        // Set the map center to the first address's coordinates
+        map.setCenter(coords);
+      }
+    });
+
+    for (let dong of data[city]) {
+      const address1 = dong;
+
+      geocoder.addressSearch(address1, function(result, status) {
+        if (status === kakao.maps.services.Status.OK) {
+          let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+          // Create a custom overlay for each address
+          let customOverlay = new kakao.maps.CustomOverlay({
+            map: map,
+            clickable: true,
+            content: '<div class="marker-content"><h1>1</h1><p>' + address1 + '</p></div>',
+            position: coords,
+            xAnchor: 0.5,
+            yAnchor: 1,
+            zIndex: 10, // Set a higher z-index value to ensure it's displayed above cluster markers
+          });
+
+          // Set the map center to the first address's coordinates
+          map.setCenter(coords);
+        }
+      });
+    }
+  }
+}
+*/
+
 
 function getAddress(data) {
-    // 기존의 마커들을 모두 제거합니다.
-    for (const marker of markers) {
-        marker.setMap(null);
-    }
-    markers = [];
-
-    for (let address of data) {
+    for (let i = 0; i < data.length; i++) {
+        const address = data[i];
         // Use the geocoder to get coordinates for each address
-        geocoder.addressSearch(address, function(result, status) {
+        geocoder.addressSearch(address, function (result, status) {
             if (status === kakao.maps.services.Status.OK) {
                 let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-                // Create a marker for each address
-                let marker = new kakao.maps.Marker({ position: coords });
-
-                // 마커를 배열에 추가합니다.
-                markers.push(marker);
+                // Create a custom overlay for each address
+                let customOverlay = new kakao.maps.CustomOverlay({
+                    map: map,
+                    clickable: true,
+                    content: '<div class="marker-content"><h1>1</h1><p>' + address + '</p></div>',
+                    position: coords,
+                    xAnchor: 0.5,
+                    yAnchor: 1,
+                    zIndex: 10, // Set a higher z-index value to ensure it's displayed above cluster markers
+                });
+                
+                city1.push(customOverlay);
             }
         });
     }
-
-    // 클러스터러를 초기화하고 마커들을 추가합니다.
-    clusterer = new kakao.maps.MarkerClusterer({
-        map: map,
-        averageCenter: true,
-        minLevel: 10,
-    });
-    clusterer.addMarkers(markers);
 }
-
-// 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-kakao.maps.event.addListener(map, 'zoom_changed', function() {
-    const currentLevel = getMapLevel();
-    if (currentLevel === 11 || currentLevel === 10) {
-        loadCity();
-    } else if (currentLevel === 9 || currentLevel === 8) {
-        // 레벨이 9 또는 8일 때 클러스터러를 숨깁니다.
-        if (clusterer) {
-            clusterer.clear();
-        }
-    } else {
-        // 레벨이 11이 아닐 때, 기존의 마커들을 배열에서 제거합니다.
-        for (const marker of markers) {
-            marker.setMap(null);
-        }
-        markers = []; // 배열을 비워줍니다.
-    }
-});
 
 function getMapLevel() {	
 	let level = map.getLevel();
 	console.log(level);
 	return level;
 }
-
-// 지도가 확대 또는 축소되면 마지막 파라미터로 넘어온 함수를 호출하도록 이벤트를 등록합니다
-kakao.maps.event.addListener(map, 'zoom_changed', function() {
-    const currentLevel = getMapLevel();
-    if (currentLevel === 11 || currentLevel === 10) {
-		setMarkers(map);
-        loadCity();
-    } else if(currentLevel === 9 || currentLevel === 8) {
-		setMarkers(map); 
-		markers = [];
-	} else {
-        setMarkers(map);
-        markers = []; // 배열을 비워줍니다.
-    }
-});
-
-// Trigger the AJAX call to get the addresses and display markers on the map
-load();
 
 if(getMapLevel().level === 11) {
 	loadCity();
