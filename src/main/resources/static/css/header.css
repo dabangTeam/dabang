@@ -11,21 +11,45 @@ header {
 }
 
 .header-box-line {
+   flex: 0 0 auto;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-align: center;
     align-items: center;
-
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-
-    margin: 1px;
-
-    white-space: nowrap;
+    min-width: 1200px;
+    height: 80px;
+    padding: 0px 20px;
+    z-index: 999;
+    border-bottom: 1px solid rgb(231, 231, 231);
+    background-color: transparent;
 }
 
-.right-header-line a {
-    width: 100%;
+.home-logo-link{
+	    flex: 0 0 auto;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.site-logo{
+	margin-top: 3px;
+    font-size: 0px;
+}
+
+.right-header-line{
+	flex: 0 0 auto;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-left: auto;
+}
+
+.right-header-line > a {
+    font-size: 15px;
+    line-height: 26px;
+    position: relative;
+    color: rgb(34, 34, 34);
+    user-select: none;
 }
 
 .right-header-line a:not(:nth-child(1)) {
