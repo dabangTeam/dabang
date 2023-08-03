@@ -9,7 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
-import spring.teamproject.dabang.web.dto.manage.ReadSimpleDataRespDto;
+import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 
 @Builder
 @NoArgsConstructor
