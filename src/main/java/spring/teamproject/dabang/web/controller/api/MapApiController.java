@@ -45,4 +45,13 @@ public class MapApiController {
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "주소 리스트 불러오기 성공", list));
 	}
+	
+	@GetMapping("/simple/roomData")
+	public ResponseEntity<?> getSimpleData() {
+		
+		
+		
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "주소 리스트 불러오기 성공", null));
+	}
+
 }

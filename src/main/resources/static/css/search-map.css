@@ -693,6 +693,11 @@ main {
 
 }
 
+.room-data:hover {
+    background-color: #f0f4fa;
+    cursor: pointer;
+}
+
 .room-img {
     width: 140px;
     height: 140px;
@@ -704,13 +709,8 @@ main {
     height: 140px;
 
     padding-left: 20px;
-
-    background-color: #ffffff;
 }
 
-.room-text-data:hover {
-    background-color: #f0f4fa;
-}
 
 .room-text-data h1 {
     width: 209px;

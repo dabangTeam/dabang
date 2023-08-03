@@ -30,6 +30,9 @@
   		from
   			address_info
   	</select>
+  	<select id="getSimpleDataList">
+  	
+  	</select>
   	
   	
   	

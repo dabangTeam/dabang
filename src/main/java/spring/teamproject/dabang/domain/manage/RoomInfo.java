@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
+import spring.teamproject.dabang.web.dto.manage.ReadSimpleDataRespDto;
 
 @Builder
 @NoArgsConstructor
@@ -136,6 +137,14 @@ public class RoomInfo {
 		public ReadRoomInfoRespDto toReadAddressDto() {
 			return ReadRoomInfoRespDto.builder()
 					.sales_address(sales_address)
+					.build();
+		}
+		
+		public ReadSimpleDataRespDto toSimpleDataDto() {
+			return ReadSimpleDataRespDto.builder()
+					.numFloors(numfloors)
+					.publicAdminFee(publicAdminFee)
+					.descTitle(desc_title)
 					.build();
 		}
 		
