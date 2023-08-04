@@ -9,13 +9,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
+import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class RoomInfo {
-	// 매물정보
+		// 매물정보
 		private int room_code;
 		private int sales_type;
 		private String sales_address;
@@ -131,6 +132,20 @@ public class RoomInfo {
 					.createdate(createdate)
 					.updatedate(updatedate)
 					.build();
-			
 		}
+		
+		public ReadRoomInfoRespDto toReadAddressDto() {
+			return ReadRoomInfoRespDto.builder()
+					.sales_address(sales_address)
+					.build();
+		}
+		
+		public ReadSimpleDataRespDto toSimpleDataDto() {
+			return ReadSimpleDataRespDto.builder()
+					.numFloors(numfloors)
+					.publicAdminFee(publicAdminFee)
+					.descTitle(desc_title)
+					.build();
+		}
+		
 }

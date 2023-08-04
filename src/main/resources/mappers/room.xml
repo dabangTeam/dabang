@@ -16,6 +16,13 @@
 		WHERE salesInfo.room_code = #{room_code};
   	</select>
   	
+  	<select id="getAddressList" resultType="java.lang.String">
+  		SELECT
+			sales_address
+		FROM
+			salesInfo
+  	</select> 	
+  	
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.manage.RoomInfo"
   	useGeneratedKeys="true" keyProperty="room_code">
   	insert into

@@ -1,5 +1,7 @@
 package spring.teamproject.dabang.domain.manage;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -13,4 +15,23 @@ public interface RoomInfoRepository {
 	
 	public int remove(int roomcode);
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<String> getAddressList();
+	public List<String> getAddressCityList();
+	public List<String> getSimpleDataList();
 }

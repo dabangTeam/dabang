@@ -1,3 +1,8 @@
+body {
+    overflow-y: hidden; /* 세로 스크롤 제거 */
+    overflow-x: hidden; /* 가로 스크롤 제거 */
+}
+
 main {
     width: 100%;
 }
@@ -99,6 +104,7 @@ main {
     -webkit-box-flex: 1;
     flex-grow: 1;
     display: flex;
+    justify-content: space-between;
     -webkit-box-align: center;
     width: 0px;
     height: 100%;
@@ -245,8 +251,8 @@ main {
 .container-size {
     width: 410px;
     max-height: 560px;
-    min-height: 0px;
-    min-height: 0vh;
+
+    overflow: hidden;
 }
 
 .price-main-setting {
@@ -566,9 +572,14 @@ main {
 
 .filters-setting-box {
     display: flex;
+    flex: 0 0 auto;
     justify-content: center;
     align-items: center;
 
+    margin-left: auto;
+    margin-right: 15px;
+    overflow: hidden;
+    
     width: 80px;
     height: 63px;
 
@@ -605,10 +616,13 @@ main {
 }
 
 .map_box {
+    -webkit-box-flex: 1;
+    flex-grow: 1;
     display: flex;
     width: 100%;
     height: calc(100% - 149px);
     position: relative;
+    overflow: hidden;
 }
 
 .room-search-list-box {
@@ -668,6 +682,91 @@ main {
     height: 100%;
 }
 
+.room-data {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 399px;
+    height: 172px;
+    padding: 15px 16px;
+
+}
+
+.room-data:hover {
+    background-color: #f0f4fa;
+    cursor: pointer;
+}
+
+.room-img {
+    width: 140px;
+    height: 140px;
+}
+
+
+.room-text-data {
+    width: 229px;
+    height: 140px;
+
+    padding-left: 20px;
+}
+
+
+.room-text-data h1 {
+    width: 209px;
+    height: 27px;
+
+    margin-bottom: 4px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.room-text {
+    width: 209px;
+    height: 19px;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.room-text-data p:nth-child(n+2) {
+    width: 212px;
+    height: 20px;
+
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.room-admin {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: auto;
+}
+
+.room-admin p {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 24px;
+    padding: 0px 5px;
+    border-radius: 2px;
+    font-size: 12px;
+    line-height: 20px;
+    background-color: transparent;
+    color: rgb(248, 118, 128);
+    border: 1px solid rgb(248, 118, 128);
+}
+
+.room-admin {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
 
 .marker-content {
     position: absolute;
