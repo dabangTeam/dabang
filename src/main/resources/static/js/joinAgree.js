@@ -1,4 +1,11 @@
 const joinBtn = document.querySelector(".JoinBtn");
+const loginBtn = document.querySelector(".login-page-button")
+
+loginBtn.onclick = () => {
+    console.log("login");
+    location.href = "/welcome/login";
+
+}
 
 joinBtn.onclick = () => {
     console.log("Join");
@@ -34,7 +41,7 @@ joinBtn.onclick = () => {
 const form = document.querySelector("#JoinAgree-form");
 const checkAll = document.querySelector(".Check-Container input");
 const checkBoxs = document.querySelectorAll(".Check-boxs input");
-const submitButton = document.querySelector("button");
+const submitButton = document.querySelector(".JoinBtn");
 
 const agreements = {
     agecheck:false,         //첫번재 필수동의 체크박스

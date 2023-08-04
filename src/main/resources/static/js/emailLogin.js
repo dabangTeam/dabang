@@ -94,7 +94,7 @@ loginBtn.onclick = () => {
     dataType: "json",
     success: (response) => {
       if (response.data) {
-        location.replace("/welcome");
+        location.replace("/index/");
       } else {
         noFindUser();
       }

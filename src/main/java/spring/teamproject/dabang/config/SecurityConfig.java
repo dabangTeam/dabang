@@ -33,25 +33,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/grant/test/user/**").access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/api/v1/grant/test/manager/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/api/v1/grant/test/admin/**").access("hasRole('ROLE_ADMIN')")
+                
+                .antMatchers("/manage")   //넣은 페이지 들은 로그인 해야 들어갈 수 있음
+    			.hasRole("ADMIN")
+    			
+    			
                 .antMatchers("/", "/index").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/welcome/login")
                 .loginProcessingUrl("/welcome/login")
-                .defaultSuccessUrl("/index")
-                .failureHandler(authenticationFailureHandler())
+                .defaultSuccessUrl("/index/")
+
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(principalOauth2UserService)
-                .and()
-                .defaultSuccessUrl("/index");
+                .and();
+                
+
     }
     
-    @Bean
-    public AuthenticationFailureHandler authenticationFailureHandler() {
-        return new AuthFailureHandler();
-    }
+
 }
 

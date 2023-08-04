@@ -1,5 +1,15 @@
 package spring.teamproject.dabang.web.controller.api;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.HashMap;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
@@ -8,12 +18,21 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.nimbusds.jose.shaded.json.JSONObject;
+import com.nimbusds.openid.connect.sdk.claims.UserInfo;
 
 import lombok.RequiredArgsConstructor;
 import spring.teamproject.dabang.handler.aop.annotation.ValidCheck;
@@ -25,6 +44,7 @@ import spring.teamproject.dabang.web.dto.auth.LoginReqDto;
 import spring.teamproject.dabang.web.dto.auth.SignupReqDto;
 import spring.teamproject.dabang.web.dto.auth.UserEmailCheckReqDto;
 import spring.teamproject.dabang.web.dto.auth.UserPasswordCheckReqDto;
+
 
 @RequiredArgsConstructor
 @RestController
@@ -118,5 +138,18 @@ public class AuthController {
 			return ResponseEntity.ok().body(new CMRespDto<>(0, "아이디 또는 비밀번호가 일치하지 않습니다.", status));
 		}
 	}
+	
 
-}
+
+
+	
+
+	
+
+ }
+	
+
+	
+
+
+

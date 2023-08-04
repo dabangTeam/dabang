@@ -1,5 +1,6 @@
 package spring.teamproject.dabang.service.auth;
 
+
 import java.util.Map;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -9,6 +10,7 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
+
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,6 +27,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 	@Override
 	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
 		// TODO Auto-generated method stub
+		System.out.println("시작");
+		
 		OAuth2User oAuth2User = super.loadUser(userRequest);
 		log.info(">>>> ClientRegistration: {} " + userRequest.getClientRegistration());
 		log.info(">>>> oAuth2User: {} ", oAuth2User);
@@ -32,7 +36,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		String provider = null;
 		ClientRegistration clientRegistration = userRequest.getClientRegistration();
 		Map<String, Object> attributes = oAuth2User.getAttributes();
-		System.out.println(" >>>>>>>>>>>>>>>>>> !!!!!!!!!!!!!!!!!!!!!!!! attributes" + attributes);
+//		System.out.println(" >>>>>>>>>>>>>>>>>> !!!!!!!!!!!!!!!!!!!!!!!! attributes" + attributes);
 		
 		provider = clientRegistration.getClientName();
 		log.info(">>> provider: {} " + provider);
@@ -66,47 +70,39 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 	        oauth2_id = provider + "_" + id;
 	    } else if (provider.equalsIgnoreCase("facebook")) {
 	        response = (Map<String, Object>) attributes.get("response");
+	        
+	        
 	        id = (String) response.get("id");
 	        oauth2_id = provider + "_" + id;
 	    } else {
 	        throw new OAuth2AuthenticationException("DATABASE Error!");
 	    }
+	    
 
-	    // 이메일을 가져왔으므로 이제 아래 코드에서 email 변수를 사용할 수 있습니다.
 	    try {
 	        user = userRepository.findOAuth2UserByUsername(oauth2_id);
+	        if (user == null) {
+	            // DB에 사용자 정보가 없는 경우, 새로운 사용자로 등록
+	            user = User.builder()
+	                    .user_email(email)
+	                    .user_password(new BCryptPasswordEncoder().encode(id))
+	                    .user_checkpassword(new BCryptPasswordEncoder().encode(id))
+	                    .oauth2_id(oauth2_id)
+	                    .user_roles("ROLE_USER")
+	                    .user_provider(provider)
+	                    .build();
+	            log.info("Before userRepository.save(user)");
+	            userRepository.save(user);
+	            log.info("After userRepository.save(user)");
+	        }
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        throw new OAuth2AuthenticationException("DATABASE Error!");
+	        throw new OAuth2AuthenticationException("DATABASE Error");
 	    }
 
-	    System.out.println(id);
-	    System.out.println(">>>>>>>> response" + response);
-
-	    if (user == null) {
-	        // 새로운 사용자인 경우에만 저장
-	        user = User.builder()
-	                .user_email(email) // 이메일 값 사용
-	                .user_password(new BCryptPasswordEncoder().encode(id))
-	                .user_checkpassword(new BCryptPasswordEncoder().encode(id))
-	                .oauth2_id(oauth2_id)
-	                .user_roles("ROLE_USER")
-	                .user_provider(provider)
-	                .build();
-	        log.info(">>> user2: {} ", user);
-
-	        try {
-	            userRepository.save(user);
-	            // 저장 후 다시 조회하여 반환
-	            user = userRepository.findOAuth2UserByUsername(oauth2_id);
-	            log.info(">>> user: {} ", user);
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	            throw new OAuth2AuthenticationException("DATABASE Error");
-	        }
-	    }
 
 	    return user;
 	}
+	
 
 }
