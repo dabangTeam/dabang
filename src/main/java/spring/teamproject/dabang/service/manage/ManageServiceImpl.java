@@ -53,7 +53,6 @@ public class ManageServiceImpl implements ManageService{
 		
 		return roomInfoRepository.remove(roomcode) > 0;
 	}
-<<<<<<< HEAD
 
 	@Override
 	public List<String> readAddressList() throws Exception {
@@ -73,9 +72,6 @@ public class ManageServiceImpl implements ManageService{
 		
 		return list;
 	}
-
-=======
->>>>>>> PJH
 	
 	
 }

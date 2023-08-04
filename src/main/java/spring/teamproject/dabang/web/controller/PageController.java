@@ -10,17 +10,6 @@ public class PageController {
 	public String getPage() {
 		return "index";
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
->>>>>>> 1b729a54df47f8f2373d44dbf556bcff662f51d1
-=======
-
->>>>>>> PJH
-=======
->>>>>>> ae3dafeb040fae082730416a3df22aa8661a3b11
 
 	@GetMapping("/search/map")
 	public String getSearchMap() {
@@ -46,19 +35,7 @@ public class PageController {
 	public String EmailLogin() {
 		return "/loginpages/login";
 	}
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 1b729a54df47f8f2373d44dbf556bcff662f51d1
-=======
-
->>>>>>> PJH
-=======
-
->>>>>>> ae3dafeb040fae082730416a3df22aa8661a3b11
 	@GetMapping("/board")
 	public String board() {
 		return "/board";
@@ -76,44 +53,11 @@ public class PageController {
 	@GetMapping("/inquery")
 	public String inquery() {
 		return "/inquery";
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-		
-	}
-	
-	
-	@GetMapping("/manage")
-	public String manageRoom() {
-		return "/uploadRoom/uploadRoom_result";
-=======
-	}
-		
-=======
 	}
 
->>>>>>> ae3dafeb040fae082730416a3df22aa8661a3b11
-	@GetMapping("/manage")
-	public String manageRoom() {
-		return "/uploadRoom/uploadRoom_result";
-	}
-<<<<<<< HEAD
-
->>>>>>> 1b729a54df47f8f2373d44dbf556bcff662f51d1
-=======
-	}
-	
 	@GetMapping("/manage")
 	public String manageRoom() {
 		return "/uploadRoom/uploadRoom_insert";
 	}
-
->>>>>>> PJH
-=======
-	
-
->>>>>>> ae3dafeb040fae082730416a3df22aa8661a3b11
-
-}
 	
 }

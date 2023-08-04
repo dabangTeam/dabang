@@ -149,14 +149,14 @@ public class RoomInfo {
 		
 		public ReadRoomInfoRespDto toReadAddressDto() {
 			return ReadRoomInfoRespDto.builder()
-					.sales_address(sales_address)
+					.salesAddress(sales_address)
 					.build();
 		}
 		
 		public ReadSimpleDataRespDto toSimpleDataDto() {
 			return ReadSimpleDataRespDto.builder()
-					.numFloors(numfloors)
-					.publicAdminFee(publicAdminFee)
+					.numFloors(num_floors)
+					.publicAdminFee(public_admin_fee)
 					.descTitle(desc_title)
 					.build();
 		}
