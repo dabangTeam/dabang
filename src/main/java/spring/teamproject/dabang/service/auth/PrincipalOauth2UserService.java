@@ -36,7 +36,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		String provider = null;
 		ClientRegistration clientRegistration = userRequest.getClientRegistration();
 		Map<String, Object> attributes = oAuth2User.getAttributes();
-		System.out.println(" >>>>>>>>>>>>>>>>>> !!!!!!!!!!!!!!!!!!!!!!!! attributes" + attributes);
+//		System.out.println(" >>>>>>>>>>>>>>>>>> !!!!!!!!!!!!!!!!!!!!!!!! attributes" + attributes);
 		
 		provider = clientRegistration.getClientName();
 		log.info(">>> provider: {} " + provider);
@@ -70,6 +70,8 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 	        oauth2_id = provider + "_" + id;
 	    } else if (provider.equalsIgnoreCase("facebook")) {
 	        response = (Map<String, Object>) attributes.get("response");
+	        
+	        
 	        id = (String) response.get("id");
 	        oauth2_id = provider + "_" + id;
 	    } else {
@@ -97,36 +99,6 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 	        e.printStackTrace();
 	        throw new OAuth2AuthenticationException("DATABASE Error");
 	    }
-
-//	    // 이메일을 가져왔으므로 이제 아래 코드에서 email 변수를 사용할 수 있습니다.
-//	    try {
-//	        user = userRepository.findOAuth2UserByUsername(oauth2_id);
-//	    } catch (Exception e) {
-//	        e.printStackTrace();
-//	        throw new OAuth2AuthenticationException("DATABASE Error!");
-//	    }
-//
-//	    System.out.println(id);
-//	    System.out.println(">>>>>>>> response" + response);
-//
-//
-//	    if (user == null) {
-//	        // DB에 사용자 정보가 없는 경우, 새로운 사용자로 등록
-//	        user = User.builder()
-//	                .user_email(email)
-//	                .user_password(new BCryptPasswordEncoder().encode(id))
-//	                .user_checkpassword(new BCryptPasswordEncoder().encode(id))
-//	                .oauth2_id(oauth2_id)
-//	                .user_roles("ROLE_USER")
-//	                .user_provider(provider)
-//	                .build();
-//	        try {
-//	            userRepository.save(user);
-//	        } catch (Exception e) {
-//	            e.printStackTrace();
-//	            throw new OAuth2AuthenticationException("DATABASE Error");
-//	        }
-//	    }
 
 
 	    return user;

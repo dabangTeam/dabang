@@ -31,10 +31,11 @@ spring:
             - account_email
             
           facebook:
-            client-id: 1063166511756172
-            client-secret: fb0105f4a5987358ac3cf3d49341406c
-            scope: public_profile,email
-          
+            client-id: 207047455352636
+            client-secret: 85112e45527fd30105fae3088d4cb40f
+            scope: public_profile, email
+            
+
         provider:
           kakao:
             authorization-uri: https://kauth.kakao.com/oauth/authorize
@@ -42,6 +43,10 @@ spring:
             user-info-uri: https://kapi.kakao.com/v2/user/me
             user-name-attribute: id
           
+          facebook:
+            token-uri: https://graph.facebook.com/oauth/access_token
+            authorization-uri: https://www.facebook.com/dialog/oauth
+            user-info-uri: https://graph.facebook.com/me  
 
   mvc:
     static-path-pattern: /static/**

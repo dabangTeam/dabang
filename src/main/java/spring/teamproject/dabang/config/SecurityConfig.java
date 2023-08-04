@@ -50,8 +50,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(principalOauth2UserService)
-                .and()
-                .defaultSuccessUrl("/index/");
+                .and();
+                
+
     }
     
 
