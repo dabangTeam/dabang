@@ -58,14 +58,14 @@
 	set
 		sales_type = #{sales_type}, sales_address = #{sales_address}, 
 		sales_size = #{sales_size}, sales_info = #{sales_info}, 
-		building_use = #{building_use}, buildingApproval = #{building_approval},
+		building_use = #{building_use}, building_approval = #{building_approval},
 		
 		trnsc_type = #{trnsc_type}, price_info = #{price_info}, 
-		publicAdminFee = #{public_admin_fee}, moveDate = #{move_date},
+		public_admin_fee = #{public_admin_fee}, move_date = #{move_date},
 		
 		num_floors = #{num_floors}, total_floors = #{total_floors}, 
 		num_bathrooms = #{num_bathrooms}, elevator = #{elevator}, 
-		parkingAvailability = #{parking_availability}, totalParking = #{total_parking},
+		parking_availability = #{parking_availability}, total_parking = #{total_parking},
 		
 		fac_heating = #{fac_heating}, fac_aircnd = #{fac_aircnd}, 
 		fac_comm = #{fac_comm}, fac_other = #{fac_other}, 

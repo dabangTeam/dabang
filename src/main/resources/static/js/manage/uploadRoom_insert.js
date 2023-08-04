@@ -474,7 +474,7 @@ inqueryButton.onclick = () => {
 		descDetail: getDataDetailContext,
 		salesType: selectedBuildingType,
 		//parkingAvailability: getParkingAvailability(),
-		facAircnd: getAirCndType()
+		//facAircnd: getAirCndType()
 		//facComm: getFacComm()
 	}
 	console.log(getData);

@@ -34,7 +34,7 @@ public class UpdateRoomInfoReqDto {
 		
 		// 시설정보
 		private int facHeating;
-		private List<Integer> facAircnd;
+		private int facAircnd;
 		private int facComm;
 		private int facOther;
 		private int facSecurity;

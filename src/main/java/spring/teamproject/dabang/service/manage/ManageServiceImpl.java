@@ -18,6 +18,7 @@ public class ManageServiceImpl implements ManageService{
 
 	@Override
 	public ReadRoomInfoRespDto readRoomInfo(int roomcode) throws Exception {
+		
 		return roomInfoRepository.getRoomInfoByRoomcode(roomcode).toReadRoomInfoDto();
 	}
 	

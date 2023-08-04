@@ -41,7 +41,7 @@ public class RoomInfo {
 		
 		// 시설정보
 		private int fac_heating;
-		private List<Integer> fac_aircnd;
+		private int fac_aircnd;
 		private int fac_comm;
 		private int fac_other;
 		private int fac_security;
