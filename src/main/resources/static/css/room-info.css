@@ -1,0 +1,22 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: auto;
+}
+
+.room-img-line {
+    margin-top: 40px;
+}
+
+.room-img-box {
+    width: 1180px;
+    margin: 0px auto;
+}
+
+.room-img-box img {
+    width: 100%;
+    height: 440px;
+}
