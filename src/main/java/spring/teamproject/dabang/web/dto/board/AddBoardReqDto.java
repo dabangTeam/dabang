@@ -5,15 +5,16 @@ import spring.teamproject.dabang.domain.board.Board;
 
 @Data
 public class AddBoardReqDto {
-	private String boardTitle;
-	private String boardContent;
-	private int boardNumber;
+	private String noticeTitle;
+	private String noticeContent;
+	private int noticeNumber;
 	
 	public Board toEntity() {
 		return Board.builder()
-				.board_title(boardTitle)
-				.board_content(boardContent)
-				.board_number(boardNumber)
+				.notice_title(noticeTitle)
+				.notice_content(noticeContent)
+				.notice_number(noticeNumber)
 				.build();
 	}
 }
+

@@ -5,20 +5,32 @@
   
 <mapper namespace="spring.teamproject.dabang.domain.board.BoardRepository">
 	<insert id="saveBoard" parameterType="spring.teamproject.dabang.domain.board.Board"
-	useGeneratedKeys="true" keyProperty="board_code">
+	useGeneratedKeys="true" keyProperty="notice_code">
 	insert into
 		notice_mst
 	values(
 		0,
 		0,
-		#{board_title},
-		#{board_content},
-		#{board_number},
+		#{notice_title},
+		#{notice_content},
+		#{notice_number},
 		now(),
 		now()
 	);
 	</insert>
 	
+<select id="getBoard" parameterType="integer" 
+	resultType="spring.teamproject.dabang.domain.board.Board">
+	SELECT
+		user_code,
+		notice_title,
+		notice_content
+	FROM
+		notice_mst
+	where
+		user_code = #{UserCode}
+		
+	</select>	
 <!-- 	<insert id="saveBoardFiles" parameterType="java.util.List">
 		insert into
 			notice_file

@@ -14,4 +14,6 @@ public interface BoardRepository {
 	public List<Board> getBoard(Map<String, Object> map) throws Exception;
 	
 	public List<Board> getBoardList(Map<String, Object> map) throws Exception;
+	
+	public List<Board> getBoard(int usercode) throws Exception;
 }

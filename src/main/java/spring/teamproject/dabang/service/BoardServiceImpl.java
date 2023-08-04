@@ -68,44 +68,7 @@ public class BoardServiceImpl implements BoardService{
 		return boardRepository.saveBoard(addBoardReqDto.toEntity()) == 1;
 	}
 	
-	@Override
-	public GetBoardRespDto getBoard(String flag, int BoardCode) throws Exception {
-		GetBoardRespDto getBoardRespDto = null;
-		
-		Map<String, Object> reqMap = new HashMap<String, Object>();
-		reqMap.put("flag", flag);
-		reqMap.put("Board_code", BoardCode);
-		
-		List<Board> Boards = boardRepository.getBoard(reqMap);
-		if(!Boards.isEmpty()) {
-			List<Map<String, Object>> downloadFiles = new ArrayList<Map<String, Object>>();
-			Boards.forEach(Board -> {
-				Map<String, Object> fileMap = new HashMap<String, Object>();
-				fileMap.put("fileCode", Board.getFile_code());
-				String fileName = Board.getFile_name();
-				if(fileName != null) {
-					fileMap.put("fileCode", Board.getFile_code());
-					fileMap.put("fileOriginName", fileName.substring(fileName.indexOf("_") + 1));
-					fileMap.put("fileTempName", fileName);
-				}
-				
-				downloadFiles.add(fileMap);	
-			});
-			
-			Board firstBoard = Boards.get(0);
-			getBoardRespDto = GetBoardRespDto.builder()
-					.boardCode(firstBoard.getBoard_code())
-					.boardTitle(firstBoard.getBoard_title())
-					.userCode(firstBoard.getUser_code())
-					.userId(firstBoard.getUser_id())
-					.createDate(firstBoard.getCreate_date().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")))
-					.boardCount(firstBoard.getBoard_count())
-					.boardContent(firstBoard.getBoard_content())
-					.downloadFiles(downloadFiles)
-					.build();
-		}
-		return getBoardRespDto;
-	}
+
 	
 	@Override
 	public List<GetBoardListRespDto> getBoardList(int page, String searchFlag, String searchValue) throws Exception {
@@ -122,6 +85,13 @@ public class BoardServiceImpl implements BoardService{
 			list.add(Board.toListDto());
 		});		
 		return list;
+	}
+
+	@Override
+	public List<Board> getBoardList(int UserCode) throws Exception {
+		List<Board> boardlist = boardRepository.getBoard(UserCode);
+		
+		return boardlist;
 	}
 
 }

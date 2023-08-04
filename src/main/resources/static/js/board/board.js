@@ -5,9 +5,9 @@ const boardData = document.querySelectorAll(".board-data");
 inqueryButton.onclick = () => {
 	
 	let getData = {
-		boardTitle: boardData[0].value,
-		boardContent: boardData[1].value,
-		boardNumber: 1
+		noticeTitle: boardData[0].value,
+		noticeContent: boardData[1].value,
+		noticeNumber: 1
 	}
 	
 	$.ajax({
