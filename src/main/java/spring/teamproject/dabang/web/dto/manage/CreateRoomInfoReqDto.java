@@ -2,6 +2,7 @@ package spring.teamproject.dabang.web.dto.manage;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Data;
 import spring.teamproject.dabang.domain.manage.RoomInfo;
@@ -11,7 +12,7 @@ public class CreateRoomInfoReqDto {
 	
 		// 매물정보
 		private int roomCode;
-		private int salesType;
+		private String salesType;
 		private String salesAddress;
 		private double salesSize;
 		private int salesInfo;
@@ -34,7 +35,7 @@ public class CreateRoomInfoReqDto {
 		
 		// 시설정보
 		private int facHeating;
-		private int facAircnd;
+		private List<Integer> facAircnd;
 		private int facComm;
 		private int facOther;
 		private int facSecurity;

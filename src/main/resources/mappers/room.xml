@@ -13,7 +13,7 @@
 			LEFT JOIN detailDesc ON salesInfo.room_code = detailDesc.room_code
 			LEFT JOIN fac_info ON salesInfo.room_code = fac_info.room_code
 			LEFT JOIN photoRegistration ON salesInfo.room_code = photoRegistration.room_code-->
-		WHERE salesInfo.room_code = #{roomcode};
+		WHERE salesInfo.room_code = #{room_code};
   	</select>
   	
   	<select id="getRoomListByRoomcode" parameterType="Integer" resultType="spring.teamproject.dabang.domain.manage.RoomInfo">
@@ -23,13 +23,13 @@
   		sales_type,
   		sales_address,
   		desc_title,
-  		updatedate
+  		update_date
   		
 		FROM 
 			salesInfo
 			
 		WHERE 
-			salesInfo.room_code = #{roomcode};
+			room_code = #{room_code};
   	</select>
   	
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.manage.RoomInfo"
@@ -58,12 +58,12 @@
 	set
 		sales_type = #{sales_type}, sales_address = #{sales_address}, 
 		sales_size = #{sales_size}, sales_info = #{sales_info}, 
-		buildingUse = #{building_use}, buildingApproval = #{building_approval},
+		building_use = #{building_use}, buildingApproval = #{building_approval},
 		
 		trnsc_type = #{trnsc_type}, price_info = #{price_info}, 
 		publicAdminFee = #{public_admin_fee}, moveDate = #{move_date},
 		
-		numfloors = #{num_floors}, totalfloors = #{total_floors}, 
+		num_floors = #{num_floors}, total_floors = #{total_floors}, 
 		num_bathrooms = #{num_bathrooms}, elevator = #{elevator}, 
 		parkingAvailability = #{parking_availability}, totalParking = #{total_parking},
 		
@@ -77,7 +77,7 @@
 		desc_title = #{desc_title}, desc_detail = #{desc_detail}, 
 		desc_code =#{desc_code},
 		
-		updatedate = now()
+		update_date = now()
 	
 	where 
 		room_code = #{room_code}
@@ -88,7 +88,7 @@
   	
   	delete
   		from salesInfo
-  		where room_code = #{roomcode}
+  		where room_code = #{room_code}
   	
   	</delete>
   </mapper>

@@ -54,7 +54,7 @@ public class PageController {
 	
 	@GetMapping("/manage")
 	public String manageRoom() {
-		return "/uploadRoom/uploadRoom_result";
+		return "/uploadRoom/uploadRoom_insert";
 	}
 
 

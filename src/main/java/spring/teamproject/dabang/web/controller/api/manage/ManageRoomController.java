@@ -1,8 +1,7 @@
 package spring.teamproject.dabang.web.controller.api.manage;
 
-import org.apache.ibatis.annotations.Delete;
+
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import spring.teamproject.dabang.service.manage.ManageService;
@@ -23,7 +22,9 @@ import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.UpdateRoomInfoReqDto;
 
+
 @Slf4j
+@Data
 @RestController
 @RequestMapping("api/v1/manage")
 @RequiredArgsConstructor
@@ -33,10 +34,8 @@ public class ManageRoomController {
 	
 	@GetMapping("/list/{roomcode}")
 	public ResponseEntity<?> getRoomList(@PathVariable int roomcode) {
-		ReadRoomInfoRespDto readRoomInfoRespDto = null;
-		log.info("룸리스트 정보 >>> ", readRoomInfoRespDto.getRoomCode());
+		ReadRoomInfoRespDto readRoomInfoRespDto = null;		
 
-		
 		try {
 			readRoomInfoRespDto = manageService.getRoomList(roomcode);
 		} catch (Exception e) {
@@ -64,10 +63,11 @@ public class ManageRoomController {
 	
 	@PostMapping("/content")
 	public ResponseEntity<?> addRoomInfo(@RequestBody CreateRoomInfoReqDto createRoomInfoReqDto) {
-		
+		System.out.println("요청받");
 		CreateRoomInfoRespDto createRoomInfoRespDto = null;
 		
 		try {
+			log.info("데이터가 전송되는지 확인 : {}", createRoomInfoReqDto);
 			createRoomInfoRespDto = manageService.createRoomInfo(createRoomInfoReqDto);
 		} catch (Exception e) {
 			e.printStackTrace();
