@@ -30,7 +30,6 @@ public interface RoomInfoRepository {
 	
 	
 	
-	
 	public List<String> getAddressList();
 	public List<String> getAddressCityList();
 	public List<String> getSimpleDataList();
