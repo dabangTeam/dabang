@@ -9,6 +9,11 @@ import spring.teamproject.dabang.web.dto.manage.UpdateRoomInfoReqDto;
 
 public interface ManageService {
 
+<<<<<<< HEAD
+=======
+	public ReadRoomInfoRespDto readRoomInfo(int roomcode) throws Exception;
+	public ReadRoomInfoRespDto getRoomList(int roomcode) throws Exception;
+>>>>>>> PJH
 	public CreateRoomInfoRespDto createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception;
 	
 	public ReadRoomInfoRespDto readRoomInfo(int roomcode) throws Exception;

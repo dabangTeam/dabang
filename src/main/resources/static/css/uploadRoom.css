@@ -91,6 +91,13 @@ option {
     min-height: 1.2em;
     padding: 0px 2px 1px;
 }
+/* input에 숫자 입력시 옆에 나타나는 증감표시 없애기*/
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 .each-section-spacing +
 .each-section-spacing {
     margin-top: 48px;
@@ -1037,6 +1044,10 @@ button > span {
     padding-bottom: 0px;
 }
 
+.roominfo-type-input:checked {
+    background-image: url(/static/images/ic_24_radio_selected.8279d40b.svg);
+}
+
 .roominfo-type-input:disabled {
     background-image: url(/static/images/ic_24_radio_disabled.e6d88f74.svg);
     cursor: default;
@@ -1049,7 +1060,7 @@ button > span {
     margin: 0px;
     border: 0px;
     border-radius: 50%;
-    background: url(/static/media/ic_24_radio_enabled.337eea5a.svg) center center / cover no-repeat;
+    background: url(/static/images/ic_24_radio_enabled.337eea5a.svg) center center / cover no-repeat;
     appearance: none;
     cursor: pointer;
 }
@@ -1074,9 +1085,9 @@ button > span {
     padding-top: 0px;
     padding-bottom: 0px;
 }
-
-.livingroom-type-input:disabled {
-    background-image: url(/static/images/ic_24_checkbox_disabled.9592dcac.svg);
+.livingroom-type-input:checked {
+    background-image: url(/static/images/ic_24_checkbox_checked.58e03a95.svg);
+   /* background-image: url(/static/images/ic_24_checkbox_disabled.9592dcac.svg);*/
     cursor: default;
 }
 
@@ -1551,11 +1562,11 @@ button > span {
     padding-bottom: 100px;
     text-align: center;
 }
-.uploadRoom-submitBtn:disabled {
+.submitBtn:disabled {
     background-color: rgb(223, 223, 223);
     cursor: default;
 }
-.uploadRoom-submitBtn {
+.submitBtn {
     flex: 0 0 auto;
     display: inline-flex;
     -webkit-box-align: center;

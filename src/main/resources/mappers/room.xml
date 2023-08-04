@@ -16,12 +16,30 @@
 		WHERE salesInfo.room_code = #{room_code};
   	</select>
   	
+<<<<<<< HEAD
   	<select id="getAddressList" resultType="java.lang.String">
   		SELECT
 			sales_address
 		FROM
 			salesInfo
   	</select> 	
+=======
+  	<select id="getRoomListByRoomcode" parameterType="Integer" resultType="spring.teamproject.dabang.domain.manage.RoomInfo">
+  	SELECT 
+  		trnsc_type,
+  		price_info,
+  		sales_type,
+  		sales_address,
+  		desc_title,
+  		update_date
+  		
+		FROM 
+			salesInfo
+			
+		WHERE 
+			room_code = #{room_code};
+  	</select>
+>>>>>>> PJH
   	
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.manage.RoomInfo"
   	useGeneratedKeys="true" keyProperty="room_code">
@@ -29,13 +47,13 @@
 		salesInfo
 	values (
 		0,
-		#{sales_type}, #{sales_address}, #{sales_size}, #{sales_info}, #{buildingUse}, #{buildingApproval},
-		#{trnsc_type}, #{price_info}, #{publicAdminFee}, #{moveDate},
-		#{numfloors}, #{totalfloors}, #{num_bathrooms}, #{elevator}, #{parkingAvailability},  #{totalParking},
-		#{desc_title}, #{desc_detail}, #{desc_code},
+		#{sales_type}, #{sales_address}, #{sales_size}, #{sales_info}, #{building_use}, #{building_approval},
+		#{trnsc_type}, #{price_info}, #{public_admin_fee}, #{move_date},
+		#{num_floors}, #{total_floors}, #{num_bathrooms}, #{elevator}, #{parking_availability}, #{total_parking},
 		#{fac_heating}, #{fac_aircnd}, #{fac_comm}, #{fac_other}, #{fac_security},
 		#{photo_general}, #{photo_filename}, #{photo_filecode},
-		#{usercode},
+		#{desc_title}, #{desc_detail}, #{desc_code},
+		#{user_code},
 		now(),
 		now()
 	)
@@ -49,17 +67,14 @@
 	set
 		sales_type = #{sales_type}, sales_address = #{sales_address}, 
 		sales_size = #{sales_size}, sales_info = #{sales_info}, 
-		buildingUse = #{buildingUse}, buildingApproval = #{buildingApproval},
+		building_use = #{building_use}, building_approval = #{building_approval},
 		
 		trnsc_type = #{trnsc_type}, price_info = #{price_info}, 
-		publicAdminFee = #{publicAdminFee}, moveDate = #{moveDate},
+		public_admin_fee = #{public_admin_fee}, move_date = #{move_date},
 		
-		numfloors = #{numfloors}, totalfloors = #{totalfloors}, 
+		num_floors = #{num_floors}, total_floors = #{total_floors}, 
 		num_bathrooms = #{num_bathrooms}, elevator = #{elevator}, 
-		parkingAvailability = #{parkingAvailability}, totalParking = #{totalParking},
-		
-		desc_title = #{desc_title}, desc_detail = #{desc_detail}, 
-		desc_code =#{desc_code},
+		parking_availability = #{parking_availability}, total_parking = #{total_parking},
 		
 		fac_heating = #{fac_heating}, fac_aircnd = #{fac_aircnd}, 
 		fac_comm = #{fac_comm}, fac_other = #{fac_other}, 
@@ -68,7 +83,10 @@
 		photo_general = #{photo_general}, photo_filename = #{photo_filename}, 
 		photo_filecode = #{photo_filecode},
 		
-		updatedate = now()
+		desc_title = #{desc_title}, desc_detail = #{desc_detail}, 
+		desc_code =#{desc_code},
+		
+		update_date = now()
 	
 	where 
 		room_code = #{room_code}

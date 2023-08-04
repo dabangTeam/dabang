@@ -11,9 +11,13 @@ public class PageController {
 		return "index";
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 1b729a54df47f8f2373d44dbf556bcff662f51d1
+=======
+
+>>>>>>> PJH
 
 	@GetMapping("/search/map")
 	public String getSearchMap() {
@@ -40,10 +44,14 @@ public class PageController {
 		return "/loginpages/Login";
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 	
 >>>>>>> 1b729a54df47f8f2373d44dbf556bcff662f51d1
+=======
+
+>>>>>>> PJH
 	@GetMapping("/board")
 	public String board() {
 		return "/board";
@@ -62,6 +70,7 @@ public class PageController {
 	public String inquery() {
 		return "/inquery";
 <<<<<<< HEAD
+<<<<<<< HEAD
 		
 	}
 	
@@ -78,6 +87,15 @@ public class PageController {
 	}
 
 >>>>>>> 1b729a54df47f8f2373d44dbf556bcff662f51d1
+=======
+	}
+	
+	@GetMapping("/manage")
+	public String manageRoom() {
+		return "/uploadRoom/uploadRoom_insert";
+	}
+
+>>>>>>> PJH
 
 }
 	

@@ -21,7 +21,13 @@ public class ManageServiceImpl implements ManageService{
 
 	@Override
 	public ReadRoomInfoRespDto readRoomInfo(int roomcode) throws Exception {
+		
 		return roomInfoRepository.getRoomInfoByRoomcode(roomcode).toReadRoomInfoDto();
+	}
+	
+	@Override
+	public ReadRoomInfoRespDto getRoomList(int roomcode) throws Exception {
+		return roomInfoRepository.getRoomListByRoomcode(roomcode).toGetRoomInfoDto();
 	}
 
 	@Override
@@ -47,6 +53,7 @@ public class ManageServiceImpl implements ManageService{
 		
 		return roomInfoRepository.remove(roomcode) > 0;
 	}
+<<<<<<< HEAD
 
 	@Override
 	public List<String> readAddressList() throws Exception {
@@ -67,6 +74,8 @@ public class ManageServiceImpl implements ManageService{
 		return list;
 	}
 
+=======
+>>>>>>> PJH
 	
 	
 }

@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 	<link rel="stylesheet" href="/static/css/style.css">
 	<link rel="stylesheet" href="/static/css/uploadRoom.css">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 	<div class="mainbody">
@@ -97,25 +98,25 @@
 										<div class="room-house-box">
 											<div class="room-house-option">
 												<div class="room-option-box">
-													<div>
+													<div class="room-room">
 														<label class="room-option-choice">
-															<input type="radio" name="buildingType" class="house-type-box" checked>
+															<input type="radio" name="buildingType" value="buildingType1" class="house-type-box buildingTypeText" checked>
 															<p class="house-type-text">빌라/연립/다세대</p>
 														</label>
 														<label class="room-option-choice">
-															<input type="radio" name="buildingType" class="house-type-box">
+															<input type="radio" name="buildingType" value="buildingType2" class="house-type-box buildingTypeText">
 															<p class="house-type-text">단독주택</p>
 														</label>
 														<label class="room-option-choice">
-															<input type="radio" name="buildingType" class="house-type-box">
+															<input type="radio" name="buildingType" value="buildingType3" class="house-type-box buildingTypeText">
 															<p class="house-type-text">다가구주택</p>
 														</label>
 														<label class="room-option-choice">
-															<input type="radio" name="buildingType" class="house-type-box">
+															<input type="radio" name="buildingType" value="buildingType4" class="house-type-box buildingTypeText">
 															<p class="house-type-text">상가주택</p>
 														</label>
 														<label class="room-option-choice">
-															<input type="radio" name="buildingType" class="house-type-box">
+															<input type="radio" name="buildingType" value="buildingType5" class="house-type-box buildingTypeText">
 															<p class="house-type-text">기타</p>
 														</label>
 													</div>
@@ -154,7 +155,7 @@
 														<div>
 															<form class="address-search-formBox">
 																<div class="address-search-formBlock">
-																	<input autocomplete="off" type="text" name="" placeholder="예) 번동10-1, 강북구 번동" class="address-search-inputBox" value>
+																	<input autocomplete="off" type="text" name="" placeholder="예) 번동10-1, 강북구 번동" class="address-search-inputBox inputAddress" value>
 																</div>
 																<button type="submit" class="address-search-submintBtn">
 																	<span class="address-search-submitText">검색</span>
@@ -171,7 +172,7 @@
 														<div class="dong-box">
 															<div>
 																<div class="dong-box-main">
-																	<input disabled autocomplete="off" type="text" name="" placeholder="예) 101" class="dong-box-input" value>
+																	<input autocomplete="off" type="text" name="" placeholder="예) 101" class="dong-box-input inputAddress" value>
 																	<p class="dong-box-pText unit">동</p>
 																</div>
 															</div>
@@ -184,7 +185,7 @@
 														<div class="ho-box">
 															<div>
 																<div class="ho-box-main">
-																	<input disabled autocomplete="off" type="text" name="" placeholder="예) 101" class="dong-box-input" value>
+																	<input autocomplete="off" type="text" name="" placeholder="예) 101" class="dong-box-input inputAddress" value>
 																	<p class="dong-box-pText unit">호</p>
 																</div>
 															</div>
@@ -229,12 +230,12 @@
 												<div class="roomsize-exclusive-area">
 													<div>
 														<div class="exclusive-ppp-area">
-															<input autocomplete="off" type="text" name="room" placeholder="평수 입력" class="exclusive-ppp-input" value>
+															<input autocomplete="off" type="number" name="exclusiveArea"  placeholder="평수 입력" class="exclusive-ppp-input exclusiveAreaText exclusiveP" value>
 															<p class="dong-box-pText unit">평</p>
 														</div>
 														<p class="exclusive-pText-equals">=</p>
 														<div class="exclusive-mmm-area">
-															<input autocomplete="off" type="text" name="room" placeholder="m2 입력" class="exclusive-mmm-input" value>
+															<input autocomplete="off" type="number" name="exclusiveArea" placeholder="m2 입력" class="exclusive-mmm-input exclusiveAreaText exclusiveM" value>
 															<p class="dong-box-pText unit">m<sup>2</sup></p>
 														</div>
 													</div>
@@ -247,12 +248,12 @@
 												<div class="roomsize-exclusive-area">
 													<div>
 														<div class="exclusive-ppp-area">
-															<input autocomplete="off" type="text" name="supply" placeholder="평수 입력" class="exclusive-ppp-input" value>
+															<input autocomplete="off" type="number" name="supplyArea" placeholder="평수 입력" class="exclusive-ppp-input supplyAreaText supplyP" value>
 															<p class="dong-box-pText unit">평</p>
 														</div>
 														<p class="exclusive-pText-equals">=</p>
 														<div class="exclusive-mmm-area">
-															<input autocomplete="off" type="text" name="supply" placeholder="m2 입력" class="exclusive-mmm-input" value>
+															<input autocomplete="off" type="number" name="supplyArea" placeholder="m2 입력" class="exclusive-mmm-input supplyAreaText supplyM" value>
 															<p class="dong-box-pText unit">㎡</p>	
 														</div>
 													</div>
@@ -277,7 +278,7 @@
 												<div class="roominfo-count-block">
 													<div>
 														<div class="roominfo-count-box">
-															<input autocomplete="off" type="text" class="exclusive-mmm-input" value="">
+															<input autocomplete="off" type="number" class="exclusive-mmm-input roomCount">
 																<div contenteditable="plaintext-only"></div>
 															<p class="dong-box-pText unit">개</p>
 														</div>
@@ -291,11 +292,11 @@
 												<div class="roominfo-type-block">
 													<div>
 														<label class="roominfo-type-label">
-															<input disabled type="radio" class="roominfo-type-input">
+															<input type="radio" name="livingRoomType" value="livingRoomType1" class="roominfo-type-input livingRoomTypeText" disabled>
 															<p class="roominfo-type-pTag">오픈형</p>
 														</label>
 														<label class="roominfo-type-label">
-															<input disabled type="radio" class="roominfo-type-input">
+															<input type="radio" name="livingRoomType" value="livingRoomType2" class="roominfo-type-input livingRoomTypeText" disabled>
 															<p class="roominfo-type-pTag">분리형</p>
 														</label>
 													</div>
@@ -308,15 +309,15 @@
 												<div class="roominfo-type-block">
 													<div>
 														<label class="livingroom-type-lable">
-															<input disabled type="checkbox" class="livingroom-type-input">
+															<input type="checkbox" name="roomChar" value="roomChar1" class="livingroom-type-input roomCharText" disabled>
 															<p class="livingroom-type-pTag">신축</p>
 														</label>
 														<label class="livingroom-type-lable">
-															<input disabled type="checkbox" class="livingroom-type-input">
+															<input type="checkbox" name="roomChar" value="roomChar2" class="livingroom-type-input roomCharText" disabled>
 															<p class="livingroom-type-pTag">큰길가</p>
 														</label>
 														<label class="livingroom-type-lable">
-															<input disabled type="checkbox" class="livingroom-type-input">
+															<input type="checkbox" name="roomChar" value="roomChar3" class="livingroom-type-input roomCharText" disabled>
 															<p class="livingroom-type-pTag">반려동물</p>
 														</label>
 													</div>
@@ -457,11 +458,11 @@
 												<div class="room-option-box">
 													<div>
 														<label class="room-option-choice">
-															<input type="radio" class="house-type-box" checked>
+															<input type="radio" name="tradeType" value="tradeType1" class="house-type-box tradeTypeText" checked>
 															<p class="house-type-text">전세</p>
 														</label>
 														<label class="room-option-choice">
-															<input type="radio" class="house-type-box">
+															<input type="radio" name="tradeType" value="tradeType2" class="house-type-box tradeTypeText">
 															<p class="house-type-text">월세</p>
 														</label>
 													</div>
@@ -478,17 +479,44 @@
 										</h1>
 									</th>
 									<td>
-										<div class="tradeInfo-type">
-											<div class="tradeInfo-priceInfo-div roomSizeGroup">
+										<div class="tradeInfo-type tradeTypeInputsDiv">
+											<div class="tradeInfo-priceInfo-div roomSizeGroup depositDiv">
 												<header class="roomsize-exclusive-header">
 													<h1 class="roomsize-exclusive-text">전세가</h1>
 												</header>
 												<div class="roomsize-exclusive-area">
 													<div>
 														<div class="roominfo-count-box">
-															<input autocomplete="off" type="text" name="deposit" class="tradeInfo-priceInfo-input" value>
-																<div contenteditable="plaintext-only"></div>
+															<input autocomplete="off" type="number" name="deposit" class="tradeInfo-priceInfo-input depositText" value>
 															<p class="dong-box-pText unit">만원</p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="rentPriceDiv">
+												<div class="tradeInfo-priceInfo-div roomSizeGroup rentPriceDepositDiv">
+													<header class="roomsize-exclusive-header">
+														<h1 class="roomsize-exclusive-text">보증금</h1>
+													</header>
+													<div class="roomsize-exclusive-area">
+														<div>
+															<div class="roominfo-count-box">
+																<input autocomplete="off" type="number" name="rentPrice" class="tradeInfo-priceInfo-input rentPriceDepositText" value>
+																<p class="dong-box-pText unit">만원</p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="tradeInfo-priceInfo-div roomSizeGroup rentPriceDiv">
+													<header class="roomsize-exclusive-header">
+														<h1 class="roomsize-exclusive-text">월세</h1>
+													</header>
+													<div class="roomsize-exclusive-area">
+														<div>
+															<div class="roominfo-count-box">
+																<input autocomplete="off" type="number" name="rentPrice" class="tradeInfo-priceInfo-input rentPriceMonthly" value>
+																<p class="dong-box-pText unit">만원</p>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -512,11 +540,11 @@
 												<div class="roominfo-type-block">
 													<div>
 														<label class="room-option-choice">
-															<input type="radio" class="house-type-box" checked>
+															<input type="radio" name="managementFee" value="managementFee1" class="house-type-box managementFeeCheckbox" checked>
 															<p class="house-type-text">없음</p>
 														</label>
 														<label class="room-option-choice">
-															<input type="radio" class="house-type-box">
+															<input type="radio" name="managementFee" value="managementFee2" class="house-type-box managementFeeCheckbox">
 															<p class="house-type-text">있음</p>
 														</label>
 													</div>
@@ -529,7 +557,7 @@
 												<div class="roomsize-exclusive-area">
 													<div>
 														<div class="tradeIfno-feeArea-div">
-															<input disabled autocomplete="off" type="text" class="dong-box-input" value>
+															<input disabled autocomplete="off" name="managementFeeInput" type="number" class="dong-box-input managementFeeText" value>
 																<div contenteditable="false"></div>
 															<p class="dong-box-pText unit">원</p>
 														</div>
@@ -552,11 +580,11 @@
 												<div class="room-option-box">
 													<div>
 														<label class="room-option-choice">
-															<input type="radio" class="house-type-box" checked>
+															<input type="radio" name="possibleMoveDate" value="possibleMoveDate1" class="house-type-box possibleMoveDateText" checked>
 															<p class="house-type-text">즉시 입주</p>
 														</label>
 														<label class="room-option-choice">
-															<input type="radio" class="house-type-box">
+															<input type="radio" name="possibleMoveDate" value="possibleMoveDate2" class="house-type-box possibleMoveDateText">
 															<p class="house-type-text">일자 선택</p>
 														</label>
 													</div>
@@ -691,7 +719,7 @@
 											<div class="roomsize-exclusive-area">
 												<div>
 													<div class="roominfo-count-box">
-														<input autocomplete="off" type="text" class="exclusive-ppp-input" value>
+														<input autocomplete="off" type="text" class="exclusive-ppp-input countBathroomText" value>
 															<div contenteditable="plaintext-only"></div>
 														<p class="dong-box-pText unit">개</p>
 													</div>
@@ -710,11 +738,11 @@
 											<div class="room-option-box">
 												<div>
 													<label class="room-option-choice">
-														<input type="radio" class="house-type-box" checked>
+														<input type="radio" name="elevator" value="elevator1" class="house-type-box" checked>
 														<p class="house-type-text">없음</p>
 													</label>
 													<label class="room-option-choice">
-														<input type="radio" class="house-type-box">
+														<input type="radio" name="elevator" value="elevator2" class="house-type-box">
 														<p class="house-type-text">있음</p>
 													</label>
 												</div>
@@ -735,11 +763,11 @@
 												<div class="room-option-box">
 													<div>
 														<label class="room-option-choice">
-															<input type="radio" class="house-type-box" checked>
+															<input type="radio" name="parkingAvailability"  value="parkingAvailability1" class="house-type-box parkingAvailabilityCheckbox" checked>
 															<p class="house-type-text">불가능</p>
 														</label>
 														<label class="room-option-choice">
-															<input type="radio" class="house-type-box">
+															<input type="radio" name="parkingAvailability" value="parkingAvailability2" class="house-type-box parkingAvailabilityCheckbox">
 															<p class="house-type-text">가능</p>
 														</label>
 													</div>
@@ -749,7 +777,7 @@
 												<div class="roomsize-exclusive-area">
 													<div>
 														<div class="tradeIfno-feeArea-div">
-															<input disabled autocomplete="off" type="text" placeholder="총 가능 주차수" class="exclusive-ppp-input" value>
+															<input disabled autocomplete="off" type="number" placeholder="총 가능 주차수" class="exclusive-ppp-input parkingText" value>
 																<div contenteditable="false"></div>
 															<p class="dong-box-pText unit">대</p>
 														</div>
@@ -781,19 +809,19 @@
 											<div class="room-option-box">
 												<div>
 													<label class="room-option-choice">
-														<input type="radio" name="heatingType" class="house-type-box" checked>
+														<input type="radio" name="heatingType" value="heatingType1" class="house-type-box" checked>
 														<p class="house-type-text">선택 안함</p>
 													</label>
 													<label class="room-option-choice">
-														<input type="radio" name="heatingType" class="house-type-box">
+														<input type="radio" name="heatingType" value="heatingType2" class="house-type-box">
 														<p class="house-type-text">개별난방</p>
 													</label>
 													<label class="room-option-choice">
-														<input type="radio" name="heatingType" class="house-type-box">
+														<input type="radio" name="heatingType" value="heatingType3" class="house-type-box">
 														<p class="house-type-text">중앙난방</p>
 													</label>
 													<label class="room-option-choice">
-														<input type="radio" name="heatingType" class="house-type-box">
+														<input type="radio" name="heatingType" value="heatingType4" class="house-type-box">
 														<p class="house-type-text">지역난방</p>
 													</label>
 												</div>
@@ -810,15 +838,15 @@
 											<div class="room-option-box">
 												<div>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="airCndType" value="airCndType1" class="livingroom-type-input airCndTypeText">
 														<p class="small-checkbox-realtext">벽걸이형</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="airCndType" value="airCndType2" class="livingroom-type-input airCndTypeText">
 														<p class="small-checkbox-realtext">스탠드형</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="airCndType" value="airCndType3" class="livingroom-type-input airCndTypeText">
 														<p class="small-checkbox-realtext">천장형</p>
 													</label>
 												</div>
@@ -835,7 +863,7 @@
 											<div class="room-option-box">
 												<div>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facCommAllSelected" value="facCommAllSelected1" class="livingroom-type-input facCommAllSelectedText">
 														<p class="small-checkbox-realtext">전체 선택</p>
 													</label>
 												</div>
@@ -845,83 +873,83 @@
 											<div class="facilityInfo-living-div">
 												<div>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm1" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">침대</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm2" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">책상</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm3" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">옷장</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm4" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">식탁</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm5" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">쇼파</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm6" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">신발장</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm7" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">냉장고</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm8" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">세탁기</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm9" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">건조기</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm10" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">샤워부스</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm11" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">욕조</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm12" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">비데</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm13" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">싱크대</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm14" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">식기세척기</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm15" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">가스레인지</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm16" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">인덕션</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm17" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">전자레인지</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm18" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">가스오븐</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm19" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">TV</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facComm" value="facComm20" class="livingroom-type-input facCommText">
 														<p class="small-checkbox-realtext">붙박이장</p>
 													</label>
 												</div>
@@ -938,7 +966,7 @@
 											<div class="room-option-box">
 												<div>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSecAllSelected" class="livingroom-type-input facSecAllSelectedText">
 														<p class="small-checkbox-realtext">전체 선택</p>
 													</label>
 												</div>
@@ -948,35 +976,35 @@
 											<div class="facilityInfo-living-div">
 												<div>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSec" value="facSec1" class="livingroom-type-input facSecText">
 														<p class="small-checkbox-realtext">경비원</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSec" value="facSec2" class="livingroom-type-input facSecText">
 														<p class="small-checkbox-realtext">비디오폰</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSec" value="facSec3" class="livingroom-type-input facSecText">
 														<p class="small-checkbox-realtext">인터폰</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSec" value="facSec4" class="livingroom-type-input facSecText">
 														<p class="small-checkbox-realtext">카드키</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSec" value="facSec5" class="livingroom-type-input facSecText">
 														<p class="small-checkbox-realtext">CCTV</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSec" value="facSec6" class="livingroom-type-input facSecText">
 														<p class="small-checkbox-realtext">사설경비</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSec" value="facSec7" class="livingroom-type-input facSecText">
 														<p class="small-checkbox-realtext">현관보안</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facSec" value="facSec8" class="livingroom-type-input facSecText">
 														<p class="small-checkbox-realtext">방범창</p>
 													</label>
 												</div>
@@ -993,23 +1021,23 @@
 											<div class="room-option-box">
 												<div>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facOther" value="facOther1" class="livingroom-type-input facOtherText">
 														<p class="small-checkbox-realtext">화재경보기</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facOther" value="facOther2" class="livingroom-type-input facOtherText">
 														<p class="small-checkbox-realtext">베란다</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facOther" value="facOther3" class="livingroom-type-input facOtherText">
 														<p class="small-checkbox-realtext">테라스</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facOther" value="facOther4" class="livingroom-type-input facOtherText">
 														<p class="small-checkbox-realtext">마당</p>
 													</label>
 													<label class="tradeInfo-movein-label">
-														<input type="checkbox" class="livingroom-type-input">
+														<input type="checkbox" name="facOther" value="facOther5" class="livingroom-type-input facOtherText">
 														<p class="small-checkbox-realtext">무인택배함</p>
 													</label>
 												</div>
@@ -1090,7 +1118,7 @@
 												<div>
 													<div class="roominfo-count-box">
 														<input autocomplete="off" type="text" placeholder="리스트에 노출되는 문구입니다. 40자 이내로 작성해 주세요." 
-														class="detailInfo-title" value>
+														class="detailInfo-title detailTitleText" value>
 															<div contenteditable="plaintext-only"></div>
 													</div>
 												</div>
@@ -1119,7 +1147,7 @@
 												<div>
 													<label class="detailInfo-textLabel">
 														<div class="detailInfo-textDiv">
-															<textarea placeholder="매물 상세 페이지에 노출되는 문구입니다. &#10;1000자 이내로 작성해 주세요." class="detailInfo-textArea"></textarea>
+															<textarea placeholder="매물 상세 페이지에 노출되는 문구입니다. &#10;1000자 이내로 작성해 주세요." class="detailInfo-textArea detailContentText"></textarea>
 															<div contenteditable="plaintext-only"></div>
 															<div class="detailInfo-Div"></div>
 														</div>
@@ -1151,11 +1179,12 @@
 				</label>
 			</div>
 			<div class="uploadRoom-low-submit">
-				<button type="button" disabled class="uploadRoom-submitBtn">
+				<button type="button" class="submitBtn"> <!--disabled가 있었음.-->
 					<span class="uploadRoom-submitSpan">매물 등록</span>
 				</button>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="/static/js/manage/uploadRoom_insert.js"></script>
 </body>
 </html>

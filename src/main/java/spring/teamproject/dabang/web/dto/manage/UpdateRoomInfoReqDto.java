@@ -2,6 +2,7 @@ package spring.teamproject.dabang.web.dto.manage;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.Data;
 import spring.teamproject.dabang.domain.manage.RoomInfo;
@@ -9,83 +10,83 @@ import spring.teamproject.dabang.domain.manage.RoomInfo;
 @Data
 public class UpdateRoomInfoReqDto {
 	// 매물정보
-		private int room_code;
-		private int sales_type;
-		private String sales_address;
-		private double sales_size;
-		private int sales_info;
+		private int roomCode;
+		private String salesType;
+		private String salesAddress;
+		private double salesSize;
+		private int salesInfo;
 		private int buildingUse;
 		private int buildingApproval;
-			
+		
 		// 거래정보
-		private int trnsc_type;
-		private int price_info;
+		private int trnscType;
+		private int priceInfo;
 		private int publicAdminFee;
 		private Date moveDate;
-			
+		
 		// 추가정보
-		private int numfloors;
-		private int totalfloors;
-		private int num_bathrooms;
+		private int numFloors;
+		private int totalFloors;
+		private int numBathrooms;
 		private int elevator;
 		private int parkingAvailability;
 		private int totalParking;
-			
+		
 		// 시설정보
-		private int fac_heating;
-		private int fac_aircnd;
-		private int fac_comm;
-		private int fac_other;
-		private int fac_security;
-			
+		private int facHeating;
+		private int facAircnd;
+		private int facComm;
+		private int facOther;
+		private int facSecurity;
+		
 		// 사진등록
-		private String photo_general;
-		private String photo_filename;
-		private String photo_filecode;
-			
+		private String photoGeneral;
+		private String photoFilename;
+		private String photoFilecode;
+		
 		// 상세설명
-		private String desc_title;
-		private String desc_detail;
-		private String desc_code;
-
+		private String descTitle;
+		private String descDetail;
+		private String descCode;
+		
 		// 유저정보 및 업로드
-		private int usercode;
-		private LocalDateTime createdate;
-		private LocalDateTime updatedate;
+		private int userCode;
+		private LocalDateTime createDate;
+		private LocalDateTime updateDate;
 		
 		public RoomInfo toEntity() {
 			return RoomInfo.builder()
-					.room_code(room_code)
-					.sales_type(sales_type)
-					.sales_address(sales_address)
-					.sales_info(sales_info)
-					.sales_size(sales_size)
-					.buildingApproval(buildingApproval)
-					.buildingUse(buildingUse)
-					.trnsc_type(trnsc_type)
-					.price_info(price_info)
-					.publicAdminFee(publicAdminFee)
-					.moveDate(moveDate)
-					.numfloors(numfloors)
-					.totalfloors(totalfloors)
-					.num_bathrooms(num_bathrooms)
+					.room_code(roomCode)
+					.sales_type(salesType)
+					.sales_address(salesAddress)
+					.sales_info(salesInfo)
+					.sales_size(salesSize)
+					.building_approval(buildingApproval)
+					.building_use(buildingUse)
+					.trnsc_type(trnscType)
+					.price_info(priceInfo)
+					.public_admin_fee(publicAdminFee)
+					.move_date(moveDate)
+					.num_floors(numFloors)
+					.total_floors(totalFloors)
+					.num_bathrooms(numBathrooms)
 					.elevator(elevator)
-					.parkingAvailability(parkingAvailability)
-					.totalParking(totalParking)
-					.fac_aircnd(fac_aircnd)
-					.fac_comm(fac_comm)
-					.fac_heating(fac_heating)
-					.fac_other(fac_other)
-					.fac_security(fac_security)
-					.photo_filecode(photo_filecode)
-					.photo_filename(photo_filename)
-					.photo_general(photo_general)
-					.desc_code(desc_code)
-					.desc_detail(desc_detail)
-					.desc_title(desc_title)
-					.usercode(usercode)
-					.createdate(createdate)
-					.updatedate(updatedate)
+					.parking_availability(parkingAvailability)
+					.total_parking(totalParking)
+					.fac_aircnd(facAircnd)
+					.fac_comm(facComm)
+					.fac_heating(facHeating)
+					.fac_other(facOther)
+					.fac_security(facSecurity)
+					.photo_filecode(photoFilecode)
+					.photo_filename(photoFilename)
+					.photo_general(photoGeneral)
+					.desc_code(descCode)
+					.desc_detail(descDetail)
+					.desc_title(descTitle)
+					.user_code(userCode)
+					.create_date(createDate)
+					.update_date(updateDate)
 					.build();
 		}
 

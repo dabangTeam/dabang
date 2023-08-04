@@ -2,6 +2,7 @@ package spring.teamproject.dabang.domain.manage;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,26 +19,26 @@ import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 public class RoomInfo {
 		// 매물정보
 		private int room_code;
-		private int sales_type;
+		private String sales_type;
 		private String sales_address;
 		private double sales_size;
 		private int sales_info;
-		private int buildingUse;
-		private int buildingApproval;
+		private int building_use;
+		private int building_approval;
 		
 		// 거래정보
 		private int trnsc_type;
 		private int price_info;
-		private int publicAdminFee;
-		private Date moveDate;
+		private int public_admin_fee;
+		private Date move_date;
 		
 		// 추가정보
-		private int numfloors;
-		private int totalfloors;
+		private int num_floors;
+		private int total_floors;
 		private int num_bathrooms;
 		private int elevator;
-		private int parkingAvailability;
-		private int totalParking;
+		private int parking_availability;
+		private int total_parking;
 		
 		// 시설정보
 		private int fac_heating;
@@ -57,80 +58,92 @@ public class RoomInfo {
 		private String desc_code;
 		
 		// 유저정보 및 업로드
-		private int usercode;
-		private LocalDateTime createdate;
-		private LocalDateTime updatedate;
+		private int user_code;
+		private LocalDateTime create_date;
+		private LocalDateTime update_date;
 		
 		public ReadRoomInfoRespDto toReadRoomInfoDto() {
 			return ReadRoomInfoRespDto.builder()
-					.room_code(room_code)
-					.sales_type(sales_type)
-					.sales_address(sales_address)
-					.sales_info(sales_info)
-					.sales_size(sales_size)
-					.buildingApproval(buildingApproval)
-					.buildingUse(buildingUse)
-					.trnsc_type(trnsc_type)
-					.price_info(price_info)
-					.publicAdminFee(publicAdminFee)
-					.moveDate(moveDate)
-					.numfloors(numfloors)
-					.totalfloors(totalfloors)
-					.num_bathrooms(num_bathrooms)
+					.roomCode(room_code)
+					.salesType(sales_type)
+					.salesAddress(sales_address)
+					.salesInfo(sales_info)
+					.salesSize(sales_size)
+					.buildingApproval(building_approval)
+					.buildingUse(building_use)
+					.trnscType(trnsc_type)
+					.priceInfo(price_info)
+					.publicAdminFee(public_admin_fee)
+					.moveDate(move_date)
+					.numFloors(num_floors)
+					.totalFloors(num_floors)
+					.numBathrooms(num_bathrooms)
 					.elevator(elevator)
-					.parkingAvailability(parkingAvailability)
-					.totalParking(totalParking)
-					.fac_aircnd(fac_aircnd)
-					.fac_comm(fac_comm)
-					.fac_heating(fac_heating)
-					.fac_other(fac_other)
-					.fac_security(fac_security)
-					.photo_filecode(photo_filecode)
-					.photo_filename(photo_filename)
-					.photo_general(photo_general)
-					.desc_code(desc_code)
-					.desc_detail(desc_detail)
-					.desc_title(desc_title)
-					.usercode(usercode)
-					.createdate(createdate)
-					.updatedate(updatedate)
+					.parkingAvailability(parking_availability)
+					.totalParking(total_parking)
+					.facAircnd(fac_aircnd)
+					.facComm(fac_comm)
+					.facHeating(fac_heating)
+					.facOther(fac_other)
+					.facSecurity(fac_security)
+					.photoFilecode(photo_filecode)
+					.photoFilename(photo_filename)
+					.photoGeneral(photo_general)
+					.descCode(desc_code)
+					.descDetail(desc_detail)
+					.descTitle(desc_title)
+					.userCode(user_code)
+					.createDate(create_date)
+					.updateDate(update_date)
 					.build();
 					
 		}
 		
+		public ReadRoomInfoRespDto toGetRoomInfoDto() {
+			return ReadRoomInfoRespDto.builder()
+					.roomCode(room_code)
+					.trnscType(trnsc_type)
+					.priceInfo(price_info)
+					.salesType(sales_type)
+					.salesAddress(sales_address)
+					.descTitle(desc_detail)
+					.updateDate(update_date)
+					.build();
+		}
+		
 		public CreateRoomInfoRespDto toCreateRoomInfoDto(boolean insertStatus) {
 			return CreateRoomInfoRespDto.builder()
-					.room_code(room_code)
-					.sales_type(sales_type)
-					.sales_address(sales_address)
-					.sales_info(sales_info)
-					.sales_size(sales_size)
-					.buildingApproval(buildingApproval)
-					.buildingUse(buildingUse)
-					.trnsc_type(trnsc_type)
-					.price_info(price_info)
-					.publicAdminFee(publicAdminFee)
-					.moveDate(moveDate)
-					.numfloors(numfloors)
-					.totalfloors(totalfloors)
-					.num_bathrooms(num_bathrooms)
+					.roomCode(room_code)
+					.salesType(sales_type)
+					.salesAddress(sales_address)
+					.salesInfo(sales_info)
+					.salesSize(sales_size)
+					.buildingApproval(building_approval)
+					.buildingUse(building_use)
+					.trnscType(trnsc_type)
+					.priceInfo(price_info)
+					.publicAdminFee(public_admin_fee)
+					.moveDate(move_date)
+					.numFloors(num_floors)
+					.totalFloors(num_floors)
+					.numBathrooms(num_bathrooms)
 					.elevator(elevator)
-					.parkingAvailability(parkingAvailability)
-					.totalParking(totalParking)
-					.fac_aircnd(fac_aircnd)
-					.fac_comm(fac_comm)
-					.fac_heating(fac_heating)
-					.fac_other(fac_other)
-					.fac_security(fac_security)
-					.photo_filecode(photo_filecode)
-					.photo_filename(photo_filename)
-					.photo_general(photo_general)
-					.desc_code(desc_code)
-					.desc_detail(desc_detail)
-					.desc_title(desc_title)
-					.usercode(usercode)
-					.createdate(createdate)
-					.updatedate(updatedate)
+					.parkingAvailability(parking_availability)
+					.totalParking(total_parking)
+					.facAircnd(fac_aircnd)
+					.facComm(fac_comm)
+					.facHeating(fac_heating)
+					.facOther(fac_other)
+					.facSecurity(fac_security)
+					.photoFilecode(photo_filecode)
+					.photoFilename(photo_filename)
+					.photoGeneral(photo_general)
+					.descCode(desc_code)
+					.descDetail(desc_detail)
+					.descTitle(desc_title)
+					.userCode(user_code)
+					.createDate(create_date)
+					.updateDate(update_date)
 					.build();
 		}
 		
