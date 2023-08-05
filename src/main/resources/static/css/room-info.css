@@ -1,5 +1,6 @@
 main {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -12,11 +13,44 @@ main {
 }
 
 .room-img-box {
-    width: 1180px;
+    width: 1200px;
     margin: 0px auto;
 }
 
 .room-img-box img {
     width: 100%;
     height: 440px;
+}
+
+.room-info-container {
+    width: 100%;
+    padding-top: 40px;
+}
+
+.room-info-content {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+.hash-tag-box {
+    display: flex;
+    width: 840px;
+    height: 94px;
+
+    padding: 36px;
+
+    border: 1px solid rgb(245, 245, 245);
+    background-color: rgb(252, 252, 252);
+}
+
+.hash-tag-box img {
+    width: 24px;
+    height: 24px;
+
+}
+
+.hash-tag-box h1 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-left: 4px;
 }

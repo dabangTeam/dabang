@@ -1,4 +1,5 @@
 * {
+
     box-sizing: border-box;
     
     margin: 0px;
@@ -36,27 +37,5 @@ ul, li {
 
 @font-face {
     font-family: 'Pretendard Variable';
-    src: url('../font/pretendard/variable/PretendardVariable.ttf') format('truetype');
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-}  
-    
-    
-=======
+    src: url('/static/font/pretendard/variable/PretendardVariable.ttf') format('truetype');
 }
-
->>>>>>> 1b729a54df47f8f2373d44dbf556bcff662f51d1
-=======
-
-}
-
->>>>>>> PJH
-=======
-
-}
-
-
-
->>>>>>> ae3dafeb040fae082730416a3df22aa8661a3b11
