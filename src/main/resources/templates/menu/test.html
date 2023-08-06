@@ -231,9 +231,9 @@
                       <div class="address-map-area">
                         <button class="address-map-button">주소가 검색되지 않는다면?</button>
                         <div class="address-map-block">
-                          <div id="map" style="width:100%;height:100%;z-index:10;"></div>
-                          <p>주소를 검색하시면</p>
-                          <p>해당 위치가 지도에 표시됩니다.</p>
+                          <div id="map" style="width:100%;height:244px;z-index:10;display:none"></div>
+                          <p class="remove-box">주소를 검색하시면</p>
+                          <p class="remove-box">해당 위치가 지도에 표시됩니다.</p>
                         </div>
                       </div>
                     </div>
@@ -1283,89 +1283,7 @@
   <script type="text/javascript"
     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c54251e17dca18ead784f7d5a1ea4715&libraries=services"></script>
   
-  <script>
-    let mapContainer = document.getElementById('map'), // 지도를 표시할 div
-      mapOption = {
-        center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨
-      };
-
-    //지도를 미리 생성
-    let map = new daum.maps.Map(mapContainer, mapOption);
-    //주소-좌표 변환 객체를 생성
-    let geocoder = new daum.maps.services.Geocoder();
-    //마커를 미리 생성
-    let marker = new daum.maps.Marker({
-      position: new daum.maps.LatLng(37.537187, 127.005476),
-      map: map
-    });
-    //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
-    function sample4_execDaumPostcode() {
-      new daum.Postcode({
-        oncomplete: function (data) {
-          // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-          // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
-          // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-          let roadAddr = data.roadAddress; // 도로명 주소 변수
-
-          // 우편번호와 주소 정보를 해당 필드에 넣는다.
-
-          // document.getElementById("sample4_roadAddress").value = roadAddr;
-          // document.getElementById("sample4_jibunAddress").value = data.jibunAddress;
-
-          const roadAddress = document.querySelector(".road-address");
-          const jibunAddress = document.querySelector(".jibun-address");
-
-          roadAddress.innerHTML = "";
-          jibunAddress.innerHTML = "";
-
-          roadAddress.innerHTML = roadAddr;
-          jibunAddress.innerHTML = data.jibunAddress;
-
-          const addressDonghoArea = document.querySelector(".address-dongho-area");
-          const addressNameBox = document.querySelector(".address-name-box");
-
-          if (roadAddress.innerHTML !== "" && jibunAddress.innerHTML !== "") {
-            addressNameBox.classList.toggle("hidden");
-            addressDonghoArea.classList.add("address-position");
-            sample5_execDaumPostcode();
-          }
-        }
-      }).open();
-    }
-
-    
-
-    function sample5_execDaumPostcode() {
-      new daum.Postcode({
-        oncomplete: function (data) {
-          let addr = data.roadAddress; // 최종 주소 변수
-
-          // 주소 정보를 해당 필드에 넣는다.
-          const roadAddress1 = document.querySelector(".road-address").value = addr;
-          // 주소로 상세 정보를 검색
-          geocoder.addressSearch(roadAddress1, function (results, status) {
-            // 정상적으로 검색이 완료됐으면
-            if (status === daum.maps.services.Status.OK) {
-
-              var result = results[0]; //첫번째 결과의 값을 활용
-
-              // 해당 주소에 대한 좌표를 받아서
-              var coords = new daum.maps.LatLng(result.y, result.x);
-              // 지도를 보여준다.
-              mapContainer.style.display = "block";
-              map.relayout();
-              // 지도 중심을 변경한다.
-              map.setCenter(coords);
-              // 마커를 결과값으로 받은 위치로 옮긴다.
-              marker.setPosition(coords)
-            }
-          });
-        }
-      });
-    }
-  </script>
+  <script src="/static/js/test.js"></script>
 </body>
 
 </html>

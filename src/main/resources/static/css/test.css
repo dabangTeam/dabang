@@ -851,6 +851,7 @@ button > span {
 .address-map-area {
     flex: 0 0 auto;
     width: 369px;
+    height: 268px;
     margin-left: auto;
     text-align: right;
 }
