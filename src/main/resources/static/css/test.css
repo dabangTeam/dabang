@@ -605,7 +605,7 @@ button {
     background-color: rgb(245, 245, 245);
 }
 
-.road-address {
+.road-address, .jibun-address {
     margin-left: 8px;
     color: #222222;
     line-height: 24px;
