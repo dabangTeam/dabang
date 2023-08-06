@@ -43,6 +43,12 @@ main {
     background-color: rgb(252, 252, 252);
 }
 
+.hash-left-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hash-tag-box img {
     width: 24px;
     height: 24px;
@@ -53,4 +59,75 @@ main {
     font-size: 16px;
     font-weight: 700;
     margin-left: 4px;
+}
+
+.hash-right-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-left: auto;
+
+}
+
+.hash-right-box div:nth-child(n+2) {
+    margin-left: 8px;
+}
+
+.hash-right-box div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 28px;
+    padding: 0px 7px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 4px;
+    color: rgb(34, 34, 34);
+    border-color: rgb(223, 223, 223);
+    background-color: rgb(255, 255, 255);
+}
+
+.price-info {
+    width: 100%;
+}
+
+.price-box-line {
+    padding-top: 40px;
+}
+
+.price-box-line h4 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 38px;
+    letter-spacing: -0.5px;
+    margin-bottom: 32px;
+}
+
+.price-ul {
+    width: 100%;
+}
+
+.price-ul li:nth-child(n+2) {
+    border-top: 1px solid rgb(245, 245, 245);
+}
+
+.price-li {
+    display: flex;
+    padding: 16px 0px;
+    list-style: none;
+}
+
+.price-li div {
+    width: 160px;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 700;
+}
+
+.price-li div:nth-child(2) {
+    font-weight: 400;
 }
