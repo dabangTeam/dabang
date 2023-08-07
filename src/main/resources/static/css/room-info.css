@@ -8,6 +8,10 @@ main {
     height: auto;
 }
 
+.Login-Footer {
+    margin-top: 0px;
+}
+
 .room-img-line {
     margin-top: 40px;
 }
@@ -25,16 +29,26 @@ main {
 .room-info-container {
     width: 100%;
     padding-top: 40px;
+    padding-bottom: 120px;
 }
 
 .room-info-content {
+    display: grid;
+    grid-template-columns: 780px 360px;
+    gap: 0px 40px;
+    padding: 0px 10px;
+
     width: 1200px;
     margin: 0px auto;
 }
 
+.content-left {
+    width: 840px;
+}
+
 .hash-tag-box {
     display: flex;
-    width: 840px;
+    width: 780px;
     height: 94px;
 
     padding: 36px;
@@ -67,7 +81,6 @@ main {
     align-items: center;
     
     margin-left: auto;
-
 }
 
 .hash-right-box div:nth-child(n+2) {
@@ -91,43 +104,209 @@ main {
     background-color: rgb(255, 255, 255);
 }
 
-.price-info {
+.room-detail-info {
+    display: grid;
+    gap: 120px 0px;
+    width: 780px;
+}
+
+section {
     width: 100%;
+    margin: 0px;
+    white-space: nowrap;
 }
 
 .price-box-line {
     padding-top: 40px;
+    margin: 0px;
+    width: 780px;
 }
 
 .price-box-line h4 {
     font-size: 24px;
     font-weight: 700;
     line-height: 38px;
-    letter-spacing: -0.5px;
     margin-bottom: 32px;
 }
 
-.price-ul {
+.room-desc-ul {
     width: 100%;
 }
 
-.price-ul li:nth-child(n+2) {
+.room-desc-ul li {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0px 16px;
+    padding: 16px 0px;
+}
+
+.room-desc-ul li:nth-child(n+2) {
     border-top: 1px solid rgb(245, 245, 245);
 }
 
-.price-li {
+.room-desc-li {
     display: flex;
     padding: 16px 0px;
     list-style: none;
+    width: 100%;
 }
 
-.price-li div {
+.room-desc-li div {
     width: 160px;
     font-size: 16px;
     line-height: 26px;
     font-weight: 700;
 }
 
-.price-li div:nth-child(2) {
+.room-desc-li div:nth-child(2) {
     font-weight: 400;
+}
+
+.room-desc-li-text-box {
+    width: 580px;
+}
+
+.room-desc-li-text-box > p {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.room-desc-li-text-box p:nth-child(n+2) {
+    margin-top: 4px;
+}
+
+.room-desc-li-text-box p:nth-child(3) {
+    font-size: 14px;
+    line-height: 24px;
+    color: rgb(151, 151, 151);
+}
+
+.room-detail-info-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.room-detail-info-title h1 {
+    color: rgb(34, 34, 34);
+    font-size: 24px;
+    line-height: 38px;
+    letter-spacing: -0.5px;
+    font-weight: 700;
+}
+
+.room-detail-info-title button {
+    width: auto;
+    height: 36px;
+
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 2px;
+    padding: 0px 16px;
+    
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+    
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 24px;
+    color: rgb(34, 34, 34);
+}
+
+.room-floor-plan-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 780px;
+    height: 440px;
+    padding: 40px;
+    margin-bottom: 32px;
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 4px;
+}
+
+.room-floor-plan {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.room-floor-plan img {
+    width: 60px;
+    height: 48px;
+}
+
+.room-floor-plan p {
+    color: #979797;
+    margin-top: 8px;
+}
+
+.feet-change {
+    display: flex;
+}
+
+.feet-change-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid rgb(223, 223, 223);
+    border-radius: 2px;
+    padding: 0px 16px;
+    margin-left: 8px;
+
+    background-color: #ffffff;
+
+    width: auto;
+    height: 28px;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 700;
+    color: rgb(34, 34, 34);
+}
+
+.feet-change-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.feet-change-button span {
+    margin-left: 4px;
+}
+
+.plus-desc span{
+    margin-left: 8px;
+    color: rgb(151, 151, 151);
+    font-size: 16px;
+    line-height: 26px;
+}
+
+
+
+
+/* sticky position box*/
+.simple-info-box {
+    width: 360px;
+    position: relative;
+}
+
+.simple-info-box > div { 
+    position: fixed;
+    top: 98px;
+    left: 880px;
+}
+
+.simple-box-position {
+    width: 360px;
+    height: 100px;
+    padding: 32px;
+    background: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 20px;
+    border: 1px solid rgb(223, 223, 223);
+    position: sticky;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="/static/css/style.css">
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
+
 <body>
     <header>
         <div class="header-box-line">
@@ -41,49 +43,153 @@
         </div>
         <div class="room-info-container">
             <div class="room-info-content">
-                <div class="hash-tag-box">
-                    <div class="hash-left-box">
-                        <img src="/static/images/circle_icon.PNG">
-                        <h1>이런 특징이 있어요</h1>
+                <div class="content-left">
+                    <div class="hash-tag-box">
+                        <div class="hash-left-box">
+                            <img src="/static/images/circle_icon.PNG">
+                            <h1>이런 특징이 있어요</h1>
+                        </div>
+                        <div class="hash-right-box">
+                            <div>
+                                <span>주차</span>
+                            </div>
+                            <div>
+                                <span>신축</span>
+                            </div>
+                            <div>
+                                <span>엘리베이터</span>
+                            </div>
+                            <div>
+                                <span>보안/안전</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="hash-right-box">
-                        <div>
-                            <span>주차</span>
-                        </div>
-                        <div>
-                            <span>신축</span>
-                        </div>
-                        <div>
-                            <span>엘리베이터</span>
-                        </div>
-                        <div>
-                            <span>보안/안전</span>
-                        </div>
+                    <div class="room-detail-info">
+                        <section>
+                            <div class="price-box-line">
+                                <h4>가격정보</h4>
+                                <ul class="room-desc-ul">
+                                    <li class="room-desc-li">
+                                        <div>월세</div>
+                                        <div>500/48</div>
+                                    </li>
+                                    <li class="room-desc-li">
+                                        <div>관리비</div>
+                                        <div>매월 15만원</div>
+                                    </li>
+                                    <li class="room-desc-li">
+                                        <div>주차가능여부</div>
+                                        <div>가능</div>
+                                    </li>
+                                    <li class="room-desc-li">
+                                        <div>한달<br>
+                                            예상 주거비용</div>
+                                        <div class="room-desc-li-text-box">
+                                            <p>63만원 + α</p>
+                                            <p>월세 + 관리비</p>
+                                            <p>별도 금액으로 부과되는 항목 제외</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section>
+                            <div class="room-detail-info-title">
+                                <h1>상세정보</h1>
+                                <button>단지정보 보러가기</button>
+                            </div>
+                            <div class="room-floor-plan-box">
+                                <div class="room-floor-plan">
+                                    <img src="/static/images/room-floor-plan.png">
+                                    <p>평면도 이미지를 준비중입니다.</p>
+                                </div>
+                            </div>
+                            <ul class="room-desc-ul">
+                                <li class="room-desc-li">
+                                    <div>건물이름</div>
+                                    <div>판도라</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>방종류</div>
+                                    <div>오피스텔</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>해당층/건물층</div>
+                                    <div>2층/14층</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>전용/계약면적</div>
+                                    <div class="feet-change">
+                                        <p>23.17㎡/39.1㎡</p>
+                                        <button class="feet-change-button">
+                                            <img src="/static/images/feet-change.png">
+                                            <span>평</span>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>방 수/욕실 수</div>
+                                    <div>1개/1개</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>방향</div>
+                                    <div class="plus-desc">
+                                        남동
+                                        <span>안방 기준</span>
+                                    </div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>난방종류</div>
+                                    <div>개별난방</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>엘리베이터</div>
+                                    <div>있음</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>총 세대수</div>
+                                    <div>60세대</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>총 주차대수</div>
+                                    <div>총 30대</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>세대당 주차수</div>
+                                    <div>1대</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>현관 유형</div>
+                                    <div>복도식</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>입주가능일</div>
+                                    <div>즉시 입주</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>건축물용도</div>
+                                    <div>업무시설</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>사용승인일</div>
+                                    <div>2020.12.10</div>
+                                </li>
+                                <li class="room-desc-li">
+                                    <div>최초등록일</div>
+                                    <div>2023.08.03</div>
+                                </li>
+                            </ul>
+                        </section>
+                        <section>
+                            
+                        </section>
                     </div>
                 </div>
-                <div class="price-info">
-                    <div class="price-box-line">
-                        <h4>가격정보</h4>
-                        <ul class="price-ul">
-                            <li class="price-li">
-                                <div>월세</div>
-                                <div>500/48</div>
-                            </li>
-                            <li class="price-li">
-                                <div>관리비</div>
-                                <div>매월 15만원</div>
-                            </li>
-                            <li class="price-li">
-                                <div>주차가능여부</div>
-                                <div>가능</div>
-                            </li>
-                            <li class="price-li">
-                                <div>한달<br>
-                                    예상 주거비용</div>
-                                <div>63만원 + α<br>
-                                    월세 + 관리비</div>
-                            </li>
-                        </ul>
+                <div class="simple-info-box">
+                    <div>
+                        <div class="simple-box-position">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,7 +203,8 @@
                 <nav class="Footer-nav">
                     <ul class="Footer-List">
                         <li>
-                            <a href="https://www.station3.co.kr" target="_blank" rel="noopener noreferrer" class="li1">회사소개</a>
+                            <a href="https://www.station3.co.kr" target="_blank" rel="noopener noreferrer"
+                                class="li1">회사소개</a>
                         </li>
                         <li>
                             <a href="https://main.d3qjzrynlab66o.amplifyapp.com/terms/common/terms-of-service"
@@ -168,26 +275,26 @@
                 </div>
                 <div class="footer-right-btn">
                     <div class="footer-right-btns">
-                    		<a href="https://www.instagram.com/dabang_app"
-                            target="_blank" rel="noopener noreferrer" class="instar">
-                            </a>
-                            <a href="https://www.facebook.com/dabangapp" target="_blank" rel="noopener noreferrer"
+                        <a href="https://www.instagram.com/dabang_app" target="_blank" rel="noopener noreferrer"
+                            class="instar">
+                        </a>
+                        <a href="https://www.facebook.com/dabangapp" target="_blank" rel="noopener noreferrer"
                             class="facebook">
-                            </a>
-                            <a href="https://blog.naver.com/station3inc"
-                            target="_blank" rel="noopener noreferrer" class="naver-blog">
-                            </a>
-                            <a
-                            href="https://post.naver.com/station3inc" target="_blank" rel="noopener noreferrer"
+                        </a>
+                        <a href="https://blog.naver.com/station3inc" target="_blank" rel="noopener noreferrer"
+                            class="naver-blog">
+                        </a>
+                        <a href="https://post.naver.com/station3inc" target="_blank" rel="noopener noreferrer"
                             class="naver">
-                            </a>
-                            <a href="https://www.youtube.com/user/DabangApp" target="_blank" rel="noopener noreferrer"
+                        </a>
+                        <a href="https://www.youtube.com/user/DabangApp" target="_blank" rel="noopener noreferrer"
                             class="youtube">
-                            </a>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 </body>
+
 </html>
