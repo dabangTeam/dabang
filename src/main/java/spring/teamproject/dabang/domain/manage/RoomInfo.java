@@ -153,12 +153,4 @@ public class RoomInfo {
 					.build();
 		}
 		
-		public ReadSimpleDataRespDto toSimpleDataDto() {
-			return ReadSimpleDataRespDto.builder()
-					.numFloors(num_floors)
-					.publicAdminFee(public_admin_fee)
-					.descTitle(desc_title)
-					.build();
-		}
-		
 }
