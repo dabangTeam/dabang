@@ -7,6 +7,11 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -92,6 +97,18 @@ public class AuthServiceImpl implements AuthService {
         if (passwordEncoder.matches(providedPassword, hashedPassword)) {
             // 비밀번호가 일치하는 경우, 로그인 성공
         	System.out.println("로그인 성공");
+        	
+        	 // 권한 확인 로직 추가
+            String userRoles = user.getUser_roles();
+            List<GrantedAuthority> authorities = AuthorityUtils.createAuthorityList(userRoles);
+            
+         // Spring Security의 인증 객체 생성
+            Authentication authentication = new UsernamePasswordAuthenticationToken(email, hashedPassword, authorities);
+
+            // 인증 처리
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+
             return true;
         } else {
             // 비밀번호가 일치하지 않는 경우, 로그인 실패

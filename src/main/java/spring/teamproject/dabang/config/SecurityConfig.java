@@ -2,12 +2,17 @@ package spring.teamproject.dabang.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import spring.teamproject.dabang.config.auth.AuthFailureHandler;
+import spring.teamproject.dabang.handler.CustomAuthenticationSuccessHandler;
 import spring.teamproject.dabang.service.auth.PrincipalOauth2UserService;
 
 @Configuration
@@ -34,27 +39,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/grant/test/manager/**").access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/api/v1/grant/test/admin/**").access("hasRole('ROLE_ADMIN')")
                 
-                .antMatchers("/manage")   //넣은 페이지 들은 로그인 해야 들어갈 수 있음
-    			.hasRole("ADMIN")
+                .antMatchers("/welcome/login").permitAll() // 로그인 페이지 접근 허용
+                .antMatchers("/index/").permitAll()       // 로그인 처리 URL 접근 허용
+                .antMatchers("/manage/**")
+                .hasRole("USER")
+
     			
     			
                 .antMatchers("/", "/index").authenticated()
-                .anyRequest().permitAll()
+                .anyRequest()
+                .permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/welcome/login")
                 .loginProcessingUrl("/welcome/login")
-                .defaultSuccessUrl("/index/")
+                
+  
+                .successHandler(new CustomAuthenticationSuccessHandler()) // 이 부분 추가
+                .defaultSuccessUrl("/index")
+                .failureHandler(new AuthFailureHandler())
 
                 .and()
                 .oauth2Login()
                 .userInfoEndpoint()
-                .userService(principalOauth2UserService)
-                .and();
+                .userService(principalOauth2UserService);
+
+
                 
 
     }
     
+
+
 
 }
 

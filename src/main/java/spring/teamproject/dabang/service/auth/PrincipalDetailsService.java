@@ -25,7 +25,7 @@ public class PrincipalDetailsService implements UserDetailsService {
 			userEntity = userRepository.findUserByUserEmail(username);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new UsernameNotFoundException("사용자를 찾을 수 없습니다: " + username);
+			throw new UsernameNotFoundException(username);
 		}
 		
 		if (userEntity == null) {

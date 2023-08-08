@@ -1,4 +1,5 @@
 
+
 function getPrincipal(){
 	let user = null;
 	$.ajax({
@@ -9,6 +10,7 @@ function getPrincipal(){
 		success: (response) => {
 			user = response.data;
 			console.log(user);
+			loadHeader(user);  
 		},
 		error: (error) => {
 			console.log(error);
@@ -16,6 +18,7 @@ function getPrincipal(){
 	});
 	return user;
 }
+
 
 function loadHeader(user) {
     const authItems = document.querySelector(".auth-items");
@@ -31,10 +34,19 @@ function loadHeader(user) {
         `;
     } else {
         authItems.innerHTML = `
-            <button type="button" class="auth-button username">${user.nName}</button>
+        	<div size="32" class="Profile">
+        	<img src="/static/images/profile.svg" alt="" draggable="false">
+        	</div>
+            <button type="button" class="auth-button username">${user.nname} 님</button>
         `;
+        const username = document.querySelector(".username");
+        username.onclick = () => {
+			location.replace("");
+		}
     }
 }
+
+
 
 let user = getPrincipal();
 console.log(user);
@@ -44,5 +56,7 @@ function getUser(){
 	console.log(user);
 	return user;
 	}
+
+
 	
 	

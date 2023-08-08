@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -39,13 +39,15 @@
                 <a href="/favorite/recent-room" class="menu-item">관심목록</a>
                 <a href="/manage" class="menu-item" onclick="location.href='/manage';">방내놓기</a>
                 <a href="/alarm" class="menu-item">알림</a>
-                <a href="" class="menu-item">다방싸인 비대면 계약</a>
+                <a href="" class="menu-item">My 비대면 계약</a>
                 <button type="button" class="login-page-button menu-item"  onclick="location.href='/welcome';">
                     <span class="button-text">로그인<span></span>회원가입</span>
                 </button>
                  <button class="last-button menu-item">
                     <span class="button-text">중개사 가입/광고문의</span>
-                </button> 
+                </button>
+                <div class="auth-items">
+        			</div>
             </div>
         </div>
 

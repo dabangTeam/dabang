@@ -131,11 +131,12 @@ public class AuthController {
 	
 	@GetMapping("/principal")
 	public ResponseEntity<?> getPrincipal(@AuthenticationPrincipal PrincipalDetails principalDetails){
-		if(principalDetails == null) {
-			return  ResponseEntity.badRequest().body(new CMRespDto<>(-1, "principal is null", null));
-		}
-		return  ResponseEntity.ok().body(new CMRespDto<>(1, "success load", principalDetails.getUser()));
+	    if(principalDetails == null) {
+	        return  ResponseEntity.badRequest().body(new CMRespDto<>(-1, "principal is null", null));
+	    }
+	    return  ResponseEntity.ok().body(new CMRespDto<>(1, "success load", principalDetails.getUser()));
 	}
+
 	
 	// 로그인 처리를 위한 메서드
 	@ValidCheck
@@ -158,6 +159,7 @@ public class AuthController {
 
 		if (status) {
 			return ResponseEntity.ok().body(new CMRespDto<>(1, "로그인 성공", status));
+			
 		} else {
 			return ResponseEntity.ok().body(new CMRespDto<>(0, "아이디 또는 비밀번호가 일치하지 않습니다.", status));
 		}
