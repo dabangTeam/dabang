@@ -85,14 +85,24 @@ optionBoxes.forEach((optionBox) => {
     };
 });
 
-function getRoomList() {
+getRoomList("전포동");
+
+let address = "전포동";
+
+function getRoomList(address) {
+  console.log("test");
   $.ajax({
     async: false,
     type: "get",
-    url: `/api/v1/map/room/{address}`,
+    url: `/api/v1/map/room/${address}`,
+    data: {
+      address: "전포동"
+    },
     dataType: "json",
     success: (response) => {
       console.log(response.data);
+      roomListData(response.data);
+      console.log("successTest");
     },
     error: (error) => {
       console.log(error);
@@ -103,21 +113,21 @@ function getRoomList() {
 function roomListData(data) {
   const roomSearchList = document.querySelector(".room-search-list");
   roomSearchList.innerHTML = ""
-  for(let list of data) {
+  data.forEach(list => {
     roomSearchList.innerHTML += `
         <div class="room-data">
             <div class="room-img">
                 <img src="/static/images/room_img.PNG">
             </div>
             <div class="room-text-data">
-                <h1>월세 500/48</h1>    
+                <h1>월세 ${list.monthly_price}'/'${list.monthly_price_deposit}</h1>    
                 <p class="room-text">오피스텔  · 판도라</p>
-                <p>2층, 23.17m², 관리비 15만</p>
-                <p>${list.contant}</p>
+                <p>${list.num_floor}층, ${list.size_exclusive_m}m², 관리비 ${list.management_fee}만</p>
+                <p>${list.desc_title}</p>
             </div>
         </div>
     `
-  }
+  })
 }
 
 /**
