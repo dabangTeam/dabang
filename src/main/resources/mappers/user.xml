@@ -6,7 +6,17 @@
 <mapper namespace="spring.teamproject.dabang.domain.user.UserRepository">
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.user.User">
   		insert into
-  			user_mst
+  			user_mst(
+  			user_email,
+  			user_password,
+  			user_checkpassword,
+  			oauth2_id,
+  			nName,
+  			user_roles,
+  			user_provider,
+  			create_date,
+  			update_date
+  			)  			
   		values(
   			0,
   			#{user_email},
