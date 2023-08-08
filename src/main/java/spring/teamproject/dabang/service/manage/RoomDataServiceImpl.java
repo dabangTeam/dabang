@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import spring.teamproject.dabang.domain.manage.RoomData;
 import spring.teamproject.dabang.domain.manage.RoomDataRepository;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
+import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 
 @Service
 @RequiredArgsConstructor
@@ -18,7 +19,7 @@ public class RoomDataServiceImpl implements RoomDataService{
 
 	@Override
 	public List<RoomData> readRoomInfoRespDto(String address) throws Exception {
-		List<RoomData> list = new ArrayList<RoomData>();
+		List<RoomData> list = null;
 		list = roomDataRepository.readRoomData(address);
 		return list;
 	}

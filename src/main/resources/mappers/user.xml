@@ -6,8 +6,8 @@
 <mapper namespace="spring.teamproject.dabang.domain.user.UserRepository">
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.user.User">
   		insert into
-  			user_mst()
-  			values(
+  			user_mst
+  		values(
   			0,
   			#{user_email},
   			#{user_password},
@@ -23,6 +23,7 @@
   	
   	<select id="findUserByUserEmail" parameterType="String" resultType="spring.teamproject.dabang.domain.user.User">
   		SELECT
+  			user_code,
 			user_email,
 			nName,
 			user_password,
@@ -38,6 +39,7 @@
   	
   	<select id="findOAuth2UserByUsername" parameterType="String" resultType="spring.teamproject.dabang.domain.user.User">
   		SELECT
+  			user_code,
 			user_email,
 			user_password,
 			nName,

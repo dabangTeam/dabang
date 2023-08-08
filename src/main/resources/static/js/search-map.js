@@ -85,6 +85,41 @@ optionBoxes.forEach((optionBox) => {
     };
 });
 
+function getRoomList() {
+  $.ajax({
+    async: false,
+    type: "get",
+    url: `/api/v1/map/room/{address}`,
+    dataType: "json",
+    success: (response) => {
+      console.log(response.data);
+    },
+    error: (error) => {
+      console.log(error);
+    }
+  })
+}
+
+function roomListData(data) {
+  const roomSearchList = document.querySelector(".room-search-list");
+  roomSearchList.innerHTML = ""
+  for(let list of data) {
+    roomSearchList.innerHTML += `
+        <div class="room-data">
+            <div class="room-img">
+                <img src="/static/images/room_img.PNG">
+            </div>
+            <div class="room-text-data">
+                <h1>월세 500/48</h1>    
+                <p class="room-text">오피스텔  · 판도라</p>
+                <p>2층, 23.17m², 관리비 15만</p>
+                <p>${list.contant}</p>
+            </div>
+        </div>
+    `
+  }
+}
+
 /**
  * 해야 할 것
  * 

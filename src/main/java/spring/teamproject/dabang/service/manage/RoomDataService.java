@@ -4,6 +4,7 @@ import java.util.List;
 
 import spring.teamproject.dabang.domain.manage.RoomData;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
+import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 
 public interface RoomDataService {
 

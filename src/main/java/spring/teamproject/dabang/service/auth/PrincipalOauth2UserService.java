@@ -56,6 +56,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 	    String id = null;
 	    Map<String, Object> response = null;
 	    String email = null; // email 변수를 선언합니다.
+	    
 
 	    if (provider.equalsIgnoreCase("kakao")) {
 	        response = attributes;
