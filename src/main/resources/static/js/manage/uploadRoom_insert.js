@@ -1,3 +1,5 @@
+
+
 const inqueryButton = document.querySelector(".submitBtn");
 const buildingTypeSelected = document.getElementsByName("buildingType");
 
@@ -131,6 +133,32 @@ managementFeeCheckboxes.forEach((input) => {
 		}
 	});
 });
+// ===================== 전체층수 / 해당 층수 선택 ===================
+
+document.querySelector('.totalFloors').addEventListener('change', function() {
+    const totalFloors = parseInt(this.value, 10);
+    const currentFloorSelect = document.querySelector('.currentFloor');
+    
+    // 옵션 초기화
+    currentFloorSelect.innerHTML = '<option value>선택</option>';
+    currentFloorSelect.options.add(new Option('반지층', '-1'));
+    currentFloorSelect.options.add(new Option('옥탑', '0'));
+
+    for (let i = 1; i <= totalFloors; i++) {
+        const option = new Option(i + '층', i);
+        currentFloorSelect.options.add(option);
+    }
+
+    // 해당 층 수 칸 활성화
+    currentFloorSelect.disabled = false;
+});
+
+// 페이지 로드 시 해당 층 수 칸 초기 상태 설정
+window.addEventListener('DOMContentLoaded', function() {
+    const currentFloorSelect = document.querySelector('.currentFloor');
+    currentFloorSelect.disabled = true;
+});
+
 
 // =====================주차 가능여부 체크박스 ====================
 const parkingCheckboxes = document.querySelectorAll(".parkingAvailabilityCheckbox");
@@ -153,13 +181,25 @@ parkingCheckboxes.forEach((input) => {
 // ====================================================================================
 
 // getData을 위한 변수 선언
+const registeredCheckbox = document.querySelector(".registeredCheckbox");
+let registeredValue = 0;
+if(registeredCheckbox.checked) registeredValue = 1;
+
+console.log(registeredCheckbox);
 const roomCount = document.querySelector(".roomCount"); // 방 수
 const inputAddress = document.querySelectorAll(".inputAddress") // 주소
 const inputExclusiveSizes = document.querySelectorAll(".exclusiveAreaText"); // 전용면적
 const inputSupplySizesSizes = document.querySelectorAll(".supplyAreaText"); // 공급면적
+const selectedBuildingUse = document.querySelector(".buildingUse");// 건축물용도
+const selectedBuildingApprov = document.querySelector(".buildingApprove") // 건축물승인
+const inputBuildingApproveDate = document.querySelector(".buildingApproveDate") // 건축물승인 날짜
 const inputDepositText = document.querySelector(".depositText"); // 전세보증금
 const inputMonthlyDeposit = document.querySelector(".rentPriceDepositText"); // 월세보증금
 const inputMonthlyPrice = document.querySelector(".rentPriceMonthly"); // 월세
+const inputManagementFee = document.querySelector(".managementFeeText"); // 관리비
+const inputMovedDate = document.querySelector(".movedDate"); // 입주 가능 일자
+const selectedTotalFloors = document.querySelector(".totalFloors"); // 전체 층 수
+const selectedCurrentFloor = document.querySelector(".currentFloor"); // 현재 층 수
 const inputCountBathroom = document.querySelector(".countBathroomText"); // 욕실 수
 const inputCountParking = document.querySelector(".parkingText"); // 주차 가능 수
 const inputDetailTitle = document.querySelector(".detailTitleText"); // 상세설명 제목
@@ -371,7 +411,7 @@ inqueryButton.onclick = () => {
 				selectedRoomChars.push(index);
 		}
 		});
-		return selectedRoomChars;
+		return selectedRoomChars.join(',');
 	}
 	
 	// 냉방시설
@@ -384,7 +424,7 @@ inqueryButton.onclick = () => {
 				selectedAirCndTypes.push(index);
 			}
 		});
-		return selectedAirCndTypes;
+		return selectedAirCndTypes.join(',');
 	}
 	
 	// 생활시설
@@ -397,7 +437,7 @@ inqueryButton.onclick = () => {
 				selectedFacComms.push(index);
 			}
 		});
-		return selectedFacComms;
+		return selectedFacComms.join(',');
 		
 	}
 	
@@ -411,7 +451,7 @@ inqueryButton.onclick = () => {
 				selectedFacSecs.push(index);
 			}
 		});
-		return selectedFacSecs;
+		return selectedFacSecs.join(',');
 	}
 	
 	// 기타시설
@@ -424,7 +464,7 @@ inqueryButton.onclick = () => {
 				selectedFacOthers.push(index);
 			}
 		});
-		return selectedFacOthers;
+		return selectedFacOthers.join(',');
 	}
 	
 	
@@ -463,19 +503,58 @@ inqueryButton.onclick = () => {
 
 	// ajax
 	let getData = {
+		salesType: selectedBuildingType,
+		unregisteredCheck,
+		salesAddressMainRoad,
+		salesAddressMainJibeon,
+		salesAddressDong,
+		salesAddressHo,
+		
 		salesAddress: getDataInputAddress.mainAddress,
-		salesSize: getDataExclusivesSize.exclusiveM,
-		priceInfo: getDataPriceInfo.depositPrice,
-		priceInfo: getDataPriceInfo.monthlyPrice,
-		priceInfo: getDataPriceInfo.monthlyPriceDeposit,
-		publicAdminFee: getDataManagementFee,
-		numBathrooms: getDataCountBathroom,
+		salesExclusiveP: getDataExclusivesSize.exclusiveP,
+		salesExclusiveM: getDataExclusivesSize.exclusiveM,
+		salesSupplyP: getDataSupplySize.supplyP,
+		salesSupplyM: getDataSupplySize.supplyM,
+		roomInfoCount,
+		roomInfoLivingroom,
+		roomInfoChar,
+		buildingUse,
+		buildingApproval,
+		buildingApprovalDate,
+		
+		trnscType,
+		depositPrice: getDataPriceInfo.depositPrice,
+		monthlyPriceDeposit: getDataPriceInfo.monthlyPriceDeposit,
+		monthlyPrice: getDataPriceInfo.monthlyPrice,
+		publicManagement,
+		managementFee: getDataManagementFee,
+		possibleMoved,
+		possibleMovedDate,
+		possibleMovedCheck,
+		
+		totalFloors,
+		numFloor,
+		numBathrooms: getdataCgetDataCountBathroom,
+		elevator,
+		parkingAvailability,
+		totalParking,
+		
+		facHeating,
+		facAircnd: selectedAirCndType,
+		facComm: selectedFacComm,
+		facSecurity: selectedFacSec,
+		facOther: selectedFacOtherType,
+		
+		photoGeneral,
+		photoFilename,
+		photoFilecode,
+		
 		descTitle: getDataDetailTitle,
 		descDetail: getDataDetailContext,
-		salesType: selectedBuildingType,
+		descCode,
+		
 		//parkingAvailability: getParkingAvailability(),
-		//facAircnd: getAirCndType()
-		//facComm: getFacComm()
+		
 	}
 	console.log(getData);
 	$.ajax({
