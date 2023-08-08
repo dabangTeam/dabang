@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {	
-	private String user_code;
+	private int user_code;
 	private String user_email;
 	private String user_password;
 	private String user_checkpassword;
