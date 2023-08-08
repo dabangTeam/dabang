@@ -5,7 +5,12 @@
 <title>Insert title here</title>
 	<link rel="stylesheet" href="/static/css/style.css">
 	<link rel="stylesheet" href="/static/css/uploadRoom.css">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
+	<link rel="stylesheet" href="/static/css/uploadRoom_calendal.css">
 	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
 </head>
 <body>
 	<div class="mainbody">
@@ -126,7 +131,7 @@
 												<div class="small-checkbox-text">
 													<div>
 														<label class="small-checkbox-textBlock">
-															<input type="checkbox" class="small-checkbox-realcheck">
+															<input type="checkbox" class="small-checkbox-realcheck registeredCheckbox">
 															<p class="small-checkbox-realtext">
 															미등기건물에 해당하는 경우 체크
 															</p>
@@ -380,7 +385,7 @@
 										<div class="roomsize-exclusive roomSizeGroup" style="position: relatvie;">
 											<div class="roomsize-exclusive-area">
 												<div>
-													<select class="roominfo-approve" style="margin-right: 8px;">
+													<select class="roominfo-approve buildingApprove" style="margin-right: 8px;">
 														<option value>선택</option>
 														<option value="USE_APPROVAL_DATE">사용승인일</option>
 														<option value="USE_INSPECTION_DATE">사용검사일</option>
@@ -388,7 +393,7 @@
 													</select>
 													<div class="roominfo-approve-dateArea">
 														<div class="roominfo-approve-dateBlock">
-															<input autocomplete="off" type="text" placeholder="예)20210720" class="roominfo-approve-input" value>
+															<input autocomplete="off" type="text" placeholder="예)20210720" class="roominfo-approve-input datepicker inp buildingApproveDate" readonly="true" value>
 															<button type="button" class="roominfo-approve-button">
 																<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 																	<path fill-rule="evenodd" clip-rule="evenodd" d="M7.99194 3.91012C7.94961 3.67688 7.74546 
@@ -595,7 +600,7 @@
 													<div>
 														<div class="roominfo-approve-dateArea">
 															<div class="tradeIfno-feeArea-div">
-																<input disabled autocomplete="off" type="text" placeholder="예)20210720" class="tradeInfo-feeArea-input" value>
+																<input autocomplete="off" type="text" placeholder="예)20210720" class="tradeInfo-feeArea-input datepicker inp movedDate" readonly="true" value>
 																	<div conteteditable="false"></div>
 																<button disabled type="button" class="roominfo-approve-button">
 																	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -655,7 +660,7 @@
 												</header>
 												<div class="roomsize-exclusive-area ">
 													<div>
-														<select class="additionInfo-select-total">
+														<select class="additionInfo-select-total totalFloors">
 															<option value="">선택</option>
 															<option value="1">1층</option>
 															<option value="2">2층</option>
@@ -696,7 +701,7 @@
 												</header>
 												<div class="roomsize-exclusive-area ">
 													<div>
-														<select disabled class="additionInfo-select-total">
+														<select disabled class="additionInfo-select-total currentFloor">
 															<option value>선택</option>
 															<option value="-1">반지층</option>
 															<option value="0">옥탑</option>
@@ -1186,5 +1191,6 @@
 		</div>
 	</div>
 	<script type="text/javascript" src="/static/js/manage/uploadRoom_insert.js"></script>
+	<script type="text/javascript" src="/static/js/manage/uploadRoom_calendal.js"></script>
 </body>
 </html>

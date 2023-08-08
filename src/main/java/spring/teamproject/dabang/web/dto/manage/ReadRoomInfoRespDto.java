@@ -16,44 +16,59 @@ import lombok.NoArgsConstructor;
 public class ReadRoomInfoRespDto {
 	
 		// 매물정보
-		private int roomCode;
-		private String salesType;
-		private String salesAddress;
-		private double salesSize;
-		private int salesInfo;
-		private int buildingUse;
-		private int buildingApproval;
+	private int roomCode;
+	private String salesType;
+	private int unregisteredCheck;
+	private String salesAddressMainRoad;
+	private String salesAddressMainJibeon;
+	private String salesAddressDong;
+	private String salesAddressHo;		
+	private int salesExclusiveP;
+	private double salesExclusiveM;
+	private int salesSupplyP;
+	private double salesSupplyM;
+	private int roomInfoCount;
+	private String roomInfoLivingroom;
+	private String roomInfoChar;
+	private String buildingUse;
+	private String buildingApproval;
+	private Date buildingApprovalDate;
 		
 		// 거래정보
-		private int trnscType;
-		private int priceInfo;
-		private int publicAdminFee;
-		private Date moveDate;
+	private String trnscType;
+	private int depositPrice;
+	private int monthlyPriceDeposit;
+	private int monthlyPrice;
+	private String publicManagement;
+	private int managementFee;
+	private String possibleMoved;
+	private Date possibleMovedDate;
+	private int possibleMovedCheck;
 		
 		// 추가정보
-		private int numFloors;
-		private int totalFloors;
-		private int numBathrooms;
-		private int elevator;
-		private int parkingAvailability;
-		private int totalParking;
+	private String totalFloors;
+	private String numFloor;
+	private int numBathrooms;
+	private String elevator;
+	private String parkingAvailability;
+	private int totalParking;
 		
 		// 시설정보
-		private int facHeating;
-		private int facAircnd;
-		private int facComm;
-		private int facOther;
-		private int facSecurity;
+		private String facHeating;
+		private String facAircnd;
+		private String facComm;
+		private String facOther;
+		private String facSecurity;
 		
 		// 사진등록
 		private String photoGeneral;
 		private String photoFilename;
-		private String photoFilecode;
+		private int photoFilecode;
 		
 		// 상세설명
 		private String descTitle;
 		private String descDetail;
-		private String descCode;
+		private int descCode;
 		
 		// 유저정보 및 업로드
 		private int userCode;

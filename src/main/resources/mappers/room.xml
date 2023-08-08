@@ -45,12 +45,25 @@
 		salesInfo
 	values (
 		0,
-		#{sales_type}, #{sales_address}, #{sales_size}, #{sales_info}, #{building_use}, #{building_approval},
-		#{trnsc_type}, #{price_info}, #{public_admin_fee}, #{move_date},
-		#{num_floors}, #{total_floors}, #{num_bathrooms}, #{elevator}, #{parking_availability}, #{total_parking},
+		#{sales_type}, #{unregistered_check}, 
+		#{sales_address_main_road}, #{sales_address_main_jibeon}, #{sales_address_dong}, #{sales_address_ho},
+		#{sales_exclusive_p}, #{sales_exclusive_m}, #{sales_supply_p}, #{sales_supply_m},
+		#{room_info_count}, #{room_info_livingroom}, #{room_info_char},
+		#{building_use}, #{building_approval}, #{building_approval_date},
+		
+		#{trnsc_type}, #{deposit_price}, #{monthly_price_deposit}, #{monthly_price},
+		#{public_management}, #{management_fee},
+		#{possible_moved}, #{possible_moved_date}, #{possible_moved_check},
+		
+		#{total_floors}, #{num_floor}, #{elevator},
+		#{parking_availability}, #{total_parking},
+		
 		#{fac_heating}, #{fac_aircnd}, #{fac_comm}, #{fac_other}, #{fac_security},
+		
 		#{photo_general}, #{photo_filename}, #{photo_filecode},
+		
 		#{desc_title}, #{desc_detail}, #{desc_code},
+		
 		#{user_code},
 		now(),
 		now()
