@@ -17,6 +17,7 @@ import spring.teamproject.dabang.domain.board.BoardRepository;
 import spring.teamproject.dabang.web.dto.board.AddBoardReqDto;
 import spring.teamproject.dabang.web.dto.board.GetBoardListRespDto;
 import spring.teamproject.dabang.web.dto.board.GetBoardRespDto;
+import spring.teamproject.dabang.web.dto.board.UpdateBoardReqDto;
 
 @Slf4j
 @Service
@@ -69,32 +70,24 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 
-	
 	@Override
-	public List<GetBoardListRespDto> getBoardList(int page, String searchFlag, String searchValue) throws Exception {
-
-		int index = (page - 1) * 10;
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("index", index);
-		map.put("search_flag", searchFlag);
-		map.put("search_value", searchValue == null ? "" : searchValue);
+	public List<Board> getBoardList(int usercode) throws Exception {
+		// TODO Auto-generated method stub
 		
-		List<GetBoardListRespDto> list = new ArrayList<GetBoardListRespDto>();
-		
-		boardRepository.getBoardList(map).forEach(Board -> {
-			list.add(Board.toListDto());
-		});		
-		return list;
-	}
-
-	@Override
-	public List<Board> getBoardList(int UserCode) throws Exception {
-		List<Board> boardlist = boardRepository.getBoard(UserCode);
+		List<Board> boardlist = boardRepository.getBoard(usercode);
 		
 		return boardlist;
 	}
 
-}
+	@Override
+	public boolean UpdateBoard(UpdateBoardReqDto updateBoardReqDto) throws Exception {
+		return boardRepository.updateBoardByBoardCode(updateBoardReqDto.toEntity()) > 0;
+	}
+	@Override
+	public boolean deleteBoard(int UserCode) throws Exception {
+		return boardRepository.remove(UserCode) > 0;
+	}
+}	
 
 
 

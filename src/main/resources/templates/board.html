@@ -1,17 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
+<!-- <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부동산 필수 앱 다방</title>
+        <link rel="stylesheet" href="/static/css/board.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://kit.fontawesome.com/8cf0887c72.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+</head> -->
+
+<head>
+
     <title>Board</title>
+    <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/board.css">
     <link rel="stylesheet" href="/static/css/style.css">
+    
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    
 </head>
 
 <body>
-    <header class="Header">
+	<header>
+	
+        <div class="header-box-line">
+            <div class="home-logo-link">
+                <a href="/index.html"><img class="site-logo" src="/static/images/header_logo.PNG"></a>
+            </div>
+            <div class="right-header-line">
+                <a href="/search/map" class="menu-item text-color">지도</a>
+                <a href="/sales" class="menu-item">분양</a>
+                <a href="/favorite/recent-room" class="menu-item">관심목록</a>
+                <a href="/manage" class="menu-item">방내놓기</a>
+                <a href="/alarm" class="menu-item">알림</a>
+                <a href="" class="menu-item">다방싸인 비대면 계약</a>
+                <button type="button" class="login-page-button menu-item">
+                    <span class="button-text">로그인<span></span>회원가입</span>
+                </button>
+                <button class="last-button menu-item">
+                    <span class="button-text">중개사 가입/광고문의</span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="wrapping">
+    <nav class="HeaderTitle">
         <div>
             <h1 class="Title">문의하기</h1>
             <div class="MenuBar">
@@ -20,7 +57,7 @@
                 <a href="/user/inquiry"><span>공지사항</span></a>
             </div>
         </div>
-    </header>
+    </nav>
 
     <div class="Content">
         <div class="board-content">
@@ -79,6 +116,7 @@
     <div class="content-footer">
         <p class="customer-center">고객센터 : <span style="color: rgb(50, 108, 249); font-size: 13pt; font-weight: 400;">02-1889-6840</span> 
         <p class="period-time"><span style="color:  rgba(66, 64, 64, 0.644); font-size: 10pt; font-weight: 400;">평일 10:00 ~ 18:30 (토, 일요일, 공휴일 휴무)</span> </p>
+    </div>
     </div>
     <script type="text/javascript" src="/static/js/board/board.js"></script>
 </body>
