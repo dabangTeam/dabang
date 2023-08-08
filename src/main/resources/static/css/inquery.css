@@ -6,7 +6,7 @@
   }
   
   /* 전역 스타일 */
-  body {
+.wrapping {
     font-family: Arial, sans-serif;
     background-color:#fff;
     margin-left: 150px;

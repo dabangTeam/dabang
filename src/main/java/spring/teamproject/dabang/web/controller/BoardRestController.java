@@ -3,9 +3,11 @@ package spring.teamproject.dabang.web.controller;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,6 +20,7 @@ import spring.teamproject.dabang.service.BoardService;
 import spring.teamproject.dabang.web.dto.CMRespDto;
 import spring.teamproject.dabang.web.dto.board.AddBoardReqDto;
 import spring.teamproject.dabang.web.dto.board.GetBoardRespDto;
+import spring.teamproject.dabang.web.dto.board.UpdateBoardReqDto;
 
 @RestController
 @RequestMapping("/api/v1/board")
@@ -59,52 +62,36 @@ public class BoardRestController {
 	}
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "complete creation", list));
 	}
+	@PutMapping("/put/{usercode}")
+	public ResponseEntity<?> setContentTodo(@PathVariable int usercode, @RequestBody UpdateBoardReqDto updateBoardReqDto){
+		
+		boolean status = false;
+		updateBoardReqDto.setUsercode(usercode);
+		try {
+			status = boardService.UpdateBoard(updateBoardReqDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(1,"failed",status));
+		}
+		return ResponseEntity.internalServerError().body(new CMRespDto<>(1,"success",status));
+	}
 	
-//	@GetMapping("/{flag}/{BoardCode}")
-//	public ResponseEntity<?> getBoard(@PathVariable String flag, @PathVariable int BoardCode) {
-//		GetBoardRespDto getBoardRespDto = null;
-//		if(flag.equals("pre") || flag.equals("next")) {
-//			try {
-//				getBoardRespDto = boardService.getBoard(flag, BoardCode);
-//				if(getBoardRespDto == null) {
-//					return ResponseEntity.badRequest().body(new CMRespDto<>(-1, "datebase failed", null));
-//				}
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//				return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "datebase error", null));
-//			}			
-//		}else {
-//			return ResponseEntity.ok().body(new CMRespDto<>(1, "request failed", null));
-//		}
-//		return ResponseEntity.ok().body(new CMRespDto<>(1, "success", getBoardRespDto));
-//	}
+	@DeleteMapping("/delete/{usercode}")
+	public ResponseEntity<?> setdeleteTodo(@PathVariable int usercode){
+		
+		boolean status = false;
+		
+		try {
+			status = boardService.deleteBoard(usercode);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.ok().body(new CMRespDto<>(-1,"failed",status));
+		}
+		return ResponseEntity.ok().body(new CMRespDto<>(1,"success",status));
+	}
 	
-//	@GetMapping("/file/download/{fileName}")
-//	public ResponseEntity<?> downloadFile(@PathVariable String fileName) throws IOException {
-//		Path path = Paths.get(filePath + "Board/" + fileName);
-//		String contentType = Files.probeContentType(path);
-//		HttpHeaders headers = new HttpHeaders();
-//		headers.setContentDisposition(ContentDisposition.builder("attachment")
-//														.filename(fileName, StandardCharsets.UTF_8)
-//														.build());
-//		headers.add(HttpHeaders.CONTENT_TYPE, contentType);
-//		Resource resource = new InputStreamResource(Files.newInputStream(path));
-//		
-//		return ResponseEntity.ok().headers(headers).body(resource);
-//	}
-	
-//	@GetMapping("/list/{page}")
-//	public ResponseEntity<?> getBoardList(@PathVariable int page, @RequestParam String searchFlag, @RequestParam String searchValue) {
-//		List<GetBoardListRespDto> listDto = null;
-//		try {
-//			listDto = boardService.getBoardList(page, searchFlag, searchValue);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "database error", listDto));
-//		}
-//		
-//		return ResponseEntity.ok().body(new CMRespDto<>(1, "success", listDto));
-//	}
+
 	
 	
 	
