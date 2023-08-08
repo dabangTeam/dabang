@@ -7,7 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -61,6 +64,7 @@ public class AuthController {
 		boolean status = false;
 		System.out.println(signupReqDto.getPassword());
 		try {
+			signupReqDto.setNName(generateRandomNickname());
 			status = principalDetailsService.addUser(signupReqDto);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -69,6 +73,26 @@ public class AuthController {
 		}
 		
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "회원가입 성공", status));
+	}
+	
+	private String generateRandomNickname() {
+	    List<String> adjectives = Arrays.asList(
+	        "기분나쁜", "기분좋은", "신바람나는", "상쾌한", "짜릿한", "그리운", "자유로운", "서운한",
+	        "울적한", "비참한", "위축되는", "긴장되는", "두려운", "당당한", "배부른", "수줍은",
+	        "창피한", "멋있는", "열받은", "심심한", "잘생긴", "이쁜", "시끄러운"
+	    );
+
+	    List<String> animals = Arrays.asList(
+	        "사자", "코끼리", "호랑이", "곰", "여우", "늑대", "너구리", "침팬치", "고릴라",
+	        "참새", "고슴도치", "강아지", "고양이", "거북이", "토끼", "앵무새", "하이에나",
+	        "돼지", "하마", "원숭이", "물소", "얼룩말", "치타", "악어", "기린", "수달",
+	        "염소", "다람쥐", "판다"
+	    );
+
+	    Collections.shuffle(adjectives);
+	    Collections.shuffle(animals);
+
+	    return adjectives.get(0) + animals.get(0);
 	}
 	
 	@ValidCheck
@@ -107,11 +131,12 @@ public class AuthController {
 	
 	@GetMapping("/principal")
 	public ResponseEntity<?> getPrincipal(@AuthenticationPrincipal PrincipalDetails principalDetails){
-		if(principalDetails == null) {
-			return  ResponseEntity.badRequest().body(new CMRespDto<>(-1, "principal is null", null));
-		}
-		return  ResponseEntity.ok().body(new CMRespDto<>(1, "success load", principalDetails.getUser()));
+	    if(principalDetails == null) {
+	        return  ResponseEntity.badRequest().body(new CMRespDto<>(-1, "principal is null", null));
+	    }
+	    return  ResponseEntity.ok().body(new CMRespDto<>(1, "success load", principalDetails.getUser()));
 	}
+
 	
 	// 로그인 처리를 위한 메서드
 	@ValidCheck
@@ -134,6 +159,7 @@ public class AuthController {
 
 		if (status) {
 			return ResponseEntity.ok().body(new CMRespDto<>(1, "로그인 성공", status));
+			
 		} else {
 			return ResponseEntity.ok().body(new CMRespDto<>(0, "아이디 또는 비밀번호가 일치하지 않습니다.", status));
 		}

@@ -26,8 +26,10 @@ public class SignupReqDto {
 	
 	@NotBlank
 	private String checkpassword;
+	
+	private String nName;
 
-	@AssertTrue(message = "이미 존재하는 이메일 주소 입니다.")
+	@AssertTrue()
 	private boolean	 checkUseremailFlag;
 	
 	public User toEntity() {
@@ -36,6 +38,7 @@ public class SignupReqDto {
 				.user_password(new BCryptPasswordEncoder().encode(password))
 				.user_checkpassword(checkpassword)
 				.user_roles("ROLE_USER")
+				.nName(nName)
 				.build();
 				
 					

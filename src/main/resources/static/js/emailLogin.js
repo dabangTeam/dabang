@@ -109,3 +109,22 @@ loginBtn.onclick = () => {
 emailLoginBtn.onclick = () => {
 	location.href = "/welcome/agree/join";
 }
+
+function getPrincipal(){
+	let user = null;
+	$.ajax({
+		async:false,
+		type: "get",
+		url: "/api/v1/auth/principal",
+		dataType: "json",
+		success: (response) => {
+			user = response.data;
+		},
+		error: (error) => {
+			console.log(error);
+		}
+	});
+	return user;
+}
+
+

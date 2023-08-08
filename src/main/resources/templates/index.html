@@ -1,39 +1,77 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부동산 필수 앱 다방</title>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/index.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
+
 <body>
-    <header>
-        <div class="header-box-line">
-            <div class="home-logo-link">
-                <a href="/index.html"><img class="site-logo" src="/static/images/home_logo.PNG"></a>
+    <div class="content">
+        <header>
+            <nav class="header-box-line">
+                <div class="home-logo-link">
+                    <a href="/index.html"><img class="site-logo" src="/static/images/home_logo.PNG"></a>
+                </div>
+                <div class="right-header-line">
+                    <a href="/search/map" class="menu-item"  onclick="location.href='/search/map';">지도</a>
+                    <a href="/sales" class="menu-item">분양</a>
+                    <a href="/favorite/recent-room" class="menu-item">관심목록</a>
+                    <a href="/manage" class="menu-item" onclick="location.href='/manage';">방내놓기</a>
+                    <a href="/alarm" class="menu-item">알림</a>
+                    <a href="" class="menu-item enter">My 비대면 계약</a>
+<!--                     <button type="button" class="login-page-button menu-item" onclick="location.href='/welcome';">
+                        <span class="button-text">로그인<span></span>회원가입</span>
+                    </button> -->
+<!--                     <button class="last-button menu-item">
+                        <span class="button-text">중개사 가입/광고문의</span>
+                    </button> -->
+                    <div class="auth-items"></div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="header-box">
+            <div>
+                <h1>어떤 방을 찾으세요?</h1>
+                <div class="wap-Tab">
+                    <p class="wap-Tab-Btn1">
+                        매물
+                        <!-- ::after -->
+                    </p>
+                    <p class="wap-Tab-Btn2">분양</p>
+                </div>
             </div>
-            <div class="right-header-line">
-                <a href="/search/map" class="menu-item">지도</a>
-                <a href="/sales" class="menu-item">분양</a>
-                <a href="/favorite/recent-room" class="menu-item">관심목록</a>
-                <a href="/manage" class="menu-item">방내놓기</a>
-                <a href="/alarm" class="menu-item">알림</a>
-                <a href="" class="menu-item">다방싸인 비대면 계약</a>
-                <button type="button" class="login-page-button menu-item">
-                    <span class="button-text">로그인<span></span>회원가입</span>
-                </button>
-                <button class="last-button menu-item">
-                    <span class="button-text">중개사 가입/광고문의</span>
-                </button>
-            </div>
+            <form>
+                <label class="wap-input">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <g fill="none" fill-rule="evenodd">
+                            <path d="M0 0H24V24H0z"></path>
+                            <g stroke="#222" stroke-width="2" transform="translate(2 2)">
+                                <circle cx="8" cy="8" r="8"></circle>
+                                <path stroke-linecap="round" d="M15 14L19.95 18.95"></path>
+                            </g>
+                        </g>
+                    </svg>
+                    <input placeholder="지역 또는 단지명을 입력하세요">
+                </label>
+            </form>
         </div>
 <<<<<<< HEAD
 =======
 
+<<<<<<< HEAD
 >>>>>>> 1aaeddabbe1490fd791ce30eb779feeb467439fb
     </header>
 
+=======
+    </div>
+    <script src="/static/js/index.js"></script>
+>>>>>>> f3040eb934328d98947586c1fab791224ffc0530
 </body>
 
 </html>

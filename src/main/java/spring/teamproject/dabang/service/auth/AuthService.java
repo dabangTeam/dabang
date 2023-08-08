@@ -10,6 +10,6 @@ import spring.teamproject.dabang.web.dto.auth.UserPasswordCheckReqDto;
 public interface AuthService {
 	public boolean checkUserEmail(UserEmailCheckReqDto userEmailCheckReqDto) throws Exception;
 	public boolean checkUserPassword(UserPasswordCheckReqDto userPasswordCheckReqDto) throws Exception;
-	public boolean signup() throws Exception;
+	public boolean signup(SignupReqDto signupReqDto) throws Exception;
 	public boolean login(LoginReqDto loginReqDto) throws Exception;
 }
