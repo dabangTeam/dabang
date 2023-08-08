@@ -13,6 +13,7 @@
   			#{user_password},
   			#{user_checkpassword},
   			#{oauth2_id},
+  			#{nName},
   			#{user_roles},
   			#{user_provider},
   			now(),
