@@ -119,6 +119,8 @@ header {
 .Profile img {
     width: 32px;
     height: 32px;
+
+    position: relative;
 }
 
 
@@ -130,27 +132,20 @@ header {
     border: none;
     margin-left: 8px;
     cursor: pointer;
-
-    position: relative;
 }
 
 
 .user-option-box {
     position: absolute;
-    top: calc(100% + 13px);
-    left: calc(50% - 55px);
+    top: calc(100% + 10px);
+    left: calc(59% - 1px);
     transform: translateX(-50%);
     z-index: 101;
-
-    width: 12px;
-    height: 12px;
-
-    background-color: #ffffff;
 }
 
 
 .user-option-box::before {
-    ccontent: "";
+    content: "";
     display: block;
     width: 10px;
     height: 10px;
@@ -161,12 +156,55 @@ header {
     transform: translateY(2px) rotate(45deg);
 }
 
-.user-option-box nav {
+.user-option-box > nav {
     width: 240px;
+
     position: absolute;
-    top: calc(100% + 20px);
-    right: 10px;
+    top: calc(100% - 5px);
+    right: -40px;
     z-index: 100;
+
+    border: 1px solid rgb(205, 205, 205);
+    border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 18px -10px;
+
+    background-color: rgb(255, 255, 255);
+}
+
+.user-service-nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    width: 100%;
+    padding: 0px 16px;
+    color: #4c4c4c !important;
+    font-size: 14px;
+    line-height: 20px;
+    height: 56px;
+    border-bottom: 1px solid rgb(237, 237, 237);
+}
+
+.logout-button {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 0px 16px;
+    color: rgb(76, 76, 76);
+    font-size: 14px;
+    line-height: 20px;
+    height: 55px;
+    border: 0px;
+    background-color: transparent;
+}
+
+.logout-button > svg {
+    width: 17px;
+    height: 15px;
+    margin-left: auto;
 }
 
 
