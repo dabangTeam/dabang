@@ -10,7 +10,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
@@ -18,8 +17,8 @@ public class RoomData {
 	// 매물정보
 	private int room_code;
 	private String sales_type;
-	private String address_road;
-	private String address_jibun;
+	private String sales_address_main_road;
+	private String sales_address_main_jibeon;
 	private int size_exclusive_p;
 	private double size_exclusive_m;
 	private int size_supply_p;
@@ -71,8 +70,8 @@ public class RoomData {
 	public ReadSimpleDataRespDto SimpleDataToDto() {
 		return ReadSimpleDataRespDto.builder()
 				.salesType(sales_type)
-				.addressRoad(address_road)
-				.addressJibun(address_jibun)
+				.addressRoad(sales_address_main_road)
+				.addressJibun(sales_address_main_jibeon)
 				.sizeExclusiveP(size_exclusive_p)
 				.sizeExclusiveM(size_exclusive_m)
 				.sizeSupplyP(size_supply_p)
