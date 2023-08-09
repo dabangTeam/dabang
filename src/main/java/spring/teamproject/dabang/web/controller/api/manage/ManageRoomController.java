@@ -4,6 +4,7 @@ package spring.teamproject.dabang.web.controller.api.manage;
 import java.util.ArrayList;
 
 import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,6 +34,9 @@ import spring.teamproject.dabang.web.dto.manage.UpdateRoomInfoReqDto;
 public class ManageRoomController {
 	
 	private final ManageService manageService;
+	
+	@Value("${file.path}")
+	private String filePath;
 	
 	@GetMapping("/list/{roomcode}")
 	public ResponseEntity<?> getRoomList(@PathVariable int roomcode) {
@@ -66,6 +70,9 @@ public class ManageRoomController {
 	@PostMapping("/content")
 	public ResponseEntity<?> addRoomInfo(@RequestBody CreateRoomInfoReqDto createRoomInfoReqDto) {
 		System.out.println("요청받");
+		log.info(">>>{} : ", createRoomInfoReqDto);
+		log.info(">>>> fileName: {}", createRoomInfoReqDto.getFile().get(0).getOriginalFilename());
+		log.info("filePath: {}", filePath);
 		CreateRoomInfoRespDto createRoomInfoRespDto = null;
 		
 		try {

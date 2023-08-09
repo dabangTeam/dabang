@@ -71,6 +71,19 @@
   	
   	</insert>
   	
+  	<insert id="saveFiles" parameterType="java.util.List">
+		insert into
+			salesInfo (room_code, photo_filename, photo_filecode)
+		values
+		<foreach collection="list" item="file" separator=",">
+			(
+				0,
+				#{file.photo_filenam},
+				#{photo_filecode},
+			)
+		</foreach>
+	</insert>
+  	
   	<update id="updateRoomInfoByRoomcode"
   	parameterType="spring.teamproject.dabang.domain.manage.RoomInfo">
   	update

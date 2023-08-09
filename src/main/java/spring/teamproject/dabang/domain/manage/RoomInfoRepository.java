@@ -7,15 +7,17 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface RoomInfoRepository {
 	
-	public RoomInfo getRoomInfoByRoomcode(int roomcode);
+	public RoomInfo getRoomInfoByRoomcode(int roomcode) throws Exception;
 	
-	public RoomInfo getRoomListByRoomcode(int roocdode);
+	public RoomInfo getRoomListByRoomcode(int roocdode) throws Exception;
 	
-	public int save(RoomInfo roomInfo);
+	public int save(RoomInfo roomInfo) throws Exception;
 	
-	public int updateRoomInfoByRoomcode(RoomInfo roomInfo);
+	public int saveFiles(List<RoomInfoFile> list) throws Exception;
 	
-	public int remove(int roomcode);
+	public int updateRoomInfoByRoomcode(RoomInfo roomInfo) throws Exception;
+	
+	public int remove(int roomcode) throws Exception;
 
 	public List<String> getAddressList();
 	
