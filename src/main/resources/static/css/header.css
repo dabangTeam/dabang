@@ -32,7 +32,7 @@ header {
 }
 
 .home-logo-link{
-	    flex: 0 0 auto;
+	flex: 0 0 auto;
     display: flex;
     -webkit-box-align: center;
     align-items: center;
@@ -46,7 +46,6 @@ header {
 .right-header-line{
 	flex: 0 0 auto;
     display: flex;
-    -webkit-box-align: center;
     align-items: center;
     margin-left: auto;
 }

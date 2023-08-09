@@ -22,7 +22,7 @@ function getPrincipal(){
 
 function loadHeader(user) {
     const authItems = document.querySelector(".auth-items");
-
+	authItems.innerHTML = "";
     if (user == null) {
         authItems.innerHTML = `
             <button type="button" class="login-page-button menu-item" onclick="location.href='/welcome';">
@@ -35,7 +35,7 @@ function loadHeader(user) {
     } else {
         authItems.innerHTML = `
         	<div size="32" class="Profile">
-        	<img src="/static/images/profile.svg" alt="" draggable="false">
+        		<img src="/static/images/profile.svg" alt="" draggable="false">
         	</div>
             <button type="button" class="auth-button username">${user.nname} 님</button>
         `;
