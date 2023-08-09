@@ -1,21 +1,35 @@
 package spring.teamproject.dabang.service.manage;
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+import java.util.function.Predicate;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import spring.teamproject.dabang.domain.manage.RoomInfo;
+import spring.teamproject.dabang.domain.manage.RoomInfoFile;
 import spring.teamproject.dabang.domain.manage.RoomInfoRepository;
 import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoReqDto;
 import spring.teamproject.dabang.web.dto.manage.CreateRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.ReadRoomInfoRespDto;
 import spring.teamproject.dabang.web.dto.manage.UpdateRoomInfoReqDto;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class ManageServiceImpl implements ManageService{
+	
+	@Value("${file.path}")
+	private String filePath;
 	
 	private final RoomInfoRepository roomInfoRepository;
 
@@ -32,6 +46,8 @@ public class ManageServiceImpl implements ManageService{
 
 	@Override
 	public CreateRoomInfoRespDto createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception {
+		
+		Predicate<String> predicate = (filename) -> !filename.isBlank();		
 		
 		List<Integer> facAircndList = convertStringToList(createRoomInfoReqDto.getFacAircnd());
 		createRoomInfoReqDto.setFacAircndList(facAircndList);
@@ -78,10 +94,43 @@ public class ManageServiceImpl implements ManageService{
 	    */
 		
 		RoomInfo RoomInfoEntity = createRoomInfoReqDto.toEntity();
+		
+		if(predicate.test(createRoomInfoReqDto.getFile().get(0).getOriginalFilename())) {
+			List<RoomInfoFile> roomInfoFiles = new ArrayList<RoomInfoFile>();
+			
+			for(MultipartFile file : createRoomInfoReqDto.getFile()) {
+				String originFilename = file.getOriginalFilename();
+				String tempFilename = UUID.randomUUID().toString().replace("-", "") + "_"+originFilename;
+				log.info("tempFilename : ", tempFilename);
+				
+				Path uploadPath = Paths.get(filePath, "roomPhoto/" + tempFilename);
+				
+				File f = new File(filePath + "roomPhoto");
+				if(!f.exists()) {
+					f.mkdir();
+				}
+				
+				Files.write(uploadPath, file.getBytes());
+				RoomInfo roomInfo = null;
+				roomInfoFiles.add(RoomInfoFile.builder()
+											.photo_filename(tempFilename)
+											.room_code(roomInfo.getRoom_code())
+											.build());
+			}
+			
+			roomInfoRepository.saveFiles(roomInfoFiles);
+			log.info("file : ",roomInfoFiles);
+		}
+		
+		/* RoomInfoFile RoomInfoFileEntity = createRoomInfoReqDto.toFileEntity(); */
 				
 		boolean insertStatus = roomInfoRepository.save(createRoomInfoReqDto.toEntity()) > 0;
 		
+		
+		
 		return RoomInfoEntity.toCreateRoomInfoDto(insertStatus);
+				
+			
 	}
 
 	@Override

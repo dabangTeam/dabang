@@ -7,11 +7,16 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 import spring.teamproject.dabang.domain.manage.RoomInfo;
+import spring.teamproject.dabang.domain.manage.RoomInfoFile;
 
 @Data
 public class CreateRoomInfoReqDto {
+	
+		private List<MultipartFile> file;
 	
 		// 매물정보
 		private int roomCode;
@@ -131,6 +136,16 @@ public class CreateRoomInfoReqDto {
 				.user_code(userCode)
 				.create_date(createDate)
 				.update_date(updateDate)
+				.build();
+	}	
+	
+	public RoomInfoFile toFileEntity() {
+		return RoomInfoFile.builder()
+				.room_code(roomCode)
+				
+				.photo_filename(photoFilename)
+				.photo_filecode(photoFilecode)
+
 				.build();
 	}	
 }
