@@ -7,11 +7,7 @@
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.user.User">
   		insert into
   			user_mst
-<<<<<<< HEAD
-  			values(
-=======
   		values(
->>>>>>> 37007cb68fd150c29ada8c05b5de37bbddfaf4aa
   			0,
   			#{user_email},
   			#{user_password},
