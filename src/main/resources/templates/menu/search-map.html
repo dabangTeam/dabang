@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -15,27 +15,7 @@
 </head>
 
 <body>
-    <header>
-        <div class="header-box-line">
-            <div class="home-logo-link">
-                <a href="/index"><img class="site-logo" src="/static/images/header_logo.PNG"></a>
-            </div>
-            <div class="right-header-line">
-                <a href="/search/map" class="menu-item text-color">지도</a>
-                <a href="/sales" class="menu-item">분양</a>
-                <a href="/favorite/recent-room" class="menu-item">관심목록</a>
-                <a href="/manage" class="menu-item">방내놓기</a>
-                <a href="/alarm" class="menu-item">알림</a>
-                <a href="" class="menu-item">다방싸인 비대면 계약</a>
-                <button type="button" class="login-page-button menu-item">
-                    <span class="button-text">로그인<span></span>회원가입</span>
-                </button>
-                <button class="last-button menu-item">
-                    <span class="button-text">중개사 가입/광고문의</span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <th:block th:replace="/fragments/header"></th:block>
 
     <main>
         <div class="main-box-flex">
@@ -525,9 +505,6 @@
                         <p class="room-text">오피스텔  · 판도라</p>
                         <p>2층, 23.17m², 관리비 15만</p>
                         <p>- 실매물 - 송상현광장 - 신축건물 -</p>
-                        <!-- <div class="room-admin hidden">
-                            <p>방주인</p>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -558,10 +535,9 @@
 
     <script src="http://t1.daumcdn.net/mapjsapi/js/main/4.4.12/kakao.js" defer></script>
 
-    <script src="/static/js/search-map.js"></script>
+    <script type="text/javascript" src="/static/js/search-map.js"></script>
 
-    <script src="/static/js/range-setting.js"></script>
-    <script src="/static/js/header.js"></script>
+    <script type="text/javascript" src="/static/js/range-setting.js"></script>
 </body>
 
 </html>
