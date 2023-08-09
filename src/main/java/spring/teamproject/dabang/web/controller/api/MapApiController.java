@@ -52,7 +52,7 @@ public class MapApiController {
 	
 	@GetMapping("/room/{address}")
 	public ResponseEntity<?> getSimpleData(@PathVariable String address) {
-		List<RoomData> list = new ArrayList<RoomData>();
+		List<RoomData> list = null;
 		
 		try {
 			list = roomDataService.readRoomInfoRespDto(address);

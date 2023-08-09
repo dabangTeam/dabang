@@ -29,4 +29,5 @@ public class User {
 		}
 		return Arrays.asList(user_roles.replaceAll(" ","").split(","));
 	}
+	
 }
