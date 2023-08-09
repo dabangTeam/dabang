@@ -1,4 +1,4 @@
-package spring.teamproject.dabang.web.dto.accont;
+package spring.teamproject.dabang.web.dto.account;
 
 import java.util.List;
 import java.util.Map;

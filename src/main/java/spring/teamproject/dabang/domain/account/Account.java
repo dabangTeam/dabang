@@ -3,7 +3,7 @@ package spring.teamproject.dabang.domain.account;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import spring.teamproject.dabang.web.dto.accont.GetAccountRespDto;
+import spring.teamproject.dabang.web.dto.account.GetAccountRespDto;
 import spring.teamproject.dabang.web.dto.board.GetBoardListRespDto;
 
 import lombok.AllArgsConstructor;
@@ -22,7 +22,7 @@ public class Account {
 	private String user_checkpassword;
 	private String oauth2_id;
 	private String user_name;
-	private String n_name;
+	private String nName;
 	private String phone_number;
 	private String user_roles;
 	
@@ -31,7 +31,7 @@ public class Account {
 		return GetAccountRespDto.builder()
 				.username(user_name)
 				.phoneNumber(phone_number)
-				.nName(n_name)
+				.nName(nName)
 				.build();
 	}
 }
