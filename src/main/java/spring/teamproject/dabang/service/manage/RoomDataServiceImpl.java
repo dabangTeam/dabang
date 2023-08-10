@@ -23,6 +23,17 @@ public class RoomDataServiceImpl implements RoomDataService{
 		list = roomDataRepository.readRoomData(address);
 		return list;
 	}
+
+	@Override
+	public List<String> readAddressList() throws Exception {
+		List<String> list = null;
+		
+		list = roomDataRepository.getAddressInfo();
+		System.out.println("service작업중:" + list);
+		
+		return list;
+	}
+
 	
 	
 	

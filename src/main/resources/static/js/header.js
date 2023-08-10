@@ -30,16 +30,22 @@ function loadHeader(user) {
                 <span class="button-text">중개사 가입/광고문의</span>
             </button>
         `;
-
+		
 		contract.textContent = "다방싸인 비대면 계약";
+		
+		const loginPageButton = document.querySelector(".login-page-button");
+	
+		loginPageButton.onclick = () => {
+			location.href = "/welcome";
+		}
     } else {
         authItems.innerHTML = `
 			<div size="32" class="Profile">
 				<img src="/static/images/profile.svg" draggable="false">
 				<div class="user-option">
 					<p>${user.nname} 님</p>
-					<div class="user-option-box">
-						<nav>
+					<div class="user-option-box hidden">
+						<nav class="hidden">
 							<a href="" class="user-service-nav">문자문의</a>
 							<a href="" class="user-service-nav">전화문의</a>
 							<a href="/inquery" class="user-service-nav">1:1 문의내역</a>
@@ -58,6 +64,16 @@ function loadHeader(user) {
         `;
 
 		contract.textContent = "My 비대면 계약";
+
+		const userOptionBox = document.querySelector(".user-option-box");
+		const userOptionNav = document.querySelector(".user-option-box nav");
+		const userOption = document.querySelector(".user-option p");
+
+		userOption.onclick = () => {
+			console.log("클릭");
+			userOptionBox.classList.toggle("hidden");
+			userOptionNav.classList.toggle("hidden");
+		}
         // const username = document.querySelector(".username");
         // username.onclick = () => {
 		// 	location.replace("");

@@ -18,7 +18,7 @@ header {
     align-items: center;
 
     width: 100%;
-    height: 79px;
+    height: 80px;
 
     font-weight: 400;
     /* background: linear-gradient(134deg, rgb(19, 183, 207) -5%, rgb(54, 91, 180) 56%, rgb(54, 91, 180) 56%); */
@@ -113,7 +113,6 @@ header {
     user-select: none;
     margin-left: 40px;
     position: relative;
-    background: url(/static/media/profile.966e0f65.svg) center center / cover no-repeat;
 }
 
 .Profile img {
@@ -140,9 +139,8 @@ header {
     top: calc(100% + 10px);
     left: calc(59% - 1px);
     transform: translateX(-50%);
-    z-index: 101;
+    z-index: 11;
 }
-
 
 .user-option-box::before {
     content: "";
@@ -154,6 +152,9 @@ header {
     border-color: rgb(205, 205, 205) transparent transparent rgb(205, 205, 205);
     background-color: rgb(255, 255, 255);
     transform: translateY(2px) rotate(45deg);
+
+    z-index: 11;
+    position: relative;
 }
 
 .user-option-box > nav {
@@ -162,9 +163,9 @@ header {
     position: absolute;
     top: calc(100% - 5px);
     right: -40px;
-    z-index: 100;
+    z-index: 9;
 
-    border: 1px solid rgb(205, 205, 205);
+    border: 0px solid rgb(205, 205, 205);
     border-radius: 2px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 15px 18px -10px;
 
