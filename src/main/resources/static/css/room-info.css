@@ -35,8 +35,7 @@ main {
 .room-info-content {
     display: grid;
     grid-template-columns: 780px 360px;
-    gap: 0px 40px;
-    padding: 0px 10px;
+    gap: 0px 60px;
 
     width: 1200px;
     margin: 0px auto;

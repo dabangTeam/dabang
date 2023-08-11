@@ -16,12 +16,7 @@
 		WHERE salesInfo.room_code = #{room_code};
   	</select>
   	
-  	<select id="getAddressList" resultType="java.lang.String">
-  		SELECT
-			sales_address
-		FROM
-			salesInfo
-  	</select>
+
   	 	
   	<select id="getRoomListByRoomcode" parameterType="Integer" resultType="spring.teamproject.dabang.domain.manage.RoomInfo">
   	SELECT 

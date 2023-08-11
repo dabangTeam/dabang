@@ -21,29 +21,14 @@ import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 @RequiredArgsConstructor
 public class MapApiController {
 	
-	private final ManageService manageService;
 	private final RoomDataService roomDataService;
 	
 	@GetMapping("/address")
 	public ResponseEntity<?> getAddress() {
-		
-		List<String> list = new ArrayList<String>();
-		
-		try {
-			list = manageService.readAddressList();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return ResponseEntity.ok().body(new CMRespDto<>(1, "주소 리스트 불러오기 성공", list));
-	}
+		List<String> list = null;
 	
-	@GetMapping("/address/city")
-	public ResponseEntity<?> getAddressSiDo() {
-		
-		List<String> list = new ArrayList<String>();
 		try {
-			list = manageService.readAddressCityList();
+			list = roomDataService.readAddressList();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -53,7 +38,6 @@ public class MapApiController {
 	
 	@GetMapping("/room/{address}")
 	public ResponseEntity<?> getSimpleData(@PathVariable String address) {
-		RoomData roomData  = null;
 		List<RoomData> list = null;
 		
 		try {

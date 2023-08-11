@@ -8,7 +8,7 @@ public class PageController {
 
 	@GetMapping({"/", "/index"})
 	public String getPage() {
-		return "index";
+		return "/index";
 	}
 
 	@GetMapping("/search/map")
@@ -63,6 +63,11 @@ public class PageController {
 	@GetMapping("/roomInfo")
 	public String getRoomInfo() {
 		return "/menu/room-info";
+	}
+	
+	@GetMapping("/room/interest")
+	public String getRoomInterest() {
+		return "/list/interest-list";
 	}
 	
 }

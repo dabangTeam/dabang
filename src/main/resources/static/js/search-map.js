@@ -114,16 +114,30 @@ function roomListData(data) {
   const roomSearchList = document.querySelector(".room-search-list");
   roomSearchList.innerHTML = ""
   data.forEach(list => {
+    let freeFee = null;
+
+    if(`${list.management_fee}` == 0) {
+      freeFee = "관리비 없음";
+    }else {
+      freeFee = `관리비 ${list.management_fee}만`;
+    }
+
+    let title = null;
+    if(`${list.desc_title}` == null || `${list.desc_title}` == "null") {
+      title = "";
+    } else {
+      title = `${list.desc_title}`;
+    }
     roomSearchList.innerHTML += `
         <div class="room-data">
             <div class="room-img">
                 <img src="/static/images/room_img.PNG">
             </div>
             <div class="room-text-data">
-                <h1>월세 ${list.monthly_price}'/'${list.monthly_price_deposit}</h1>    
-                <p class="room-text">오피스텔  · 판도라</p>
-                <p>${list.num_floor}층, ${list.size_exclusive_m}m², 관리비 ${list.management_fee}만</p>
-                <p>${list.desc_title}</p>
+                <h1>월세 ${list.monthly_price}/${list.monthly_price_deposit}</h1>    
+                <p class="room-text">오피스텔 · 판도라</p>
+                <p>${list.num_floor}층, ${list.size_exclusive_m}m², ${freeFee}</p>
+                <p>${title}</p>
             </div>
         </div>
     `

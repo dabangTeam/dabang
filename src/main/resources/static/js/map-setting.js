@@ -85,8 +85,6 @@ $.get("/static/js/city-data.json", function (data) {
 	console.log(cities);
 });
 
-// Convert the Set to an array to get unique city names
-
 
 // Function to hide all custom overlays in the 'city' array
 function hideCityOverlays1() {
@@ -196,6 +194,43 @@ function getAddress(data) {
 			}
 		});
 	}
+}
+
+function searchEnter() {
+	const searchBox = document.querySelector(".search-box");
+	console.log("onkeyup True");
+	if (window.event.keyCode == 13) { // 올바른 속성명은 keyCode입니다.
+		let searchText = searchBox.value; // 올바른 속성명은 value입니다.
+		console.log("enter key");
+		if (searchText != null) {
+			console.log("searchText True");
+			roomSearch(searchText);
+		}
+	}
+}
+
+function roomSearch(data) {
+	geocoder.addressSearch(data, function(result, status) {
+		// 정상적으로 검색이 완료됐으면 
+		if (status === kakao.maps.services.Status.OK) {
+			let searchPs = new kakao.maps.LatLng(result[0].y, result[0].x);
+			console.log(searchPs);
+			map.setCenter(searchPs);
+
+			// 결과값으로 받은 위치를 마커로 표시합니다
+			let marker = new kakao.maps.Marker({
+				map: map,
+				position: searchPs
+			});
+
+			// 인포윈도우로 장소에 대한 설명을 표시합니다
+			let infowindow = new kakao.maps.InfoWindow({
+				content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+			});
+			infowindow.open(map, marker);
+			
+		}
+	});
 }
 
 function getMapLevel() {

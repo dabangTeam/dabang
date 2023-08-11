@@ -9,4 +9,6 @@ import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 public interface RoomDataService {
 
 	public List<RoomData> readRoomInfoRespDto(String address) throws Exception;
+	
+	public List<String> readAddressList() throws Exception; // kjh 작업중
 }

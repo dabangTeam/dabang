@@ -15,9 +15,6 @@ public interface ManageService {
 	
 	public CreateRoomInfoRespDto createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception;
 	
-	public List<String> readAddressList() throws Exception; // kjh 작업중
-	
-	public List<String> readAddressCityList() throws Exception;
 	
 	public boolean updateRoomInfo (UpdateRoomInfoReqDto updateRoomInfoReqDto) throws Exception;
 	
