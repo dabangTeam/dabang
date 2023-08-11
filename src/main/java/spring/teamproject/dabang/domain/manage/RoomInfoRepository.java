@@ -13,7 +13,7 @@ public interface RoomInfoRepository {
 	
 	public int save(RoomInfo roomInfo) throws Exception;
 	
-	public int saveFiles(List<RoomInfoFile> list) throws Exception;
+	public int saveFiles(RoomInfoFile roomInfoFile) throws Exception;
 	
 	public int updateRoomInfoByRoomcode(RoomInfo roomInfo) throws Exception;
 	

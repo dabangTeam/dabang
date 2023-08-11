@@ -5,7 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.function.Predicate;
 
@@ -93,14 +95,15 @@ public class ManageServiceImpl implements ManageService{
 	    createRoomInfoReqDto.setFacOtherList(facOtherList);
 	    */
 		
-		RoomInfo RoomInfoEntity = createRoomInfoReqDto.toEntity();
+		RoomInfo roomInfoEntity = createRoomInfoReqDto.toEntity();
+		RoomInfoFile roomInfoFileEntity = createRoomInfoReqDto.toFileEntity();
 		
 		if(predicate.test(createRoomInfoReqDto.getFile().get(0).getOriginalFilename())) {
 			List<RoomInfoFile> roomInfoFiles = new ArrayList<RoomInfoFile>();
 			
 			for(MultipartFile file : createRoomInfoReqDto.getFile()) {
 				String originFilename = file.getOriginalFilename();
-				String tempFilename = UUID.randomUUID().toString().replace("-", "") + "_"+originFilename;
+				String tempFilename = UUID.randomUUID().toString().replace("-", "") + "_" + originFilename;
 				log.info("tempFilename : ", tempFilename);
 				
 				Path uploadPath = Paths.get(filePath, "roomPhoto/" + tempFilename);
@@ -111,24 +114,24 @@ public class ManageServiceImpl implements ManageService{
 				}
 				
 				Files.write(uploadPath, file.getBytes());
-				RoomInfo roomInfo = null;
-				roomInfoFiles.add(RoomInfoFile.builder()
-											.photo_filename(tempFilename)
-											.room_code(roomInfo.getRoom_code())
-											.build());
+				/*
+				 * roomInfoFiles.add(RoomInfoFile.builder() .photo_filename(tempFilename)
+				 * .room_code(roomInfo.getRoom_code()) .build());
+				 */
 			}
 			
-			roomInfoRepository.saveFiles(roomInfoFiles);
-			log.info("file : ",roomInfoFiles);
+	
 		}
 		
 		/* RoomInfoFile RoomInfoFileEntity = createRoomInfoReqDto.toFileEntity(); */
 				
 		boolean insertStatus = roomInfoRepository.save(createRoomInfoReqDto.toEntity()) > 0;
+		boolean insertStatusFile = roomInfoRepository.saveFiles(createRoomInfoReqDto.toFileEntity()) > 0;
+		Map<String, Boolean> respInsertStatus = new HashMap<>();
+		respInsertStatus.put("insertStatus", insertStatus);
+		respInsertStatus.put("insertStatusFile", insertStatusFile);
 		
-		
-		
-		return RoomInfoEntity.toCreateRoomInfoDto(insertStatus);
+		return roomInfoEntity.toCreateRoomInfoDto(respInsertStatus);
 				
 			
 	}

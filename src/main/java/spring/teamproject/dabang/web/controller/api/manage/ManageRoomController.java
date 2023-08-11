@@ -68,12 +68,14 @@ public class ManageRoomController {
 	}
 	
 	@PostMapping("/content")
-	public ResponseEntity<?> addRoomInfo(@RequestBody CreateRoomInfoReqDto createRoomInfoReqDto) {
+	public ResponseEntity<?> addRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) {
 		System.out.println("요청받");
-		log.info(">>>{} : ", createRoomInfoReqDto);
-		log.info(">>>> fileName: {}", createRoomInfoReqDto.getFile().get(0).getOriginalFilename());
+		System.out.println("파일업로드" + createRoomInfoReqDto.getFile());
+		//System.out.println("파일하나" + createRoomInfoReqDto.getFile().get(0).getOriginalFilename());
+		System.out.println(createRoomInfoReqDto);
+		//log.info(">>>> fileName: {}", createRoomInfoReqDto.getFile().get(0).getOriginalFilename());
 		log.info("filePath: {}", filePath);
-		CreateRoomInfoRespDto createRoomInfoRespDto = null;
+		log.info(">>>fileName: {}", createRoomInfoReqDto);		CreateRoomInfoRespDto createRoomInfoRespDto = null;
 		
 		try {
 			log.info("데이터가 전송되는지 확인 : {}", createRoomInfoReqDto);

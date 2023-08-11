@@ -57,7 +57,7 @@ spring:
     static-path-pattern: /static/**
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://web1.clm6lpdjfdik.ap-northeast-2.rds.amazonaws.com:3306/dabang?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mariadb://web1.clm6lpdjfdik.ap-northeast-2.rds.amazonaws.com:3306/dabang?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
     username: admin
     password: 1q2w3e4r
   servlet:
@@ -70,4 +70,4 @@ mybatis:
   - /mappers/*.xml
   
 file:
-  path: /Users/barkjungha/Desktop/개발자공부/GitHub/dabang/upload
+  path: /Users/barkjungha/Desktop/dev/GitHub/dabang/upload/

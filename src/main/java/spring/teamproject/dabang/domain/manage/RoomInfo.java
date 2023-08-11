@@ -3,6 +3,7 @@ package spring.teamproject.dabang.domain.manage;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -152,7 +153,7 @@ public class RoomInfo {
 					.build();
 		}
 		
-		public CreateRoomInfoRespDto toCreateRoomInfoDto(boolean insertStatus) {
+		public CreateRoomInfoRespDto toCreateRoomInfoDto(Map<String, Boolean> respInsertStatus) {
 			return CreateRoomInfoRespDto.builder()
 					.roomCode(room_code)
 					.salesType(sales_type)
