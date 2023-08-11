@@ -1,18 +1,26 @@
 package spring.teamproject.dabang.service;
 
 
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.function.Predicate;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import spring.teamproject.dabang.domain.board.Board;
+import spring.teamproject.dabang.domain.board.BoardFile;
 import spring.teamproject.dabang.domain.board.BoardRepository;
 import spring.teamproject.dabang.web.dto.board.AddBoardReqDto;
 import spring.teamproject.dabang.web.dto.board.GetBoardListRespDto;
@@ -24,8 +32,8 @@ import spring.teamproject.dabang.web.dto.board.UpdateBoardReqDto;
 @RequiredArgsConstructor
 public class BoardServiceImpl implements BoardService{
 	
-//	@Value("${file.path}")
-//	private String filePath;
+	@Value("${file.path}")
+	private String filePath;
 	
 	private final BoardRepository boardRepository;
 	
@@ -33,48 +41,54 @@ public class BoardServiceImpl implements BoardService{
 	public boolean addBoard(AddBoardReqDto addBoardReqDto) throws Exception {
 		
 		Predicate<String> predicate = (filename) -> !filename.isBlank();
-		
 
-//		Board Board = addBoardReqDto.toEntity();
-//		
-//		log.info(">>>{}:", Board);
-//		BoardRepository.saveBoard(Board);
+		Board board = null;
+			
+		board = Board.builder()
+				.notice_title(addBoardReqDto.getNoticeTitle())
+				.notice_content(addBoardReqDto.getNoticeContent())
+				.user_code(addBoardReqDto.getUserCode())
+				.notice_nName(addBoardReqDto.getNoticeNname())
+				.build();
 		
-//		if(predicate.test(addBoardReqDto.getFile().get(0).getOriginalFilename())) {
-//			
-//			List<BoardFile> BoardFiles = new ArrayList<BoardFile>();
-//			
-//			for(MultipartFile file : addBoardReqDto.getFile()) {
-//				String originFilename = file.getOriginalFilename();
-//				String tempFilename = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originFilename;
-//				
-//				Path uploadPath = Paths.get(filePath, "Board/" + tempFilename);
-//				
-//				File f = new File(filePath + "Board");
-//				if(!f.exists()) {
-//					f.mkdir();
-//				}
-//					
-//				Files.write(uploadPath, file.getBytes());
-//				
-//				BoardFiles.add(BoardFile.builder()
-//										.board_code(Board.getBoard_code())
-//										.file_name(tempFilename)
-//										.build());
-//				
-//				
-//				}
-//				BoardRepository.saveBoardFiles(BoardFiles);
-//			};
-		return boardRepository.saveBoard(addBoardReqDto.toEntity()) == 1;
+		log.info(">>>{}:", board);
+		boardRepository.saveBoard(board);
+		
+		if(predicate.test(addBoardReqDto.getFile().get(0).getOriginalFilename())) {
+			
+			List<BoardFile> boardFiles = new ArrayList<BoardFile>();
+			
+			for(MultipartFile file : addBoardReqDto.getFile()) {
+				String originFilename = file.getOriginalFilename();
+				String tempFilename = UUID.randomUUID().toString().replaceAll("-", "") + "_" + originFilename;
+				
+				Path uploadPath = Paths.get(filePath, "/board/" + tempFilename);
+				
+				File f = new File(filePath + "/board");
+				if(!f.exists()) {
+					f.mkdirs();
+				}
+					
+				Files.write(uploadPath, file.getBytes());
+				
+				boardFiles.add(BoardFile.builder()
+										.notice_code(board.getNotice_code())
+										.file_name(tempFilename)
+										.build());
+				
+				
+				}
+				boardRepository.saveBoardFiles(boardFiles);
+			};
+		return board != null;
 	}
 	
 
 	@Override
-	public List<Board> getBoardList(int usercode) throws Exception {
+	public List<Board> getBoardList(String nname) throws Exception {
 		// TODO Auto-generated method stub
 		
-		List<Board> boardlist = boardRepository.getBoard(usercode);
+		List<Board> boardlist = boardRepository.getBoard(nname);
 		
 		return boardlist;
 	}
@@ -84,8 +98,8 @@ public class BoardServiceImpl implements BoardService{
 		return boardRepository.updateBoardByBoardCode(updateBoardReqDto.toEntity()) > 0;
 	}
 	@Override
-	public boolean deleteBoard(int UserCode) throws Exception {
-		return boardRepository.remove(UserCode) > 0;
+	public boolean deleteBoard(String nname) throws Exception {
+		return boardRepository.remove(nname) > 0;
 	}
 }	
 

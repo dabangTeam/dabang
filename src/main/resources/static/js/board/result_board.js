@@ -47,10 +47,10 @@ inqueryButton.onclick = () => {
 
 
 
-function load() {
+function load(nname) {
 	$.ajax({
         type: "get",
-        url: `/api/v1/board/get?usercode=1`,
+        url: `/api/v1/board/get/${usercode}`,
         dataType: "json",
         success: (response) => {
 			console.log(response.data);
@@ -63,9 +63,15 @@ function load() {
 	});
 }
 
-load();
+load(getUser().user_code);
 
-
+function getData() {
+    const nickNameAnswer = document.querySelector(".nickNameAnswer");
+    if (getUser() != null) {
+        console.log("nname 불러오기");
+        nickNameAnswer.innerHTML = `<p>${user.nname}</p>`;
+    }
+}
 
 
 
@@ -121,7 +127,7 @@ function addEvent() {
         if (editedContent.value.trim() !== "") {
             $.ajax({
                 type: "put",
-                url: `/api/v1/board/put/1`,
+                url: `/api/v1/board/put/${getUser().nname}`,
                 contentType: "application/json",
                 data: JSON.stringify({
                     noticeContent: editedContent.value
@@ -154,15 +160,15 @@ var deleteButton = document.querySelector(".delete");
 deleteButton.onclick = function () {
     var boardContents = document.querySelector(".board-contents");
     var boardContentsPlus = document.querySelector(".board-plus");
-    var usercode = 1; // Change this to the actual usercode
+    var nname = getUser().nname; // Change this to the actual usercode
     
-    deleteBoard(boardContents,boardContentsPlus, usercode);
+    deleteBoard(boardContents,boardContentsPlus, nname);
 };
 
-function deleteBoard(boardContents,boardContentsPlus, usercode) {
+function deleteBoard(boardContents,boardContentsPlus, nname) {
     $.ajax({
         type: 'delete',
-        url: `/api/v1/board/delete/${usercode}`,
+        url: `/api/v1/board/delete/${nname}`,
         dataType: 'json',
         success: function (response) {
             if (response.data) {

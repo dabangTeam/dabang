@@ -12,9 +12,8 @@ public class GetBoardRespDto {
 	
 	private int boardCode;
 	private String boardTitle;
-	private int boardType;
+	private String boardNname;
 	private int userCode;
-	private String userId;
 	private String createDate;
 	private int boardCount;
 	private String boardContent;
