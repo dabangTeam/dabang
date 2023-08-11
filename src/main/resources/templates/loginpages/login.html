@@ -13,45 +13,7 @@
 </head>
 
 <body>
- <header>
-        <div class="header-box-line">
-            <div class="home-logo-link">
-                <a href="/index"><img class="site-logo" >
-                 <svg width="72" height="31" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M0 0V21.1095H15.9061V15.0782H6.36266V6.03127H15.9061V0H0Z" fill="#326CF9"></path>
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M20.741 0V12.0625H27.1031V6.03127H33.4658V0H20.741Z" fill="#326CF9"></path>
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M62.1038 0V12.0625H68.4664V6.03127H74.8291V0H62.1038Z" fill="#326CF9"></path>
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M50.9005 0V4.52346H46.1285V0H39.7659V21.1095H57.2632V0H50.9005ZM46.1285 15.0782H50.9005V10.5552H46.1285V15.0782Z"
-                            fill="#326CF9"></path>
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M69.8076 25.7778C68.3347 25.7778 67.1411 24.5837 67.1411 23.1113C67.1411 21.6385 68.3347 20.4449 69.8076 20.4449C71.2805 20.4449 72.4741 21.6385 72.4741 23.1113C72.4741 24.5837 71.2805 25.7778 69.8076 25.7778ZM69.8076 14.2222C64.8982 14.2222 60.9187 18.2021 60.9187 23.1113C60.9187 28.02 64.8982 31.9999 69.8076 31.9999C74.717 31.9999 78.6965 28.02 78.6965 23.1113C78.6965 18.2021 74.717 14.2222 69.8076 14.2222Z"
-                            fill="#326CF9"></path>
-                    </svg>
-                </a>
-            </div>
-            <div class="right-header-line">
-                <a href="/search/map" class="menu-item" onclick="location.href='/search/map';">지도</a>
-                <a href="/sales" class="menu-item">분양</a>
-                <a href="/favorite/recent-room" class="menu-item">관심목록</a>
-                <a href="/manage" class="menu-item" onclick="location.href='/manage';">방내놓기</a>
-                <a href="/alarm" class="menu-item">알림</a>
-                <a href="" class="menu-item">My 비대면 계약</a>
-                <button type="button" class="login-page-button menu-item"  onclick="location.href='/welcome';">
-                    <span class="button-text">로그인<span></span>회원가입</span>
-                </button>
-                 <button class="last-button menu-item">
-                    <span class="button-text">중개사 가입/광고문의</span>
-                </button>
-                <div class="auth-items">
-        			</div>
-            </div>
-        </div>
-
-    </header>
+    <th:block th:replace="/fragments/header"></th:block>
     <div id="body">
         <div id="content">
             <nav>
@@ -147,7 +109,8 @@
                 <nav class="Footer-nav">
                     <ul class="Footer-List">
                         <li>
-                            <a href="https://www.station3.co.kr" target="_blank" rel="noopener noreferrer" class="li1">회사소개</a>
+                            <a href="https://www.station3.co.kr" target="_blank" rel="noopener noreferrer"
+                                class="li1">회사소개</a>
                         </li>
                         <li>
                             <a href="https://main.d3qjzrynlab66o.amplifyapp.com/terms/common/terms-of-service"
@@ -218,22 +181,21 @@
                 </div>
                 <div class="footer-right-btn">
                     <div class="footer-right-btns">
-                    		<a href="https://www.instagram.com/dabang_app"
-                            target="_blank" rel="noopener noreferrer" class="instar">
-                            </a>
-                            <a href="https://www.facebook.com/dabangapp" target="_blank" rel="noopener noreferrer"
+                        <a href="https://www.instagram.com/dabang_app" target="_blank" rel="noopener noreferrer"
+                            class="instar">
+                        </a>
+                        <a href="https://www.facebook.com/dabangapp" target="_blank" rel="noopener noreferrer"
                             class="facebook">
-                            </a>
-                            <a href="https://blog.naver.com/station3inc"
-                            target="_blank" rel="noopener noreferrer" class="naver-blog">
-                            </a>
-                            <a
-                            href="https://post.naver.com/station3inc" target="_blank" rel="noopener noreferrer"
+                        </a>
+                        <a href="https://blog.naver.com/station3inc" target="_blank" rel="noopener noreferrer"
+                            class="naver-blog">
+                        </a>
+                        <a href="https://post.naver.com/station3inc" target="_blank" rel="noopener noreferrer"
                             class="naver">
-                            </a>
-                            <a href="https://www.youtube.com/user/DabangApp" target="_blank" rel="noopener noreferrer"
+                        </a>
+                        <a href="https://www.youtube.com/user/DabangApp" target="_blank" rel="noopener noreferrer"
                             class="youtube">
-                            </a>
+                        </a>
                     </div>
                 </div>
             </div>

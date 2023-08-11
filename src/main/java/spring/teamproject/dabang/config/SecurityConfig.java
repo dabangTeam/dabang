@@ -72,14 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .userInfoEndpoint()
                 .userService(principalOauth2UserService);
                 
-
-
-                
-
     }
-    
-
-
 
 }
 
