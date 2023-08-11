@@ -43,11 +43,12 @@ const checkAll = document.querySelector(".Check-Container input");
 const checkBoxs = document.querySelectorAll(".Check-boxs input");
 const submitButton = document.querySelector(".JoinBtn");
 
+//버튼 정보함
 const agreements = {
-    agecheck:false,         //첫번재 필수동의 체크박스
-    AcceptanceCheck: false,  
-    personalInfo: false,
-    marketintInfo:false
+    agecheck:false,         //첫번째 필수동의 체크박스
+    AcceptanceCheck: false,  //두번째 필수동의 체크박스
+    personalInfo: false,    //세번째 필수동의 체크박스
+    marketintInfo:false     //네번째 필수동의 체크박스
 }
 
 form.addEventListener('submit', (e) => e.preventDefault())
@@ -63,6 +64,9 @@ function toggleCheckbox(e) {
     toggleSubmitButton();
 }
 
+/*
+총 4개의 체크박스를 한번에 클릭하게 하는 함수
+*/
 function checkAllStatus() {
     const {agecheck, AcceptanceCheck,personalInfo ,marketintInfo} = agreements;
     if(agecheck & AcceptanceCheck &personalInfo & marketintInfo) {
@@ -80,6 +84,8 @@ function toggleSubmitButton() {
         submitButton.disabled =true;
     }
 }
+
+//checkAll 버튼을 누르면 
 
 checkAll.addEventListener('click', (e) => {
     const {checked} = e.target;

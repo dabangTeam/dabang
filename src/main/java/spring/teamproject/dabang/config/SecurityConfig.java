@@ -14,6 +14,9 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import spring.teamproject.dabang.config.auth.AuthFailureHandler;
 import spring.teamproject.dabang.handler.CustomAuthenticationSuccessHandler;
 import spring.teamproject.dabang.service.auth.PrincipalOauth2UserService;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+
 
 @Configuration
 @EnableWebSecurity
@@ -58,11 +61,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .successHandler(new CustomAuthenticationSuccessHandler()) // 이 부분 추가
                 .defaultSuccessUrl("/index")
                 .failureHandler(new AuthFailureHandler())
-
                 .and()
+                .logout((logout) -> logout
+                        .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true))
+	            
+
+                
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(principalOauth2UserService);
+                
 
 
                 
