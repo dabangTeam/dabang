@@ -3,6 +3,21 @@
 const inqueryButton = document.querySelector(".submitBtn");
 const buildingTypeSelected = document.getElementsByName("buildingType");
 
+// ================= 파일 업로드 시 파일 목록 추가 =================================
+document.getElementById('file').addEventListener('change', function(e) {
+	const files = e.target.files;
+	const fileList = document.getElementById('fileList');
+	
+	// 목록 초기화
+	fileList.innerHTML = '';
+
+	for(let i = 0; i < files.length; i++) {
+		const listItem = document.createElement('li');
+		listItem.textContent = files[i].name;
+		fileList.appendChild(listItem);
+	}
+});
+
 
 //=================== checkbox에서 전체 선택시 하위 선택 전체선택/해제 하기 ===================================
 
@@ -186,7 +201,7 @@ let registeredValue = 0;
 if(registeredCheckbox.checked) registeredValue = 1;
 
 console.log(registeredCheckbox);
-const roomCount = document.querySelector(".roomCount"); // 방 수
+const roomCount = document.querySelector(".roomCount").value; // 방 수
 const inputAddress = document.querySelectorAll(".inputAddress") // 주소
 const inputExclusiveSizes = document.querySelectorAll(".exclusiveAreaText"); // 전용면적
 const inputSupplySizesSizes = document.querySelectorAll(".supplyAreaText"); // 공급면적
@@ -202,15 +217,16 @@ const selectedTotalFloors = document.querySelector(".totalFloors"); // 전체 �
 const selectedCurrentFloor = document.querySelector(".currentFloor"); // 현재 층 수
 const inputCountBathroom = document.querySelector(".countBathroomText"); // 욕실 수
 const inputCountParking = document.querySelector(".parkingText"); // 주차 가능 수
-const inputDetailTitle = document.querySelector(".detailTitleText"); // 상세설명 제목
+const inputDetailTitle = document.querySelector(".detailTitleText").value; // 상세설명 제목
 const inputDetailContext = document.querySelector(".detailContentText"); // 상세설명 내용
+
 
 
 // =====================================================================================
 
 // 매물등록 버튼 클릭
 inqueryButton.onclick = () => {
-	
+	console.log("버튼누름");
 	// 입력받은 데이터 저장
 	let getDataRoomCount = roomCount.value; // 방수
 	console.log(getDataRoomCount);
@@ -500,7 +516,7 @@ inqueryButton.onclick = () => {
 	console.log(selectedHeatingType);
 	
 	// ====================================================================================
-
+	/*
 	// ajax
 	let getData = {
 		salesType: selectedBuildingType,
@@ -555,14 +571,45 @@ inqueryButton.onclick = () => {
 		
 		//parkingAvailability: getParkingAvailability(),
 		
-	}
-	console.log(getData);
+	}*/
+	//console.log(getData);
+	/*
 	$.ajax({
 		async: false,
 		type: "post",
 		url: "/api/v1/manage/content",
 		contentType: "application/json",
 		data: JSON.stringify(getData),
+		dataType: "json",
+		success: (response) => {
+			console.log(response.data);
+			alert("등록 완료");
+		},
+		error: (error) => {
+			console.log(error);
+		}
+	})
+	*/
+	
+	let formData = new FormData(document.querySelector('form'));
+	console.log(formData);
+	formData.forEach((v, k) => {
+		console.log("key: " + k);
+		console.log("value: " + v);
+	});
+
+	//formData.append("roomInfoCount", roomCount);
+	formData.append("descTitle", inputDetailTitle);
+
+	
+	$.ajax({
+		async: false,
+		type: "post",
+		url: "/api/v1/manage/content",
+		enctype: "multipart/form-data",
+		contentType: false,
+		processData: false,
+		data: formData,
 		dataType: "json",
 		success: (response) => {
 			console.log(response.data);
@@ -630,7 +677,4 @@ console.log(getFacCommTextFromDB([18,19]));
 console.log(getFacSecTextFromDB([6,7]));
 console.log(getFacOtherTextFromDB([3,4]));
 
-// ====================================================================================
-
-
-
+// ===================================================================================

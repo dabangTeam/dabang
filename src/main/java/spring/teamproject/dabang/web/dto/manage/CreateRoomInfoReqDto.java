@@ -2,11 +2,10 @@ package spring.teamproject.dabang.web.dto.manage;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
@@ -15,7 +14,7 @@ import spring.teamproject.dabang.domain.manage.RoomInfoFile;
 
 @Data
 public class CreateRoomInfoReqDto {
-	
+		
 		private List<MultipartFile> file;
 	
 		// 매물정보
@@ -84,6 +83,7 @@ public class CreateRoomInfoReqDto {
 	
 	public RoomInfo toEntity() {
 		return RoomInfo.builder()
+				
 				.room_code(roomCode)
 				.sales_type(salesType)
 				.unregistered_check(unregisteredCheck)
