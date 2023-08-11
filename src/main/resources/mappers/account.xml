@@ -8,8 +8,6 @@
 	resultType="spring.teamproject.dabang.domain.account.Account">
 	SELECT
 		user_code,
-		username,
-		phone_number,
 		nName
 	FROM
 		user_mst

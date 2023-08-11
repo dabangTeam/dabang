@@ -14,6 +14,7 @@ import spring.teamproject.dabang.domain.manage.RoomData;
 import spring.teamproject.dabang.service.manage.ManageService;
 import spring.teamproject.dabang.service.manage.RoomDataService;
 import spring.teamproject.dabang.web.dto.CMRespDto;
+import spring.teamproject.dabang.web.dto.map.ReadSimpleDataRespDto;
 
 @RestController
 @RequestMapping("/api/v1/map")
@@ -52,7 +53,8 @@ public class MapApiController {
 	
 	@GetMapping("/room/{address}")
 	public ResponseEntity<?> getSimpleData(@PathVariable String address) {
-		List<RoomData> list = new ArrayList<RoomData>();
+		RoomData roomData  = null;
+		List<RoomData> list = null;
 		
 		try {
 			list = roomDataService.readRoomInfoRespDto(address);

@@ -680,6 +680,7 @@ main {
 .room-search-list {
     width: 400px;
     height: 100%;
+    overflow: auto;
 }
 
 .room-data {
@@ -690,6 +691,8 @@ main {
     width: 399px;
     height: 172px;
     padding: 15px 16px;
+
+    overflow: visible;
 
 }
 

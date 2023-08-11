@@ -43,14 +43,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/v1/grant/test/admin/**").access("hasRole('ROLE_ADMIN')")
                 
                 .antMatchers("/welcome/login").permitAll() // 로그인 페이지 접근 허용
-                .antMatchers("/index/").permitAll()       // 로그인 처리 URL 접근 허용
+                .antMatchers("/index").permitAll()       // 로그인 처리 URL 접근 허용
                 .antMatchers("/manage/**")
                 .hasRole("USER")
 
     			
     			
-                .antMatchers("/", "/index").authenticated()
-                .anyRequest()
+                .antMatchers("/", "/index")
                 .permitAll()
                 .and()
                 .formLogin()

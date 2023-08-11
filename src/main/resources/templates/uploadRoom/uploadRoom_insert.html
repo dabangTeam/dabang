@@ -1084,7 +1084,8 @@
 									</th>
 									<td style="padding: 0px;">
 										<div class="general-picture-div">
-											<button type="button" class="general-pictureBtn">
+											<input type="file" id="fileUploadBtn" class="uploadFiles" name="file" multiple="multiple" accept=".jpg, .png, .jpeg, .git, .pdf" style="display: none;">
+											<button type="button" class="general-pictureBtn" onclick="document.getElementById('fileUploadBtn').click();">
 												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex: 0 0 auto;">
 													<path fill-rule="evenodd" clip-rule="evenodd" d="M12.4919 5.91012C12.4496 5.67688 12.2455 5.5 12 5.5C11.7239 5.5 
 													11.5 5.72386 11.5 6V11.5H6L5.91012 11.5081C5.67688 11.5504 5.5 11.7545 5.5 12C5.5 12.2761 5.72386 12.5 6 

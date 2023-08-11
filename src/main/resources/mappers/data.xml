@@ -11,7 +11,7 @@
 	from
 		salesInfo
 	where
-		sales_address_main_road LIKE CONCAT('%', #{address},'%');
+		sales_address_main_jibeon LIKE CONCAT('%', #{address},'%');
 </select>
 
 

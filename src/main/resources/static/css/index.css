@@ -8,7 +8,6 @@ select, input, textarea, a {
 }
 
 form {
-    margin-left: 250px;
     display: block;
     width: 1200px;
     height: 72px;
@@ -39,10 +38,8 @@ header {
 }
 
 .right-header-line{
-	
 	flex: 0 0 auto;
     display: flex;
-    -webkit-box-align: center;
     align-items: center;
     margin-left: auto;
 }
@@ -50,25 +47,25 @@ header {
 
 .right-header-line a {
     width: 100%;
-    color: white;
+    color: #ffffffcc;
 }
 
 .right-header-line a:hover {
     color: rgb(255, 255, 255);
-    font-weight: 700;
+    /* font-weight: 700; */
 }
 
-.menu-item:nth-last-child(2) {
-    margin-right: 10px; /* 수정 */
-}
-
-.right-header-line .menu-item:nth-child(n+2) {
+.right-header-line > .menu-item:nth-child(n+2) {
     margin-left: 40px;
 }
 
 .right-header-line .menu-item:last-child {
     margin-left: 8px;
-  }
+}
+
+.auth-items {
+    margin-left: 40px;
+}
 
 .login-page-button, .last-button {
     width: 155px;
@@ -107,16 +104,85 @@ header {
     color: #dfdfdf;
 }
 
-.header-box > div {
-    /* width: 1200px;
+.Profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border-radius: 50%;
+    user-select: none;
+    margin-left: 40px;
+    position: relative;
+    background: url(/static/media/profile.966e0f65.svg) center center / cover no-repeat;
+}
+
+.Profile img {
+    width: 32px;
+    height: 32px;
+}
+
+
+.user-option p{
+	background: none;
+	color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    line-height: 24px;
+    border: none;
+    margin-left: 8px;
+    cursor: pointer;
+
+    position: relative;
+}
+
+
+.user-option-box {
+    position: absolute;
+    top: calc(100% + 13px);
+    left: calc(50% - 55px);
+    transform: translateX(-50%);
+    z-index: 101;
+
+    width: 12px;
+    height: 12px;
+
+    background-color: #ffffff;
+}
+
+
+.user-option-box::before {
+    ccontent: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(205, 205, 205) transparent transparent rgb(205, 205, 205);
+    background-color: rgb(255, 255, 255);
+    transform: translateY(2px) rotate(45deg);
+}
+
+.user-option-box nav {
+    width: 240px;
+    position: absolute;
+    top: calc(100% + 20px);
+    right: 10px;
+    z-index: 100;
+}
+
+
+.header-box {
+    width: 1200px;
     height: 100%;
     margin: 0px auto;
-    padding: 0px 10px; */
-    margin-left: 250px;
+    padding: 0px 10px;
+}
+
+.header-box > div {
+    width: 100%;
 }
 
 .header-box > div > h1{
-    margin-top: 140px;
+    margin-top: 85px;
     line-height: 60px;
     font-size: 40px;
     font-weight: 400;
@@ -170,12 +236,13 @@ header {
 }
 
 svg {
-    width: 24;
-    height: 24;
+    width: 24px;
+    height: 24px;
 }
 
 .wap-input{
-	width: 900px;
+	width: 1180px;
+    height: 72px;
 }
 
 .wap-input > input {
@@ -185,44 +252,4 @@ svg {
     font-size: 18px;
     border: 0px;
     background-color: transparent;
-}
-
-.auth-items {
-    flex: 0 0 auto;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    margin-left: 10px;
-}
-
-.username{
-	background: none;
-	color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
-    line-height: 24px;
-    border: none;
-}
-
-.Profile{
-	flex: 0 0 auto;
-    display: flex;
-    padding-right: 10px;
-    -webkit-box-align: center;
-    -webkit-box-pack: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    user-select: none;
-    position: relative;
-    background: url(/static/media/profile.966e0f65.svg) center center / cover no-repeat;
-}
-
-img{
-	overflow-clip-margin: content-box;
-    overflow: clip;
-}
-
-.enter{
-	padding-right: 35px;
 }
