@@ -70,8 +70,4 @@ mybatis:
   - /mappers/*.xml
   
 file:
-<<<<<<< HEAD
   path: ${user.home}/dabang_workspace/upload
-=======
-  path: /Users/barkjungha/Desktop/dev/GitHub/dabang/upload/
->>>>>>> PJH
