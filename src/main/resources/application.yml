@@ -70,4 +70,4 @@ mybatis:
   - /mappers/*.xml
   
 file:
-  path: /Users/barkjungha/Desktop/개발자공부/GitHub/dabang/upload
+  path: ${user.home}/dabang_workspace/upload

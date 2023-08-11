@@ -1,7 +1,18 @@
 package spring.teamproject.dabang.web.controller;
 
+import java.io.IOException;
+import org.springframework.http.HttpHeaders;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ContentDisposition;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,31 +41,31 @@ public class BoardRestController {
 	
 	private final BoardService boardService;
 	
-//	@Value("${file.path}")
-//	private String filePath;
+	@Value("${file.path}")
+	private String filePath;
 	
 	@PostMapping("/post")
-	public ResponseEntity<?> addBoard(@RequestBody AddBoardReqDto addBoardReqDto) {
-//		log.info(">>>{}:", addBoardReqDto);
-//		log.info(">>> fileName: {}", addBoardReqDto.getFile().get(0).getOriginalFilename());
-//		log.info("filePath: {}", filePath);
+	public ResponseEntity<?> addBoard(AddBoardReqDto addBoardReqDto) {
+		log.info(">>>{}:", addBoardReqDto);
+		log.info(">>> fileName: {}", addBoardReqDto.getFile().get(0).getOriginalFilename());
+		log.info("filePath: {}", filePath);
 		
-		boolean BoardCode = false;
+		boolean boardCode = false;
 		try {
-			BoardCode = boardService.addBoard(addBoardReqDto);
+			boardCode = boardService.addBoard(addBoardReqDto);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "Failed", addBoardReqDto));
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1, "Failed", boardCode));
 		}
 		
-		return ResponseEntity.ok().body(new CMRespDto<>(1, "complete creation", addBoardReqDto));
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "complete creation", boardCode));
 	}
 	
 	@GetMapping("/get")
-	public ResponseEntity<?> getTodoList(@RequestParam int usercode){
+	public ResponseEntity<?> getTodoList(@RequestParam String nname){
 		List<Board> list = null;
 		try {
-			list = boardService.getBoardList(usercode);
+			list = boardService.getBoardList(nname);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -62,11 +73,26 @@ public class BoardRestController {
 	}
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "complete creation", list));
 	}
-	@PutMapping("/put/{usercode}")
-	public ResponseEntity<?> setContentTodo(@PathVariable int usercode, @RequestBody UpdateBoardReqDto updateBoardReqDto){
+	
+	@GetMapping("/file/download/{fileName}")
+	public ResponseEntity<?> downloadFile(@PathVariable String fileName) throws IOException {
+		Path path = Paths.get(filePath + "notice/" + fileName);
+		String contentType = Files.probeContentType(path);
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentDisposition(ContentDisposition.builder("attachment")
+														.filename(fileName, StandardCharsets.UTF_8)
+														.build());
+		headers.add(HttpHeaders.CONTENT_TYPE, contentType);
+		Resource resource = new InputStreamResource(Files.newInputStream(path));
+		
+		return ResponseEntity.ok().headers(headers).body(resource);
+	}
+	
+	@PutMapping("/put/{nname}")
+	public ResponseEntity<?> setContentTodo(@PathVariable String nname, @RequestBody UpdateBoardReqDto updateBoardReqDto){
 		
 		boolean status = false;
-		updateBoardReqDto.setUsercode(usercode);
+		updateBoardReqDto.setNname(nname);
 		try {
 			status = boardService.UpdateBoard(updateBoardReqDto);
 		} catch (Exception e) {
@@ -76,13 +102,13 @@ public class BoardRestController {
 		return ResponseEntity.internalServerError().body(new CMRespDto<>(1,"success",status));
 	}
 	
-	@DeleteMapping("/delete/{usercode}")
-	public ResponseEntity<?> setdeleteTodo(@PathVariable int usercode){
+	@DeleteMapping("/delete/{nname}")
+	public ResponseEntity<?> setdeleteTodo(@PathVariable String nname){
 		
 		boolean status = false;
 		
 		try {
-			status = boardService.deleteBoard(usercode);
+			status = boardService.deleteBoard(nname);
 			
 		} catch (Exception e) {
 			e.printStackTrace();

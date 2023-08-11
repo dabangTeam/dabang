@@ -12,8 +12,8 @@ import spring.teamproject.dabang.web.dto.board.UpdateBoardReqDto;
 public interface BoardService {
 	public boolean addBoard(AddBoardReqDto addBoardReqDto) throws Exception;
 	
-	public List<Board> getBoardList(int UserCode) throws Exception;
+	public List<Board> getBoardList(String nname) throws Exception;
 	
 	public boolean UpdateBoard(UpdateBoardReqDto updateBoardReqDto) throws Exception;
-	public boolean deleteBoard(int UserCode) throws Exception;
+	public boolean deleteBoard(String nname) throws Exception;
 }

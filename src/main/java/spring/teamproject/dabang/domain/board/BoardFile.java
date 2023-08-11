@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class BoardFile {
 	private int file_code;
-	private int board_code;
+	private int notice_code;
 	private String file_name;
 }

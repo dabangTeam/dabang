@@ -6,13 +6,13 @@ import lombok.Data;
 
 @Data
 public class UpdateBoardReqDto {
-	private int usercode;
+	private String nname;
 	private String noticeContent;
 	 
 	
 	public Board toEntity() {
 		return Board.builder()
-				.user_code(usercode)
+				.notice_nName(nname)
 				.notice_content(noticeContent)
 				.build();
 }

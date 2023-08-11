@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -8,33 +8,11 @@
     <link rel="stylesheet" href="/static/css/header.css">
     <link rel="stylesheet" href="/static/css/account.css">
     <link rel="stylesheet" href="/static/css/style.css">
-
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
-    <header>
-        <div class="header-box-line">
-            <div class="home-logo-link">
-                <a href="/index"><img class="site-logo" src="/static/images/header_logo.PNG"></a>
-            </div>
-            <div class="right-header-line">
-                <a href="/search/map" class="menu-item text-color">지도</a>
-                <a href="/sales" class="menu-item">분양</a>
-                <a href="/favorite/recent-room" class="menu-item">관심목록</a>
-                <a href="/manage" class="menu-item">방내놓기</a>
-                <a href="/alarm" class="menu-item">알림</a>
-                <a href="" class="menu-item">다방싸인 비대면 계약</a>
-                <!-- <button type="button" class="login-page-button menu-item">
-                    <span class="button-text">로그인<span></span>회원가입</span>
-                </button>
-                <button class="last-button menu-item">
-                    <span class="button-text">중개사 가입/광고문의</span>
-                </button> -->
-                <div class="auth-items"></div>
-            </div>
-        </div>
-    </header>
+    <th:block th:replace="/fragments/header"></th:block>
     <div class="wrapping">
         <nav class="Header">
             <div>
@@ -64,7 +42,7 @@
                         <td class="nickName">
                             <h1>닉네임</h1>
                         </td>
-                        <td class="nickNameAnswer" style="cursor: pointer;">
+                        <td class="nickNameAnswer">
                             
                         </td>
                     </tr>
@@ -72,7 +50,7 @@
                         <td class="phoneNumber">
                             <h1>휴대폰번호</h1>
                         </td>
-                        <td class="phoneNumberAnswer" style="cursor: pointer;">
+                        <td class="phoneNumberAnswer">
                             <p>인증을 진행해주세요.</p>
                         </td>
                     </tr>
