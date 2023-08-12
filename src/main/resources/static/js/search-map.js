@@ -96,7 +96,7 @@ function getRoomList(address) {
     type: "get",
     url: `/api/v1/map/room/${address}`,
     data: {
-      address: "전포동"
+      address: `${address}`
     },
     dataType: "json",
     success: (response) => {
