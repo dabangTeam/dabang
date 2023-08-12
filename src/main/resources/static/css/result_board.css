@@ -139,6 +139,11 @@
 	position: relative;
 }
 
+.board-contents {
+	width: 100%;
+	white-space: nowrap;
+}
+
 .board-contents:hover {
 	cursor: pointer;
 }

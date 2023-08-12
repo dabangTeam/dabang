@@ -34,17 +34,17 @@
 		</foreach>
 	</insert>
 
-	<select id="getBoard" parameterType="String"
+	<select id="getBoard" parameterType="Integer"
 		resultType="spring.teamproject.dabang.domain.board.Board">
 		SELECT
-		notice_nName,
-		notice_title,
-		notice_content
+			notice_title,
+			notice_content,
+			notice_nName,
+			create_date
 		FROM
-		notice_mst
+			notice_mst
 		where
-		notice_nName = #{nname}
-
+			user_code = #{user_code}
 	</select>
 	<update
 		parameterType="spring.teamproject.dabang.domain.board.Board"
@@ -55,15 +55,14 @@
 		notice_content = #{notice_content},
 		update_date = now()
 		WHERE
-		notice_nName = #{notice_nName}
+		user_code = #{user_code}
 	</update>
 
-	<delete id="remove" parameterType="String">
+	<delete id="remove" parameterType="Integer">
 		DELETE FROM
 		notice_mst
 		WHERE
-		notice_nName = #{notice_nName}
-
+		user_code = #{user_code}
 	</delete>
 
 

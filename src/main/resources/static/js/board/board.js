@@ -26,6 +26,8 @@ inqueryButton.onclick = () => {
 	// 	noticeNname: getUser().nname
 	// }
 	
+	
+	
 	$.ajax({
 		async: false,
 		type: "post",
@@ -43,5 +45,7 @@ inqueryButton.onclick = () => {
 			console.log(error);
 		}
 	})
+	
+	location.href = "/result_board";
 }
 

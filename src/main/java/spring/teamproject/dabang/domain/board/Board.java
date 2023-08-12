@@ -31,6 +31,7 @@ public class Board {
 	public GetBoardListRespDto toListDto() {
 		return GetBoardListRespDto.builder()
 				.boardCode(notice_code)
+				.boardUsercode(user_code)
 				.boardNname(notice_nName)
 				.boardTitle(notice_title)
 				.boardContent(notice_content)

@@ -85,10 +85,10 @@ public class BoardServiceImpl implements BoardService{
 	
 
 	@Override
-	public List<Board> getBoardList(String nname) throws Exception {
+	public List<Board> getBoardList(int usercode) throws Exception {
 		// TODO Auto-generated method stub
 		
-		List<Board> boardlist = boardRepository.getBoard(nname);
+		List<Board> boardlist = boardRepository.getBoard(usercode);
 		
 		return boardlist;
 	}
@@ -98,8 +98,8 @@ public class BoardServiceImpl implements BoardService{
 		return boardRepository.updateBoardByBoardCode(updateBoardReqDto.toEntity()) > 0;
 	}
 	@Override
-	public boolean deleteBoard(String nname) throws Exception {
-		return boardRepository.remove(nname) > 0;
+	public boolean deleteBoard(int usercode) throws Exception {
+		return boardRepository.remove(usercode) > 0;
 	}
 }	
 

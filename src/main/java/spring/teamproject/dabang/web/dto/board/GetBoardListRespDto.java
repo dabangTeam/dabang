@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class GetBoardListRespDto {
 	private int boardCode;
+	private int boardUsercode;
 	private int boardType;
 	private String boardNname;
 	private String boardTitle;

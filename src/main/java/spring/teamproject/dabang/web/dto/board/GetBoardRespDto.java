@@ -1,5 +1,6 @@
 package spring.teamproject.dabang.web.dto.board;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public class GetBoardRespDto {
 	private String boardTitle;
 	private String boardNname;
 	private int userCode;
-	private String createDate;
+	private LocalDateTime createDate;
 	private int boardCount;
 	private String boardContent;
 	private List<Map<String, Object>> downloadFiles;

@@ -2,13 +2,13 @@
 <html lang="ko" xmlns:th="https://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Result_board</title>
-<link rel="stylesheet" href="/static/css/style.css">
-<link rel="stylesheet" href="/static/css/header.css">
-<link rel="stylesheet" href="/static/css/result_board.css">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Result_board</title>
+	<link rel="stylesheet" href="/static/css/style.css">
+	<link rel="stylesheet" href="/static/css/header.css">
+	<link rel="stylesheet" href="/static/css/result_board.css">
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 
 <body>
@@ -17,10 +17,10 @@
 		<nav class="Header">
 			<h1 class="Title">MY 다방</h1>
 			<div class="MenuBar">
-				<a href="/user/sms">문자문의</a> <a href="/user/call">전화문의</a> <a
-					href="/inquery" class="react-color"><span>1:1 문의내역</span></a> <a
-					href="/user/report">허위매물 신고내역</a> <a href="/account"><span>내
-						정보</span></a>
+				<a href="/user/sms">문자문의</a> <a href="/user/call">전화문의</a>
+				<a href="/inquery" class="react-color"><span>1:1 문의내역</span></a> 
+				<a href="/user/report">허위매물 신고내역</a>
+				<a href="/account"><span>내 정보</span></a>
 			</div>
 		</nav>
 		<div class="Content">
@@ -44,39 +44,43 @@
 			</table>
 			<div class="main-content">
 				<table class="board">
-					<tr class="board-header">
-						<td class="board-type">문의유형</td>
-						<td class="board-title">제목</td>
-						<td class="board-enrollment">등록일</td>
-						<td class="board-answer">답변상태</td>
-					</tr>
-
-					<tr class="board-contents">
-						<td class="board-type board-content"></td>
-						<td class="board-title board-content"></td>
-						<td class="board-enrollment board-content"></td>
-						<td class="board-answer board-content"></td>
-					</tr>
-					<table class="board-contents-plus">
-						<div class="board-plus">
-							<p class="contents-name">문의 내용</p>
-							<div class="contents-plus"></div>
-							<input type="text" class="edited-content visible">
-
-
-							<div class="styled__Photo-sc-1yrax0p-6 iqKELn"></div>
-							<div class="styled__Button-sc-1yrax0p-8 rHSuX">
-
-								<button class="revise">수정</button>
-								<p></p>
-								<button class="delete">삭제</button>
-							</div>
-						</div>
-					</table>
+					<thead>
+						<tr class="board-header">
+							<td class="board-type">문의유형</td>
+							<td class="board-title">제목</td>
+							<td class="board-enrollment">등록일</td>
+							<td class="board-answer">답변상태</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="board-contents">
+							<td class="board-type board-content"></td>
+							<td class="board-title board-content"></td>
+							<td class="board-enrollment board-content"></td>
+							<td class="board-answer board-content"></td>
+						</tr>
+					</tbody>
 				</table>
+				<div class="board-contents-plus hidden">
+					<div class="board-plus">
+						<p class="contents-name">문의 내용</p>
+						<div class="contents-plus visible"></div>
+						<input type="text" class="edited-content visible">
+
+
+						<div class="styled__Photo-sc-1yrax0p-6 iqKELn"></div>
+						<div class="styled__Button-sc-1yrax0p-8 rHSuX">
+
+							<button class="revise">수정</button>
+							<p></p>
+							<button class="delete">삭제</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<script src="/static/js/board/result_board.js"></script>
 </body>
+
 </html>

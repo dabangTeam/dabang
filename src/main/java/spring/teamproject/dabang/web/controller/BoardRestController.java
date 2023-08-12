@@ -61,11 +61,11 @@ public class BoardRestController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "complete creation", boardCode));
 	}
 	
-	@GetMapping("/get")
-	public ResponseEntity<?> getTodoList(@RequestParam String nname){
+	@GetMapping("/get/{usercode}")
+	public ResponseEntity<?> getTodoList(@PathVariable int usercode){
 		List<Board> list = null;
 		try {
-			list = boardService.getBoardList(nname);
+			list = boardService.getBoardList(usercode);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,27 +88,27 @@ public class BoardRestController {
 		return ResponseEntity.ok().headers(headers).body(resource);
 	}
 	
-	@PutMapping("/put/{nname}")
-	public ResponseEntity<?> setContentTodo(@PathVariable String nname, @RequestBody UpdateBoardReqDto updateBoardReqDto){
+	@PutMapping("/put/{usercode}")
+	public ResponseEntity<?> setContentTodo(@PathVariable int usercode, @RequestBody UpdateBoardReqDto updateBoardReqDto){
 		
 		boolean status = false;
-		updateBoardReqDto.setNname(nname);
+		updateBoardReqDto.setUsercode(usercode);
 		try {
 			status = boardService.UpdateBoard(updateBoardReqDto);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ResponseEntity.internalServerError().body(new CMRespDto<>(1,"failed",status));
+			return ResponseEntity.internalServerError().body(new CMRespDto<>(-1,"failed",status));
 		}
 		return ResponseEntity.internalServerError().body(new CMRespDto<>(1,"success",status));
 	}
 	
-	@DeleteMapping("/delete/{nname}")
-	public ResponseEntity<?> setdeleteTodo(@PathVariable String nname){
+	@DeleteMapping("/delete/{usercode}")
+	public ResponseEntity<?> setdeleteTodo(@PathVariable int usercode){
 		
 		boolean status = false;
 		
 		try {
-			status = boardService.deleteBoard(nname);
+			status = boardService.deleteBoard(usercode);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
