@@ -1,47 +1,23 @@
-const joinBtn = document.querySelector(".JoinBtn");
-const loginBtn = document.querySelector(".login-page-button")
 
-loginBtn.onclick = () => {
+const loginBtn = document.querySelector(".login-page-button")
+const form = document.querySelector("#JoinAgree-form");
+const checkAll = document.querySelector(".Check-Container input");
+const checkBoxs = document.querySelectorAll(".Check-boxs input");
+const submitButton = document.querySelector(".JoinBtn");
+
+/*loginBtn.onclick = () => {
     console.log("login");
     location.href = "/welcome/login";
 
 }
-
-joinBtn.onclick = () => {
+*/
+submitButton.onclick = () => {
     console.log("Join");
     location.href = "/welcome/join";
 
 }
 
-// function getCheck(){
-//     const selectedElement = document.querySelectorAll("input[type=checkbox]:checked");
-//     const cnt = selectedElement.length;
 
-//     if(cnt >= 3){
-//         document.querySelector(".JoinBtn").disabled=false;
-//     }else{
-//         document.querySelector(".JoinBtn").disabled=true;
-//     }
-// }
-
-
-
-
-// function selectAll(selectAll){
-//     const checkboxs = document.querySelectorAll(".Check-ListBox");
-
-//     checkboxs.forEach((checkbox) => {
-        
-//             checkbox.checked = selectAll.checked;
-//             document.querySelector(".JoinBtn").disabled=false;
-        
-//     })
-// }
-
-const form = document.querySelector("#JoinAgree-form");
-const checkAll = document.querySelector(".Check-Container input");
-const checkBoxs = document.querySelectorAll(".Check-boxs input");
-const submitButton = document.querySelector(".JoinBtn");
 
 //버튼 정보함
 const agreements = {
@@ -65,7 +41,7 @@ function toggleCheckbox(e) {
 }
 
 /*
-총 4개의 체크박스를 한번에 클릭하게 하는 함수
+총 4개의 체크박스의 체크를 true로 만들어주는 함수
 */
 function checkAllStatus() {
     const {agecheck, AcceptanceCheck,personalInfo ,marketintInfo} = agreements;
@@ -75,7 +51,9 @@ function checkAllStatus() {
         checkAll.checked =false;
     }
 }
-
+/*
+	필수 버튼 3개 눌러야 버튼 활성화 나머지 1개는 선택이므로 선택하던 말던 상관없음
+*/
 function toggleSubmitButton() {
     const { agecheck, AcceptanceCheck, personalInfo } = agreements;
     if(agecheck && AcceptanceCheck && personalInfo) {
@@ -85,7 +63,7 @@ function toggleSubmitButton() {
     }
 }
 
-//checkAll 버튼을 누르면 
+//checkAll 버튼을 누르면 addEventListener로 인해 누르면 모드 체크 누르지 않으면 모두 체크 X or 눌렀다가 다시 누르면 체크 활성화 X
 
 checkAll.addEventListener('click', (e) => {
     const {checked} = e.target;

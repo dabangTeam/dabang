@@ -61,12 +61,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/index")
                 .failureHandler(new AuthFailureHandler())
                 .and()
-                .logout((logout) -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
-                        .logoutSuccessUrl("/")
-                        .invalidateHttpSession(true))
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+                .logoutSuccessUrl("/index")
+                .invalidateHttpSession(true)
 	            
-
+                .and()
                 
                 .oauth2Login()
                 .userInfoEndpoint()

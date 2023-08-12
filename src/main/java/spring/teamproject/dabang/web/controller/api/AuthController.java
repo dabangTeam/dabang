@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
@@ -163,9 +164,31 @@ public class AuthController {
 		} else {
 			return ResponseEntity.ok().body(new CMRespDto<>(0, "아이디 또는 비밀번호가 일치하지 않습니다.", status));
 		}
+		
+		
+		
 	}
 	
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpServletRequest request, HttpServletResponse response) {
+        boolean status = false;
+        
+        try {
+            // 로그아웃 처리 (세션 무효화 또는 토큰 무효화 등)
+            SecurityContextHolder.clearContext(); // 현재 사용자의 SecurityContext를 클리어하여 로그아웃
+            // 기타 로그아웃 처리 작업 (세션 무효화 등)
 
+            status = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (status) {
+            return ResponseEntity.ok().body(new CMRespDto<>(1, "로그아웃 성공", status));
+        } else {
+            return ResponseEntity.ok().body(new CMRespDto<>(0, "로그아웃 실패", status));
+        }
+    }
 
 
 	
