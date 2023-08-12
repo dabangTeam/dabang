@@ -85,9 +85,9 @@ optionBoxes.forEach((optionBox) => {
     };
 });
 
-getRoomList("전포동");
 
 let address = "전포동";
+getRoomList(address);
 
 function getRoomList(address) {
   console.log("test");
