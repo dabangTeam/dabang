@@ -60,6 +60,11 @@ public class PageController {
 		return "/uploadRoom/uploadRoom_insert";
 	}
 	
+	@GetMapping("/manage_result")
+	public String manageRoom_result() {
+		return "/uploadRoom/uploadRoom_result";
+	}
+	
 	@GetMapping("/roomInfo")
 	public String getRoomInfo() {
 		return "/menu/room-info";

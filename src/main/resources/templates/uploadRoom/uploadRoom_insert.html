@@ -5,6 +5,7 @@
 <title>Insert title here</title>
 	<link rel="stylesheet" href="/static/css/style.css">
 	<link rel="stylesheet" href="/static/css/uploadRoom.css">
+	<link rel="stylesheet" href="/static/css/test.css">
 	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" href="/static/css/uploadRoom_calendal.css">
 	<link rel="stylesheet" href="/static/css/header.css">
@@ -156,20 +157,30 @@
 										<div class="room-address-area">
 											<div class="room-address-secArea">
 												<div class="room-address-searchBlock">
-													<header class="address-header-titleArea">
-														<h1 class="address-header-titleText">주소검색</h1>
-													</header>
-													<div class="address-search-mainArea">
-														<div>
-															<form class="address-search-formBox">
-																<div class="address-search-formBlock">
-																	<input autocomplete="off" type="text" name="" placeholder="예) 번동10-1, 강북구 번동" class="address-search-inputBox inputAddress" value>
-																</div>
-																<button type="submit" class="address-search-submintBtn">
-																	<span class="address-search-submitText">검색</span>
-																</button>
-															</form>
-														</div>
+												<header class="address-header-titleArea">
+													<h1 class="address-header-titleText">주소검색</h1>
+												</header>
+												<div class="address-search-mainArea">
+													<div>
+														<form class="address-search-formBox">
+															<div class="address-search-formBlock">
+																<input autocomplete="off" type="text" name="" placeholder="예) 번동10-1, 강북구 번동" id="sample4_postcode" class="address-search-inputBox" value>
+															</div>
+															<button type="button" class="address-search-submintBtn"
+																onclick="sample4_execDaumPostcode()">
+																<span class="address-search-submitText">검색</span>
+															</button>
+														</form>
+													</div>
+												</div>
+												<div class="address-name-box hidden">
+													<div>
+														<span>도로명</span>
+														<p id="sample4_roadAddress" class="road-address inputAddress" placeholder="도로명주소" readonly></p>
+													</div>
+													<div>
+														<span>지번</span>
+														<p id="sample4_jibunAddress" class="jibun-address inputAddress" placeholder="지번주소" readonly></p>
 													</div>
 												</div>
 												<div class="address-dongho-area" style="margin-top: 16px;">
@@ -180,7 +191,7 @@
 														<div class="dong-box">
 															<div>
 																<div class="dong-box-main">
-																	<input autocomplete="off" type="text" name="" placeholder="예) 101" class="dong-box-input inputAddress" value>
+																	<input autocomplete="off" type="text" name="" placeholder="예) 101" class="dong-box-input inputAddress dongInput" value>
 																	<p class="dong-box-pText unit">동</p>
 																</div>
 															</div>
@@ -188,7 +199,7 @@
 													</div>
 													<div class="ho-area donghoGroup">
 														<header class="ho-header-area">
-															<h1 class="ho-header-title">호 입력(선택)</h1>
+														<h1 class="ho-header-title">호 입력(선택)</h1>
 														</header>
 														<div class="ho-box">
 															<div>
@@ -204,7 +215,7 @@
 													<div class="address-checkbox-block">
 														<div>
 															<label class="address-checkbox-label">
-																<input disabled type="checkbox" class="address-checkbox-input">
+																<input type="checkbox" class="address-checkbox-input">
 																<p class="address-checkbox-pText">등기부등본 상에 '동' 정보가 없을 경우 체크
 																</p>
 															</label>
@@ -212,14 +223,16 @@
 													</div>
 												</div>
 											</div>
-											<div class="address-map-area">
-												<button class="address-map-button">주소가 검색되지 않는다면?</button>
-												<div class="address-map-block">
-													<p>주소를 검색하시면</p>
-													<p>해당 위치가 지도에 표시됩니다.</p>
-												</div>
+										</div>
+										<div class="address-map-area">
+											<button class="address-map-button">주소가 검색되지 않는다면?</button>
+											<div class="address-map-block">
+												<div id="map" style="width:100%;height:244px;z-index:10;display:none"></div>
+												<p class="remove-box">주소를 검색하시면</p>
+												<p class="remove-box">해당 위치가 지도에 표시됩니다.</p>
 											</div>
 										</div>
+									</div>
 									</td>
 								</tr>
 								<tr>
@@ -243,8 +256,8 @@
 														</div>
 														<p class="exclusive-pText-equals">=</p>
 														<div class="exclusive-mmm-area">
-															<input autocomplete="off" type="number" name="exclusiveArea" placeholder="m2 입력" class="exclusive-mmm-input exclusiveAreaText exclusiveM" value>
-															<p class="dong-box-pText unit">m<sup>2</sup></p>
+															<input autocomplete="off" type="number" name="exclusiveArea" placeholder="㎡ 입력" class="exclusive-mmm-input exclusiveAreaText exclusiveM" value>
+															<p class="dong-box-pText unit">㎡</p>
 														</div>
 													</div>
 												</div>
@@ -261,7 +274,7 @@
 														</div>
 														<p class="exclusive-pText-equals">=</p>
 														<div class="exclusive-mmm-area">
-															<input autocomplete="off" type="number" name="supplyArea" placeholder="m2 입력" class="exclusive-mmm-input supplyAreaText supplyM" value>
+															<input autocomplete="off" type="number" name="supplyArea" placeholder="㎡ 입력" class="exclusive-mmm-input supplyAreaText supplyM" value>
 															<p class="dong-box-pText unit">㎡</p>	
 														</div>
 													</div>
@@ -396,7 +409,7 @@
 													</select>
 													<div class="roominfo-approve-dateArea">
 														<div class="roominfo-approve-dateBlock">
-															<input autocomplete="off" type="text" placeholder="예)20210720" class="roominfo-approve-input datepicker inp buildingApproveDate" readonly="true" value>
+															<input autocomplete="off" type="text" placeholder="예)20210720" class="roominfo-approve-input datepicker1 inp buildingApproveDate" readonly="true" value>
 															<button type="button" class="roominfo-approve-button">
 																<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 																	<path fill-rule="evenodd" clip-rule="evenodd" d="M7.99194 3.91012C7.94961 3.67688 7.74546 
@@ -603,7 +616,7 @@
 													<div>
 														<div class="roominfo-approve-dateArea">
 															<div class="tradeIfno-feeArea-div">
-																<input autocomplete="off" type="text" placeholder="예)20210720" class="tradeInfo-feeArea-input datepicker inp movedDate" readonly="true" value>
+																<input autocomplete="off" type="text" placeholder="예)20210720" class="tradeInfo-feeArea-input datepicker2 inp movedDate" readonly="true" value>
 																	<div conteteditable="false"></div>
 																<button disabled type="button" class="roominfo-approve-button">
 																	<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1085,7 +1098,7 @@
 											<span>*</span>
 										</h1>
 									</th>
-									<form enctype="multipart/form-data" method="post">
+									<form enctype="multipart/form-data" id="formFileUpload">
 									<td style="padding: 0px;">
 										<div class="general-picture-div">
 											<input type="file" id="file" class="uploadFiles" name="file" multiple="multiple" accept=".jpg, .png, .jpeg, .git, .pdf" style="display: none;">
@@ -1166,7 +1179,7 @@
 													</label>
 												</div>
 											</div>
-											<div class="detailInfo-charCount">
+											<div class="detailInfo-charCount detailInfo-textCount">
 												<p>0 / 1000</p>
 											</div>
 										</div>
@@ -1199,5 +1212,9 @@
 	</div>
 	<script type="text/javascript" src="/static/js/manage/uploadRoom_insert.js"></script>
 	<script type="text/javascript" src="/static/js/manage/uploadRoom_calendal.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript"
+    src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c54251e17dca18ead784f7d5a1ea4715&libraries=services"></script>
+	<script src="/static/js/manage/searchingAddress.js"></script>
 </body>
 </html>

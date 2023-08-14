@@ -840,12 +840,12 @@ button > span {
 
 .address-checkbox-pText {
     padding-left: 4px;
-    color: rgb(204, 204, 204);
+    color: rgb(34, 34, 34);
     font-size: 14px;
     line-height: 24px;
     font-weight: 400;
     user-select: none;
-    cursor: default;
+    cursor: pointer;
 }
 
 .address-map-area {

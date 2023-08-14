@@ -3,6 +3,20 @@
 const inqueryButton = document.querySelector(".submitBtn");
 const buildingTypeSelected = document.getElementsByName("buildingType");
 
+// ===================== 동 정보유무 체크박스 ===============================
+document.querySelector('.address-checkbox-input').addEventListener('change', function() {
+    const textInputs = document.querySelectorAll('.dongInput');
+    
+    textInputs.forEach(input => {
+        if (this.checked) {
+            input.disabled = true;
+            input.value = '';  // 입력 값 초기화
+        } else {
+            input.disabled = false;
+        }
+    });
+});
+
 // ================= 파일 업로드 시 파일 목록 추가 =================================
 document.getElementById('file').addEventListener('change', function(e) {
 	const files = e.target.files;
@@ -193,16 +207,50 @@ parkingCheckboxes.forEach((input) => {
 });
 
 // ====================================================================================
+const detailTitleInput = document.querySelector('.detailTitleText');
+const titleCharCountElement = document.querySelector('.detailInfo-charCount p');
+const titleMaxLength = 40;
+
+detailTitleInput.addEventListener('input', function() {
+    let currentLength = detailTitleInput.value.length;
+    if (currentLength > titleMaxLength) {
+        detailTitleInput.value = detailTitleInput.value.substring(0, titleMaxLength);
+        currentLength = titleMaxLength;
+    }
+    titleCharCountElement.textContent = `${currentLength} / ${titleMaxLength}`;
+});
+
+// 페이지가 로드되면 문자 카운터 상태를 초기화합니다.
+window.addEventListener('DOMContentLoaded', function() {
+    titleCharCountElement.textContent = `0 / ${titleMaxLength}`;
+});
+
+const detailContentTextarea = document.querySelector('.detailContentText');
+const contentCharCountElement = document.querySelector('.detailInfo-textCount p');
+const contentMaxLength = 1000;
+
+detailContentTextarea.addEventListener('input', function() {
+    let currentLength = detailContentTextarea.value.length;
+    if (currentLength > contentMaxLength) {
+        detailContentTextarea.value = detailContentTextarea.value.substring(0, contentMaxLength);
+        currentLength = contentMaxLength;
+    }
+    contentCharCountElement.textContent = `${currentLength} / ${contentMaxLength}`;
+});
+
+// 페이지가 로드되면 문자 카운터 상태를 초기화합니다.
+window.addEventListener('DOMContentLoaded', function() {
+    contentCharCountElement.textContent = `0 / ${contentMaxLength}`;
+});
 // ====================================================================================
 
 // getData을 위한 변수 선언
-const registeredCheckbox = document.querySelector(".registeredCheckbox");
-let registeredValue = 0;
-if(registeredCheckbox.checked) registeredValue = 1;
 
-console.log(registeredCheckbox);
-const roomCount = document.querySelector(".roomCount").value; // 방 수
+const registeredCheckbox = document.querySelector(".registeredCheckbox");
+const roomCount = document.querySelector(".roomCount"); // 방 수
 const inputAddress = document.querySelectorAll(".inputAddress") // 주소
+const roadAddress = document.querySelector(".road-address"); // 도로명주소
+const jibunAddress = document.querySelector(".jibun-address"); // 지번 주소
 const inputExclusiveSizes = document.querySelectorAll(".exclusiveAreaText"); // 전용면적
 const inputSupplySizesSizes = document.querySelectorAll(".supplyAreaText"); // 공급면적
 const selectedBuildingUse = document.querySelector(".buildingUse");// 건축물용도
@@ -217,26 +265,26 @@ const selectedTotalFloors = document.querySelector(".totalFloors"); // 전체 �
 const selectedCurrentFloor = document.querySelector(".currentFloor"); // 현재 층 수
 const inputCountBathroom = document.querySelector(".countBathroomText"); // 욕실 수
 const inputCountParking = document.querySelector(".parkingText"); // 주차 가능 수
-const inputDetailTitle = document.querySelector(".detailTitleText").value; // 상세설명 제목
+const inputDetailTitle = document.querySelector(".detailTitleText"); // 상세설명 제목
 const inputDetailContext = document.querySelector(".detailContentText"); // 상세설명 내용
-
-
 
 // =====================================================================================
 
 // 매물등록 버튼 클릭
 inqueryButton.onclick = () => {
 	console.log("버튼누름");
-	// 입력받은 데이터 저장
-	let getDataRoomCount = roomCount.value; // 방수
-	console.log(getDataRoomCount);
+
 	
+	
+
+	// 입력받은 데이터 저장
+
 	let getDataInputAddress = { // 주소
-		mainAddress: inputAddress[0].value,
-		dong: inputAddress[1].value,
-		ho: inputAddress[2].value
+		mainRoadAddress: inputAddress[0].textContent,
+		mainJibunAddress: inputAddress[1].textContent,
+		dong: inputAddress[2].value,
+		ho: inputAddress[3].value
 	}
-	console.log(getDataInputAddress);
 	
 	let getDataExclusivesSize = { // 전용면적
 		exclusiveP: inputExclusiveSizes[0].value, // 평
@@ -246,8 +294,16 @@ inqueryButton.onclick = () => {
 		supplyP: inputSupplySizesSizes[0].value, // 평
 		supplyM: inputSupplySizesSizes[1].value // 미
 	}
-	console.log(getDataExclusivesSize);
-	console.log(getDataSupplySize);
+
+	let getDataRoomCount = roomCount.value; // 방수
+
+	let selectedOptionBuildingUse = selectedBuildingUse.options[selectedBuildingUse.selectedIndex];
+	let getDataSelectedBuildingUse = selectedOptionBuildingUse.text; //건축물용도
+	
+	let selectedOptionBuildingApprov = 	selectedBuildingApprov.options[selectedBuildingApprov.selectedIndex];// 건축물 승인
+	let getDataSelectedBuildingApprov = selectedOptionBuildingApprov.text; 
+	
+	let getDataInputBuildingApproveDate = inputBuildingApproveDate.value; // 건축물승인 날짜
 	
 	let getDataPriceInfo = { // 매물가격 정보
 		depositPrice: inputDepositText.value, // 전세가
@@ -258,6 +314,14 @@ inqueryButton.onclick = () => {
 	
 	let getDataManagementFee = managementFeeAmountInput.value; // 관리비
 	console.log(getDataManagementFee);
+	
+	let getDataInputMovedDate = inputMovedDate.value; // 입주가능일 날짜
+	
+	let selectedOptionTotalFloors = selectedTotalFloors.options[selectedTotalFloors.selectedIndex];
+	let getDataSelectedTotalFloors = selectedOptionTotalFloors.text; // 전체 층수
+	
+	let selectedOptionCurrentFloor = selectedCurrentFloor.options[selectedCurrentFloor.selectedIndex];
+	let getDataSelectedCurrentFloor = selectedOptionCurrentFloor.text;// 현재 층
 	
 	let getDataCountBathroom = inputCountBathroom.value; // 욕실 수
 	console.log(getDataCountBathroom);
@@ -298,13 +362,10 @@ inqueryButton.onclick = () => {
 		livingRoomTypes.forEach((type) => {
 			if(type.checked) {
 				selectedLivingRoomType = type.value;
-				selectedLivingRoomTypeText = type.nextElementSibling.innertext;
+				selectedLivingRoomTypeText = type.nextElementSibling.innerText;
 			}
 		});
-		return {
-			type : selectedLivingRoomType,
-			text : selectedLivingRoomTypeText
-		};
+		return selectedLivingRoomTypeText;
 	}
 	
 	// 거래 종류 선택(전/월세)
@@ -319,10 +380,7 @@ inqueryButton.onclick = () => {
 				selectedTradeTypeText = type.nextElementSibling.innerText;
 			}
 		});
-		return {
-			type: selectedTradeType,
-			text: selectedTradeTypeText
-		};
+		return selectedTradeTypeText;
 	}
 	
 	// 공용관리비(없음/있음)
@@ -337,10 +395,7 @@ inqueryButton.onclick = () => {
 				selectedManagementFeeText = type.nextElementSibling.innerText;
 			}
 		});
-		return {
-			type: selectedManagementFee,
-			text: selectedManagementFeeText
-		};
+		return selectedManagementFeeText
 	}
 	
 	// 입주가능여부(즉시입주/일자선택)
@@ -355,10 +410,7 @@ inqueryButton.onclick = () => {
 				selectePpossibleMoveDateText = type.nextElementSibling.innerText;
 			}
 		});
-		return {
-			type: selectedPossibleMoveDate,
-			text: selectePpossibleMoveDateText
-		};
+		return selectePpossibleMoveDateText
 	}
 	
 	// 엘리베이터 유/무
@@ -373,10 +425,7 @@ inqueryButton.onclick = () => {
 				selectedElevatorText = type.nextElementSibling.innerText;
 			}
 		});
-		return {
-			type: selectedElevatorType,
-			text: selectedElevatorText
-		};
+		return selectedElevatorText
 	}
 	
 	// 주차가능여부
@@ -391,10 +440,7 @@ inqueryButton.onclick = () => {
 				selectedParkingAvailabilityText = type.nextElementSibling.innerText;
 			}
 		});
-		return {
-			type: selectedParkingAvailabilityType,
-			text: selectedParkingAvailabilityText
-		};
+		return selectedParkingAvailabilityText
 	}
 	
 	// 난방시설
@@ -409,10 +455,7 @@ inqueryButton.onclick = () => {
 				selctedHeatingTypeText = type.nextElementSibling.innerText;
 			}
 		});
-		return {
-			tpye: selectedHeatingType,
-			text: selctedHeatingTypeText
-		}
+		return selctedHeatingTypeText
 	}
 	
 	// checkbox 선택시,
@@ -483,8 +526,6 @@ inqueryButton.onclick = () => {
 		return selectedFacOthers.join(',');
 	}
 	
-	
-	
 	// checkbox 선택시 콘솔확인
 	const selectedRoomChar = getRoomChar();
 	console.log(selectedRoomChar);
@@ -514,8 +555,217 @@ inqueryButton.onclick = () => {
 	console.log(selectedParkingAvailability);
 	const selectedHeatingType = getHeatingType();
 	console.log(selectedHeatingType);
+	// ================formData에 담기 =================================
+
+	// 파일 업로드
+	let formData = new FormData(document.querySelector("#formFileUpload"));
+
+	// 방타입
+	formData.append("salesType", selectedBuildingType);
+	// 미등기건물추가해야함
+	if (registeredCheckbox.checked) {
+        formData.append('unregisteredCheck', '1');
+    } else {
+        formData.append('unregisteredCheck', '0');
+    }
+	//formData.append("unregisteredCheck", registeredCheckbox);
+	// 매물 주소
+	formData.append("salesAddressMainRoad", getDataInputAddress.mainRoadAddress);
+	formData.append("salesAddressMainJibeon", getDataInputAddress.mainJibunAddress);
+	formData.append("salesAddressDong", getDataInputAddress.dong);
+	formData.append("salesAddressHo", getDataInputAddress.ho);
+
+	// 매물크기
+	formData.append("sizeExclusiveP", getDataExclusivesSize.exclusiveP);
+	formData.append("sizeExclusiveM", getDataExclusivesSize.exclusiveM);
+	formData.append("sizeSupplyP", getDataSupplySize.supplyP);
+	formData.append("sizeSupplyM", getDataSupplySize.supplyM);
+
+	// 방 정보
+	formData.append("roomInfoCount", getDataRoomCount);
+	formData.append("roomInfoLivingroom", selectedLivingRoomType);
+	formData.append("roomInfoChar", selectedRoomChar);
+
+	// 건축물 용도
+	formData.append("buildingUse", getDataSelectedBuildingUse);
 	
-	// ====================================================================================
+	// 건축물 승인
+	formData.append("buildingApproval", getDataSelectedBuildingApprov);
+	formData.append("buildingApprovalDate", getDataInputBuildingApproveDate);
+
+	// 거래 종류
+	formData.append("trnscType", selectedTradeType);
+	formData.append("userCode", getUser().user_code);
+
+	// 가격 정보
+
+	if (getDataPriceInfo.depositPrice && getDataPriceInfo.depositPrice !== "") {
+		formData.append("depositPrice", getDataPriceInfo.depositPrice);
+	} else {
+		if (getDataPriceInfo.monthlyPriceDeposit && getDataPriceInfo.monthlyPriceDeposit !== "") {
+			formData.append("monthlyPriceDeposit", getDataPriceInfo.monthlyPriceDeposit);
+		}
+		if (getDataPriceInfo.monthlyPrice && getDataPriceInfo.monthlyPrice !== "") {
+			formData.append("monthlyPrice", getDataPriceInfo.monthlyPrice);
+		}
+	}
+	// formData.append("depositPrice", getDataPriceInfo.depositPrice);
+	// formData.append("monthlyPriceDeposit", getDataPriceInfo.monthlyPriceDeposit);
+	// formData.append("monthlyPrice", getDataPriceInfo.monthlyPrice);
+
+	// 관리비 여부
+	formData.append("publicManagement", selectedManagementFee);
+	if (selectedManagementFee === "없음") {
+		formData.append("managementFee", 0);
+	} else {
+		formData.append("managementFee", getDataManagementFee);
+	}
+	// formData.append("managementFee", getDataManagementFee);
+
+	// 입주 가능 일자
+	formData.append("possibleMoved", selectedPossibleMoveDate);
+	formData.append("possibleMovedDate", getDataInputMovedDate);
+	// 협의가능할 경우 체크 추가해야함
+
+	// 층 수
+	formData.append("totalFloors", getDataSelectedTotalFloors);
+	formData.append("numFloor", getDataSelectedCurrentFloor);
+
+	// 욕실 수
+	formData.append("numBathrooms", getDataCountBathroom);
+	formData.append("elevator", selectedElevator);
+
+	// 주차가능 여부
+	formData.append("parkingAvailability", selectedParkingAvailability);
+	if (selectedParkingAvailability === "불가능") {
+		formData.append("totalParking", 0);
+	} else {
+		formData.append("totalParking", getDataCountParking);
+	}
+	// formData.append("totalParking", getDataCountParking);
+
+	// 시설 정보
+	formData.append("facHeating", selectedHeatingType);
+	formData.append("facAircnd", selectedAirCndType);
+	formData.append("facComm", selectedFacComm);
+	formData.append("facSecurity", selectedFacSec);
+	formData.append("facOther", selectedFacOtherType);
+
+	// 상세설명
+	formData.append("descTitle", getDataDetailTitle);
+	formData.append("descDetail", getDataDetailContext);
+	
+	//formData.append("userCode", ${user.user_code});
+
+	// 매물관리규정 확인 체크해야함
+
+	
+	//formData.append("descTitle", inputDetailTitle);
+
+	formData.forEach((v, k) => {
+		console.log("key: " + k);
+	if (v instanceof File) {
+			console.log("value: " + v.name); // 파일 객체의 경우
+		} else {
+			console.log("value: " + v); // 그 외의 경우
+		}
+		//console.log("value: " + v.name);
+	});
+
+	
+	$.ajax({
+		async: false,
+		type: "post",
+		url: "/api/v1/manage/content",
+		enctype: "multipart/form-data",
+		contentType: false,
+		processData: false,
+		data: formData,
+		dataType: "json",
+		success: (response) => {
+			console.log(response.data);
+			alert("등록 완료");
+			getRoomPage(response.data);
+		},
+		error: (error) => {
+			console.log(error);
+		}
+	})
+	
+}; // 매물등록버튼 inqueryButton.onclick() 여기까지.
+
+
+
+function getRoomPage(data) {
+	location.href = `/manage_result/`;
+}
+
+
+
+
+
+
+
+
+
+
+//아래는 DB에서 불러올 때,
+
+// 체크박스의 텍스트를 배열에 저장합니다.
+const roomCharTextArray = []; // 방특징선택
+	document.getElementsByName('roomChar').forEach((type) => {
+		roomCharTextArray.push(type.nextElementSibling.innerText);
+	});
+	
+const airCndTypeTextArray = []; // 냉방시설
+	document.getElementsByName('airCndType').forEach((type) => {
+		airCndTypeTextArray.push(type.nextElementSibling.innerText);
+	});
+
+const facCommTextArray = []; // 생화시설
+	document.getElementsByName('facComm').forEach((type) => {
+		facCommTextArray.push(type.nextElementSibling.innerText);
+	});
+	
+const facSecTextArray = []; // 보안시설
+	document.getElementsByName('facSec').forEach((type) => {
+		facSecTextArray.push(type.nextElementSibling.innerText);
+	});
+	
+const facOtherTextArray = []; // 기타시설
+	document.getElementsByName('facOther').forEach((type) => {
+		facOtherTextArray.push(type.nextElementSibling.innerText);
+	});
+	
+// DB에서 인덱스를 가져온 뒤 해당 인덱스의 텍스트를 뿌립니다.	
+
+function getRoomCharTextFromDB(indexesFromDB) { // 방특징 선택
+	return indexesFromDB.map(index => roomCharTextArray[index]);
+}
+
+function getAirCndTextFromDB(indexesFromDB) { // 냉방시설
+	return indexesFromDB.map(index => airCndTypeTextArray[index]);
+}
+
+function getFacCommTextFromDB(indexesFromDB) { // 생활시설
+	return indexesFromDB.map(index => facCommTextArray[index]);
+}
+function getFacSecTextFromDB(indexesFromDB) { // 보안시설
+	return indexesFromDB.map(index => facSecTextArray[index]);
+}
+function getFacOtherTextFromDB(indexesFromDB) { // 기타시설
+	return indexesFromDB.map(index => facOtherTextArray[index]);
+}
+
+// 콘솔 확인 테스트를 위해 임의의 인덱스 배열을 사용.
+console.log(getRoomCharTextFromDB([1,2]));
+console.log(getAirCndTextFromDB([1, 2]));
+console.log(getFacCommTextFromDB([18,19]));
+console.log(getFacSecTextFromDB([6,7]));
+console.log(getFacOtherTextFromDB([3,4]));
+
+// ===================================================================================
+// ====================================================================================
 	/*
 	// ajax
 	let getData = {
@@ -590,91 +840,3 @@ inqueryButton.onclick = () => {
 		}
 	})
 	*/
-	
-	let formData = new FormData(document.querySelector('form'));
-	console.log(formData);
-	formData.forEach((v, k) => {
-		console.log("key: " + k);
-		console.log("value: " + v);
-	});
-
-	//formData.append("roomInfoCount", roomCount);
-	formData.append("descTitle", inputDetailTitle);
-
-	
-	$.ajax({
-		async: false,
-		type: "post",
-		url: "/api/v1/manage/content",
-		enctype: "multipart/form-data",
-		contentType: false,
-		processData: false,
-		data: formData,
-		dataType: "json",
-		success: (response) => {
-			console.log(response.data);
-			alert("등록 완료");
-		},
-		error: (error) => {
-			console.log(error);
-		}
-	})
-	
-}; // 매물등록버튼 inqueryButton.onclick() 여기까지.
-
-//아래는 DB에서 불러올 때,
-
-// 체크박스의 텍스트를 배열에 저장합니다.
-const roomCharTextArray = []; // 방특징선택
-	document.getElementsByName('roomChar').forEach((type) => {
-		roomCharTextArray.push(type.nextElementSibling.innerText);
-	});
-	
-const airCndTypeTextArray = []; // 냉방시설
-	document.getElementsByName('airCndType').forEach((type) => {
-		airCndTypeTextArray.push(type.nextElementSibling.innerText);
-	});
-
-const facCommTextArray = []; // 생화시설
-	document.getElementsByName('facComm').forEach((type) => {
-		facCommTextArray.push(type.nextElementSibling.innerText);
-	});
-	
-const facSecTextArray = []; // 보안시설
-	document.getElementsByName('facSec').forEach((type) => {
-		facSecTextArray.push(type.nextElementSibling.innerText);
-	});
-	
-const facOtherTextArray = []; // 기타시설
-	document.getElementsByName('facOther').forEach((type) => {
-		facOtherTextArray.push(type.nextElementSibling.innerText);
-	});
-	
-// DB에서 인덱스를 가져온 뒤 해당 인덱스의 텍스트를 뿌립니다.	
-
-function getRoomCharTextFromDB(indexesFromDB) { // 방특징 선택
-	return indexesFromDB.map(index => roomCharTextArray[index]);
-}
-
-function getAirCndTextFromDB(indexesFromDB) { // 냉방시설
-	return indexesFromDB.map(index => airCndTypeTextArray[index]);
-}
-
-function getFacCommTextFromDB(indexesFromDB) { // 생활시설
-	return indexesFromDB.map(index => facCommTextArray[index]);
-}
-function getFacSecTextFromDB(indexesFromDB) { // 보안시설
-	return indexesFromDB.map(index => facSecTextArray[index]);
-}
-function getFacOtherTextFromDB(indexesFromDB) { // 기타시설
-	return indexesFromDB.map(index => facOtherTextArray[index]);
-}
-
-// 콘솔 확인 테스트를 위해 임의의 인덱스 배열을 사용.
-console.log(getRoomCharTextFromDB([1,2]));
-console.log(getAirCndTextFromDB([1, 2]));
-console.log(getFacCommTextFromDB([18,19]));
-console.log(getFacSecTextFromDB([6,7]));
-console.log(getFacOtherTextFromDB([3,4]));
-
-// ===================================================================================

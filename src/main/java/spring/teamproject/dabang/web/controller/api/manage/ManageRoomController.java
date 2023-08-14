@@ -71,22 +71,22 @@ public class ManageRoomController {
 	public ResponseEntity<?> addRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) {
 		System.out.println("요청받");
 		System.out.println("파일업로드" + createRoomInfoReqDto.getFile());
-		//System.out.println("파일하나" + createRoomInfoReqDto.getFile().get(0).getOriginalFilename());
-		System.out.println(createRoomInfoReqDto);
 		//log.info(">>>> fileName: {}", createRoomInfoReqDto.getFile().get(0).getOriginalFilename());
 		log.info("filePath: {}", filePath);
-		log.info(">>>fileName: {}", createRoomInfoReqDto);		CreateRoomInfoRespDto createRoomInfoRespDto = null;
+		log.info(">>>fileName: {}", createRoomInfoReqDto);		
+		
+		int roomCode = 0;;
 		
 		try {
-			log.info("데이터가 전송되는지 확인 : {}", createRoomInfoReqDto);
-			createRoomInfoRespDto = manageService.createRoomInfo(createRoomInfoReqDto);
+			log.info("컨트롤러-데이터가 전송되는지 확인 : {}", createRoomInfoReqDto);
+			roomCode = manageService.createRoomInfo(createRoomInfoReqDto);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return ResponseEntity.ok().body(new CMRespDto<>(-1, "방등록 실패", createRoomInfoRespDto));
+			return ResponseEntity.ok().body(new CMRespDto<>(-1, "방등록 실패", roomCode));
 
 		}
 		
-		return ResponseEntity.ok().body(new CMRespDto<>(1, "방등록 성공", createRoomInfoRespDto));
+		return ResponseEntity.ok().body(new CMRespDto<>(1, "방등록 성공", roomCode));
 	}
 	
 	@PutMapping("/content/{roomcode}")

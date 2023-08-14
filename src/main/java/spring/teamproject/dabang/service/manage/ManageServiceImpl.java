@@ -1,6 +1,7 @@
 package spring.teamproject.dabang.service.manage;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,6 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.function.Predicate;
 
+import org.apache.commons.io.IOExceptionWithCause;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -47,28 +49,25 @@ public class ManageServiceImpl implements ManageService{
 	}
 
 	@Override
-	public CreateRoomInfoRespDto createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception {
+	public int createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception {
 		
 		Predicate<String> predicate = (filename) -> !filename.isBlank();		
 		
 		List<Integer> facAircndList = convertStringToList(createRoomInfoReqDto.getFacAircnd());
 		createRoomInfoReqDto.setFacAircndList(facAircndList);
-		
 		List<Integer> facCommList = convertStringToList(createRoomInfoReqDto.getFacComm());
 	    createRoomInfoReqDto.setFacCommList(facCommList);
-
 	    List<Integer> facSecList = convertStringToList(createRoomInfoReqDto.getFacSecurity());
 	    createRoomInfoReqDto.setFacSecList(facSecList);
-
 	    List<Integer> facOtherList = convertStringToList(createRoomInfoReqDto.getFacOther());
 	    createRoomInfoReqDto.setFacOtherList(facOtherList);
 		/*
-		 * String[] facAircndArray = createRoomInfoReqDto.getFacAircnd().split(",");
-		 * List<Integer> facAircndList = new ArrayList<>();
-		 * 
-		 * for(String s : facAircndArray) { facAircndList.add(Integer.parseInt(s)); }
-		 * 
-		 * createRoomInfoReqDto.setFacAircndList(facAircndList);
+		String[] facAircndArray = createRoomInfoReqDto.getFacAircnd().split(",");
+		List<Integer> facAircndList = new ArrayList<>();
+		  
+		for(String s : facAircndArray) { facAircndList.add(Integer.parseInt(s)); }
+		  
+		createRoomInfoReqDto.setFacAircndList(facAircndList);
 		 
 	    String[] facCommArray = createRoomInfoReqDto.getFacComm().split(",");
 	    List<Integer> facCommList = new ArrayList<>();
@@ -95,8 +94,13 @@ public class ManageServiceImpl implements ManageService{
 	    createRoomInfoReqDto.setFacOtherList(facOtherList);
 	    */
 		
-		RoomInfo roomInfoEntity = createRoomInfoReqDto.toEntity();
-		RoomInfoFile roomInfoFileEntity = createRoomInfoReqDto.toFileEntity();
+	    RoomInfo roomInfo = null;
+	    log.info("Impl 전 >>> {}", roomInfo);
+	    
+	    roomInfo = createRoomInfoReqDto.toEntity();
+	    roomInfoRepository.save(roomInfo);
+	    log.info("Impl 후 >>>{}",roomInfo);
+	    
 		
 		if(predicate.test(createRoomInfoReqDto.getFile().get(0).getOriginalFilename())) {
 			List<RoomInfoFile> roomInfoFiles = new ArrayList<RoomInfoFile>();
@@ -104,34 +108,56 @@ public class ManageServiceImpl implements ManageService{
 			for(MultipartFile file : createRoomInfoReqDto.getFile()) {
 				String originFilename = file.getOriginalFilename();
 				String tempFilename = UUID.randomUUID().toString().replace("-", "") + "_" + originFilename;
-				log.info("tempFilename : ", tempFilename);
+				log.info("tempFilename : " + tempFilename);
 				
-				Path uploadPath = Paths.get(filePath, "roomPhoto/" + tempFilename);
+				Path uploadPath = Paths.get(filePath, tempFilename);
 				
-				File f = new File(filePath + "roomPhoto");
-				if(!f.exists()) {
-					f.mkdir();
+				/*
+				 * File f = new File(filePath + "roomPhoto/"); if(!f.exists()) { f.mkdir(); }
+				 */
+				
+				// 로깅을 위한 절대 경로 확인
+				log.info("Absolute path: " + uploadPath.toAbsolutePath().toString());
+				log.info("Final upload path: " + uploadPath.toString());
+
+				// 파일 존재 여부 확인 로깅
+				if (Files.exists(uploadPath)) {
+				    log.warn("File already exists: " + uploadPath.toString());
+				} else {
+				    log.info("File doesn't exist, creating a new one.");
+				}
+
+				// 파일 쓰기 시도
+				log.info("Attempting to write to file: " + uploadPath.toString());
+				
+				if (!Files.exists(uploadPath.getParent())) {
+				    Files.createDirectories(uploadPath.getParent());
 				}
 				
+				try {
 				Files.write(uploadPath, file.getBytes());
+				} catch (IOException e) {
+					log.error("file writing error: ", e);
+				}
+				
+				roomInfoFiles.add(RoomInfoFile.builder()
+												.room_code(roomInfo.getRoom_code())
+												.photo_filename(tempFilename)
+												.build());
 				/*
 				 * roomInfoFiles.add(RoomInfoFile.builder() .photo_filename(tempFilename)
 				 * .room_code(roomInfo.getRoom_code()) .build());
 				 */
 			}
 			
-	
+			roomInfoRepository.saveFiles(roomInfoFiles);
 		}
 		
 		/* RoomInfoFile RoomInfoFileEntity = createRoomInfoReqDto.toFileEntity(); */
 				
-		boolean insertStatus = roomInfoRepository.save(createRoomInfoReqDto.toEntity()) > 0;
-		boolean insertStatusFile = roomInfoRepository.saveFiles(createRoomInfoReqDto.toFileEntity()) > 0;
-		Map<String, Boolean> respInsertStatus = new HashMap<>();
-		respInsertStatus.put("insertStatus", insertStatus);
-		respInsertStatus.put("insertStatusFile", insertStatusFile);
 		
-		return roomInfoEntity.toCreateRoomInfoDto(respInsertStatus);
+		
+		return roomInfo.getRoom_code();
 				
 			
 	}
@@ -150,33 +176,6 @@ public class ManageServiceImpl implements ManageService{
 
 	    List<Integer> facOtherList = convertStringToList(updateRoomInfoReqDto.getFacOther());
 	    updateRoomInfoReqDto.setFacOtherList(facOtherList);
-		
-		/*
-		 * String[] facAircndArray = updateRoomInfoReqDto.getFacAircnd().split(",");
-		 * List<Integer> facAircndList = new ArrayList<>();
-		 * 
-		 * for(String s : facAircndArray) { facAircndList.add(Integer.parseInt(s)); }
-		 * 
-		 * updateRoomInfoReqDto.setFacAircndList(facAircndList);
-		 * 
-		 * String[] facCommArray = updateRoomInfoReqDto.getFacComm().split(",");
-		 * List<Integer> facCommList = new ArrayList<>();
-		 * 
-		 * for(String s : facCommArray) { facCommList.add(Integer.parseInt(s)); }
-		 * updateRoomInfoReqDto.setFacCommList(facCommList);
-		 * 
-		 * String[] facSecArray = updateRoomInfoReqDto.getFacSecurity().split(",");
-		 * List<Integer> facSecList = new ArrayList<>();
-		 * 
-		 * for(String s : facSecArray) { facSecList.add(Integer.parseInt(s)); }
-		 * updateRoomInfoReqDto.setFacSecList(facSecList);
-		 * 
-		 * String[] facOtherArray = updateRoomInfoReqDto.getFacOther().split(",");
-		 * List<Integer> facOtherList = new ArrayList<>();
-		 * 
-		 * for(String s : facOtherArray) { facOtherList.add(Integer.parseInt(s)); }
-		 * updateRoomInfoReqDto.setFacOtherList(facOtherList);
-		 */
 		
 		RoomInfo roomInfoEntity = updateRoomInfoReqDto.toEntity();
 		
