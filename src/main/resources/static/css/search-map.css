@@ -722,6 +722,11 @@ main {
     height: 140px;
 }
 
+.room-img img {
+    width: 140px;
+    height: 140px;
+}
+
 
 .room-text-data {
     width: 229px;

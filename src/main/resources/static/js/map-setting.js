@@ -213,25 +213,86 @@ function roomSearch(data) {
 	geocoder.addressSearch(data, function(result, status) {
 		// 정상적으로 검색이 완료됐으면 
 		if (status === kakao.maps.services.Status.OK) {
+			let infowindow = null;
+			let marker = null;
 			let searchPs = new kakao.maps.LatLng(result[0].y, result[0].x);
 			console.log(searchPs);
 			map.setCenter(searchPs);
 
 			// 결과값으로 받은 위치를 마커로 표시합니다
-			let marker = new kakao.maps.Marker({
+			marker = new kakao.maps.Marker({
 				map: map,
 				position: searchPs
 			});
 
 			// 인포윈도우로 장소에 대한 설명을 표시합니다
-			let infowindow = new kakao.maps.InfoWindow({
+			infowindow = new kakao.maps.InfoWindow({
 				content: `<div style="width:150px;text-align:center;padding:6px 0;">${data}</div>`
 			});
 			infowindow.open(map, marker);
-			
 		}
 	});
+	getRoomList(data);
 }
+
+function getRoomList(address) {
+  console.log("test");
+  $.ajax({
+    async: false,
+    type: "get",
+    url: `/api/v1/map/room/${address}`,
+    data: {
+      address: `${address}`
+    },
+    dataType: "json",
+    success: (response) => {
+      console.log(response.data);
+      roomListData(response.data);
+      console.log("successTest");
+    },
+    error: (error) => {
+      console.log(error);
+    }
+  })
+}
+
+function roomListData(data) {
+	const roomSearchList = document.querySelector(".room-search-list");
+	roomSearchList.innerHTML = ""
+	for (const list of data) {
+		let freeFee = null;
+
+		if (`${list.management_fee}` == 0) {
+			freeFee = "관리비 없음";
+		} else {
+			freeFee = `관리비 ${list.management_fee}만`;
+		}
+
+		let title = null;
+		if (`${list.desc_title}` == null || `${list.desc_title}` == "null") {
+			title = "";
+		} else {
+			title = `${list.desc_title}`;
+		}
+		roomSearchList.innerHTML += `
+        <div class="room-data">
+            <div class="room-img">
+                <img src="/static/images/none_img.jpg">
+            </div>
+            <div class="room-text-data">
+                <h1>월세 ${list.monthly_price}/${list.monthly_price_deposit}</h1>    
+                <p class="room-text">오피스텔 · 판도라</p>
+                <p>${list.num_floor}층, ${list.size_exclusive_m}m², ${freeFee}</p>
+                <p>${title}</p>
+            </div>
+        </div>
+    `
+	}
+
+}
+
+// function listclick(list) {
+// }
 
 function getMapLevel() {
 	let level = map.getLevel();
