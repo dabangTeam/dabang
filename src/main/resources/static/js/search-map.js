@@ -85,64 +85,64 @@ optionBoxes.forEach((optionBox) => {
     };
 });
 
-getRoomList("전포동");
 
-let address = "전포동";
+// let address = "전포동";
+// getRoomList(address);
 
-function getRoomList(address) {
-  console.log("test");
-  $.ajax({
-    async: false,
-    type: "get",
-    url: `/api/v1/map/room/${address}`,
-    data: {
-      address: "전포동"
-    },
-    dataType: "json",
-    success: (response) => {
-      console.log(response.data);
-      roomListData(response.data);
-      console.log("successTest");
-    },
-    error: (error) => {
-      console.log(error);
-    }
-  })
-}
+// function getRoomList(address) {
+//   console.log("test");
+//   $.ajax({
+//     async: false,
+//     type: "get",
+//     url: `/api/v1/map/room/${address}`,
+//     data: {
+//       address: `${address}`
+//     },
+//     dataType: "json",
+//     success: (response) => {
+//       console.log(response.data);
+//       roomListData(response.data);
+//       console.log("successTest");
+//     },
+//     error: (error) => {
+//       console.log(error);
+//     }
+//   })
+// }
 
-function roomListData(data) {
-  const roomSearchList = document.querySelector(".room-search-list");
-  roomSearchList.innerHTML = ""
-  data.forEach(list => {
-    let freeFee = null;
+// function roomListData(data) {
+//   const roomSearchList = document.querySelector(".room-search-list");
+//   roomSearchList.innerHTML = ""
+//   data.forEach(list => {
+//     let freeFee = null;
 
-    if(`${list.management_fee}` == 0) {
-      freeFee = "관리비 없음";
-    }else {
-      freeFee = `관리비 ${list.management_fee}만`;
-    }
+//     if(`${list.management_fee}` == 0) {
+//       freeFee = "관리비 없음";
+//     }else {
+//       freeFee = `관리비 ${list.management_fee}만`;
+//     }
 
-    let title = null;
-    if(`${list.desc_title}` == null || `${list.desc_title}` == "null") {
-      title = "";
-    } else {
-      title = `${list.desc_title}`;
-    }
-    roomSearchList.innerHTML += `
-        <div class="room-data">
-            <div class="room-img">
-                <img src="/static/images/room_img.PNG">
-            </div>
-            <div class="room-text-data">
-                <h1>월세 ${list.monthly_price}/${list.monthly_price_deposit}</h1>    
-                <p class="room-text">오피스텔 · 판도라</p>
-                <p>${list.num_floor}층, ${list.size_exclusive_m}m², ${freeFee}</p>
-                <p>${title}</p>
-            </div>
-        </div>
-    `
-  })
-}
+//     let title = null;
+//     if(`${list.desc_title}` == null || `${list.desc_title}` == "null") {
+//       title = "";
+//     } else {
+//       title = `${list.desc_title}`;
+//     }
+//     roomSearchList.innerHTML += `
+//         <div class="room-data">
+//             <div class="room-img">
+//                 <img src="/static/images/room_img.PNG">
+//             </div>
+//             <div class="room-text-data">
+//                 <h1>월세 ${list.monthly_price}/${list.monthly_price_deposit}</h1>    
+//                 <p class="room-text">오피스텔 · 판도라</p>
+//                 <p>${list.num_floor}층, ${list.size_exclusive_m}m², ${freeFee}</p>
+//                 <p>${title}</p>
+//             </div>
+//         </div>
+//     `
+//   })
+// }
 
 /**
  * 해야 할 것
