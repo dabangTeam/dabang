@@ -20,12 +20,15 @@
   	 	
   	<select id="getRoomListByRoomcode" parameterType="Integer" resultType="spring.teamproject.dabang.domain.manage.RoomInfo">
   	SELECT 
+  		create_date,
+  		room_code,
   		trnsc_type,
-  		price_info,
   		sales_type,
-  		sales_address,
-  		desc_title,
-  		update_date
+  		room_info_count,
+  		sales_address_main_road,
+  		sales_address_dong,
+  		sales_address_ho,
+  		desc_title
   		
 		FROM 
 			salesInfo
@@ -37,12 +40,12 @@
   	<insert id="save" parameterType="spring.teamproject.dabang.domain.manage.RoomInfo"
   	useGeneratedKeys="true" keyProperty="room_code">
   	insert into
-		salesInfo
+		salesInfo 
 	values (
 		0,
 		#{sales_type}, #{unregistered_check}, 
 		#{sales_address_main_road}, #{sales_address_main_jibeon}, #{sales_address_dong}, #{sales_address_ho},
-		#{sales_exclusive_p}, #{sales_exclusive_m}, #{sales_supply_p}, #{sales_supply_m},
+		#{size_exclusive_p}, #{size_exclusive_m}, #{size_supply_p}, #{size_supply_m},
 		#{room_info_count}, #{room_info_livingroom}, #{room_info_char},
 		#{building_use}, #{building_approval}, #{building_approval_date},
 		
@@ -50,12 +53,10 @@
 		#{public_management}, #{management_fee},
 		#{possible_moved}, #{possible_moved_date}, #{possible_moved_check},
 		
-		#{total_floors}, #{num_floor}, #{elevator},
+		#{total_floors}, #{num_floor}, #{num_bathrooms}, #{elevator},
 		#{parking_availability}, #{total_parking},
 		
 		#{fac_heating}, #{fac_aircnd}, #{fac_comm}, #{fac_other}, #{fac_security},
-		
-		#{photo_general}, #{photo_filename}, #{photo_filecode},
 		
 		#{desc_title}, #{desc_detail}, #{desc_code},
 		
@@ -68,12 +69,15 @@
   	
   	<insert id="saveFiles" parameterType="java.util.List">
 		insert into
-			salesInfo (photo_filename, photo_filecode)
+			salesInfo_file
 		values
 		<foreach collection="list" item="file" separator=",">
-			(
-				#{photo_filenam},
-				#{photo_filecode}
+			(	
+				0,
+				#{file.room_code},
+				#{file.photo_filename},
+				now(),
+				now()
 			)
 		</foreach>
 	</insert>

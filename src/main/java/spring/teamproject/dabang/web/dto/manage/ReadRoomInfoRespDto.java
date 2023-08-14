@@ -23,10 +23,10 @@ public class ReadRoomInfoRespDto {
 	private String salesAddressMainJibeon;
 	private String salesAddressDong;
 	private String salesAddressHo;		
-	private int salesExclusiveP;
-	private double salesExclusiveM;
-	private int salesSupplyP;
-	private double salesSupplyM;
+	private int sizeExclusiveP;
+	private double sizeExclusiveM;
+	private int sizeSupplyP;
+	private double sizeSupplyM;
 	private int roomInfoCount;
 	private String roomInfoLivingroom;
 	private String roomInfoChar;

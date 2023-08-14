@@ -13,7 +13,7 @@ public interface ManageService {
 	
 	public ReadRoomInfoRespDto getRoomList(int roomcode) throws Exception;
 	
-	public CreateRoomInfoRespDto createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception;
+	public int createRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) throws Exception;
 	
 	
 	public boolean updateRoomInfo (UpdateRoomInfoReqDto updateRoomInfoReqDto) throws Exception;

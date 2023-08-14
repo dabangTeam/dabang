@@ -26,10 +26,10 @@ public class RoomInfo {
 		private String sales_address_main_jibeon;
 		private String sales_address_dong;
 		private String sales_address_ho;
-		private int sales_exclusive_p;
-		private double sales_exclusive_m;
-		private int sales_supply_p;
-		private double sales_supply_m;
+		private int size_exclusive_p;
+		private double size_exclusive_m;
+		private int size_supply_p;
+		private double size_supply_m;
 		private int room_info_count;
 		private String room_info_livingroom;
 		private String room_info_char;
@@ -64,7 +64,6 @@ public class RoomInfo {
 		private String fac_security;
 		
 		// 사진등록
-		private String photo_general;
 		private String photo_filename;
 		private int photo_filecode;
 		
@@ -87,10 +86,10 @@ public class RoomInfo {
 					.salesAddressMainJibeon(sales_address_main_jibeon)
 					.salesAddressDong(sales_address_dong)
 					.salesAddressHo(sales_address_ho)
-					.salesExclusiveP(sales_exclusive_p)
-					.salesExclusiveM(sales_exclusive_m)
-					.salesSupplyP(sales_supply_p)
-					.salesSupplyM(sales_supply_m)
+					.sizeExclusiveP(size_exclusive_p)
+					.sizeExclusiveM(size_exclusive_m)
+					.sizeSupplyP(size_supply_p)
+					.sizeSupplyM(size_supply_m)
 					.roomInfoCount(room_info_count)
 					.roomInfoLivingroom(room_info_livingroom)
 					.roomInfoChar(room_info_char)
@@ -121,7 +120,6 @@ public class RoomInfo {
 					.facOther(fac_other)
 					.facSecurity(fac_security)
 					
-					.photoGeneral(photo_general)
 					.photoFilecode(photo_filecode)
 					.photoFilename(photo_filename)
 					
@@ -138,18 +136,15 @@ public class RoomInfo {
 		
 		public ReadRoomInfoRespDto toGetRoomInfoDto() {
 			return ReadRoomInfoRespDto.builder()
+					.createDate(create_date)
 					.roomCode(room_code)
 					.trnscType(trnsc_type)
-					.depositPrice(deposit_price)
-					.monthlyPriceDeposit(monthly_price_deposit)
-					.monthlyPrice(monthly_price)
 					.salesType(sales_type)
+					.roomInfoCount(room_info_count)
 					.salesAddressMainRoad(sales_address_main_road)
-					.salesAddressMainJibeon(sales_address_main_jibeon)
 					.salesAddressDong(sales_address_dong)
 					.salesAddressHo(sales_address_ho)
-					.descTitle(desc_detail)
-					.updateDate(update_date)
+					.descTitle(desc_title)
 					.build();
 		}
 		
@@ -162,10 +157,10 @@ public class RoomInfo {
 					.salesAddressMainJibeon(sales_address_main_jibeon)
 					.salesAddressDong(sales_address_dong)
 					.salesAddressHo(sales_address_ho)
-					.salesExclusiveP(sales_exclusive_p)
-					.salesExclusiveM(sales_exclusive_m)
-					.salesSupplyP(sales_supply_p)
-					.salesSupplyM(sales_supply_m)
+					.sizeExclusiveP(size_exclusive_p)
+					.sizeExclusiveM(size_exclusive_m)
+					.sizeSupplyP(size_supply_p)
+					.sizeSupplyM(size_supply_m)
 					.roomInfoCount(room_info_count)
 					.roomInfoLivingroom(room_info_livingroom)
 					.roomInfoChar(room_info_char)
@@ -195,8 +190,7 @@ public class RoomInfo {
 					.facComm(fac_comm)
 					.facOther(fac_other)
 					.facSecurity(fac_security)
-					
-					.photoGeneral(photo_general)
+	
 					.photoFilecode(photo_filecode)
 					.photoFilename(photo_filename)
 					

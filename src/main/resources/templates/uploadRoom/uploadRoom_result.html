@@ -6,6 +6,10 @@
 	<link rel="stylesheet" href="/static/css/style.css">
 	<link rel="stylesheet" href="/static/css/uploadRoom_result.css">
 	<link rel="stylesheet" href="/static/css/header.css">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    
 </head>
 <body>
 	<th:block th:replace="/fragments/header"></th:block>
@@ -20,58 +24,60 @@
 				<li>공개중 : 내가 등록한 매물이 공개중인 상태</li>
 				<li>비공개 : 내가 등록한 매물이 비공개된 상태</li>
 			</ul>
+			
 			<ul class="myroom-text-ul">
-				<li>
-					<div class="myroom-text-titleDiv">
-						<div>
-							<p class="myroom-pTag-create">등록일 
-								<span>2023-07-17</span>
-							</p>
-							<p class="myroom-pTag-number">매물번호 
-								<span>37814774</span>
-							</p>
-							<div class="myroom-pTag-enddate" style="margin-left: 16px;">
-								<p>광고종료 D-29</p>
-							</div>
-						</div>
-						<div class="myroon-buttonDiv">
-							<button class="myroom-Btn">
-								<span>비공개로 전환</span>
-							</button>
-							<button class="myroom-Btn">
-								<span>수정</span>
-							</button>
-							<button class="myroom-Btn">
-								<span>삭제</span>
-							</button>
-						</div>
-					</div>
-					<a href="/room/64b52fe31338fe73adb76d45" target="_blank" 
-					rel="noopener noreferrer" class="myroom-roomInfo">
-						<div>
-							<div class="roomInfo-photoDiv">
-								<div class="roomInfo-countDiv">
-									<p>찜
-										<span>0</span>
-									</p>
-									<p>조회
-										<span>0</span>
-									</p>
+					<li>
+						<div class="myroom-text-titleDiv">
+							<div>
+								<p class="myroom-pTag-create">등록일 
+									<span>2023-07-17</span>
+								</p>
+								<p class="myroom-pTag-number">매물번호 
+									<span>37814774</span>
+								</p>
+								<div class="myroom-pTag-enddate" style="margin-left: 16px;">
+									<p>광고종료 D-29</p>
 								</div>
 							</div>
-						</div>
-						<div>
-							<div class="roomInfo-state">
-								<p>광고중</p>
+							<div class="myroon-buttonDiv">
+								<button class="myroom-Btn">
+									<span>비공개로 전환</span>
+								</button>
+								<button class="myroom-Btn">
+									<span>수정</span>
+								</button>
+								<button class="myroom-Btn deleteBtn">
+									<span>삭제</span>
+								</button>
 							</div>
-							<h3 class="roomInfo-title">월세 1000/40</h3>
-							<p class="roomInfo-memo">빌라/연립/다세대/방3개 | 부산광역시 동래구 온천동 850-3 301호</p>
-							<p class="roomInfo-subMemo">동래 원룸</p>
 						</div>
-					</a>
-				</li>
+						<a href="/room/64b52fe31338fe73adb76d45" target="_blank" 
+						rel="noopener noreferrer" class="myroom-roomInfo">
+							<div>
+								<div class="roomInfo-photoDiv">
+									<div class="roomInfo-countDiv">
+										<p>찜
+											<span>0</span>
+										</p>
+										<p>조회
+											<span>0</span>
+										</p>
+									</div>
+								</div>
+							</div>
+							<div>
+								<div class="roomInfo-state">
+									<p>광고중</p>
+								</div>
+								<h3 class="roomInfo-title">월세 1000/40</h3>
+								<p class="roomInfo-memo">빌라/연립/다세대/방3개 | 부산광역시 동래구 온천동 850-3 301호</p>
+								<p class="roomInfo-subMemo">동래 원룸</p>
+							</div>
+						</a>
+					</li>
 			</ul>
 		</div>
 	</div>
+	<script type="text/javascript" src="/static/js/manage/uploadRoom_result.js"></script>
 </body>
 </html>

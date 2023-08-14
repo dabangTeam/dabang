@@ -25,10 +25,10 @@ public class CreateRoomInfoReqDto {
 		private String salesAddressMainJibeon;
 		private String salesAddressDong;
 		private String salesAddressHo;		
-		private int salesExclusiveP;
-		private double salesExclusiveM;
-		private int salesSupplyP;
-		private double salesSupplyM;
+		private int sizeExclusiveP;
+		private double sizeExclusiveM;
+		private int sizeSupplyP;
+		private double sizeSupplyM;
 		private int roomInfoCount;
 		private String roomInfoLivingroom;
 		private String roomInfoChar;
@@ -67,7 +67,6 @@ public class CreateRoomInfoReqDto {
 		private List<Integer> facSecList;
 		
 		// 사진등록
-		private String photoGeneral;
 		private String photoFilename;
 		private int photoFilecode;
 		
@@ -75,6 +74,7 @@ public class CreateRoomInfoReqDto {
 		private String descTitle;
 		private String descDetail;
 		private int descCode;
+		
 		
 		// 유저정보 및 업로드
 		private int userCode;
@@ -91,10 +91,10 @@ public class CreateRoomInfoReqDto {
 				.sales_address_main_jibeon(salesAddressMainJibeon)
 				.sales_address_dong(salesAddressDong)
 				.sales_address_ho(salesAddressHo)
-				.sales_exclusive_p(salesExclusiveP)
-				.sales_exclusive_m(salesExclusiveM)
-				.sales_supply_p(salesSupplyP)
-				.sales_supply_m(salesSupplyM)
+				.size_exclusive_p(sizeExclusiveP)
+				.size_exclusive_m(sizeExclusiveM)
+				.size_supply_p(sizeSupplyP)
+				.size_supply_m(sizeSupplyM)
 				.room_info_count(roomInfoCount)
 				.room_info_livingroom(roomInfoLivingroom)
 				.room_info_char(roomInfoChar)
@@ -125,10 +125,6 @@ public class CreateRoomInfoReqDto {
 				.fac_security(String.join(",", facSecList.stream().map(Object::toString).collect(Collectors.toList())))
 				.fac_other(String.join(",", facOtherList.stream().map(Object::toString).collect(Collectors.toList())))
 				
-				.photo_general(photoGeneral)
-				.photo_filename(photoFilename)
-				.photo_filecode(photoFilecode)
-				
 				.desc_title(descTitle)
 				.desc_detail(descDetail)
 				.desc_code(descCode)
@@ -139,13 +135,4 @@ public class CreateRoomInfoReqDto {
 				.build();
 	}	
 	
-	public RoomInfoFile toFileEntity() {
-		return RoomInfoFile.builder()
-				.room_code(roomCode)
-				
-				.photo_filename(photoFilename)
-				.photo_filecode(photoFilecode)
-
-				.build();
-	}	
 }
