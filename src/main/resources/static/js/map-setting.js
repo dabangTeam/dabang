@@ -241,9 +241,6 @@ function getRoomList(address) {
     async: false,
     type: "get",
     url: `/api/v1/map/room/${address}`,
-    data: {
-      address: `${address}`
-    },
     dataType: "json",
     success: (response) => {
       console.log(response.data);

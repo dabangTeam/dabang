@@ -292,3 +292,78 @@ svg {
     border: 0px;
     background-color: transparent;
 }
+
+.recommend-desc {
+    display: flex;
+    height: 36px;
+    line-height: 24px;
+}
+
+.recommend-desc p:nth-child(1) {
+    font-size: 24px;
+}
+
+.recommend-desc p:nth-child(2) {
+    font-size: 13px;
+    margin-left: 8px;
+    color: rgb(134, 134, 134);
+    font-size: 13px;
+}
+
+.recommend-desc strong {
+    font-size: 24px;
+}
+
+.room-list-container {
+    width: 100%;
+    margin: 100px 0px 160px;
+}
+
+.recommend-room-line {
+    width: 1200px;
+    margin: 0px auto;
+}
+
+.room-data-list {
+    display: flex;
+    flex-wrap: wrap;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.room-data {
+    cursor: pointer;
+}
+
+.room-img img {
+    width: 280px;
+    height: 186px;
+}
+
+.recommend-room-box {
+    margin-top: 20px;
+}
+
+.recommend-room-box p:nth-child(n+2) {
+    font-size: 14px;
+}
+
+.room-text {
+    margin-bottom: 4px;
+    color: rgb(34, 34, 34);
+    font-size: 13px;
+    line-height: 19px;
+}
+
+
+.recommend-room-box h1 {
+    margin-bottom: 4px;
+    color: rgb(34, 34, 34);
+    font-size: 20px;
+    line-height: 29px;
+}
+
+.Footer-List {
+     width: 747px;
+}
