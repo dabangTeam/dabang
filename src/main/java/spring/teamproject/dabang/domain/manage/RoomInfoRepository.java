@@ -17,6 +17,8 @@ public interface RoomInfoRepository {
 	
 	public int updateRoomInfoByRoomcode(RoomInfo roomInfo) throws Exception;
 	
-	public int remove(int roomcode) throws Exception;
+	public int updateRoomInfoByRoomcodeFiles(List<RoomInfoFile> list) throws Exception;
+	
+	public int remove(int roomCode) throws Exception;
 
 }

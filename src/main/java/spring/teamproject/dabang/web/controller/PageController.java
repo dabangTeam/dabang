@@ -1,7 +1,9 @@
 package spring.teamproject.dabang.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class PageController {
@@ -60,8 +62,15 @@ public class PageController {
 		return "/uploadRoom/uploadRoom_insert";
 	}
 	
-	@GetMapping("/manage_result")
-	public String manageRoom_result() {
+	@GetMapping("/manage/{roomCode}")
+	public String manageRoom_update(@PathVariable int roomCode, Model model) {
+		model.addAttribute("roomCode", roomCode);
+		return "/uploadRoom/uploadRoom_update";
+	}
+	
+	@GetMapping("/manage_result/{roomCode}")
+	public String manageRoom_result(@PathVariable int roomCode, Model model) {
+		model.addAttribute("roomCode", roomCode);
 		return "/uploadRoom/uploadRoom_result";
 	}
 	

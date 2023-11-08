@@ -38,12 +38,13 @@ public class ManageRoomController {
 	@Value("${file.path}")
 	private String filePath;
 	
-	@GetMapping("/list/{roomcode}")
-	public ResponseEntity<?> getRoomList(@PathVariable int roomcode) {
+	@GetMapping("/list/{roomCode}")
+	public ResponseEntity<?> getRoomList(@PathVariable int roomCode) {
 		ReadRoomInfoRespDto readRoomInfoRespDto = null;		
 
 		try {
-			readRoomInfoRespDto = manageService.getRoomList(roomcode);
+			readRoomInfoRespDto = manageService.getRoomList(roomCode);
+			log.info(">>>>>RespDTO : {}",readRoomInfoRespDto);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.ok().body(new CMRespDto<>(-1, "리스트 불러오기 실패", readRoomInfoRespDto));
@@ -51,29 +52,29 @@ public class ManageRoomController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "리스트 불러오기 성공", readRoomInfoRespDto));
 	}
 	
-	@GetMapping("/content/{roomcode}")
-	public ResponseEntity<?> getRoomInfo(@PathVariable int roomcode) {
-		
-		ReadRoomInfoRespDto readRoomInfoRespDto = null;
-		
-		try {
-			readRoomInfoRespDto = manageService.readRoomInfo(roomcode);
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ResponseEntity.ok().body(new CMRespDto<>(-1, "방정보 조회 실패", readRoomInfoRespDto));
-
-		}
-		
-		return ResponseEntity.ok().body(new CMRespDto<>(1, "방정보 조회 성공", readRoomInfoRespDto));
-	}
+	/*
+	 * @GetMapping("/content/{roomcode}") public ResponseEntity<?>
+	 * getRoomInfo(@PathVariable int roomcode) {
+	 * 
+	 * ReadRoomInfoRespDto readRoomInfoRespDto = null;
+	 * 
+	 * try { readRoomInfoRespDto = manageService.readRoomInfo(roomcode); } catch
+	 * (Exception e) { e.printStackTrace(); return ResponseEntity.ok().body(new
+	 * CMRespDto<>(-1, "방정보 조회 실패", readRoomInfoRespDto));
+	 * 
+	 * }
+	 * 
+	 * return ResponseEntity.ok().body(new CMRespDto<>(1, "방정보 조회 성공",
+	 * readRoomInfoRespDto)); }
+	 */
 	
 	@PostMapping("/content")
 	public ResponseEntity<?> addRoomInfo(CreateRoomInfoReqDto createRoomInfoReqDto) {
 		System.out.println("요청받");
 		System.out.println("파일업로드" + createRoomInfoReqDto.getFile());
 		//log.info(">>>> fileName: {}", createRoomInfoReqDto.getFile().get(0).getOriginalFilename());
-		log.info("filePath: {}", filePath);
-		log.info(">>>fileName: {}", createRoomInfoReqDto);		
+		log.info("작성filePath: {}", filePath);
+		log.info(">>>작성fileName: {}", createRoomInfoReqDto);		
 		
 		int roomCode = 0;;
 		
@@ -89,12 +90,16 @@ public class ManageRoomController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "방등록 성공", roomCode));
 	}
 	
-	@PutMapping("/content/{roomcode}")
-	public ResponseEntity<?> updateRoomInfo(@PathVariable int roomcode, @RequestBody UpdateRoomInfoReqDto updateRoomInfoReqDto) {
+	@PutMapping("/content/{roomCode}")
+	public ResponseEntity<?> updateRoomInfo(@PathVariable int roomCode, UpdateRoomInfoReqDto updateRoomInfoReqDto) {
+		log.info(">>>roomCoe :{}", roomCode);
+		log.info("수정filePath: {}", filePath);
+		log.info(">>>수정fileName: {}", updateRoomInfoReqDto);	
 		boolean status = false;
-		updateRoomInfoReqDto.setRoomCode(roomcode);
+		updateRoomInfoReqDto.setRoomCode(roomCode);
 
 		try {
+			log.info("수정>>>컨트롤러-데이터가 전송되는지 확인 : {}", updateRoomInfoReqDto);
 			status = manageService.updateRoomInfo(updateRoomInfoReqDto);
 
 		} catch (Exception e) {
@@ -104,13 +109,15 @@ public class ManageRoomController {
 		return ResponseEntity.ok().body(new CMRespDto<>(1, "수정 성공", status));
 	}
 
-	@DeleteMapping("/content/delete/{roomcode}")
-	public ResponseEntity<?> deleteRoomInfo(@PathVariable int roomcode) {
+	@DeleteMapping("/content/delete/{roomCode}")
+	public ResponseEntity<?> deleteRoomInfo(@PathVariable int roomCode) {
+		log.info(">>>>deleteRoomCode : {}", roomCode);
 		
 		boolean status = false;
 		
 		try {
-			status = manageService.deleteRoomInfo(roomcode);
+			status = manageService.deleteRoomInfo(roomCode);
+			log.info(">>>>>>status : {}", status);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.ok().body(new CMRespDto<>(-1,"삭제 실패", status));

@@ -5,11 +5,16 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 import spring.teamproject.dabang.domain.manage.RoomInfo;
 
 @Data
 public class UpdateRoomInfoReqDto {
+	
+	private List<MultipartFile> file;
+
 	// 매물정보
 	private int roomCode;
 	private String salesType;
@@ -60,7 +65,6 @@ public class UpdateRoomInfoReqDto {
 	private List<Integer> facSecList;
 		
 		// 사진등록
-	private String photoGeneral;
 	private String photoFilename;
 	private int photoFilecode;
 		
@@ -116,9 +120,6 @@ public class UpdateRoomInfoReqDto {
 					.fac_comm(String.join(",", facCommList.stream().map(Object::toString).collect(Collectors.toList())))
 					.fac_security(String.join(",", facSecList.stream().map(Object::toString).collect(Collectors.toList())))
 					.fac_other(String.join(",", facOtherList.stream().map(Object::toString).collect(Collectors.toList())))
-					
-					.photo_filename(photoFilename)
-					.photo_filecode(photoFilecode)
 					
 					.desc_title(descTitle)
 					.desc_detail(descDetail)

@@ -273,10 +273,7 @@ const inputDetailContext = document.querySelector(".detailContentText"); // 상�
 // 매물등록 버튼 클릭
 inqueryButton.onclick = () => {
 	console.log("버튼누름");
-
-	
-	
-
+	var roomCode = window.location.pathname.split('/').pop();
 	// 입력받은 데이터 저장
 
 	let getDataInputAddress = { // 주소
@@ -675,8 +672,8 @@ inqueryButton.onclick = () => {
 	
 	$.ajax({
 		async: false,
-		type: "post",
-		url: "/api/v1/manage/content",
+		type: "put",
+		url: `/api/v1/manage/content/${roomCode}`,
 		enctype: "multipart/form-data",
 		contentType: false,
 		processData: false,
@@ -712,7 +709,7 @@ function getRoomPage(roomCode) {
 		
 	})
 	
-}
+};
 
 //아래는 DB에서 불러올 때,
 
