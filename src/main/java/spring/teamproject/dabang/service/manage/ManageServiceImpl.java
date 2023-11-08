@@ -38,14 +38,14 @@ public class ManageServiceImpl implements ManageService{
 	private final RoomInfoRepository roomInfoRepository;
 
 	@Override
-	public ReadRoomInfoRespDto readRoomInfo(int roomcode) throws Exception {
+	public ReadRoomInfoRespDto readRoomInfo(int roomCode) throws Exception {
 		
-		return roomInfoRepository.getRoomInfoByRoomcode(roomcode).toReadRoomInfoDto();
+		return roomInfoRepository.getRoomInfoByRoomcode(roomCode).toReadRoomInfoDto();
 	}
 	
 	@Override
-	public ReadRoomInfoRespDto getRoomList(int roomcode) throws Exception {
-		return roomInfoRepository.getRoomListByRoomcode(roomcode).toGetRoomInfoDto();
+	public ReadRoomInfoRespDto getRoomList(int roomCode) throws Exception {
+		return roomInfoRepository.getRoomListByRoomcode(roomCode).toGetRoomInfoDto();
 	}
 
 	@Override
@@ -95,11 +95,11 @@ public class ManageServiceImpl implements ManageService{
 	    */
 		
 	    RoomInfo roomInfo = null;
-	    log.info("Impl 전 >>> {}", roomInfo);
+	    log.info("작성Impl 전 >>> {}", roomInfo);
 	    
 	    roomInfo = createRoomInfoReqDto.toEntity();
 	    roomInfoRepository.save(roomInfo);
-	    log.info("Impl 후 >>>{}",roomInfo);
+	    log.info("작성Impl 후 >>>{}",roomInfo);
 	    
 		
 		if(predicate.test(createRoomInfoReqDto.getFile().get(0).getOriginalFilename())) {
@@ -164,28 +164,82 @@ public class ManageServiceImpl implements ManageService{
 
 	@Override
 	public boolean updateRoomInfo(UpdateRoomInfoReqDto updateRoomInfoReqDto) throws Exception {
+		log.info("수정>>서비스-데이터가 전송되는지 확인 : {}", updateRoomInfoReqDto);
+		try {
 		
-		List<Integer> facAircndList = convertStringToList(updateRoomInfoReqDto.getFacAircnd());
-		updateRoomInfoReqDto.setFacAircndList(facAircndList);
+			Predicate<String> predicate = (filename) -> !filename.isBlank();
+			
+			List<Integer> facAircndList = convertStringToList(updateRoomInfoReqDto.getFacAircnd());
+			updateRoomInfoReqDto.setFacAircndList(facAircndList);
+			
+			List<Integer> facCommList = convertStringToList(updateRoomInfoReqDto.getFacComm());
+			updateRoomInfoReqDto.setFacCommList(facCommList);
+	
+		    List<Integer> facSecList = convertStringToList(updateRoomInfoReqDto.getFacSecurity());
+		    updateRoomInfoReqDto.setFacSecList(facSecList);
+	
+		    List<Integer> facOtherList = convertStringToList(updateRoomInfoReqDto.getFacOther());
+		    updateRoomInfoReqDto.setFacOtherList(facOtherList);
+			
+		    RoomInfo roomInfo = null;
+		    log.info("수정Impl 전 >>> {}", roomInfo);
+			roomInfo = updateRoomInfoReqDto.toEntity();
+			roomInfoRepository.updateRoomInfoByRoomcode(roomInfo);
+			 log.info("수정Impl 후 >>> {}", roomInfo);
+			
+			if(predicate.test(updateRoomInfoReqDto.getFile().get(0).getOriginalFilename())) {
+				List<RoomInfoFile> roomInfoFiles = new ArrayList<RoomInfoFile>();
+				
+				for(MultipartFile file : updateRoomInfoReqDto.getFile()) {
+					String originFilename = file.getOriginalFilename();
+					String tempFilename = UUID.randomUUID().toString().replace("-", "") + "_" + originFilename;
+					log.info("tempFilename : " + tempFilename);
+					
+					Path uploadPath = Paths.get(filePath, tempFilename);
+					
+					// 로깅을 위한 절대 경로 확인
+					log.info("Absolute path: " + uploadPath.toAbsolutePath().toString());
+					log.info("Final upload path: " + uploadPath.toString());
+	
+					// 파일 존재 여부 확인 로깅
+					if (Files.exists(uploadPath)) {
+					    log.warn("File already exists: " + uploadPath.toString());
+					} else {
+					    log.info("File doesn't exist, creating a new one.");
+					}
+	
+					// 파일 쓰기 시도
+					log.info("Attempting to write to file: " + uploadPath.toString());
+					
+					if (!Files.exists(uploadPath.getParent())) {
+					    Files.createDirectories(uploadPath.getParent());
+					}
+					
+					try {
+					Files.write(uploadPath, file.getBytes());
+					} catch (IOException e) {
+						log.error("file writing error: ", e);
+					}
+					
+					roomInfoFiles.add(RoomInfoFile.builder()
+													.room_code(roomInfo.getRoom_code())
+													.photo_filename(tempFilename)
+													.build());
+				}
+				roomInfoRepository.updateRoomInfoByRoomcodeFiles(roomInfoFiles);
+			}
+			return true;
+		} catch (Exception e) {
+	        log.error("Error while updating room info", e);
+	        return false; // 오류나 예외가 발생하면 false를 반환
+	    }
 		
-		List<Integer> facCommList = convertStringToList(updateRoomInfoReqDto.getFacComm());
-		updateRoomInfoReqDto.setFacCommList(facCommList);
-
-	    List<Integer> facSecList = convertStringToList(updateRoomInfoReqDto.getFacSecurity());
-	    updateRoomInfoReqDto.setFacSecList(facSecList);
-
-	    List<Integer> facOtherList = convertStringToList(updateRoomInfoReqDto.getFacOther());
-	    updateRoomInfoReqDto.setFacOtherList(facOtherList);
-		
-		RoomInfo roomInfoEntity = updateRoomInfoReqDto.toEntity();
-		
-		return roomInfoRepository.updateRoomInfoByRoomcode(roomInfoEntity) > 0;
 	}
 
 	@Override
-	public boolean deleteRoomInfo(int roomcode) throws Exception{
+	public boolean deleteRoomInfo(int roomCode) throws Exception{
 		
-		return roomInfoRepository.remove(roomcode) > 0;
+		return roomInfoRepository.remove(roomCode) > 0;
 	}
 	
 	// 반복구문을 메서드로 분리.

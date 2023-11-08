@@ -87,23 +87,26 @@
   	update
 		salesInfo
 	set
-		sales_type = #{sales_type}, sales_address = #{sales_address}, 
-		sales_size = #{sales_size}, sales_info = #{sales_info}, 
-		building_use = #{building_use}, building_approval = #{building_approval},
+		sales_type = #{sales_type}, unregistered_check = #{unregistered_check}, 
+		sales_address_main_road = #{sales_address_main_road}, sales_address_main_jibeon = #{sales_address_main_jibeon},
+		sales_address_dong = #{sales_address_dong}, sales_address_ho = #{sales_address_ho},
+		size_exclusive_p = #{size_exclusive_p}, size_exclusive_m = #{size_exclusive_m}, 
+		size_supply_p = #{size_supply_p}, size_supply_m = #{size_supply_m},
+		room_info_count = #{room_info_count}, room_info_livingroom = #{room_info_livingroom}, room_info_char = #{room_info_char},
+		building_use = #{building_use}, building_approval = #{building_approval}, building_approval_date = #{building_approval_date},
 		
-		trnsc_type = #{trnsc_type}, price_info = #{price_info}, 
-		public_admin_fee = #{public_admin_fee}, move_date = #{move_date},
+		trnsc_type = #{trnsc_type}, deposit_price = #{deposit_price}, 
+		monthly_price_deposit = #{monthly_price_deposit}, monthly_price = #{monthly_price},
+		public_management = #{public_management}, management_fee = #{management_fee}, 
+		possible_moved = #{possible_moved}, possible_moved_date = #{possible_moved_date}, possible_moved_check = #{possible_moved_check},
 		
-		num_floors = #{num_floors}, total_floors = #{total_floors}, 
+		total_floors = #{total_floors}, num_floor = #{num_floor}, 
 		num_bathrooms = #{num_bathrooms}, elevator = #{elevator}, 
 		parking_availability = #{parking_availability}, total_parking = #{total_parking},
 		
 		fac_heating = #{fac_heating}, fac_aircnd = #{fac_aircnd}, 
 		fac_comm = #{fac_comm}, fac_other = #{fac_other}, 
 		fac_security = #{fac_security},
-		
-		photo_general = #{photo_general}, photo_filename = #{photo_filename}, 
-		photo_filecode = #{photo_filecode},
 		
 		desc_title = #{desc_title}, desc_detail = #{desc_detail}, 
 		desc_code =#{desc_code},
@@ -112,6 +115,22 @@
 	
 	where 
 		room_code = #{room_code}
+  	</update>
+  	
+  	<update id="updateRoomInfoByRoomcodeFiles" 
+  	parameterType="java.util.List">
+		<foreach collection="list" item="file">
+			update
+				salesInfo_file
+			set
+				
+					room_code = #{file.room_code},
+					photo_filename = #{file.photo_filename},
+					update_date = now()
+				
+			where
+				file_code = #{file.file_code}
+		</foreach>
   	</update>
   
   	<delete id="remove"
